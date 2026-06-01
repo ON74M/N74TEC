@@ -1,43 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | Inicialização</title>
 
-<title>N74 TEC | Soluções em TI</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
 <style>
 
-/* RESET */
-*{
+/* BLOQUEIO DE INTERAÇÃO */
+html,body{
 margin:0;
 padding:0;
-box-sizing:border-box;
-font-family:'Ubuntu',sans-serif;
-user-select:none;
-}
-
-html,body{
 width:100%;
 height:100%;
-background:#000;
 overflow:hidden;
-color:#00ff41;
+background:#000;
+font-family:Arial,sans-serif;
+
+/* bloqueios básicos */
+user-select:none;
+-webkit-user-select:none;
+touch-action:none;
+}
+
+*{
+-webkit-user-drag:none;
+user-select:none;
 }
 
 /* MATRIX */
 canvas{
 position:fixed;
 inset:0;
-width:100%;
-height:100%;
 z-index:0;
 pointer-events:none;
 }
@@ -46,287 +43,141 @@ body::before{
 content:"";
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.72);
+background:rgba(0,0,0,.70);
 z-index:1;
+pointer-events:none;
 }
 
-/* APP */
-.app{
-position:relative;
-z-index:2;
-width:100%;
-height:100dvh;
+/* BOOT */
+.boot{
+position:absolute;
+inset:0;
+z-index:20;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+color:#00ff41;
+font-family:monospace;
+font-size:18px;
+animation:fadeBoot 6s forwards;
+pointer-events:none;
 }
 
-/* HOME */
-.home-screen{
+.line{
+opacity:0;
+margin:6px 0;
+animation:showLine .5s forwards;
+}
+
+.line:nth-child(1){animation-delay:.5s;}
+.line:nth-child(2){animation-delay:1.5s;}
+.line:nth-child(3){animation-delay:2.5s;}
+.line:nth-child(4){animation-delay:3.5s;}
+
+@keyframes showLine{to{opacity:1;}}
+
+@keyframes fadeBoot{
+0%,80%{opacity:1;}
+100%{opacity:0;}
+}
+
+/* HERO */
+.hero{
 position:absolute;
 inset:0;
 display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-text-align:center;
+z-index:10;
+opacity:0;
+animation:showHero 2s ease forwards;
+animation-delay:5s;
+pointer-events:none;
 }
 
-/* LOGO */
 .logo{
 font-family:'Neuropol',sans-serif;
-font-size:clamp(44px,10vw,92px);
-letter-spacing:5px;
-display:flex;
-gap:2px;
-}
-
-/* LETRAS INDIVIDUAIS */
-.logo span{
-font-family:'Neuropol',sans-serif;
-display:inline-block;
+font-size:clamp(60px,10vw,140px);
 color:#00ff41;
-animation:letterGlow 2.8s infinite ease-in-out;
-}
-
-/* delay por letra */
-.logo span:nth-child(1){animation-delay:0s;}
-.logo span:nth-child(2){animation-delay:0.15s;}
-.logo span:nth-child(3){animation-delay:0.30s;}
-.logo span:nth-child(4){animation-delay:0.45s;}
-.logo span:nth-child(5){animation-delay:0.60s;}
-.logo span:nth-child(6){animation-delay:0.75s;}
-.logo span:nth-child(7){animation-delay:0.90s;}
-
-/* efeito verde oscilante */
-@keyframes letterGlow{
-
-0%{
-color:#00ff41;
-text-shadow:0 0 6px rgba(0,255,65,0.25);
-filter:brightness(0.9);
-}
-
-25%{
-color:#39ff88;
-text-shadow:0 0 12px rgba(57,255,136,0.5);
-filter:brightness(1.1);
-}
-
-50%{
-color:#00ff9a;
-text-shadow:0 0 20px rgba(0,255,154,0.7);
-filter:brightness(1.25);
-}
-
-75%{
-color:#7CFFB2;
-text-shadow:0 0 10px rgba(124,255,178,0.4);
-filter:brightness(1.05);
-}
-
-100%{
-color:#00ff41;
-text-shadow:0 0 6px rgba(0,255,65,0.25);
-filter:brightness(0.95);
-}
-
+letter-spacing:8px;
+text-shadow:0 0 40px #00ff41;
+animation:glowPulse 4s infinite;
 }
 
 .subtitle{
-margin-top:12px;
+margin-top:20px;
 font-size:14px;
-color:#b7ffcf;
-letter-spacing:2px;
+letter-spacing:5px;
+color:#c5ffd7;
+min-height:20px;
 }
 
-/* MENU LATERAL */
-.side-menu{
-position:fixed;
-top:0;
-left:0;
-transform:translateX(-100%);
-width:270px;
-height:100%;
-background:rgba(0,0,0,0.96);
-border-right:1px solid rgba(255,255,255,0.08);
-padding:22px 18px;
-z-index:99998;
-transition:0.25s ease;
-overflow-y:auto;
+@keyframes showHero{
+from{opacity:0;transform:scale(.95);}
+to{opacity:1;transform:scale(1);}
 }
 
-.side-menu.active{
-transform:translateX(0);
-}
-
-.menu-title{
-font-family:'Neuropol',sans-serif;
-font-size:22px;
-color:#00ff41;
-margin-bottom:24px;
-}
-
-/* LINKS */
-.side-menu a{
-display:block;
-padding:13px 0;
-text-decoration:none;
-color:#ffffff;
-font-size:14px;
-border-bottom:1px solid rgba(255,255,255,0.08);
-transition:0.2s ease;
-}
-
-.side-menu a:hover{
-color:#00ff41;
-padding-left:6px;
-}
-
-/* OVERLAY */
-.menu-overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.55);
-backdrop-filter:blur(4px);
-z-index:99997;
-display:none;
-}
-
-.menu-overlay.active{
-display:block;
-}
-
-/* NAV BAR */
-.bottom-nav{
-position:fixed;
-left:0;
-bottom:0;
-width:100%;
-height:60px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-background:rgba(0,0,0,0.92);
-border-top:1px solid rgba(255,255,255,0.08);
-z-index:99999;
-}
-
-.nav-item{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-color:#ffffff;
-opacity:0.85;
-transition:0.2s ease;
-}
-
-.nav-item i{
-font-size:16px;
-}
-
-.nav-item:hover{
-color:#00ff41;
-opacity:1;
+@keyframes glowPulse{
+0%{text-shadow:0 0 10px #006600;}
+50%{text-shadow:0 0 40px #00ff41;}
+100%{text-shadow:0 0 10px #006600;}
 }
 
 </style>
-
 </head>
 
 <body>
 
 <canvas id="matrix"></canvas>
 
-<div class="app">
-
-<div class="home-screen">
-
-<div class="logo">
-<span>N</span>
-<span>7</span>
-<span>4</span>
-<span> </span>
-<span>T</span>
-<span>E</span>
-<span>C</span>
+<div class="boot">
+<div class="line">[ N74 TEC SYSTEM ]</div>
+<div class="line">LOADING NETWORK MODULE... OK</div>
+<div class="line">LOADING SECURITY MODULE... OK</div>
+<div class="line">WELCOME TO N74 TEC</div>
 </div>
 
-<div class="subtitle">SOLUÇÕES EM TI</div>
-
+<div class="hero">
+<div class="logo">N74 TEC</div>
+<div class="subtitle" id="subtitle"></div>
 </div>
-
-</div>
-
-<div class="menu-overlay" id="menuOverlay"></div>
-
-<div class="side-menu" id="sideMenu">
-
-<div class="menu-title">N74 TEC</div>
-
-<a href="pages/suporte-tecnico.html">Suporte Técnico</a>
-<a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
-<a href="pages/cftv.html">CFTV</a>
-<a href="pages/servidores.html">Servidores</a>
-<a href="pages/backup.html">Backup</a>
-<a href="pages/suporte-remoto.html">Suporte Remoto</a>
-<a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
-<a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
-
-<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
-<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
-
-</div>
-
-<nav class="bottom-nav">
-
-<a class="nav-item" href="#" id="menuButton">
-<i class="fa-solid fa-bars"></i>
-</a>
-
-<a class="nav-item" href="index.html" id="homeButton">
-    <i class="fa-solid fa-house"></i>
-</a>
-
-<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
-<i class="fa-solid fa-phone"></i>
-</a>
-
-</nav>
 
 <script>
 
 /* MATRIX */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-let fontSize = 15;
-let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-let columns;
-let drops = [];
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
 function resize(){
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-init();
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 }
+resize();
+
+const chars="01N74TEC@#$%ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize=15;
+let columns;
+let drops=[];
 
 function init(){
-columns = Math.floor(canvas.width / fontSize);
-drops = Array(columns).fill(1);
+columns=Math.floor(canvas.width/fontSize);
+drops=Array(columns).fill(1);
 }
+init();
 
 function draw(){
-ctx.fillStyle = "rgba(0,0,0,0.04)";
+ctx.fillStyle="rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle = "#00ff41";
-ctx.font = fontSize + "px monospace";
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
 
 for(let i=0;i<drops.length;i++){
-let text = chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+let text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
 drops[i]=0;
 }
 
@@ -335,23 +186,36 @@ drops[i]+=0.75;
 }
 
 setInterval(draw,45);
-window.addEventListener("resize", resize);
+
+window.addEventListener("resize",()=>{
 resize();
-
-/* MENU */
-const menuButton = document.getElementById("menuButton");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-
-menuButton.addEventListener("click",()=>{
-sideMenu.classList.toggle("active");
-menuOverlay.classList.toggle("active");
+init();
 });
 
-menuOverlay.addEventListener("click",()=>{
-sideMenu.classList.remove("active");
-menuOverlay.classList.remove("active");
-});
+/* TEXTO */
+const texto="SUPORTE TÉCNICO PROFISSIONAL";
+const subtitle=document.getElementById("subtitle");
+
+setTimeout(()=>{
+let i=0;
+const timer=setInterval(()=>{
+subtitle.textContent+=texto.charAt(i);
+i++;
+if(i>=texto.length) clearInterval(timer);
+},70);
+},6000);
+
+/* 🚀 REDIRECIONAMENTO AUTOMÁTICO */
+function goMenu(){
+window.location.href="menu.html";
+}
+
+/* depois de 9s vai automaticamente */
+setTimeout(goMenu, 9000);
+
+/* clique em qualquer lugar vai também */
+document.addEventListener("click", goMenu);
+document.addEventListener("touchstart", goMenu);
 
 </script>
 

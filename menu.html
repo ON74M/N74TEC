@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>N74 TEC | Soluções em TI</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Ubuntu',sans-serif;
+user-select:none;
+}
+
+html,body{
+width:100%;
+height:100%;
+background:#000;
+overflow:hidden;
+color:#00ff41;
+}
+
+/* MATRIX */
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.72);
+z-index:1;
+}
+
+/* APP */
+.app{
+position:relative;
+z-index:2;
+width:100%;
+height:100dvh;
+}
+
+/* HOME */
+.home-screen{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+}
+
+/* LOGO */
+.logo{
+font-family:'Neuropol',sans-serif;
+font-size:clamp(44px,10vw,92px);
+letter-spacing:5px;
+display:flex;
+gap:2px;
+}
+
+/* LETRAS INDIVIDUAIS */
+.logo span{
+font-family:'Neuropol',sans-serif;
+display:inline-block;
+color:#00ff41;
+animation:letterGlow 2.8s infinite ease-in-out;
+}
+
+/* delay por letra */
+.logo span:nth-child(1){animation-delay:0s;}
+.logo span:nth-child(2){animation-delay:0.15s;}
+.logo span:nth-child(3){animation-delay:0.30s;}
+.logo span:nth-child(4){animation-delay:0.45s;}
+.logo span:nth-child(5){animation-delay:0.60s;}
+.logo span:nth-child(6){animation-delay:0.75s;}
+.logo span:nth-child(7){animation-delay:0.90s;}
+
+/* efeito verde oscilante */
+@keyframes letterGlow{
+
+0%{
+color:#00ff41;
+text-shadow:0 0 6px rgba(0,255,65,0.25);
+filter:brightness(0.9);
+}
+
+25%{
+color:#39ff88;
+text-shadow:0 0 12px rgba(57,255,136,0.5);
+filter:brightness(1.1);
+}
+
+50%{
+color:#00ff9a;
+text-shadow:0 0 20px rgba(0,255,154,0.7);
+filter:brightness(1.25);
+}
+
+75%{
+color:#7CFFB2;
+text-shadow:0 0 10px rgba(124,255,178,0.4);
+filter:brightness(1.05);
+}
+
+100%{
+color:#00ff41;
+text-shadow:0 0 6px rgba(0,255,65,0.25);
+filter:brightness(0.95);
+}
+
+}
+
+.subtitle{
+margin-top:12px;
+font-size:14px;
+color:#b7ffcf;
+letter-spacing:2px;
+}
+
+/* MENU LATERAL */
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+transform:translateX(-100%);
+width:270px;
+height:100%;
+background:rgba(0,0,0,0.96);
+border-right:1px solid rgba(255,255,255,0.08);
+padding:22px 18px;
+z-index:99998;
+transition:0.25s ease;
+overflow-y:auto;
+}
+
+.side-menu.active{
+transform:translateX(0);
+}
+
+.menu-title{
+font-family:'Neuropol',sans-serif;
+font-size:22px;
+color:#00ff41;
+margin-bottom:24px;
+}
+
+/* LINKS */
+.side-menu a{
+display:block;
+padding:13px 0;
+text-decoration:none;
+color:#ffffff;
+font-size:14px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+transition:0.2s ease;
+}
+
+.side-menu a:hover{
+color:#00ff41;
+padding-left:6px;
+}
+
+/* OVERLAY */
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(4px);
+z-index:99997;
+display:none;
+}
+
+.menu-overlay.active{
+display:block;
+}
+
+/* NAV BAR */
+.bottom-nav{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+height:60px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+background:rgba(0,0,0,0.92);
+border-top:1px solid rgba(255,255,255,0.08);
+z-index:99999;
+}
+
+.nav-item{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:#ffffff;
+opacity:0.85;
+transition:0.2s ease;
+}
+
+.nav-item i{
+font-size:16px;
+}
+
+.nav-item:hover{
+color:#00ff41;
+opacity:1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="app">
+
+<div class="home-screen">
+
+<div class="logo">
+<span>N</span>
+<span>7</span>
+<span>4</span>
+<span> </span>
+<span>T</span>
+<span>E</span>
+<span>C</span>
+</div>
+
+<div class="subtitle">SOLUÇÕES EM TI</div>
+
+</div>
+
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="side-menu" id="sideMenu">
+
+<div class="menu-title">N74 TEC</div>
+
+<a href="pages/suporte-tecnico.html">Suporte Técnico</a>
+<a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
+<a href="pages/cftv.html">CFTV</a>
+<a href="pages/servidores.html">Servidores</a>
+<a href="pages/backup.html">Backup</a>
+<a href="pages/suporte-remoto.html">Suporte Remoto</a>
+<a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
+<a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
+
+<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
+
+</div>
+
+<nav class="bottom-nav">
+
+<a class="nav-item" href="#" id="menuButton">
+<i class="fa-solid fa-bars"></i>
+</a>
+
+<a class="nav-item" href="index.html" id="homeButton">
+    <i class="fa-solid fa-house"></i>
+</a>
+
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
+</a>
+
+</nav>
+
+<script>
+
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+let fontSize = 15;
+let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+let columns;
+let drops = [];
+
+function resize(){
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+init();
+}
+
+function init(){
+columns = Math.floor(canvas.width / fontSize);
+drops = Array(columns).fill(1);
+}
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.04)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+drops[i]=0;
+}
+
+drops[i]+=0.75;
+}
+}
+
+setInterval(draw,45);
+window.addEventListener("resize", resize);
+resize();
+
+/* MENU */
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuButton.addEventListener("click",()=>{
+sideMenu.classList.toggle("active");
+menuOverlay.classList.toggle("active");
+});
+
+menuOverlay.addEventListener("click",()=>{
+sideMenu.classList.remove("active");
+menuOverlay.classList.remove("active");
+});
+
+</script>
+
+</body>
+</html>
