@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>N74 TEC | Inicialização</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+font-family:Arial,sans-serif;
+user-select:none;
+}
+
+/* MATRIX */
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+}
+
+/* overlay escuro cinematográfico */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.72);
+z-index:1;
+}
+
+/* HERO */
+.hero{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:10;
+text-align:center;
+}
+
+/* LOGO CINEMA */
+.logo{
+font-family:'Neuropol',sans-serif;
+font-size:clamp(60px,10vw,140px);
+letter-spacing:10px;
+color:#00ff41;
+text-transform:uppercase;
+
+position:relative;
+
+text-shadow:
+0 0 10px rgba(0,255,65,0.4),
+0 0 30px rgba(0,255,65,0.3),
+0 0 60px rgba(0,255,65,0.2);
+
+animation:logoBreath 4s ease-in-out infinite, microShake 8s infinite;
+}
+
+/* respiração do logo */
+@keyframes logoBreath{
+0%{
+transform:scale(0.98);
+filter:brightness(0.8);
+text-shadow:0 0 10px rgba(0,255,65,0.3);
+}
+
+50%{
+transform:scale(1.02);
+filter:brightness(1.3);
+text-shadow:0 0 40px rgba(0,255,65,0.8),0 0 80px rgba(0,255,65,0.4);
+}
+
+100%{
+transform:scale(0.98);
+filter:brightness(0.9);
+text-shadow:0 0 10px rgba(0,255,65,0.3);
+}
+}
+
+/* micro vibração */
+@keyframes microShake{
+0%,100%{transform:translateX(0);}
+96%{transform:translateX(0);}
+97%{transform:translateX(-1px);}
+98%{transform:translateX(1px);}
+99%{transform:translateX(-1px);}
+}
+
+/* luz passando (cinema effect) */
+.logo::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+120deg,
+transparent 0%,
+rgba(255,255,255,0.08) 45%,
+rgba(255,255,255,0.25) 50%,
+rgba(255,255,255,0.08) 55%,
+transparent 100%
+);
+transform:translateX(-120%);
+animation:lightSweep 5s infinite;
+}
+
+@keyframes lightSweep{
+0%{transform:translateX(-120%);}
+40%{transform:translateX(120%);}
+100%{transform:translateX(120%);}
+}
+
+/* SUBTITLE */
+.subtitle{
+margin-top:20px;
+font-size:14px;
+letter-spacing:5px;
+color:#c5ffd7;
+opacity:0;
+animation:fadeIn 2s ease forwards;
+animation-delay:2s;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* MATRIX OVERLAY */
+.overlay{
+position:fixed;
+inset:0;
+z-index:1;
+background:rgba(0,0,0,0.4);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+<div class="overlay"></div>
+
+<div class="hero" id="hero">
+
+<div class="logo">N74 TEC</div>
+
+<div class="subtitle">SUPORTE TÉCNICO PROFISSIONAL</div>
+
+</div>
+
+<script>
+
+/* MATRIX */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+}
+resize();
+
+const chars="01N74TEC@#$%ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let drops=[];
+
+function init(){
+drops=Array(Math.floor(canvas.width/15)).fill(1);
+}
+init();
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff41";
+ctx.font="15px monospace";
+
+for(let i=0;i<drops.length;i++){
+let t=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(t,i*15,drops[i]*15);
+
+if(drops[i]*15>canvas.height && Math.random()>0.975) drops[i]=0;
+drops[i]+=0.75;
+}
+}
+
+setInterval(draw,45);
+window.addEventListener("resize",()=>{resize();init();});
+
+/* CLIQUE OU AUTO REDIRECT */
+function goMenu(){
+document.body.style.transition="1s";
+document.body.style.opacity="0";
+setTimeout(()=>{
+window.location.href="menu.html";
+},900);
+}
+
+/* após 8s vai sozinho */
+setTimeout(goMenu,8000);
+
+/* clique pula intro */
+document.addEventListener("click",goMenu);
+
+</script>
+
+</body>
+</html>
