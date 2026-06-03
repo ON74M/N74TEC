@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | System Menu</title>
+
+<style>
+
+body{
+margin:0;
+background:#000;
+font-family:Arial;
+color:#e6ffe6;
+overflow:hidden;
+}
+
+/* MATRIX BACKGROUND */
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+opacity:0.12;
+}
+
+/* HEADER FIXO */
+.topbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:60px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 14px;
+box-sizing:border-box;
+
+background:rgba(0,0,0,0.6);
+border-bottom:1px solid rgba(0,255,65,0.15);
+
+z-index:10;
+backdrop-filter:blur(6px);
+}
+
+.logo{
+font-family:Arial;
+font-weight:bold;
+letter-spacing:3px;
+color:#00ff41;
+font-size:14px;
+}
+
+.status{
+font-family:monospace;
+font-size:10px;
+opacity:0.5;
+}
+
+/* CONTAINER */
+.container{
+position:relative;
+z-index:2;
+padding:80px 14px 90px;
+max-width:520px;
+margin:0 auto;
+}
+
+/* HEADER CARD */
+.header{
+background:rgba(0,255,65,0.04);
+border:1px solid rgba(0,255,65,0.12);
+border-radius:12px;
+padding:14px;
+margin-bottom:14px;
+}
+
+.header h2{
+margin:0;
+font-size:15px;
+color:#00ff41;
+}
+
+.header p{
+margin-top:6px;
+font-size:11px;
+opacity:0.6;
+line-height:1.4;
+}
+
+/* MENU ITEMS */
+.item{
+background:rgba(20,20,20,0.8);
+border:1px solid #222;
+border-radius:12px;
+
+padding:14px;
+margin-bottom:10px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+cursor:pointer;
+transition:0.2s;
+}
+
+.item:hover{
+border-color:#00ff41;
+transform:scale(1.01);
+}
+
+.left{
+display:flex;
+flex-direction:column;
+gap:4px;
+}
+
+.title{
+font-size:13px;
+color:#fff;
+}
+
+.desc{
+font-size:11px;
+opacity:0.6;
+}
+
+.icon{
+font-size:18px;
+opacity:0.8;
+}
+
+/* FOOTER */
+.footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:56px;
+
+background:rgba(0,0,0,0.7);
+border-top:1px solid rgba(0,255,65,0.15);
+
+display:flex;
+justify-content:space-around;
+align-items:center;
+
+font-size:11px;
+z-index:10;
+backdrop-filter:blur(6px);
+}
+
+.footer div{
+opacity:0.5;
+}
+
+.footer .active{
+color:#00ff41;
+opacity:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<!-- TOPBAR LOGO FIXO -->
+<div class="topbar">
+<div class="logo">N74 TEC</div>
+<div class="status">SYSTEM ONLINE</div>
+</div>
+
+<div class="container">
+
+<div class="header">
+<h2>Central de Controle</h2>
+<p>Acesse os módulos do sistema N74 TEC. Infraestrutura, suporte e segurança.</p>
+</div>
+
+<div class="item" onclick="go('suporte-tecnico.html')">
+<div class="left">
+<div class="title">Suporte Técnico</div>
+<div class="desc">Diagnóstico e resolução de falhas</div>
+</div>
+<div class="icon">⚙️</div>
+</div>
+
+<div class="item" onclick="go('redes-wifi.html')">
+<div class="left">
+<div class="title">Redes Wi-Fi</div>
+<div class="desc">Infraestrutura e performance</div>
+</div>
+<div class="icon">📡</div>
+</div>
+
+<div class="item" onclick="go('servidores.html')">
+<div class="left">
+<div class="title">Servidores</div>
+<div class="desc">Configuração e manutenção</div>
+</div>
+<div class="icon">🖥</div>
+</div>
+
+<div class="item" onclick="go('cftv.html')">
+<div class="left">
+<div class="title">CFTV</div>
+<div class="desc">Segurança e monitoramento</div>
+</div>
+<div class="icon">📹</div>
+</div>
+
+<div class="item" onclick="go('backup.html')">
+<div class="left">
+<div class="title">Backup</div>
+<div class="desc">Proteção de dados</div>
+</div>
+<div class="icon">💾</div>
+</div>
+
+<div class="item" onclick="go('agendamento.html')">
+<div class="left">
+<div class="title">Agendamento</div>
+<div class="desc">Marcar atendimento</div>
+</div>
+<div class="icon">📅</div>
+</div>
+
+<div class="item" onclick="go('contact.html')">
+<div class="left">
+<div class="title">Contato</div>
+<div class="desc">WhatsApp direto</div>
+</div>
+<div class="icon">💬</div>
+</div>
+
+</div>
+
+<div class="footer">
+<div class="active">HOME</div>
+<div>SERVIÇOS</div>
+<div>STATUS</div>
+<div>CONFIG</div>
+</div>
+
+<script>
+
+/* MATRIX */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+const chars="01N74TECIA@#$%&";
+const fontSize=14;
+const cols=Math.floor(canvas.width/fontSize);
+const drops=Array(cols).fill(1);
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+let t=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(t,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.985){
+drops[i]=0;
+}
+drops[i]+=0.28;
+}
+}
+
+setInterval(draw,40);
+
+/* NAV */
+function go(page){
+window.location.href=page;
+}
+
+</script>
+
+</body>
+</html>

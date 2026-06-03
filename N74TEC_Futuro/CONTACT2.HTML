@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | Contato</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+/* BASE */
+body{
+margin:0;
+background:#000;
+font-family:Arial;
+color:#e5ffe5;
+overflow:hidden;
+}
+
+/* MATRIX MUITO DISCRETO (IDENTIDADE, NÃO PROTAGONISTA) */
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+opacity:0.06;
+}
+
+/* CONTAINER PRINCIPAL */
+.wrap{
+position:relative;
+z-index:2;
+max-width:520px;
+margin:0 auto;
+padding:24px 16px;
+}
+
+/* HEADER LIMPO (PADRÃO SAAS) */
+header{
+text-align:center;
+margin-top:20px;
+}
+
+header h1{
+margin:0;
+font-family:'Neuropol',sans-serif;
+font-size:24px;
+letter-spacing:4px;
+color:#00ff41;
+}
+
+header p{
+margin-top:8px;
+font-size:12px;
+opacity:0.6;
+}
+
+/* BLOCO DE APRESENTAÇÃO */
+.card{
+margin-top:22px;
+padding:18px;
+
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(0,255,65,0.12);
+border-radius:14px;
+
+font-size:13px;
+line-height:1.6;
+opacity:0.85;
+color:#dfffe0;
+}
+
+/* MAPA ESTILO SAAS (CARD PROFISSIONAL) */
+.map{
+margin-top:16px;
+padding:16px;
+
+border-radius:14px;
+
+background:rgba(0,255,65,0.04);
+border:1px solid rgba(0,255,65,0.10);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+cursor:pointer;
+transition:0.2s;
+}
+
+.map:active{
+transform:scale(0.99);
+}
+
+.map small{
+opacity:0.6;
+font-size:11px;
+}
+
+/* CTA WHATSAPP (DISCRETO, PROFISSIONAL) */
+.cta{
+position:fixed;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+
+width:92%;
+max-width:520px;
+
+padding:14px 16px;
+
+border-radius:14px;
+
+background:rgba(0,255,65,0.10);
+border:1px solid rgba(0,255,65,0.25);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+cursor:pointer;
+
+backdrop-filter:blur(8px);
+transition:0.2s;
+}
+
+.cta:hover{
+background:rgba(0,255,65,0.14);
+}
+
+.cta:active{
+transform:translateX(-50%) scale(0.99);
+}
+
+.cta-left{
+display:flex;
+flex-direction:column;
+}
+
+.cta-title{
+font-size:13px;
+color:#00ff41;
+font-weight:bold;
+}
+
+.cta-sub{
+font-size:11px;
+opacity:0.6;
+margin-top:2px;
+}
+
+.cta-icon{
+font-size:18px;
+opacity:0.8;
+}
+
+/* STATUS PEQUENO (SENSO DE SISTEMA) */
+.status{
+position:fixed;
+top:12px;
+right:12px;
+
+font-size:10px;
+opacity:0.4;
+font-family:monospace;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="status">SYSTEM ACTIVE</div>
+
+<div class="wrap">
+
+<header>
+<h1>N74 TEC</h1>
+<p>Suporte técnico e infraestrutura</p>
+</header>
+
+<div class="card">
+Atendimento direto com suporte técnico especializado em redes, servidores, CFTV e infraestrutura.
+Resposta via WhatsApp com prioridade de atendimento.
+</div>
+
+<div class="map" onclick="openMap()">
+<div>
+📍 São Paulo
+<br>
+<small>abrir localização no mapa</small>
+</div>
+<div>›</div>
+</div>
+
+</div>
+
+<!-- CTA WHATSAPP PROFISSIONAL -->
+<div class="cta" onclick="whats()">
+
+<div class="cta-left">
+<div class="cta-title">Atendimento via WhatsApp</div>
+<div class="cta-sub">resposta rápida • suporte técnico</div>
+</div>
+
+<div class="cta-icon">💬</div>
+
+</div>
+
+<script>
+
+/* MATRIX LEVE */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+const chars="01N74TECIA@#$%&";
+const fontSize=14;
+const cols=Math.floor(canvas.width/fontSize);
+const drops=Array(cols).fill(1);
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+let t=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(t,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.985){
+drops[i]=0;
+}
+drops[i]+=0.25;
+}
+}
+
+setInterval(draw,40);
+
+/* WHATSAPP */
+function whats(){
+window.open(
+"https://wa.me/5511958733142?text=Olá! Quero suporte técnico N74 TEC",
+"_blank"
+);
+}
+
+/* MAPA */
+function openMap(){
+window.open("https://www.google.com/maps?q=São+Paulo","_blank");
+}
+
+</script>
+
+</body>
+</html>

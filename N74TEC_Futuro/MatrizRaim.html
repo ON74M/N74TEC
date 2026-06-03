@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MATRIX RAIN | N74 TEC</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: black;
+      overflow: hidden;
+      font-family: monospace;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    /* efeito leve de brilho verde geral */
+    .glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,255,0,0.08), transparent 60%);
+      pointer-events: none;
+    }
+
+    /* título opcional estilo cyber */
+    .title {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      color: #00ff00;
+      font-size: 22px;
+      letter-spacing: 6px;
+      text-shadow: 0 0 10px #00ff00;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="title">N74 TEC // MATRIX SYSTEM ONLINE</div>
+  <canvas id="matrix"></canvas>
+  <div class="glow"></div>
+
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    // ajusta tela
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    // caracteres Matrix (mistura japonesa + números + símbolos)
+    const chars = "アァイィウエオカキクケコサシスセソ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-";
+
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    // array de gotas
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = Math.random() * canvas.height;
+    }
+
+    function draw() {
+      // fundo com leve fade (efeito rastro)
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ff00";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // reset aleatório (efeito infinito)
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+
+    // responsivo
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
+
+</body>
+</html>

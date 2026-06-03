@@ -1,0 +1,244 @@
+/* =====================================================
+   N74 TEC - DESIGN SYSTEM CSS
+   FULL ULTRA MATRIX EDITION
+   ===================================================== */
+
+/* RESET GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* BASE */
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* CANVAS MATRIX */
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* OVERLAY MATRIX */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  z-index: 1;
+}
+
+/* APP LAYER */
+.app {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100dvh;
+  font-family: "Arial Unicode MS", sans-serif;
+}
+
+/* =========================
+   TIPOGRAFIA PADRÃO N74
+   ========================= */
+
+/* TÍTULOS / LOGO */
+.title,
+.logo {
+  font-family: "Neuropol", sans-serif;
+  color: #00ff41;
+  font-size: clamp(26px, 5vw, 42px);
+  text-shadow: 0 0 10px rgba(0,255,65,0.4);
+}
+
+/* SUBTÍTULOS */
+.subtitle {
+  font-family: "Arial Unicode MS", sans-serif;
+  text-transform: uppercase;
+  color: #00ff41;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-top: 6px;
+}
+
+/* TEXTO SECUNDÁRIO */
+.card p,
+.text {
+  font-family: "Arial Unicode MS", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+  text-align: center;
+  padding: 24px 12px 10px;
+}
+
+/* =========================
+   CONTAINER / LAYOUT
+   ========================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+  background: rgba(0,0,0,0.85);
+  border: 1px solid rgba(0,255,65,0.15);
+  border-radius: 12px;
+  padding: 14px;
+  backdrop-filter: blur(4px);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  border-color: #00ff41;
+  transform: scale(1.01);
+}
+
+/* TITULOS DOS CARDS */
+.card h3 {
+  font-family: "Arial Unicode MS", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #00ff41;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   MENU LATERAL
+   ========================= */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  width: 270px;
+  height: 100%;
+  background: rgba(0,0,0,0.96);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 22px 18px;
+  z-index: 99998;
+  transition: 0.25s ease;
+  overflow-y: auto;
+}
+
+.side-menu.active {
+  transform: translateX(0);
+}
+
+/* LOGO MENU */
+.menu-title {
+  font-family: "Neuropol", sans-serif;
+  font-size: 22px;
+  color: #00ff41;
+  margin-bottom: 24px;
+}
+
+/* LINKS MENU */
+.side-menu a {
+  display: block;
+  padding: 13px 0;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: 0.2s;
+}
+
+.side-menu a:hover {
+  color: #00ff41;
+  padding-left: 6px;
+}
+
+/* =========================
+   OVERLAY MENU
+   ========================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  z-index: 99997;
+  display: none;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+/* =========================
+   BOTTOM NAV
+   ========================= */
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0,0,0,0.92);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 99999;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+
+.nav-item i {
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  color: #00ff41;
+  opacity: 1;
+}
+
+/* =========================
+   SCROLL (caso habilite futuramente)
+   ========================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 10px;
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | SYSTEM BOOT</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+overflow:hidden;
+background:#000;
+font-family:'Neuropol',sans-serif;
+}
+
+/* 🎥 VÍDEO */
+video{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
+filter:brightness(0.22) contrast(1.4) saturate(1.1);
+}
+
+/* 🌧 MATRIX */
+canvas{
+position:fixed;
+inset:0;
+z-index:1;
+opacity:0.35;
+}
+
+/* 🕶 OVERLAY */
+.overlay{
+position:fixed;
+inset:0;
+z-index:2;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0.2),
+rgba(0,0,0,0.95));
+}
+
+/* 💚 TÍTULO */
+.title{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:clamp(42px,6vw,90px);
+letter-spacing:12px;
+color:#00ff41;
+text-shadow:0 0 25px rgba(0,255,65,0.35);
+z-index:3;
+}
+
+.title span{
+display:inline-block;
+opacity:0;
+transform:translateY(-60px);
+transition:0.6s ease;
+}
+
+.title span.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* 🚀 BOOT */
+.boot{
+position:fixed;
+top:62%;
+left:50%;
+transform:translateX(-50%);
+z-index:3;
+text-align:center;
+}
+
+.bar{
+width:260px;
+height:2px;
+background:rgba(255,255,255,0.12);
+overflow:hidden;
+border-radius:2px;
+margin:0 auto;
+}
+
+.bar span{
+display:block;
+height:100%;
+width:0%;
+background:#00ff41;
+animation:load 6s linear forwards;
+}
+
+@keyframes load{
+to{width:100%;}
+}
+
+.status{
+margin-top:8px;
+font-size:12px;
+letter-spacing:2px;
+color:#00ff41;
+opacity:0.85;
+font-family:Arial;
+}
+
+/* ⚡ FLASH */
+.flash{
+position:fixed;
+inset:0;
+background:#00ff41;
+z-index:5;
+opacity:0;
+pointer-events:none;
+mix-blend-mode:screen;
+}
+
+.flash.active{
+animation:flash 0.35s ease;
+}
+
+@keyframes flash{
+0%{opacity:0;}
+20%{opacity:0.7;}
+100%{opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 VIDEO BACKGROUND -->
+<video autoplay muted loop>
+<source src="https://cdn.coverr.co/videos/coverr-digital-code-rain-5234/1080p.mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- 🌧 MATRIX -->
+<canvas id="matrix"></canvas>
+
+<!-- 💚 TÍTULO -->
+<div class="title" id="title">N74 TEC</div>
+
+<!-- 🚀 BOOT -->
+<div class="boot">
+  <div class="bar">
+    <span></span>
+  </div>
+  <div class="status" id="status">Initializing</div>
+</div>
+
+<!-- ⚡ FLASH -->
+<div class="flash" id="flash"></div>
+
+<!-- 🎧 TRILHA AMBIENTE MATRIX (livre) -->
+<audio id="bgmusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/06/14/audio_7c6c3c0c62.mp3?filename=cyberpunk-matrix-style-ambient-145997.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* 🔊 LIBERA ÁUDIO NO PRIMEIRO CLIQUE */
+document.addEventListener("click", () => {
+  const audio = document.getElementById("bgmusic");
+  audio.volume = 0.6;
+  audio.play().catch(()=>{});
+}, { once: true });
+
+/* 🌧 MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const chars = "01N74TECIA@#$%&";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1);
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.98){
+drops[i]=0;
+}
+drops[i]+=0.30;
+}
+}
+
+setInterval(draw, 35);
+
+/* 💚 N74 TEC ANIMAÇÃO */
+const title = document.getElementById("title");
+const text = title.textContent;
+
+title.textContent = "";
+
+const letters = text.split("").map(char=>{
+const span = document.createElement("span");
+span.textContent = char;
+title.appendChild(span);
+return span;
+});
+
+function animate(i=0){
+if(i >= letters.length) return;
+letters[i].classList.add("show");
+setTimeout(()=>animate(i+1),120);
+}
+
+setTimeout(()=>animate(),800);
+
+/* 🚀 STATUS BOOT */
+const status = document.getElementById("status");
+
+setTimeout(()=> status.textContent = "Loading", 2000);
+setTimeout(()=> status.textContent = "Ready", 5200);
+
+/* ⚡ FLASH + REDIRECIONAMENTO */
+const flash = document.getElementById("flash");
+const audio = document.getElementById("bgmusic");
+
+setTimeout(()=> {
+
+flash.classList.add("active");
+
+/* áudio (caso desbloqueado) */
+audio.volume = 0.6;
+audio.play().catch(()=>{});
+
+setTimeout(()=>{
+flash.classList.remove("active");
+
+/* ⏩ ENTRA NO MENU */
+setTimeout(()=>{
+window.location.href = "menu.html";
+}, 900);
+
+},350);
+
+},7000);
+
+</script>
+
+</body>
+</html>

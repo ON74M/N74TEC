@@ -1,0 +1,198 @@
+/* =========================
+   N74 TEC - GLOBAL CSS IA
+   PADRÃO ÚNICO DE PLATAFORMA
+========================= */
+
+/* RESET GLOBAL */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+user-select:none;
+}
+
+html,body{
+width:100%;
+height:100%;
+background:#000;
+overflow:hidden;
+color:#ffffff;
+}
+
+/* VARIÁVEIS (PADRÃO IA) */
+:root{
+--primary:#00ff41;
+--secondary:#ffffff;
+--bg:#000000;
+--card:rgba(0,0,0,0.85);
+--border:rgba(255,255,255,0.08);
+}
+
+/* MATRIX CANVAS */
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.72);
+z-index:1;
+}
+
+/* APP CONTAINER */
+.app{
+position:relative;
+z-index:2;
+width:100%;
+height:100dvh;
+overflow:auto;
+}
+
+/* HEADER */
+.header{
+text-align:center;
+padding:24px 12px 10px;
+}
+
+.title{
+font-size:clamp(26px,5vw,42px);
+color:var(--primary);
+text-shadow:0 0 10px rgba(0,255,65,0.4);
+}
+
+.subtitle{
+font-size:14px;
+color:var(--secondary);
+opacity:0.85;
+margin-top:6px;
+letter-spacing:1px;
+}
+
+/* CONTAINER */
+.container{
+display:flex;
+flex-direction:column;
+gap:12px;
+padding:12px;
+max-width:1000px;
+margin:0 auto;
+}
+
+/* CARD PADRÃO */
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:12px;
+padding:14px;
+backdrop-filter:blur(6px);
+}
+
+/* TEXTO PADRÃO */
+.card h3{
+color:var(--primary);
+font-size:14px;
+margin-bottom:6px;
+font-weight:500;
+}
+
+.card p{
+color:var(--secondary);
+font-size:14px;
+line-height:1.5;
+opacity:0.9;
+}
+
+/* MENU LATERAL */
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+transform:translateX(-100%);
+width:270px;
+height:100%;
+background:#000;
+border-right:1px solid var(--border);
+padding:22px 18px;
+z-index:99998;
+transition:0.25s ease;
+overflow-y:auto;
+}
+
+.side-menu.active{
+transform:translateX(0);
+}
+
+.menu-title{
+font-size:20px;
+color:var(--primary);
+margin-bottom:20px;
+}
+
+.side-menu a{
+display:block;
+padding:12px 0;
+text-decoration:none;
+color:var(--secondary);
+font-size:14px;
+border-bottom:1px solid var(--border);
+}
+
+.side-menu a:hover{
+color:var(--primary);
+padding-left:6px;
+}
+
+/* OVERLAY */
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.55);
+z-index:99997;
+display:none;
+}
+
+.menu-overlay.active{
+display:block;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+height:60px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+background:#000;
+border-top:1px solid var(--border);
+z-index:99999;
+}
+
+.nav-item{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:var(--secondary);
+opacity:0.85;
+}
+
+.nav-item:hover{
+color:var(--primary);
+opacity:1;
+}
+
+.nav-item i{
+font-size:16px;
+}

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | Mobile HUD System</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+/* BASE */
+body{
+margin:0;
+background:#000;
+font-family:'Neuropol',sans-serif;
+color:#00ff41;
+overflow:hidden;
+}
+
+/* MATRIX */
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+opacity:0.12;
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:18px 10px 8px;
+position:relative;
+z-index:2;
+}
+
+header h1{
+margin:0;
+font-size:26px;
+letter-spacing:4px;
+}
+
+header p{
+margin-top:4px;
+font-size:11px;
+opacity:0.7;
+font-family:Arial;
+}
+
+/* GRID */
+.grid{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+padding:16px;
+}
+
+/* CARD */
+.card{
+background:rgba(0,255,65,0.06);
+border:1px solid rgba(0,255,65,0.25);
+border-radius:14px;
+padding:18px;
+text-align:center;
+cursor:pointer;
+transition:0.2s;
+backdrop-filter:blur(6px);
+min-height:90px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.card:active{
+transform:scale(0.95);
+}
+
+.card h2{
+font-size:12px;
+margin:0;
+letter-spacing:2px;
+}
+
+.card p{
+font-size:10px;
+opacity:0.7;
+font-family:Arial;
+margin-top:6px;
+}
+
+/* 🌙 OVERLAY */
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+z-index:9;
+display:none;
+}
+
+/* 📲 SLIDE UP MENU (iPHONE STYLE) */
+.sheet{
+position:fixed;
+left:0;
+right:0;
+bottom:-100%;
+height:65%;
+background:rgba(0,0,0,0.95);
+border-top:1px solid rgba(0,255,65,0.25);
+border-radius:18px 18px 0 0;
+z-index:10;
+padding:18px;
+transition:0.4s ease;
+backdrop-filter:blur(10px);
+}
+
+/* ACTIVE STATE */
+.sheet.active{
+bottom:0;
+}
+
+/* HANDLE (barzinho iPhone) */
+.handle{
+width:50px;
+height:5px;
+background:rgba(0,255,65,0.3);
+border-radius:10px;
+margin:0 auto 12px;
+}
+
+/* TITLE */
+.sheet h2{
+font-size:14px;
+margin-bottom:10px;
+letter-spacing:2px;
+}
+
+/* LIST */
+.sheet ul{
+list-style:none;
+padding:0;
+margin:0;
+font-family:Arial;
+font-size:13px;
+}
+
+.sheet li{
+padding:12px 0;
+border-bottom:1px solid rgba(0,255,65,0.15);
+cursor:pointer;
+}
+
+.sheet li:active{
+color:#fff;
+}
+
+/* CLOSE AREA */
+.closeArea{
+margin-top:15px;
+text-align:center;
+padding:10px;
+border:1px solid rgba(0,255,65,0.25);
+border-radius:8px;
+font-size:12px;
+cursor:pointer;
+}
+
+/* FOOTER NAV */
+footer{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:50px;
+background:rgba(0,0,0,0.75);
+border-top:1px solid rgba(0,255,65,0.2);
+z-index:5;
+}
+
+.nav{
+display:flex;
+justify-content:space-around;
+align-items:center;
+height:100%;
+font-size:11px;
+font-family:Arial;
+}
+
+.btn{
+cursor:pointer;
+padding:6px 10px;
+border:1px solid rgba(0,255,65,0.25);
+border-radius:6px;
+transition:0.2s;
+color:#00ff41;
+}
+
+.btn:active{
+transform:scale(0.92);
+background:rgba(0,255,65,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<header>
+<h1>N74 TEC</h1>
+<p>Mobile System HUD Active</p>
+</header>
+
+<!-- GRID -->
+<div class="grid">
+
+<div class="card" onclick="openSheet()">
+<h2>SERVIÇOS</h2>
+<p>Abrir menu</p>
+</div>
+
+<div class="card" onclick="go('redes-wifi.html')">
+<h2>REDES</h2>
+<p>Wi-Fi</p>
+</div>
+
+<div class="card" onclick="go('servidores.html')">
+<h2>SERVIDORES</h2>
+<p>Infraestrutura</p>
+</div>
+
+<div class="card" onclick="go('cftv.html')">
+<h2>CFTV</h2>
+<p>Segurança</p>
+</div>
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeSheet()"></div>
+
+<!-- 📲 SLIDE UP SHEET -->
+<div class="sheet" id="sheet">
+
+<div class="handle"></div>
+
+<h2>SERVIÇOS N74 TEC</h2>
+
+<ul>
+<li onclick="go('suporte-tecnico.html')">Suporte Técnico</li>
+<li onclick="go('atendimento-senior.html')">Atendimento Sênior</li>
+<li onclick="go('redes-wifi.html')">Redes Wi-Fi</li>
+<li onclick="go('servidores.html')">Servidores</li>
+<li onclick="go('cftv.html')">CFTV Segurança</li>
+<li onclick="go('backup.html')">Backup</li>
+<li onclick="go('agendamento.html')">Agendamento</li>
+<li onclick="go('contrato.html')">Contratos</li>
+</ul>
+
+<div class="closeArea" onclick="closeSheet()">FECHAR</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+<div class="nav">
+
+<div class="btn" onclick="go('index.html')">🏠 Home</div>
+
+<div class="btn" onclick="openSheet()">📂 Menu</div>
+
+<div class="btn" onclick="whats()">💬 WhatsApp</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = "01N74TECIA@#$%&";
+const fontSize = 14;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1);
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.98){
+drops[i]=0;
+}
+drops[i]+=0.25;
+}
+}
+
+setInterval(draw, 40);
+
+/* SHEET CONTROLS */
+function openSheet(){
+document.getElementById("sheet").classList.add("active");
+document.getElementById("overlay").style.display = "block";
+}
+
+function closeSheet(){
+document.getElementById("sheet").classList.remove("active");
+document.getElementById("overlay").style.display = "none";
+}
+
+/* NAV */
+function go(page){
+window.location.href = page;
+}
+
+function whats(){
+window.open("https://wa.me/55SEUNUMEROAQUI", "_blank");
+}
+
+</script>
+
+</body>
+</html>

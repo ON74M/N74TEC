@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>N74 TEC | Redes & Wi-Fi</title>
-
-<meta http-equiv="refresh" content="30; url=https://www.n74.com.br">
+<title>N74 TEC | Soluções em TI</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
@@ -30,7 +28,7 @@ width:100%;
 height:100%;
 background:#000;
 overflow:hidden;
-color:#ffffff;
+color:#00ff41;
 }
 
 /* MATRIX */
@@ -59,60 +57,91 @@ width:100%;
 height:100dvh;
 }
 
-/* HEADER */
-.header{
-text-align:center;
-padding:24px 12px 10px;
-}
-
-.title{
-font-family:'Neuropol',sans-serif;
-font-size:clamp(26px,5vw,42px);
-color:#00ff41;
-text-shadow:0 0 10px rgba(0,255,65,0.4);
-}
-
-.subtitle{
-font-size:14px;
-color:#ffffff;
-margin-top:6px;
-letter-spacing:2px;
-}
-
-/* CONTENT */
-.container{
+/* HOME */
+.home-screen{
+position:absolute;
+inset:0;
 display:flex;
+align-items:center;
+justify-content:center;
 flex-direction:column;
-gap:12px;
-padding:12px;
-max-width:1000px;
-margin:0 auto;
+text-align:center;
+padding:20px;
 }
 
-/* CARD */
-.card{
-background:rgba(0,0,0,0.85);
-border:1px solid rgba(0,255,65,0.15);
-border-radius:12px;
-padding:14px;
-color:#ffffff;
-backdrop-filter:blur(4px);
+/* LOGO */
+.logo{
+font-family:'Neuropol',sans-serif;
+font-size:clamp(44px,10vw,92px);
+letter-spacing:5px;
+display:flex;
+gap:2px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
-.card h3{
+/* LETRAS */
+.logo span{
+font-family:'Neuropol',sans-serif;
+display:inline-block;
 color:#00ff41;
-font-size:14px;
-margin-bottom:6px;
-font-weight:400;
+animation:letterGlow 2.8s infinite ease-in-out;
 }
 
-.card p{
-font-size:14px;
-line-height:1.5;
-color:#ffffff;
+/* DELAYS */
+.logo span:nth-child(1){animation-delay:0s;}
+.logo span:nth-child(2){animation-delay:0.15s;}
+.logo span:nth-child(3){animation-delay:0.30s;}
+.logo span:nth-child(4){animation-delay:0.45s;}
+.logo span:nth-child(5){animation-delay:0.60s;}
+.logo span:nth-child(6){animation-delay:0.75s;}
+.logo span:nth-child(7){animation-delay:0.90s;}
+
+/* GLOW */
+@keyframes letterGlow{
+
+0%{
+color:#00ff41;
+text-shadow:0 0 6px rgba(0,255,65,0.25);
+filter:brightness(0.9);
 }
 
-/* SIDE MENU */
+25%{
+color:#39ff88;
+text-shadow:0 0 12px rgba(57,255,136,0.5);
+filter:brightness(1.1);
+}
+
+50%{
+color:#00ff9a;
+text-shadow:0 0 20px rgba(0,255,154,0.7);
+filter:brightness(1.25);
+}
+
+75%{
+color:#7CFFB2;
+text-shadow:0 0 10px rgba(124,255,178,0.4);
+filter:brightness(1.05);
+}
+
+100%{
+color:#00ff41;
+text-shadow:0 0 6px rgba(0,255,65,0.25);
+filter:brightness(0.95);
+}
+
+}
+
+/* SUBTITULO */
+.subtitle{
+margin-top:12px;
+font-size:14px;
+color:#b7ffcf;
+letter-spacing:2px;
+text-shadow:0 0 10px rgba(0,255,65,0.35);
+}
+
+/* MENU */
 .side-menu{
 position:fixed;
 top:0;
@@ -137,6 +166,7 @@ font-family:'Neuropol',sans-serif;
 font-size:22px;
 color:#00ff41;
 margin-bottom:24px;
+text-shadow:0 0 10px rgba(0,255,65,0.5);
 }
 
 .side-menu a{
@@ -146,11 +176,14 @@ text-decoration:none;
 color:#ffffff;
 font-size:14px;
 border-bottom:1px solid rgba(255,255,255,0.08);
+transition:0.25s ease;
+letter-spacing:0.5px;
 }
 
 .side-menu a:hover{
 color:#00ff41;
-padding-left:6px;
+padding-left:10px;
+text-shadow:0 0 8px rgba(0,255,65,0.6);
 }
 
 /* OVERLAY */
@@ -188,17 +221,16 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-decoration:none;
+font-size:24px;
 color:#ffffff;
 opacity:0.85;
-}
-
-.nav-item i{
-font-size:16px;
+transition:0.2s ease;
 }
 
 .nav-item:hover{
 color:#00ff41;
 opacity:1;
+transform:scale(1.1);
 }
 
 </style>
@@ -211,70 +243,78 @@ opacity:1;
 
 <div class="app">
 
-<div class="header">
-<div class="title">REDES & WI-FI</div>
-<div class="subtitle">Conectividade inteligente e estável</div>
+<div class="home-screen">
+
+<div class="logo">
+<span>N</span>
+<span>7</span>
+<span>4</span>
+<span>&nbsp;</span>
+<span>T</span>
+<span>E</span>
+<span>C</span>
 </div>
 
-<div class="container">
-
-<div class="card">
-<h3>O que fazemos?</h3>
-<p>Projetamos e otimizamos redes cabeadas e Wi-Fi para alta performance.</p>
-</div>
-
-<div class="card">
-<h3>Problemas comuns</h3>
-<p>Internet lenta, quedas de conexão, sinal fraco e instabilidade de rede.</p>
-</div>
-
-<div class="card">
-<h3>Nossa solução</h3>
-<p>Diagnóstico completo, reestruturação da rede e melhoria de cobertura Wi-Fi.</p>
-</div>
-
-<div class="card">
-<h3>Resultado</h3>
-<p>Rede rápida, estável e segura para casa ou empresa.</p>
+<div class="subtitle">
+🚀 SOLUÇÕES EM TI 💻
 </div>
 
 </div>
 
 </div>
 
-<!-- MENU -->
+<!-- OVERLAY -->
 <div class="menu-overlay" id="menuOverlay"></div>
 
+<!-- MENU -->
 <div class="side-menu" id="sideMenu">
 
-<div class="menu-title">N74 TEC</div>
+<div class="menu-title">
+🚀 N74 TEC
+</div>
 
-<a href="suporte-tecnico.html">Suporte Técnico</a>
-<a href="redes-wifi.html">Redes & Wi-Fi</a>
-<a href="cftv.html">CFTV</a>
-<a href="servidores.html">Servidores</a>
-<a href="backup.html">Backup</a>
-<a href="suporte-remoto.html">Suporte Remoto</a>
-<a href="atendimento-avulso.html">Atendimento Avulso</a>
-<a href="contrato-manutencao.html">Contrato de Manutenção</a>
+<a href="pages/suporte-tecnico.html">🛠️ Suporte Técnico</a>
 
-<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
-<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
+<a href="pages/redes-wifi.html">📡 Redes & Wi-Fi</a>
+
+<a href="pages/cftv.html">📹 CFTV</a>
+
+<a href="pages/servidores.html">🖥️ Servidores</a>
+
+<a href="pages/backup.html">💾 Backup</a>
+
+<a href="pages/suporte-remoto.html">🌐 Suporte Remoto</a>
+
+<a href="pages/atendimento-avulso.html">⚡ Atendimento Avulso</a>
+
+<a href="pages/contrato-manutencao.html">📋 Contrato de Manutenção</a>
+
+<a href="https://www.instagram.com/n74tec/" target="_blank">
+📸 Instagram
+</a>
+
+<a href="https://www.linkedin.com/company/n74-tec" target="_blank">
+💼 LinkedIn
+</a>
 
 </div>
 
+<!-- BARRA INFERIOR -->
 <nav class="bottom-nav">
 
-<a class="nav-item" href="#" id="menuButton">
-<i class="fa-solid fa-bars"></i>
+<a class="nav-item" href="#" id="menuButton" title="Menu">
+☰
 </a>
 
-<a class="nav-item" href="http://www.n74.com.br/index.html">
-<i class="fa-solid fa-house"></i>
+<a class="nav-item" href="index.html" title="Início">
+🏠
 </a>
 
-<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
-<i class="fa-solid fa-phone"></i>
+<a class="nav-item"
+href="https://wa.me/5511958733142"
+target="_blank"
+title="WhatsApp">
+💬
 </a>
 
 </nav>
@@ -282,6 +322,7 @@ opacity:1;
 <script>
 
 /* MATRIX */
+
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -302,6 +343,7 @@ drops = Array(columns).fill(1);
 }
 
 function draw(){
+
 ctx.fillStyle = "rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -309,34 +351,58 @@ ctx.fillStyle = "#00ff41";
 ctx.font = fontSize + "px monospace";
 
 for(let i=0;i<drops.length;i++){
-let text = chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-drops[i]=0;
+let text =
+chars[Math.floor(Math.random()*chars.length)];
+
+ctx.fillText(
+text,
+i * fontSize,
+drops[i] * fontSize
+);
+
+if(
+drops[i] * fontSize > canvas.height &&
+Math.random() > 0.975
+){
+drops[i] = 0;
 }
 
-drops[i]+=0.75;
+drops[i] += 0.75;
+
 }
+
 }
 
 setInterval(draw,45);
-window.addEventListener("resize", resize);
+
+window.addEventListener("resize",resize);
+
 resize();
 
 /* MENU */
-const menuButton = document.getElementById("menuButton");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
+
+const menuButton =
+document.getElementById("menuButton");
+
+const sideMenu =
+document.getElementById("sideMenu");
+
+const menuOverlay =
+document.getElementById("menuOverlay");
 
 menuButton.addEventListener("click",()=>{
+
 sideMenu.classList.toggle("active");
 menuOverlay.classList.toggle("active");
+
 });
 
 menuOverlay.addEventListener("click",()=>{
+
 sideMenu.classList.remove("active");
 menuOverlay.classList.remove("active");
+
 });
 
 </script>

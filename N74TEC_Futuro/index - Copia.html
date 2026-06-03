@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | BOOT</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+overflow:hidden;
+background:#000;
+font-family:'Neuropol',sans-serif;
+}
+
+/* FUNDO */
+video{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
+filter:brightness(0.28) contrast(1.3);
+}
+
+/* MATRIX */
+canvas{
+position:fixed;
+inset:0;
+z-index:1;
+opacity:0.18;
+}
+
+/* ESCURECIMENTO */
+.overlay{
+position:fixed;
+inset:0;
+z-index:2;
+background:rgba(0,0,0,0.85);
+}
+
+/* ÚNICO TÍTULO */
+.title{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:clamp(42px,6vw,90px);
+letter-spacing:12px;
+color:#00ff41;
+text-shadow:0 0 20px rgba(0,255,65,0.35);
+z-index:3;
+}
+
+/* LETRAS INDIVIDUAIS */
+.title span{
+display:inline-block;
+opacity:0;
+transform:translateY(-80px);
+transition:0.6s ease;
+}
+
+/* LETRA ATIVA */
+.title span.show{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video autoplay muted loop>
+<source src="https://cdn.coverr.co/videos/coverr-digital-code-rain-5234/1080p.mp4">
+</video>
+
+<div class="overlay"></div>
+
+<canvas id="matrix"></canvas>
+
+<!-- ÚNICO TEXTO -->
+<div class="title" id="title">N74 TEC</div>
+
+<script>
+
+/* MATRIX SIMPLES */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+const chars = "01N74TEC";
+const size = 16;
+const cols = Math.floor(canvas.width / size);
+const drops = Array(cols).fill(1);
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = size + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let t = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(t, i*size, drops[i]*size);
+
+if(drops[i]*size > canvas.height && Math.random()>0.98){
+drops[i]=0;
+}
+drops[i]+=0.7;
+}
+}
+
+setInterval(draw, 35);
+
+/* 🎬 MONTAGEM DENTRO DO MESMO TÍTULO */
+const title = document.getElementById("title");
+const text = title.textContent;
+
+title.textContent = "";
+
+const letters = text.split("").map((char,i)=>{
+
+const span = document.createElement("span");
+span.textContent = char;
+title.appendChild(span);
+
+return span;
+
+});
+
+/* ANIMAÇÃO LIMPA */
+function animate(i=0){
+
+if(i >= letters.length){
+return;
+}
+
+letters[i].classList.add("show");
+
+/* delay controlado */
+setTimeout(()=>animate(i+1),120);
+}
+
+setTimeout(()=>animate(),800);
+
+</script>
+
+</body>
+</html>

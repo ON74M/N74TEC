@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N74 TEC | SYSTEM DASHBOARD</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#000;
+color:#00ff41;
+font-family:'Neuropol',sans-serif;
+overflow:hidden;
+opacity:0;
+animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* 🌧 FUNDO MATRIX */
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+opacity:0.25;
+}
+
+/* 🕶 OVERLAY */
+.overlay{
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0.2),
+rgba(0,0,0,0.95));
+z-index:1;
+}
+
+/* 🔰 HEADER */
+header{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+z-index:3;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:28px;
+letter-spacing:6px;
+text-shadow:0 0 20px rgba(0,255,65,0.4);
+}
+
+header p{
+font-family:Arial;
+font-size:12px;
+opacity:0.7;
+letter-spacing:2px;
+}
+
+/* 📦 DASHBOARD */
+.dashboard{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+display:grid;
+grid-template-columns:repeat(3,180px);
+gap:20px;
+z-index:3;
+}
+
+/* 🧊 CARD */
+.card{
+background:rgba(0,255,65,0.05);
+border:1px solid rgba(0,255,65,0.2);
+padding:20px;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+backdrop-filter:blur(6px);
+}
+
+.card:hover{
+transform:scale(1.08);
+background:rgba(0,255,65,0.12);
+box-shadow:0 0 25px rgba(0,255,65,0.25);
+}
+
+.card h2{
+font-size:14px;
+margin:0;
+letter-spacing:2px;
+}
+
+.card p{
+font-size:10px;
+opacity:0.7;
+margin-top:8px;
+font-family:Arial;
+}
+
+/* ⚡ FOOTER */
+footer{
+position:fixed;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+font-size:10px;
+opacity:0.5;
+letter-spacing:2px;
+font-family:Arial;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🌧 MATRIX -->
+<canvas id="matrix"></canvas>
+
+<div class="overlay"></div>
+
+<!-- 🔰 HEADER -->
+<header>
+  <h1>N74 TEC SYSTEM</h1>
+  <p>ACCESS GRANTED • DASHBOARD ONLINE</p>
+</header>
+
+<!-- 📦 MENU -->
+<div class="dashboard">
+
+  <div class="card">
+    <h2>PROJETOS</h2>
+    <p>Gerenciamento de sistemas</p>
+  </div>
+
+  <div class="card">
+    <h2>IA CORE</h2>
+    <p>Módulos inteligentes ativos</p>
+  </div>
+
+  <div class="card">
+    <h2>REDES</h2>
+    <p>Infraestrutura conectada</p>
+  </div>
+
+  <div class="card">
+    <h2>SEGURANÇA</h2>
+    <p>Protocolos ativos</p>
+  </div>
+
+  <div class="card">
+    <h2>ANÁLISE</h2>
+    <p>Processamento de dados</p>
+  </div>
+
+  <div class="card">
+    <h2>CONFIG</h2>
+    <p>Sistema e ajustes</p>
+  </div>
+
+</div>
+
+<!-- ⚡ FOOTER -->
+<footer>
+N74 TEC © 2026 • SYSTEM ACTIVE
+</footer>
+
+<script>
+
+/* 🌧 MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const chars = "01N74TECIA@#$%&";
+const fontSize = 14;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1);
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.98){
+drops[i]=0;
+}
+drops[i]+=0.4;
+}
+}
+
+setInterval(draw, 35);
+
+</script>
+
+</body>
+</html>

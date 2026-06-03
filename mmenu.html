@@ -8,21 +8,26 @@
 
 <title>N74 TEC | Soluções em TI</title>
 
+<link rel="stylesheet" href="css/n74.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- FONTES -->
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
 <style>
 
-/* RESET */
+/* RESET GLOBAL */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Ubuntu',sans-serif;
+font-family:"Segoe UI", Tahoma, Arial, sans-serif;
 user-select:none;
 }
 
+/* FUNDO */
 html,body{
 width:100%;
 height:100%;
@@ -49,22 +54,23 @@ background:rgba(0,0,0,0.72);
 z-index:1;
 }
 
-/* APP */
+/* APP CENTRAL */
 .app{
 position:relative;
 z-index:2;
 width:100%;
-height:100dvh;
-}
-
-/* HOME */
-.home-screen{
-position:absolute;
-inset:0;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+}
+
+/* HOME SCREEN CENTRALIZADO */
+.home-screen{
+display:flex;
 flex-direction:column;
+align-items:center;
+justify-content:center;
 text-align:center;
 }
 
@@ -75,17 +81,17 @@ font-size:clamp(44px,10vw,92px);
 letter-spacing:5px;
 display:flex;
 gap:2px;
+justify-content:center;
 }
 
-/* LETRAS INDIVIDUAIS */
+/* LETRAS */
 .logo span{
 font-family:'Neuropol',sans-serif;
 display:inline-block;
 color:#00ff41;
-animation:letterGlow 2.8s infinite ease-in-out;
+animation:glow 2.8s infinite ease-in-out;
 }
 
-/* delay por letra */
 .logo span:nth-child(1){animation-delay:0s;}
 .logo span:nth-child(2){animation-delay:0.15s;}
 .logo span:nth-child(3){animation-delay:0.30s;}
@@ -94,46 +100,21 @@ animation:letterGlow 2.8s infinite ease-in-out;
 .logo span:nth-child(6){animation-delay:0.75s;}
 .logo span:nth-child(7){animation-delay:0.90s;}
 
-/* efeito verde oscilante */
-@keyframes letterGlow{
-
-0%{
-color:#00ff41;
-text-shadow:0 0 6px rgba(0,255,65,0.25);
-filter:brightness(0.9);
+@keyframes glow{
+0%{color:#00ff41;text-shadow:0 0 6px rgba(0,255,65,0.2);}
+25%{color:#39ff88;text-shadow:0 0 12px rgba(57,255,136,0.5);}
+50%{color:#00ff9a;text-shadow:0 0 20px rgba(0,255,154,0.7);}
+75%{color:#7CFFB2;text-shadow:0 0 10px rgba(124,255,178,0.4);}
+100%{color:#00ff41;text-shadow:0 0 6px rgba(0,255,65,0.2);}
 }
 
-25%{
-color:#39ff88;
-text-shadow:0 0 12px rgba(57,255,136,0.5);
-filter:brightness(1.1);
-}
-
-50%{
-color:#00ff9a;
-text-shadow:0 0 20px rgba(0,255,154,0.7);
-filter:brightness(1.25);
-}
-
-75%{
-color:#7CFFB2;
-text-shadow:0 0 10px rgba(124,255,178,0.4);
-filter:brightness(1.05);
-}
-
-100%{
-color:#00ff41;
-text-shadow:0 0 6px rgba(0,255,65,0.25);
-filter:brightness(0.95);
-}
-
-}
-
+/* SUBTITULO (SEGUE UI BRANCO) */
 .subtitle{
 margin-top:12px;
 font-size:14px;
-color:#ffffff; /* FIXO: branco */
+color:#ffffff;
 letter-spacing:2px;
+font-family:"Segoe UI", Tahoma, Arial, sans-serif;
 }
 
 /* MENU LATERAL */
@@ -163,15 +144,16 @@ color:#00ff41;
 margin-bottom:24px;
 }
 
-/* LINKS */
+/* LINKS (SEGUE UI BRANCO) */
 .side-menu a{
 display:block;
 padding:13px 0;
 text-decoration:none;
-color:#ffffff; /* FIXO BRANCO */
+color:#ffffff;
 font-size:14px;
 border-bottom:1px solid rgba(255,255,255,0.08);
-transition:0.2s ease;
+transition:0.2s;
+font-family:"Segoe UI", Tahoma, Arial, sans-serif;
 }
 
 .side-menu a:hover{
@@ -214,9 +196,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-decoration:none;
-color:#ffffff; /* FIXO BRANCO */
+color:#ffffff;
 opacity:0.85;
-transition:0.2s ease;
+transition:0.2s;
 }
 
 .nav-item i{
@@ -238,21 +220,21 @@ opacity:1;
 
 <div class="app">
 
-<div class="home-screen">
+  <div class="home-screen">
 
-<div class="logo">
-<span>N</span>
-<span>7</span>
-<span>4</span>
-<span> </span>
-<span>T</span>
-<span>E</span>
-<span>C</span>
-</div>
+    <div class="logo">
+      <span>N</span>
+      <span>7</span>
+      <span>4</span>
+      <span> </span>
+      <span>T</span>
+      <span>E</span>
+      <span>C</span>
+    </div>
 
-<div class="subtitle">SOLUÇÕES EM TI</div>
+    <div class="subtitle">SOLUÇÕES EM TI</div>
 
-</div>
+  </div>
 
 </div>
 
@@ -282,7 +264,7 @@ opacity:1;
 <i class="fa-solid fa-bars"></i>
 </a>
 
-<a class="nav-item" href="index.html" id="homeButton">
+<a class="nav-item" href="index.html">
 <i class="fa-solid fa-house"></i>
 </a>
 
@@ -292,67 +274,7 @@ opacity:1;
 
 </nav>
 
-<script>
-
-/* MATRIX */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-let fontSize = 15;
-let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-let columns;
-let drops = [];
-
-function resize(){
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-init();
-}
-
-function init(){
-columns = Math.floor(canvas.width / fontSize);
-drops = Array(columns).fill(1);
-}
-
-function draw(){
-ctx.fillStyle = "rgba(0,0,0,0.04)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle = "#00ff41";
-ctx.font = fontSize + "px monospace";
-
-for(let i=0;i<drops.length;i++){
-let text = chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-drops[i]=0;
-}
-
-drops[i]+=0.75;
-}
-}
-
-setInterval(draw,45);
-window.addEventListener("resize", resize);
-resize();
-
-/* MENU */
-const menuButton = document.getElementById("menuButton");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-
-menuButton.addEventListener("click",()=>{
-sideMenu.classList.toggle("active");
-menuOverlay.classList.toggle("active");
-});
-
-menuOverlay.addEventListener("click",()=>{
-sideMenu.classList.remove("active");
-menuOverlay.classList.remove("active");
-});
-
-</script>
+<script src="js/n74.js"></script>
 
 </body>
 </html>
