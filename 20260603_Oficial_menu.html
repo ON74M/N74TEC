@@ -66,7 +66,6 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 text-align:center;
-padding:20px;
 }
 
 /* LOGO */
@@ -76,11 +75,9 @@ font-size:clamp(44px,10vw,92px);
 letter-spacing:5px;
 display:flex;
 gap:2px;
-flex-wrap:wrap;
-justify-content:center;
 }
 
-/* LETRAS */
+/* LETRAS INDIVIDUAIS */
 .logo span{
 font-family:'Neuropol',sans-serif;
 display:inline-block;
@@ -88,7 +85,7 @@ color:#00ff41;
 animation:letterGlow 2.8s infinite ease-in-out;
 }
 
-/* DELAYS */
+/* delay por letra */
 .logo span:nth-child(1){animation-delay:0s;}
 .logo span:nth-child(2){animation-delay:0.15s;}
 .logo span:nth-child(3){animation-delay:0.30s;}
@@ -97,7 +94,7 @@ animation:letterGlow 2.8s infinite ease-in-out;
 .logo span:nth-child(6){animation-delay:0.75s;}
 .logo span:nth-child(7){animation-delay:0.90s;}
 
-/* GLOW */
+/* efeito verde oscilante */
 @keyframes letterGlow{
 
 0%{
@@ -132,16 +129,14 @@ filter:brightness(0.95);
 
 }
 
-/* SUBTITULO */
 .subtitle{
 margin-top:12px;
 font-size:14px;
-color:#b7ffcf;
+color:#ffffff; /* FIXO: branco */
 letter-spacing:2px;
-text-shadow:0 0 10px rgba(0,255,65,0.35);
 }
 
-/* MENU */
+/* MENU LATERAL */
 .side-menu{
 position:fixed;
 top:0;
@@ -166,24 +161,22 @@ font-family:'Neuropol',sans-serif;
 font-size:22px;
 color:#00ff41;
 margin-bottom:24px;
-text-shadow:0 0 10px rgba(0,255,65,0.5);
 }
 
+/* LINKS */
 .side-menu a{
 display:block;
 padding:13px 0;
 text-decoration:none;
-color:#ffffff;
+color:#ffffff; /* FIXO BRANCO */
 font-size:14px;
 border-bottom:1px solid rgba(255,255,255,0.08);
-transition:0.25s ease;
-letter-spacing:0.5px;
+transition:0.2s ease;
 }
 
 .side-menu a:hover{
 color:#00ff41;
-padding-left:10px;
-text-shadow:0 0 8px rgba(0,255,65,0.6);
+padding-left:6px;
 }
 
 /* OVERLAY */
@@ -200,7 +193,7 @@ display:none;
 display:block;
 }
 
-/* BOTTOM NAV */
+/* NAV BAR */
 .bottom-nav{
 position:fixed;
 left:0;
@@ -221,16 +214,18 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-decoration:none;
-font-size:24px;
-color:#ffffff;
+color:#ffffff; /* FIXO BRANCO */
 opacity:0.85;
 transition:0.2s ease;
+}
+
+.nav-item i{
+font-size:16px;
 }
 
 .nav-item:hover{
 color:#00ff41;
 opacity:1;
-transform:scale(1.1);
 }
 
 </style>
@@ -249,72 +244,50 @@ transform:scale(1.1);
 <span>N</span>
 <span>7</span>
 <span>4</span>
-<span>&nbsp;</span>
+<span> </span>
 <span>T</span>
 <span>E</span>
 <span>C</span>
 </div>
 
-<div class="subtitle">
-🚀 SOLUÇÕES EM TI 💻
-</div>
+<div class="subtitle">SOLUÇÕES EM TI</div>
 
 </div>
 
 </div>
 
-<!-- OVERLAY -->
 <div class="menu-overlay" id="menuOverlay"></div>
 
-<!-- MENU -->
 <div class="side-menu" id="sideMenu">
 
-<div class="menu-title">
-🚀 N74 TEC
-</div>
+<div class="menu-title">N74 TEC</div>
 
-<a href="pages/suporte-tecnico.html">🛠️ Suporte Técnico</a>
+<a href="pages/suporte-tecnico.html">Suporte Técnico</a>
+<a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
+<a href="pages/cftv.html">CFTV</a>
+<a href="pages/servidores.html">Servidores</a>
+<a href="pages/backup.html">Backup</a>
+<a href="pages/suporte-remoto.html">Suporte Remoto</a>
+<a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
+<a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
 
-<a href="pages/redes-wifi.html">📡 Redes & Wi-Fi</a>
-
-<a href="pages/cftv.html">📹 CFTV</a>
-
-<a href="pages/servidores.html">🖥️ Servidores</a>
-
-<a href="pages/backup.html">💾 Backup</a>
-
-<a href="pages/suporte-remoto.html">🌐 Suporte Remoto</a>
-
-<a href="pages/atendimento-avulso.html">⚡ Atendimento Avulso</a>
-
-<a href="pages/contrato-manutencao.html">📋 Contrato de Manutenção</a>
-
-<a href="https://www.instagram.com/n74tec/" target="_blank">
-📸 Instagram
-</a>
-
-<a href="https://www.linkedin.com/company/n74-tec" target="_blank">
-💼 LinkedIn
-</a>
+<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
 
 </div>
 
-<!-- BARRA INFERIOR -->
 <nav class="bottom-nav">
 
-<a class="nav-item" href="#" id="menuButton" title="Menu">
-☰
+<a class="nav-item" href="#" id="menuButton">
+<i class="fa-solid fa-bars"></i>
 </a>
 
-<a class="nav-item" href="index.html" title="Início">
-🏠
+<a class="nav-item" href="index.html" id="homeButton">
+<i class="fa-solid fa-house"></i>
 </a>
 
-<a class="nav-item"
-href="https://wa.me/5511958733142"
-target="_blank"
-title="WhatsApp">
-💬
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
 </a>
 
 </nav>
@@ -322,7 +295,6 @@ title="WhatsApp">
 <script>
 
 /* MATRIX */
-
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -343,7 +315,6 @@ drops = Array(columns).fill(1);
 }
 
 function draw(){
-
 ctx.fillStyle = "rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -351,58 +322,34 @@ ctx.fillStyle = "#00ff41";
 ctx.font = fontSize + "px monospace";
 
 for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-let text =
-chars[Math.floor(Math.random()*chars.length)];
-
-ctx.fillText(
-text,
-i * fontSize,
-drops[i] * fontSize
-);
-
-if(
-drops[i] * fontSize > canvas.height &&
-Math.random() > 0.975
-){
-drops[i] = 0;
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+drops[i]=0;
 }
 
-drops[i] += 0.75;
-
+drops[i]+=0.75;
 }
-
 }
 
 setInterval(draw,45);
-
-window.addEventListener("resize",resize);
-
+window.addEventListener("resize", resize);
 resize();
 
 /* MENU */
-
-const menuButton =
-document.getElementById("menuButton");
-
-const sideMenu =
-document.getElementById("sideMenu");
-
-const menuOverlay =
-document.getElementById("menuOverlay");
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
 
 menuButton.addEventListener("click",()=>{
-
 sideMenu.classList.toggle("active");
 menuOverlay.classList.toggle("active");
-
 });
 
 menuOverlay.addEventListener("click",()=>{
-
 sideMenu.classList.remove("active");
 menuOverlay.classList.remove("active");
-
 });
 
 </script>
