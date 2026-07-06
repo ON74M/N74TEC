@@ -9,7 +9,7 @@
     *{margin:0; padding:0; box-sizing:border-box;}
     body{
         font-family:Arial, Helvetica, sans-serif; 
-        background: #2a2a2a url('https://www.transparenttextures.com/patterns/brushed-alum.png') repeat;
+        background: #1a1a1a url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShyYEsHojMMT7G2WTAmKMSRCtg_8t7txr0uQTd41695Q&s') repeat;
         color:#333;
         padding:20px 10px;
     }
@@ -19,43 +19,43 @@
         background:#fff; 
         border-radius:12px; 
         overflow:hidden; 
-        box-shadow:0 8px 25px rgba(0,0,0,0.4);
-        border: 3px solid #ccc;
+        box-shadow:0 10px 30px rgba(0,0,0,0.6);
+        border: 4px solid #999;
     }
     
-    .header{background:linear-gradient(180deg, #FFD700, #FFC107); color:#000; text-align:center; padding:20px 10px;}
+    .header{background:linear-gradient(180deg, #FFD700, #FFC107); color:#000; text-align:center; padding:20px 10px; border-bottom:3px solid #999;}
     .header h1{font-size:24px; margin-bottom:5px;}
     .header p{font-size:15px; font-weight:bold;}
 
     .hero{position:relative; text-align:center;}
     .hero img{width:100%; height:350px; object-fit:cover; display:block;}
-    .hero-text{position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(0,0,0,0.85)); color:#fff; padding:20px 10px;}
-    .hero-text h2{font-size:22px; margin-bottom:5px;}
+    .hero-text{position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(0,0,0,0.9)); color:#fff; padding:20px 10px;}
+    .hero-text h2{font-size:22px; margin-bottom:5px; text-shadow:2px 2px 4px #000;}
     .hero-text p{font-size:14px; font-weight:bold;}
 
-    .gallery{display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:10px; background:#fff;}
-    .gallery img{width:100%; border-radius:8px; border:1px solid #ddd; height:180px; object-fit:cover;}
+    .gallery{display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:10px; background:#f5f5f5;}
+    .gallery img{width:100%; border-radius:8px; border:2px solid #ccc; height:180px; object-fit:cover;}
 
-    .content{padding:20px;}
+    .content{padding:20px; background:#fff;}
     .destaque{background:#D32F2F; color:#fff; text-align:center; padding:12px; border-radius:8px; font-size:18px; font-weight:bold; margin-bottom:15px;}
     .lista{list-style:none; margin:15px 0;}
     .lista li{padding:8px 0; border-bottom:1px solid #eee;}
     .lista li:before{content:"✅ "; color:#4CAF50; font-weight:bold;}
     
-    .preco-box{background:#E8F5E9; border:2px solid #4CAF50; padding:15px; border-radius:8px; text-align:center; margin:20px 0;}
+    .preco-box{background:#E8F5E9; border:3px solid #4CAF50; padding:15px; border-radius:8px; text-align:center; margin:20px 0;}
     .preco-box .preco{font-size:36px; color:#4CAF50; font-weight:bold; margin:5px 0;}
-    .preco-box .pix{font-size:16px; color:#333;}
+    .preco-box .pix{font-size:16px; color:#333; font-weight:bold;}
 
-    .whats-box{background:#25D366; color:#fff; padding:15px; border-radius:8px; text-align:center; margin:15px 0;}
+    .whats-box{background:#25D366; color:#fff; padding:15px; border-radius:8px; text-align:center; margin:15px 0; border:2px solid #1ebe5b;}
     .whats-box p{font-size:14px; margin-bottom:5px;}
-    .whats-box .numero{font-size:24px; font-weight:bold; letter-spacing:1px;}
+    .whats-box .numero{font-size:26px; font-weight:bold; letter-spacing:2px;}
 
-    .btn-whats{display:block; background:#25D366; color:#fff; text-decoration:none; text-align:center; padding:18px; border-radius:10px; font-size:20px; font-weight:bold; margin-top:10px;}
+    .btn-whats{display:block; background:#25D366; color:#fff; text-decoration:none; text-align:center; padding:18px; border-radius:10px; font-size:20px; font-weight:bold; margin-top:10px; border:2px solid #1ebe5b;}
     .btn-whats:hover{background:#1ebe5b;}
     
     .info{font-size:14px; text-align:center; margin-top:15px; color:#555;}
-    .obs-box{background:#FFF3CD; border-left:4px solid #FFC107; padding:12px; margin:20px 0; font-size:13px; color:#856404;}
-    .footer{background:#222; color:#fff; text-align:center; padding:15px; font-size:12px;}
+    .obs-box{background:#FFF3CD; border-left:5px solid #FFC107; padding:12px; margin:20px 0; font-size:13px; color:#856404; font-weight:bold;}
+    .footer{background:#222; color:#fff; text-align:center; padding:15px; font-size:12px; border-top:3px solid #999;}
     
     @media(max-width:600px){
         .hero img{height:250px;}
