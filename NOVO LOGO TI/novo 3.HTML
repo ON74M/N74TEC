@@ -1,0 +1,178 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>T.I. | N74 TEC</title>
+
+<link href="https://fonts.cdnfonts.com/css/neuropol" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Neuropol',sans-serif;
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:1;
+}
+
+.logo{
+    position:relative;
+    z-index:10;
+    text-align:center;
+    padding:40px;
+}
+
+.ti{
+    font-size:clamp(5rem,12vw,10rem);
+    color:#00ff41;
+    text-shadow:
+        0 0 10px #00ff41,
+        0 0 20px #00ff41,
+        0 0 40px #00ff41,
+        0 0 80px #00ff41;
+    letter-spacing:12px;
+    animation:pulse 3s infinite;
+}
+
+.n74{
+    margin-top:10px;
+    font-size:clamp(1.2rem,3vw,2.2rem);
+    color:#7dff7d;
+    letter-spacing:8px;
+    text-shadow:
+        0 0 5px #00ff41,
+        0 0 15px #00ff41;
+}
+
+.slogan{
+    margin-top:20px;
+    font-size:0.9rem;
+    color:#4caf50;
+    letter-spacing:2px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.line{
+    width:250px;
+    height:2px;
+    background:#00ff41;
+    margin:20px auto;
+    box-shadow:
+        0 0 10px #00ff41,
+        0 0 20px #00ff41;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+    50%{
+        opacity:.85;
+        transform:scale(1.03);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="logo">
+
+    <div class="ti">Ti</div>
+
+    <div class="line"></div>
+
+    <div class="n74">N74 TEC</div>
+
+    <div class="slogan">
+        SOLUÇÕES EM TI PARA SUA CASA E SUA EMPRESA
+    </div>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars =
+"アイウエオカキクケコサシスセソタチツテトナニヌネノABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let i=0;i<columns;i++){
+    drops[i]=Math.random()*canvas.height;
+}
+
+function draw(){
+
+    ctx.fillStyle="rgba(0,0,0,0.08)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle="#00ff41";
+    ctx.font=fontSize+"px monospace";
+
+    for(let i=0;i<drops.length;i++){
+
+        const text =
+        chars[Math.floor(Math.random()*chars.length)];
+
+        ctx.fillText(
+            text,
+            i*fontSize,
+            drops[i]*fontSize
+        );
+
+        if(
+            drops[i]*fontSize > canvas.height &&
+            Math.random() > 0.975
+        ){
+            drops[i]=0;
+        }
+
+        drops[i]++;
+    }
+
+}
+
+setInterval(draw,33);
+
+window.addEventListener("resize",()=>{
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+});
+
+</script>
+
+</body>
+</html>
+```

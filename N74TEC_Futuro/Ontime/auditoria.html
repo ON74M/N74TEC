@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Auditoria Completa</title>
+
+<style>
+body { margin:0; font-family: Arial; background:#0f172a; color:#e5e7eb; }
+
+.header {
+  background:#1e293b;
+  padding:18px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.container { padding:20px; }
+
+.week {
+  background:#111827;
+  margin-bottom:18px;
+  padding:15px;
+  border-radius:10px;
+  border:1px solid #334155;
+}
+
+.title {
+  font-size:18px;
+  color:#60a5fa;
+  margin-bottom:10px;
+}
+
+table {
+  width:100%;
+  border-collapse: collapse;
+  margin-top:10px;
+  font-size:13px;
+}
+
+th, td {
+  border:1px solid #334155;
+  padding:6px;
+}
+
+th { background:#1f2937; }
+
+.note {
+  margin-top:10px;
+  background:#1f2937;
+  padding:10px;
+  border-left:4px solid #f59e0b;
+}
+
+.pnr {
+  margin-top:10px;
+  background:#1f2937;
+  padding:10px;
+  border-left:4px solid #ef4444;
+}
+
+.ok { color:#22c55e; font-weight:bold; }
+.bad { color:#ef4444; font-weight:bold; }
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+📊 AUDITORIA ONTIME – COMPLETO (SEMANA 18 → 23)
+</div>
+
+<div class="container">
+
+<!-- SEMANA 18 -->
+<div class="week">
+<div class="title">Semana 18 (27/04 a 03/05/2026)</div>
+
+<p>NF: Emitida | Valor: R$ 1.370 | Escala: 5/6 ❌</p>
+
+<table>
+<tr><th>Data</th><th>Dia</th><th>Veículo</th><th>Obs</th><th>Valor</th></tr>
+<tr><td>27/04</td><td>Seg</td><td>TAU2J64</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>28/04</td><td>Ter</td><td>-</td><td>Erro escala</td><td>R$ 0</td></tr>
+<tr><td>29/04</td><td>Qua</td><td>TAU2I87</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>30/04</td><td>Qui</td><td>TAQ7A24</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>01/05</td><td>Sex</td><td>TTA1F90</td><td>Feriado</td><td>R$ 270</td></tr>
+<tr><td>02/05</td><td>Sáb</td><td>TTA1F90</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>03/05</td><td>Dom</td><td>-</td><td>Folga</td><td>R$ 0</td></tr>
+</table>
+</div>
+
+<!-- SEMANA 19 (AGORA COMPLETA) -->
+<div class="week">
+<div class="title">Semana 19 (04/05 a 10/05/2026)</div>
+
+<p>NF: Emitida | Valor: R$ 1.680 | Escala: <span class="ok">6/6 OK</span></p>
+
+<table>
+<tr><th>Data</th><th>Dia</th><th>Veículo</th><th>Obs</th><th>Valor</th></tr>
+<tr><td>04/05</td><td>Seg</td><td>TTA1F90</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>05/05</td><td>Ter</td><td>TTA1F90</td><td>Samuel</td><td>R$ 270</td></tr>
+<tr><td>06/05</td><td>Qua</td><td>TTA1F90</td><td>Samuel + Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>07/05</td><td>Qui</td><td>TAU2J61</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>08/05</td><td>Sex</td><td>TAU2185</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>09/05</td><td>Sáb</td><td>TAU2185</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>10/05</td><td>Dom</td><td>-</td><td>Folga</td><td>R$ 0</td></tr>
+</table>
+
+</div>
+
+<!-- SEMANA 20 (AGORA COMPLETA) -->
+<div class="week">
+<div class="title">Semana 20 (11/05 a 17/05/2026)</div>
+
+<p>NF: Emitida | Valor: R$ 1.370 | Escala: 5/6 ❌</p>
+
+<table>
+<tr><th>Data</th><th>Dia</th><th>Veículo</th><th>Obs</th><th>Valor</th></tr>
+<tr><td>11/05</td><td>Seg</td><td>TAU2J68</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>12/05</td><td>Ter</td><td>-</td><td>-</td><td>R$ 0</td></tr>
+<tr><td>13/05</td><td>Qua</td><td>-</td><td>-</td><td>R$ 0</td></tr>
+<tr><td>14/05</td><td>Qui</td><td>TAU2J69</td><td>Erivaldo</td><td>R$ 270</td></tr>
+<tr><td>15/05</td><td>Sex</td><td>TAU2J69</td><td>Ambulância</td><td>R$ 270</td></tr>
+<tr><td>16/05</td><td>Sáb</td><td>TAU2186</td><td>Alexandre</td><td>R$ 270</td></tr>
+<tr><td>17/05</td><td>Dom</td><td>TAQ7A48</td><td>Erivaldo</td><td>R$ 290</td></tr>
+</table>
+
+</div>
+
+<!-- SEMANA 21 -->
+<div class="week">
+<div class="title">Semana 21 (18/05 a 24/05/2026)</div>
+
+<p>NF: Emitida | Valor: R$ 510 | Escala: 3/6 ❌</p>
+
+<div class="note">Desconto contestado R$ 100 (apoio não solicitado)</div>
+
+<div class="pnr">
+PNR 47104630057 - ENCERRADA SEM COBRANÇA
+</div>
+
+<table>
+<tr><th>Data</th><th>Dia</th><th>Veículo</th><th>Obs</th><th>Valor</th></tr>
+<tr><td>19/05</td><td>Ter</td><td>TAU2J69</td><td>Marlos</td><td>R$ 270</td></tr>
+<tr><td>20/05</td><td>Qua</td><td>TEP9B19</td><td>-</td><td>R$ 170</td></tr>
+<tr><td>21/05</td><td>Qui</td><td>TEP0B20</td><td>PNR</td><td>R$ 170</td></tr>
+</table>
+
+</div>
+
+<!-- SEMANA 22 -->
+<div class="week">
+<div class="title">Semana 22 (25/05 a 31/05/2026)</div>
+
+<p>NF: Não emitida | Valor: R$ 1.020 | Escala: <span class="ok">6/6 OK</span></p>
+
+<table>
+<tr><th>Data</th><th>Dia</th><th>Veículo</th><th>Obs</th><th>Valor</th></tr>
+<tr><td>25/05</td><td>Seg</td><td>TEP9B20</td><td>G3</td><td>R$ 170</td></tr>
+<tr><td>26/05</td><td>Ter</td><td>TEW5I59</td><td>C10</td><td>R$ 170</td></tr>
+<tr><td>27/05</td><td>Qua</td><td>TEW5I59</td><td>D10</td><td>R$ 170</td></tr>
+<tr><td>28/05</td><td>Qui</td><td>TEP9B24</td><td>D13</td><td>R$ 170</td></tr>
+<tr><td>29/05</td><td>Sex</td><td>-</td><td>Cortado</td><td>R$ 0</td></tr>
+<tr><td>30/05</td><td>Sáb</td><td>TEW5J14</td><td>D11</td><td>R$ 170</td></tr>
+<tr><td>31/05</td><td>Dom</td><td>TEP9B24</td><td>R3</td><td>R$ 170</td></tr>
+</table>
+
+</div>
+
+<!-- SEMANA 23 -->
+<div class="week">
+<div class="title">Semana 23 (01/06 a 07/06/2026)</div>
+
+<p>Parcial: R$ 340 | Escala: 2/6 ❌</p>
+
+<table>
+<tr><th>Data</th><th>Dia</th><th>Veículo</th><th>Obs</th><th>Valor</th></tr>
+<tr><td>01/06</td><td>Seg</td><td>-</td><td>Descanso</td><td>R$ 0</td></tr>
+<tr><td>02/06</td><td>Ter</td><td>TEP9B23</td><td>F2</td><td>R$ 170</td></tr>
+<tr><td>03/06</td><td>Qua</td><td>TEP9B23</td><td>A2</td><td>R$ 170</td></tr>
+<tr><td>04/06</td><td>Qui</td><td>-</td><td>Feriado</td><td>R$ 0</td></tr>
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
