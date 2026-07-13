@@ -1,336 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
 <title>Atendimento Avulso em TI em São Paulo | N74 TEC</title>
-
+<meta name="description" content="Atendimento avulso em TI para residências e empresas. Suporte técnico sob demanda da N74 TEC.">
 <link rel="canonical" href="https://n74.com.br/pages/atendimento-avulso.html">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
-
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
-
 <style>
-
-/* RESET */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Ubuntu',sans-serif;
-user-select:none;
-}
-
-html,body{
-width:100%;
-height:100%;
-background:#000;
-overflow:hidden;
-color:#ffffff;
-}
-
-/* MATRIX */
-canvas{
-position:fixed;
-inset:0;
-width:100%;
-height:100%;
-z-index:0;
-pointer-events:none;
-}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.72);
-z-index:1;
-}
-
-/* APP */
-.app{
-position:relative;
-z-index:2;
-width:100%;
-height:100dvh;
-}
-
-/* HEADER */
-.header{
-text-align:center;
-padding:24px 12px 10px;
-}
-
-.title{
-font-family:'Neuropol',sans-serif;
-font-size:clamp(26px,5vw,42px);
-color:#00ff41;
-text-shadow:0 0 10px rgba(0,255,65,0.4);
-}
-
-.subtitle{
-font-size:12px;
-color:#ffffff;
-margin-top:6px;
-letter-spacing:2px;
-}
-
-/* CONTENT */
-.container{
-display:flex;
-flex-direction:column;
-gap:12px;
-padding:12px;
-max-width:1000px;
-margin:0 auto;
-}
-
-/* CARD */
-.card{
-background:rgba(0,0,0,0.85);
-border:1px solid rgba(0,255,65,0.15);
-border-radius:12px;
-padding:14px;
-color:#ffffff;
-}
-
-.card h3{
-color:#00ff41;
-font-size:13px;
-margin-bottom:6px;
-font-weight:400;
-}
-
-.card p{
-font-size:12px;
-line-height:1.5;
-}
-
-/* SIDE MENU */
-.side-menu{
-position:fixed;
-top:0;
-left:0;
-transform:translateX(-100%);
-width:270px;
-height:100%;
-background:rgba(0,0,0,0.96);
-border-right:1px solid rgba(255,255,255,0.08);
-padding:22px 18px;
-z-index:99998;
-transition:0.25s ease;
-overflow-y:auto;
-}
-
-.side-menu.active{
-transform:translateX(0);
-}
-
-.menu-title{
-font-family:'Neuropol',sans-serif;
-font-size:22px;
-color:#00ff41;
-margin-bottom:24px;
-}
-
-/* MENU LINKS */
-.side-menu a{
-display:block;
-padding:13px 0;
-text-decoration:none;
-color:#ffffff;
-font-size:14px;
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.side-menu a:hover{
-color:#00ff41;
-padding-left:6px;
-}
-
-/* OVERLAY */
-.menu-overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.55);
-backdrop-filter:blur(4px);
-z-index:99997;
-display:none;
-}
-
-.menu-overlay.active{
-display:block;
-}
-
-/* NAV */
-.bottom-nav{
-position:fixed;
-left:0;
-bottom:0;
-width:100%;
-height:60px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-background:rgba(0,0,0,0.92);
-border-top:1px solid rgba(255,255,255,0.08);
-z-index:99999;
-}
-
-.nav-item{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-color:#ffffff;
-opacity:0.85;
-}
-
-.nav-item i{
-font-size:16px;
-}
-
-.nav-item:hover{
-color:#00ff41;
-opacity:1;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Ubuntu',sans-serif}
+html,body{width:100%;height:100%;background:#000;color:#fff;overflow-x:hidden;overflow-y:auto}
+canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+body:before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1}
+.app{position:relative;z-index:2;min-height:100dvh}
+.header{text-align:center;padding:24px 12px}
+.title{font:clamp(26px,5vw,42px) 'Neuropol',sans-serif;color:#00ff41}
+.subtitle{margin-top:6px;font-size:12px;letter-spacing:2px}
+.container{max-width:1000px;margin:auto;padding:12px 12px 90px;display:flex;flex-direction:column;gap:12px}
+.card{background:rgba(0,0,0,.85);border:1px solid rgba(0,255,65,.15);border-radius:12px;padding:14px}
+.card h3{color:#00ff41;margin-bottom:6px;font-size:13px}
+.card p{font-size:12px;line-height:1.5}
+.side-menu{position:fixed;left:0;top:0;transform:translateX(-100%);width:270px;height:100%;background:rgba(0,0,0,.96);padding:22px 18px;transition:.25s;z-index:99998;overflow:auto}
+.side-menu.active{transform:translateX(0)}
+.menu-title{font:22px 'Neuropol',sans-serif;color:#00ff41;margin-bottom:24px}
+.side-menu a{display:block;color:#fff;text-decoration:none;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:.25s}
+.side-menu a:hover{color:#00ff41;padding-left:8px}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;z-index:99997}
+.menu-overlay.active{display:block}
+.bottom-nav{position:fixed;left:0;bottom:0;width:100%;height:60px;background:rgba(0,0,0,.92);display:flex;z-index:99999}
+.nav-item{flex:1;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:24px}
+.nav-item:hover{color:#00ff41}
 </style>
-
 </head>
-
 <body>
-
 <canvas id="matrix"></canvas>
-
 <div class="app">
-
-<div class="header">
-<div class="title">ATENDIMENTO AVULSO</div>
-<div class="subtitle">Suporte técnico sob demanda</div>
-</div>
-
+<div class="header"><div class="title">ATENDIMENTO AVULSO</div><div class="subtitle">Suporte técnico sob demanda</div></div>
 <div class="container">
-
-<div class="card">
-<h3>O que é?</h3>
-<p>Atendimento pontual sem contrato mensal. Ideal para resolver problemas imediatos.</p>
-</div>
-
-<div class="card">
-<h3>Quando usar?</h3>
-<p>Falhas, vírus, lentidão, configurações ou qualquer problema isolado de TI.</p>
-</div>
-
-<div class="card">
-<h3>Como funciona?</h3>
-<p>Você solicita o suporte e resolvemos o problema de forma direta e rápida.</p>
-</div>
-
-<div class="card">
-<h3>Vantagem</h3>
-<p>Sem mensalidade, sem fidelidade. Pagou, resolveu.</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- MENU -->
+<div class="card"><h3>O que é?</h3><p>Atendimento pontual sem contrato mensal.</p></div>
+<div class="card"><h3>Quando usar?</h3><p>Falhas, vírus, lentidão, configurações ou qualquer problema isolado.</p></div>
+<div class="card"><h3>Como funciona?</h3><p>Solicite o suporte e a N74 TEC resolve o problema de forma rápida.</p></div>
+<div class="card"><h3>Vantagem</h3><p>Sem mensalidade, sem fidelidade. Pagou, resolveu.</p></div>
+</div></div>
 <div class="menu-overlay" id="menuOverlay"></div>
-
 <div class="side-menu" id="sideMenu">
-
-<div class="menu-title">N74 TEC</div>
-
-<a href="suporte-tecnico.html">Suporte Técnico</a>
-<a href="redes-wifi.html">Redes & Wi-Fi</a>
-<a href="cftv.html">CFTV</a>
-<a href="servidores.html">Servidores</a>
-<a href="backup.html">Backup</a>
-<a href="suporte-remoto.html">Suporte Remoto</a>
-<a href="atendimento-avulso.html">Atendimento Avulso</a>
-<a href="contrato-manutencao.html">Contrato de Manutenção</a>
-
-<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
-<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
-
+<div class="menu-title">🚀 N74 TEC</div>
+<a href="suporte-tecnico.html">🛠️ Suporte Técnico</a>
+<a href="redes-wifi.html">📡 Redes & Wi‑Fi</a>
+<a href="cftv.html">📹 CFTV</a>
+<a href="servidores.html">🖥️ Servidores</a>
+<a href="backup.html">💾 Backup</a>
+<a href="suporte-remoto.html">🌐 Suporte Remoto</a>
+<a href="atendimento-avulso.html">⚡ Atendimento Avulso</a>
+<a href="contrato-manutencao.html">📋 Contrato de Manutenção</a>
 </div>
-
-<!-- BARRA INFERIOR -->
 <nav class="bottom-nav">
-
-<a class="nav-item" href="#" id="menuButton" title="Menu">
-☰
-</a>
-
-<a class="nav-item" href="index.html" title="Início">
-🏠
-</a>
-
-<a class="nav-item"
-href="https://wa.me/5511958733142"
-target="_blank"
-title="WhatsApp">
-💬
-</a>
-
+<a class="nav-item" href="#" id="menuButton">☰</a>
+<a class="nav-item" href="../menu.html">🏠</a>
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">💬</a>
 </nav>
-
 <script>
-
-/* MATRIX */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-let fontSize = 15;
-let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-let columns;
-let drops = [];
-
-function resize(){
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-init();
-}
-
-function init(){
-columns = Math.floor(canvas.width / fontSize);
-drops = Array(columns).fill(1);
-}
-
-function draw(){
-ctx.fillStyle = "rgba(0,0,0,0.04)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle = "#00ff41";
-ctx.font = fontSize + "px monospace";
-
-for(let i=0;i<drops.length;i++){
-let text = chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-drops[i]=0;
-}
-
-drops[i]+=0.75;
-}
-}
-
-setInterval(draw,45);
-window.addEventListener("resize", resize);
-resize();
-
+const c=document.getElementById("matrix"),x=c.getContext("2d");let fs=15,ch="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&",cols,d=[];
+function rs(){c.width=innerWidth;c.height=innerHeight;cols=Math.floor(c.width/fs);d=Array(cols).fill(1)}rs();addEventListener("resize",rs);
+setInterval(()=>{x.fillStyle="rgba(0,0,0,.04)";x.fillRect(0,0,c.width,c.height);x.fillStyle="#00ff41";x.font=fs+"px monospace";for(let i=0;i<d.length;i++){x.fillText(ch[Math.random()*ch.length|0],i*fs,d[i]*fs);if(d[i]*fs>c.height&&Math.random()>.975)d[i]=0;d[i]+=.75}},45);
+const b=document.getElementById("menuButton"),m=document.getElementById("sideMenu"),o=document.getElementById("menuOverlay");
+b.addEventListener("click",e=>{e.preventDefault();m.classList.toggle("active");o.classList.toggle("active");});
+o.addEventListener("click",()=>{m.classList.remove("active");o.classList.remove("active");});
 </script>
-
-</body>
-</html>
+</body></html>
