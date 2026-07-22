@@ -9,7 +9,8 @@
 <!-- SEO -->
 <title>N74 TEC | Soluções de TI em São Paulo</title>
 <meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.cdnfonts.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com https://cdnjs.cloudflare.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.cdnfonts.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com https://cdnjs.cloudflare.com;">
+
 <!-- CANONICAL -->
 <link rel="canonical" href="https://n74.com.br/">
 
@@ -20,136 +21,27 @@
 <meta property="og:url" content="https://n74.com.br/">
 <meta property="og:image" content="https://n74.com.br/logo-n74.png">
 
-<!-- FONTE OTIMIZADA - Não bloqueia mais -->
+<!-- FONTE OTIMIZADA -->
 <link rel="preconnect" href="https://fonts.cdnfonts.com">
 <link rel="preload" href="https://fonts.cdnfonts.com/s/15056/Neuropol.woff" as="font" type="font/woff" crossorigin>
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet" media="print" onload="this.media='all'">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html,body{
-width:100%;
-height:100%;
-background:#000;
-font-family:Arial, sans-serif; /* fallback */
-user-select:none;
-overflow-x:hidden; /* era hidden, agora só trava lateral */
-}
-
-/* MATRIX BACKGROUND */
-canvas{
-position:fixed;
-inset:0;
-z-index:0;
-}
-
-/* DARK OVERLAY */
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.95));
-z-index:1;
-pointer-events:none; /* não bloqueia clique */
-}
-
-/* CENTER */
-.hero{
-position:absolute;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-z-index:10;
-}
-
-/* LOGO */
-.logo{
-font-family:'Neuropol',sans-serif;
-font-size:clamp(60px,10vw,140px);
-letter-spacing:10px;
-color:#00ff41;
-text-shadow:
-0 0 10px #00ff41,
-0 0 30px #00ff41,
-0 0 60px rgba(0,255,65,0.4);
-animation:glow 3s infinite ease-in-out;
-}
-
-@keyframes glow{
-0%{filter:brightness(0.8); transform:scale(0.98);}
-50%{filter:brightness(1.4); transform:scale(1.02);}
-100%{filter:brightness(0.8); transform:scale(0.98);}
-}
-
-/* SUBTITLE */
-.subtitle{
-margin-top:15px;
-font-size:14px;
-letter-spacing:5px;
-color:#c5ffd7;
-opacity:0;
-animation:fadeIn 2s forwards;
-animation-delay:1.5s;
-}
-
-@keyframes fadeIn{
-to{opacity:1;}
-}
-
-/* LOADING BAR AREA */
-.loader{
-margin-top:40px;
-width:320px;
-max-width:90%; /* responsivo */
-height:10px;
-background:rgba(0,255,65,0.1);
-border:1px solid rgba(0,255,65,0.3);
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 0 20px rgba(0,255,65,0.2);
-}
-
-/* BAR */
-.bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#00ff41,#00ffaa,#00ff41);
-box-shadow:0 0 15px #00ff41;
-transition:width 0.15s linear;
-}
-
-/* STATUS TEXT */
-.status{
-margin-top:10px;
-font-size:12px;
-color:#00ff41;
-letter-spacing:2px;
-opacity:0.8;
-}
-
-/* FADE OUT TRANSITION */
-.fade-out{
-animation:fadeOut 1s forwards;
-}
-
-@keyframes fadeOut{
-to{
-opacity:0;
-transform:scale(1.05);
-}
-}
-
-/* MOBILE: reduz animação pra ganhar FPS */
-@media (max-width: 768px){
-.logo{ animation: none; text-shadow: 0 0 10px #00ff41; }
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#000;font-family:Arial, sans-serif;user-select:none;overflow-x:hidden;}
+canvas{position:fixed;inset:0;z-index:0;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.95));z-index:1;pointer-events:none;}
+.hero{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:10;}
+.logo{font-family:'Neuropol',sans-serif;font-size:clamp(60px,10vw,140px);letter-spacing:10px;color:#00ff41;text-shadow:0 0 10px #00ff41,0 0 30px #00ff41,0 0 60px rgba(0,255,65,0.4);animation:glow 3s infinite ease-in-out;}
+@keyframes glow{0%{filter:brightness(0.8); transform:scale(0.98);}50%{filter:brightness(1.4); transform:scale(1.02);}100%{filter:brightness(0.8); transform:scale(0.98);}}
+.subtitle{margin-top:15px;font-size:14px;letter-spacing:5px;color:#c5ffd7;opacity:0;animation:fadeIn 2s forwards;animation-delay:1.5s;}
+@keyframes fadeIn{to{opacity:1;}}
+.loader{margin-top:40px;width:320px;max-width:90%;height:10px;background:rgba(0,255,65,0.1);border:1px solid rgba(0,255,65,0.3);border-radius:20px;overflow:hidden;box-shadow:0 0 20px rgba(0,255,65,0.2);}
+.bar{height:100%;width:0%;background:linear-gradient(90deg,#00ff41,#00ffaa,#00ff41);box-shadow:0 0 15px #00ff41;transition:width 0.15s linear;}
+.status{margin-top:10px;font-size:12px;color:#00ff41;letter-spacing:2px;opacity:0.8;}
+.fade-out{animation:fadeOut 1s forwards;}
+@keyframes fadeOut{to{opacity:0;transform:scale(1.05);}}
+@media (max-width: 768px){.logo{ animation: none; text-shadow: 0 0 10px #00ff41; }}
 </style>
 
 </head>
@@ -159,84 +51,48 @@ transform:scale(1.05);
 <canvas id="matrix" aria-hidden="true"></canvas>
 
 <div class="hero" id="screen" role="main">
-
 <div class="logo" aria-label="N74 TEC">N74 TEC</div>
-
 <div class="subtitle">SISTEMA DE INTELIGÊNCIA ATIVO</div>
-
 <div class="loader" role="progressbar" aria-label="Carregamento do sistema" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
   <div class="bar" id="bar"></div>
 </div>
-
 <div class="status" id="status" aria-live="polite">INICIALIZANDO SISTEMA...</div>
-
 </div>
 
 <script>
 /* MATRIX */
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
-
-function resize(){
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-}
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
 resize();
-
 const chars="01N74TEC@#$%ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let drops=[];
-
-function init(){
-const isMobile = window.innerWidth < 768;
-drops=Array(Math.floor(canvas.width/(isMobile?20:15))).fill(1); // menos drops no mobile
-}
+function init(){const isMobile = window.innerWidth < 768;drops=Array(Math.floor(canvas.width/(isMobile?20:15))).fill(1);}
 init();
-
 function draw(){
 ctx.fillStyle="rgba(0,0,0,0.05)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
-
 ctx.fillStyle="#00ff41";
 ctx.font="15px monospace";
-
-const spacing = window.innerWidth < 768? 20 : 15; // <-- ADICIONA ESSA LINHA
-
+const spacing = window.innerWidth < 768? 20 : 15;
 for(let i=0;i<drops.length;i++){
 let t=chars[Math.floor(Math.random()*chars.length)];
 ctx.fillText(t,i*spacing,drops[i]*15);
-
-if(drops[i]*15>canvas.height && Math.random()>0.975){
-drops[i]=0;
-}
+if(drops[i]*15>canvas.height && Math.random()>0.975){drops[i]=0;}
 drops[i]+=0.75;
 }
 }
-
-const fps = window.innerWidth < 768? 10 : 30; // 10fps no mobile
+const fps = window.innerWidth < 768? 10 : 30;
 setInterval(draw, 1000/fps);
-
-window.addEventListener("resize",()=>{
-resize();
-init();
-});
+window.addEventListener("resize",()=>{resize();init();});
 
 /* LOADING SYSTEM */
 const bar=document.getElementById("bar");
 const status=document.getElementById("status");
 const screen=document.getElementById("screen");
 const loaderEl = document.querySelector('.loader');
-
 let progress=0;
-
-const messages=[
-"INICIALIZANDO SISTEMA...",
-"CARREGANDO MÓDULOS DE IA...",
-"ESTABELECENDO REDE SEGURA...",
-"ANALISANDO AMBIENTE...",
-"PREPARANDO INTERFACE...",
-"FINALIZANDO BOOT..."
-];
-
+const messages=["INICIALIZANDO SISTEMA...","CARREGANDO MÓDULOS DE IA...","ESTABELECENDO REDE SEGURA...","ANALISANDO AMBIENTE...","PREPARANDO INTERFACE...","FINALIZANDO BOOT..."];
 function updateStatus(p){
 if(p<20) status.textContent=messages[0];
 else if(p<40) status.textContent=messages[1];
@@ -244,29 +100,22 @@ else if(p<60) status.textContent=messages[2];
 else if(p<80) status.textContent=messages[3];
 else if(p<95) status.textContent=messages[4];
 else status.textContent=messages[5];
-loaderEl.setAttribute('aria-valuenow', p); // acessibilidade
+loaderEl.setAttribute('aria-valuenow', p);
 }
-
 let loader=setInterval(()=>{
 progress++;
 if(progress>100) progress=100;
 bar.style.width=progress+"%";
 updateStatus(progress);
-
 if(progress>=100){
 clearInterval(loader);
 screen.classList.add("fade-out");
-setTimeout(()=>{
-window.location.href="menu.html";
-},1000);
+setTimeout(()=>{window.location.href="menu.html";},1000);
 }
 },40);
 
 /* clique pula */
-document.addEventListener("click",()=>{
-progress=100;
-});
-
+document.addEventListener("click",()=>{progress=100;});
 </script>
 
 </body>
