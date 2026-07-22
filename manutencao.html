@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+
+<!-- SEO -->
+<title>N74 TEC | Em Manutenção</title>
+<meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Estamos em manutenção programada. Voltamos em breve.">
+
+<!-- CANONICAL -->
+<link rel="canonical" href="https://n74.com.br/">
+
+<!-- SOCIAL / WHATSAPP -->
+<meta property="og:title" content="N74 TEC | Em Manutenção">
+<meta property="og:description" content="Estamos atualizando nossos sistemas para melhor te atender. Voltamos em breve.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://n74.com.br/">
+<meta property="og:image" content="https://n74.com.br/logo-n74.png">
+
+<!-- FONTE OTIMIZADA -->
+<link rel="preconnect" href="https://fonts.cdnfonts.com">
+<link rel="preload" href="https://fonts.cdnfonts.com/s/15056/Neuropol.woff" as="font" type="font/woff" crossorigin>
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet" media="print" onload="this.media='all'">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#000;font-family:Arial, sans-serif;user-select:none;overflow-x:hidden;}
+canvas{position:fixed;inset:0;z-index:0;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at center, rgba(255,165,0,0.08), rgba(0,0,0,0.95));z-index:1;pointer-events:none;}
+.hero{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:10;text-align:center;padding:20px;}
+.logo{font-family:'Neuropol',sans-serif;font-size:clamp(50px,10vw,120px);letter-spacing:10px;color:#ffa500;text-shadow:0 0 10px #ffa500,0 0 30px #ffa500,0 0 60px rgba(255,165,0,0.4);animation:glow 3s infinite ease-in-out;}
+@keyframes glow{0%{filter:brightness(0.8); transform:scale(0.98);}50%{filter:brightness(1.4); transform:scale(1.02);}100%{filter:brightness(0.8); transform:scale(0.98);}}
+.subtitle{margin-top:15px;font-size:16px;letter-spacing:3px;color:#ffe0b3;opacity:0;animation:fadeIn 2s forwards;animation-delay:1s;}
+.status{margin-top:40px;font-size:14px;color:#ffa500;letter-spacing:2px;opacity:0.9;}
+.loader{margin-top:20px;width:320px;max-width:90%;height:10px;background:rgba(255,165,0,0.1);border:1px solid rgba(255,165,0,0.3);border-radius:20px;overflow:hidden;box-shadow:0 0 20px rgba(255,165,0,0.2);}
+.bar{height:100%;width:100%;background:linear-gradient(90deg,#ffa500,#ffcc00,#ffa500);box-shadow:0 0 15px #ffa500;animation:loading 2s infinite linear;}
+@keyframes loading{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.contact{margin-top:30px;font-size:12px;color:#c5ffd7;letter-spacing:1px;}
+.contact a{color:#00ff41;text-decoration:none;}
+.contact a:hover{text-decoration:underline;}
+@keyframes fadeIn{to{opacity:1;}}
+@media (max-width: 768px){.logo{ animation: none; text-shadow: 0 0 10px #ffa500; }}
+</style>
+
+</head>
+
+<body>
+
+<canvas id="matrix" aria-hidden="true"></canvas>
+
+<div class="hero" id="screen" role="main">
+<div class="logo" aria-label="N74 TEC">N74 TEC</div>
+<div class="subtitle">SISTEMA EM MANUTENÇÃO PROGRAMADA</div>
+
+<div class="loader" role="progressbar" aria-label="Sistema em manutenção">
+  <div class="bar"></div>
+</div>
+
+<div class="status">VOLTAMOS EM BREVE</div>
+
+<div class="contact">
+Precisa de suporte urgente? <br>
+<a href="mailto:suporte@n74.com.br">suporte@n74.com.br</a>
+</div>
+
+</div>
+
+<script>
+/* MATRIX */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();
+const chars="01N74TEC@#$%ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let drops=[];
+function init(){const isMobile = window.innerWidth < 768;drops=Array(Math.floor(canvas.width/(isMobile?20:15))).fill(1);}
+init();
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="#ffa500"; /* laranja de manutenção */
+ctx.font="15px monospace";
+const spacing = window.innerWidth < 768? 20 : 15;
+for(let i=0;i<drops.length;i++){
+let t=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(t,i*spacing,drops[i]*15);
+if(drops[i]*15>canvas.height && Math.random()>0.975){drops[i]=0;}
+drops[i]+=0.75;
+}
+const fps = window.innerWidth < 768? 10 : 30;
+setInterval(draw, 1000/fps);
+window.addEventListener("resize",()=>{resize();init();});
+</script>
+
+</body>
+</html>
