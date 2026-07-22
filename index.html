@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>N74 TEC - Suporte e Infraestrutura de TI</title>
 
-<!-- 1. Meta Description -->
+<!-- NOVO: Acelera carregamento -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preload" as="image" href="https://n74.com.br/og-image.jpg">
+
+<!-- Meta Description -->
 <meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
 
-<!-- 2. Open Graph -->
+<!-- Open Graph -->
 <meta property="og:title" content="N74 TEC - Suporte e Infraestrutura de TI">
 <meta property="og:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
 <meta property="og:image" content="https://n74.com.br/og-image.jpg">
@@ -22,7 +26,7 @@
 <meta name="twitter:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
 <meta name="twitter:image" content="https://n74.com.br/og-image.jpg">
 
-<!-- 3. Schema.org LocalBusiness -->
+<!-- Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,11 +54,11 @@
 <canvas id="matrix"></canvas>
 
 <header class="topbar">
-  <img src="og-image.jpg" alt="N74 TEC Logo - Suporte Técnico e Infraestrutura de TI" class="logo">
+  <!-- IMAGEM ATUALIZADA COM LAZY LOAD + TAMANHO -->
+  <img src="og-image.jpg" alt="N74 TEC Logo - Suporte Técnico e Infraestrutura de TI" class="logo" width="300" height="300" loading="lazy">
 </header>
 
 <main class="container">
-  <!-- 4. H1/H2/H3 + 5. Conteúdo Otimizado -->
   <h1>N74 TEC - Suporte Técnico e Infraestrutura de TI</h1>
   <p class="subtitle">Soluções completas em TI para empresas em São Paulo</p>
 
@@ -72,7 +76,6 @@
   <a href="menu.html" class="btn-enter">ACESSAR PAINEL <i class="fa fa-arrow-right"></i></a>
 </main>
 
-<!-- 7. Links internos -->
 <nav class="bottom-nav">
   <a href="index.html"><i class="fa fa-home"></i> Home</a>
   <a href="menu.html"><i class="fa fa-server"></i> Serviços</a>
