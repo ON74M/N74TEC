@@ -38,9 +38,9 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
 .loader{margin-top:20px;width:320px;max-width:90%;height:10px;background:rgba(255,165,0,0.1);border:1px solid rgba(255,165,0,0.3);border-radius:20px;overflow:hidden;box-shadow:0 0 20px rgba(255,165,0,0.2);}
 .bar{height:100%;width:100%;background:linear-gradient(90deg,#ffa500,#ffcc00,#ffa500);box-shadow:0 0 15px #ffa500;animation:loading 2s infinite linear;}
 @keyframes loading{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
-.contact{margin-top:30px;font-size:12px;color:#c5ffd7;letter-spacing:1px;}
-.contact a{color:#00ff41;text-decoration:none;}
-.contact a:hover{text-decoration:underline;}
+.contact{margin-top:30px;display:flex;flex-direction:column;gap:10px;font-size:12px;color:#c5ffd7;letter-spacing:1px;}
+.btn-whats{display:inline-block;padding:12px 24px;background:#25D366;color:#000;font-weight:bold;text-decoration:none;border-radius:8px;letter-spacing:2px;box-shadow:0 0 15px rgba(37,211,102,0.5);transition:0.3s;}
+.btn-whats:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(37,211,102,0.8);}
 @keyframes fadeIn{to{opacity:1;}}
 @media (max-width: 768px){.logo{ animation: none; text-shadow: 0 0 10px #ffa500; }}
 </style>
@@ -62,8 +62,8 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
 <div class="status">VOLTAMOS EM BREVE</div>
 
 <div class="contact">
-Precisa de suporte urgente? <br>
-<a href="mailto:suporte@n74.com.br">suporte@n74.com.br</a>
+Precisa de suporte urgente?
+<a href="https://wa.me/5511958733142?text=Ol%C3%A1%20N74%20TEC%21%20Vim%20pelo%20site%20e%20o%20sistema%20est%C3%A1%20em%20manuten%C3%A7%C3%A3o.%20Preciso%20de%20ajuda%20urgente." target="_blank" class="btn-whats">FALAR NO WHATSAPP</a>
 </div>
 
 </div>
@@ -81,7 +81,7 @@ init();
 function draw(){
 ctx.fillStyle="rgba(0,0,0,0.05)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="#ffa500"; /* laranja de manutenção */
+ctx.fillStyle="#ffa500";
 ctx.font="15px monospace";
 const spacing = window.innerWidth < 768? 20 : 15;
 for(let i=0;i<drops.length;i++){
