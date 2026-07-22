@@ -9,7 +9,7 @@
 <!-- SEO -->
 <title>N74 TEC | Soluções de TI em São Paulo</title>
 <meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.cdnfonts.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com https://cdnjs.cloudflare.com;">
 <!-- CANONICAL -->
 <link rel="canonical" href="https://n74.com.br/">
 
@@ -164,7 +164,7 @@ transform:scale(1.05);
 
 <div class="subtitle">SISTEMA DE INTELIGÊNCIA ATIVO</div>
 
-<div class="loader" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+<div class="loader" role="progressbar" aria-label="Carregamento do sistema" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
   <div class="bar" id="bar"></div>
 </div>
 
@@ -199,9 +199,11 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 ctx.fillStyle="#00ff41";
 ctx.font="15px monospace";
 
+const spacing = window.innerWidth < 768? 20 : 15; // <-- ADICIONA ESSA LINHA
+
 for(let i=0;i<drops.length;i++){
 let t=chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(t,i*(window.innerWidth < 768?20:15),drops[i]*15);
+ctx.fillText(t,i*spacing,drops[i]*15);
 
 if(drops[i]*15>canvas.height && Math.random()>0.975){
 drops[i]=0;
