@@ -1,86 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Painel - N74 TEC Suporte e Infraestrutura de TI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="index, follow">
 
-<!-- NOVO: Acelera carregamento -->
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="preload" as="image" href="https://n74.com.br/og-image.jpg">
+<!-- SEO -->
+<title>N74 TEC | Serviços de TI em São Paulo</title>
+<meta name="description" content="N74 TEC - Suporte Técnico, Redes, Servidores, CFTV e Backup em São Paulo. Soluções completas de TI para empresas. Atendimento 24h.">
+<meta name="keywords" content="suporte ti sao paulo, redes wifi, servidores, cftv, backup, n74 tec">
+<link rel="canonical" href="https://n74.com.br/menu.html">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://fonts.cdnfonts.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.cdnfonts.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
 
-<meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-<meta property="og:title" content="N74 TEC - Suporte e Infraestrutura de TI">
-<meta property="og:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-<meta property="og:image" content="https://n74.com.br/og-image.jpg">
-<meta property="og:url" content="https://n74.com.br/menu.html">
+<!-- SOCIAL / WHATSAPP -->
+<meta property="og:title" content="N74 TEC | Serviços de TI em São Paulo">
+<meta property="og:description" content="Suporte Técnico, Redes, Servidores e CFTV. Soluções completas de TI para sua empresa.">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://n74.com.br/menu.html">
+<meta property="og:image" content="https://n74.com.br/logo-n74.png">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ITCompany",
-  "name": "N74 TEC",
-  "url": "https://n74.com.br",
-  "telephone": "+5511958733142",
-  "address": {"@type": "PostalAddress","addressLocality": "São Paulo","addressRegion": "SP","addressCountry": "BR"}
-}
-</script>
-
-<link rel="stylesheet" href="style.css">
+<!-- FONTES OTIMIZADAS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.cdnfonts.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preload" href="https://fonts.cdnfonts.com/s/15056/Neuropol.woff" as="font" type="font/woff" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* RESET */
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Ubuntu',sans-serif; user-select:none; }
+html,body{ width:100%; height:100%; background:#000; overflow:hidden; color:#00ff41; }
+/* MATRIX */
+canvas{ position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+body::before{ content:""; position:fixed; inset:0; background:rgba(0,0,0,0.72); z-index:1; }
+/* APP */
+.app{ position:relative; z-index:2; width:100%; height:100dvh; }
+/* HOME */
+.home-screen{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:20px; }
+/* LOGO */
+.logo{ font-family:'Neuropol',sans-serif; font-size:clamp(44px,10vw,92px); letter-spacing:5px; display:flex; gap:2px; flex-wrap:wrap; justify-content:center; }
+/* LETRAS */
+.logo span{ font-family:'Neuropol',sans-serif; display:inline-block; color:#00ff41; animation:letterGlow 2.8s infinite ease-in-out; }
+/* DELAYS */
+.logo span:nth-child(1){animation-delay:0s;}
+.logo span:nth-child(2){animation-delay:0.15s;}
+.logo span:nth-child(3){animation-delay:0.30s;}
+.logo span:nth-child(4){animation-delay:0.45s;}
+.logo span:nth-child(5){animation-delay:0.60s;}
+.logo span:nth-child(6){animation-delay:0.75s;}
+.logo span:nth-child(7){animation-delay:0.90s;}
+/* GLOW */
+@keyframes letterGlow{
+0%{ color:#00ff41; text-shadow:0 0 6px rgba(0,255,65,0.25); filter:brightness(0.9); }
+25%{ color:#39ff88; text-shadow:0 0 12px rgba(57,255,136,0.5); filter:brightness(1.1); }
+50%{ color:#00ff9a; text-shadow:0 0 20px rgba(0,255,154,0.7); filter:brightness(1.25); }
+75%{ color:#7CFFB2; text-shadow:0 0 10px rgba(124,255,178,0.4); filter:brightness(1.05); }
+100%{ color:#00ff41; text-shadow:0 0 6px rgba(0,255,65,0.25); filter:brightness(0.95); }
+}
+/* SUBTITULO */
+.subtitle{ margin-top:12px; font-size:14px; color:#b7ffcf; letter-spacing:2px; text-shadow:0 0 10px rgba(0,255,65,0.35); }
+/* SIDE MENU PADRÃO */
+.side-menu{ position:fixed; top:0; left:0; transform:translateX(-100%); width:270px; height:100%; background:rgba(0,0,0,0.96); border-right:1px solid rgba(255,255,255,0.08); padding:22px 18px; z-index:99998; transition:0.25s ease; overflow-y:auto; }
+.side-menu.active{ transform:translateX(0); }
+.menu-title{ font-family:'Neuropol',sans-serif; font-size:22px; color:#00ff41; margin-bottom:24px; }
+.side-menu a{ display:block; padding:13px 0; text-decoration:none; color:#ffffff; font-size:14px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.side-menu a:hover{ color:#00ff41; padding-left:6px; }
+/* OVERLAY */
+.menu-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); z-index:99997; display:none; }
+.menu-overlay.active{ display:block; }
+/* BOTTOM NAV PADRÃO */
+.bottom-nav{ position:fixed; left:0; bottom:0; width:100%; height:60px; display:flex; justify-content:space-around; align-items:center; background:rgba(0,0,0,0.92); border-top:1px solid rgba(255,255,255,0.08); z-index:99999; }
+.nav-item{ flex:1; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#ffffff; opacity:0.85; }
+.nav-item i{ font-size:16px; }
+.nav-item:hover{ color:#00ff41; opacity:1; }
+@media (max-width: 768px){.logo span{ animation: none; } }
+</style>
 </head>
 <body>
-<canvas id="matrix"></canvas>
-
-<header class="topbar">
-  <button onclick="toggleMenu()"><i class="fa fa-bars"></i></button>
-  <h1>Painel de Controle N74 TEC</h1>
-</header>
-
-<main class="container">
-  <h2>Nossos Serviços de TI</h2>
-  
-  <div class="service-card">
-    <h3><i class="fa fa-headset"></i> Suporte Técnico Especializado</h3>
-    <p>Atendimento remoto e presencial para manutenção de computadores, notebooks e periféricos.</p>
+<canvas id="matrix" aria-hidden="true"></canvas>
+<div class="app">
+  <div class="home-screen" role="main">
+    <h1 class="logo" aria-label="N74 TEC">
+      <span>N</span>
+      <span>7</span>
+      <span>4</span>
+      <span>&nbsp;</span>
+      <span>T</span>
+      <span>E</span>
+      <span>C</span>
+    </h1>
+    <div class="subtitle">
+      SOLUÇÕES EM TI
+    </div>
   </div>
-
-  <div class="service-card">
-    <h3><i class="fa fa-network-wired"></i> Infraestrutura de Redes</h3>
-    <p>Projeto, instalação e gerenciamento de redes corporativas, switches, roteadores e Wi-Fi.</p>
-  </div>
-
-  <div class="service-card">
-    <h3><i class="fa fa-server"></i> Servidores e Cloud</h3>
-    <p>Implantação e manutenção de servidores físicos, virtuais e soluções em nuvem.</p>
-  </div>
-
-  <div class="service-card">
-    <h3><i class="fa fa-tools"></i> Manutenção Preventiva</h3>
-    <p>Contratos de manutenção para garantir 100% de uptime na sua operação.</p>
-  </div>
-
-  <h2>Por que escolher a N74 TEC?</h2>
-  <h3><i class="fa fa-clock"></i> Atendimento 24h</h3>
-  <h3><i class="fa fa-award"></i> Experiência desde 1999</h3>
-  <h3><i class="fa fa-bolt"></i> Suporte Rápido em SP</h3>
-</main>
-
-<aside id="sidemenu" class="sidemenu">
-  <a href="index.html"><i class="fa fa-home"></i> Home</a>
-  <a href="menu.html"><i class="fa fa-server"></i> Serviços</a>
-  <a href="tel:+5511958733142"><i class="fa fa-phone"></i> WhatsApp: 11958733142</a>
-</aside>
-<div id="overlay" onclick="toggleMenu()"></div>
-
-<nav class="bottom-nav">
-  <a href="index.html"><i class="fa fa-home"></i> Home</a>
-  <a href="menu.html"><i class="fa fa-server"></i> Serviços</a>
-  <a href="tel:+5511958733142"><i class="fa fa-phone"></i> Contato</a>
+</div>
+<!-- OVERLAY -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<!-- MENU -->
+<nav class="side-menu" id="sideMenu" aria-label="Menu principal">
+  <div class="menu-title">N74 TEC</div>
+  <a href="pages/suporte-tecnico.html">Suporte Técnico</a>
+  <a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
+  <a href="pages/cftv.html">CFTV</a>
+  <a href="pages/servidores.html">Servidores</a>
+  <a href="pages/backup.html">Backup</a>
+  <a href="pages/suporte-remoto.html">Suporte Remoto</a>
+  <a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
+  <a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
+  <a href="https://www.instagram.com/n74tec/" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://www.linkedin.com/company/n74-tec" target="_blank" rel="noopener">LinkedIn</a>
 </nav>
+<!-- BARRA INFERIOR -->
+<nav class="bottom-nav" aria-label="Navegação inferior">
+  <a class="nav-item" href="#" id="menuButton" title="Menu" aria-label="Abrir menu">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </a>
+  <a class="nav-item" href="index.html" title="Início" aria-label="Página inicial">
+    <i class="fa-solid fa-house" aria-hidden="true"></i>
+  </a>
+  <a class="nav-item" href="https://wa.me/5511958733142?text=Ol%C3%A1%20N74%20TEC%21%20Vim%20pelo%20site." target="_blank" title="WhatsApp" aria-label="Falar no WhatsApp">
+    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+  </a>
+</nav>
+<script>
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+let fontSize = 15;
+let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+let columns;
+let drops = [];
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+}
+function init(){
+  columns = Math.floor(canvas.width / fontSize);
+  drops = Array(columns).fill(1);
+}
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.04)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#00ff41";
+  ctx.font = fontSize + "px monospace";
+  for(let i=0;i<drops.length;i++){
+    let text = chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i] += 0.75;
+  }
+}
+const fps = window.innerWidth < 768? 15 : 30;
+setInterval(draw, 1000/fps);
+window.addEventListener("resize",resize);
+resize();
 
-<script src="script.js"></script>
+/* MENU */
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuButton.addEventListener("click",(e)=>{
+  e.preventDefault();
+  sideMenu.classList.toggle("active");
+  menuOverlay.classList.toggle("active");
+});
+
+menuOverlay.addEventListener("click",()=>{
+  sideMenu.classList.remove("active");
+  menuOverlay.classList.remove("active");
+});
+</script>
 </body>
 </html>
