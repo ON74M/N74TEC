@@ -83,3 +83,7 @@ body::after{
  80%{ opacity:1; }
   100%{ opacity:0; pointer-events:none; }
 }
+
+<!-- 1. Carregar fonte mais rápido -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preload" as="image" href="https://n74.com.br/og-image.jpg">
