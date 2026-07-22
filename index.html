@@ -1,146 +1,271 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>N74 TEC | Serviços de TI em São Paulo</title>
-<link rel="canonical" href="https://n74.com.br/menu.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
 
-<meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">  
+<!-- SEO -->
+<title>N74 TEC | Soluções de TI em São Paulo</title>
+<meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
 
-<!-- CSS GLOBAL -->
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+<!-- CANONICAL -->
+<link rel="canonical" href="https://n74.com.br/">
+
+<!-- SOCIAL / WHATSAPP -->
+<meta property="og:title" content="N74 TEC | Soluções de TI em São Paulo">
+<meta property="og:description" content="Suporte Técnico e Infraestrutura de TI. Manutenção, redes e servidores.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://n74.com.br/">
+<meta property="og:image" content="https://n74.com.br/logo-n74.png">
+
+<!-- FONTE OTIMIZADA - Não bloqueia mais -->
+<link rel="preconnect" href="https://fonts.cdnfonts.com">
+<link rel="preload" href="https://fonts.cdnfonts.com/s/15056/Neuropol.woff" as="font" type="font/woff" crossorigin>
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet" media="print" onload="this.media='all'">
 
 <style>
-/* ANIMAÇÃO EXCLUSIVA DO MENU */
-.home-screen{
-  opacity:0;
-  animation:fadeInMenu 1.2s forwards;
-  animation-delay:0.3s;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-@keyframes fadeInMenu{
-  from{ opacity:0; transform:scale(0.95); filter:blur(4px); }
-  to{ opacity:1; transform:scale(1); filter:blur(0); }
+html,body{
+width:100%;
+height:100%;
+background:#000;
+font-family:Arial, sans-serif; /* fallback */
+user-select:none;
+overflow-x:hidden; /* era hidden, agora só trava lateral */
 }
 
-/* GLOW MAIS FORTE NA ENTRADA */
+/* MATRIX BACKGROUND */
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+}
+
+/* DARK OVERLAY */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.95));
+z-index:1;
+pointer-events:none; /* não bloqueia clique */
+}
+
+/* CENTER */
+.hero{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:10;
+}
+
+/* LOGO */
 .logo{
-  animation:letterGlow 2.8s infinite ease-in-out, logoEntry 1.5s ease-out;
+font-family:'Neuropol',sans-serif;
+font-size:clamp(60px,10vw,140px);
+letter-spacing:10px;
+color:#00ff41;
+text-shadow:
+0 0 10px #00ff41,
+0 0 30px #00ff41,
+0 0 60px rgba(0,255,65,0.4);
+animation:glow 3s infinite ease-in-out;
 }
 
-@keyframes logoEntry{
-  0%{ transform:scale(0.8); filter:brightness(0.3); }
-  100%{ transform:scale(1); filter:brightness(1); }
+@keyframes glow{
+0%{filter:brightness(0.8); transform:scale(0.98);}
+50%{filter:brightness(1.4); transform:scale(1.02);}
+100%{filter:brightness(0.8); transform:scale(0.98);}
+}
+
+/* SUBTITLE */
+.subtitle{
+margin-top:15px;
+font-size:14px;
+letter-spacing:5px;
+color:#c5ffd7;
+opacity:0;
+animation:fadeIn 2s forwards;
+animation-delay:1.5s;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* LOADING BAR AREA */
+.loader{
+margin-top:40px;
+width:320px;
+max-width:90%; /* responsivo */
+height:10px;
+background:rgba(0,255,65,0.1);
+border:1px solid rgba(0,255,65,0.3);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 20px rgba(0,255,65,0.2);
+}
+
+/* BAR */
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00ff41,#00ffaa,#00ff41);
+box-shadow:0 0 15px #00ff41;
+transition:width 0.15s linear;
+}
+
+/* STATUS TEXT */
+.status{
+margin-top:10px;
+font-size:12px;
+color:#00ff41;
+letter-spacing:2px;
+opacity:0.8;
+}
+
+/* FADE OUT TRANSITION */
+.fade-out{
+animation:fadeOut 1s forwards;
+}
+
+@keyframes fadeOut{
+to{
+opacity:0;
+transform:scale(1.05);
+}
+}
+
+/* MOBILE: reduz animação pra ganhar FPS */
+@media (max-width: 768px){
+.logo{ animation: none; text-shadow: 0 0 10px #00ff41; }
 }
 </style>
 
 </head>
+
 <body>
-<canvas id="matrix"></canvas>
 
-<div class="app">
-  <div class="home-screen">
-    <div class="logo">
-      <span>N</span>
-      <span>7</span>
-      <span>4</span>
-      <span>&nbsp;</span>
-      <span>T</span>
-      <span>E</span>
-      <span>C</span>
-    </div>
-    <div class="subtitle">
-      SOLUÇÕES EM TI
-    </div>
-  </div>
+<canvas id="matrix" aria-hidden="true"></canvas>
+
+<div class="hero" id="screen" role="main">
+
+<div class="logo" aria-label="N74 TEC">N74 TEC</div>
+
+<div class="subtitle">SISTEMA DE INTELIGÊNCIA ATIVO</div>
+
+<div class="loader" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+  <div class="bar" id="bar"></div>
 </div>
 
-<!-- OVERLAY -->
-<div class="menu-overlay" id="menuOverlay"></div>
+<div class="status" id="status" aria-live="polite">INICIALIZANDO SISTEMA...</div>
 
-<!-- MENU -->
-<div class="side-menu" id="sideMenu">
-  <div class="menu-title">N74 TEC</div>
-  <a href="pages/suporte-tecnico.html">Suporte Técnico</a>
-  <a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
-  <a href="pages/cftv.html">CFTV</a>
-  <a href="pages/servidores.html">Servidores</a>
-  <a href="pages/backup.html">Backup</a>
-  <a href="pages/suporte-remoto.html">Suporte Remoto</a>
-  <a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
-  <a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
-  <a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
-  <a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
 </div>
-
-<!-- BARRA INFERIOR -->
-<nav class="bottom-nav">
-  <a class="nav-item" href="#" id="menuButton" title="Menu">
-    <i class="fa-solid fa-bars"></i>
-  </a>
-  <a class="nav-item" href="index.html" title="Início">
-    <i class="fa-solid fa-house"></i>
-  </a>
-  <a class="nav-item" href="https://wa.me/5511958733142" target="_blank" title="WhatsApp">
-    <i class="fa-solid fa-phone"></i>
-  </a>
-</nav>
 
 <script>
 /* MATRIX */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-let fontSize = 15;
-let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-let columns;
-let drops = [];
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
 function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 }
-function init(){
-  columns = Math.floor(canvas.width / fontSize);
-  drops = Array(columns).fill(1);
-}
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.04)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "#00ff41";
-  ctx.font = fontSize + "px monospace";
-  for(let i=0;i<drops.length;i++){
-    let text = chars[Math.floor(Math.random()*chars.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
-      drops[i] = 0;
-    }
-    drops[i] += 0.75;
-  }
-}
-setInterval(draw,45);
-window.addEventListener("resize",resize);
 resize();
 
-/* MENU */
-const menuButton = document.getElementById("menuButton");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
+const chars="01N74TEC@#$%ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let drops=[];
 
-menuButton.addEventListener("click",(e)=>{
-  e.preventDefault();
-  sideMenu.classList.toggle("active");
-  menuOverlay.classList.toggle("active");
+function init(){
+const isMobile = window.innerWidth < 768;
+drops=Array(Math.floor(canvas.width/(isMobile?20:15))).fill(1); // menos drops no mobile
+}
+init();
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff41";
+ctx.font="15px monospace";
+
+for(let i=0;i<drops.length;i++){
+let t=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(t,i*(window.innerWidth < 768?20:15),drops[i]*15);
+
+if(drops[i]*15>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]+=0.75;
+}
+}
+
+const fps = window.innerWidth < 768? 10 : 30; // 10fps no mobile
+setInterval(draw, 1000/fps);
+
+window.addEventListener("resize",()=>{
+resize();
+init();
 });
 
-menuOverlay.addEventListener("click",()=>{
-  sideMenu.classList.remove("active");
-  menuOverlay.classList.remove("active");
+/* LOADING SYSTEM */
+const bar=document.getElementById("bar");
+const status=document.getElementById("status");
+const screen=document.getElementById("screen");
+const loaderEl = document.querySelector('.loader');
+
+let progress=0;
+
+const messages=[
+"INICIALIZANDO SISTEMA...",
+"CARREGANDO MÓDULOS DE IA...",
+"ESTABELECENDO REDE SEGURA...",
+"ANALISANDO AMBIENTE...",
+"PREPARANDO INTERFACE...",
+"FINALIZANDO BOOT..."
+];
+
+function updateStatus(p){
+if(p<20) status.textContent=messages[0];
+else if(p<40) status.textContent=messages[1];
+else if(p<60) status.textContent=messages[2];
+else if(p<80) status.textContent=messages[3];
+else if(p<95) status.textContent=messages[4];
+else status.textContent=messages[5];
+loaderEl.setAttribute('aria-valuenow', p); // acessibilidade
+}
+
+let loader=setInterval(()=>{
+progress++;
+if(progress>100) progress=100;
+bar.style.width=progress+"%";
+updateStatus(progress);
+
+if(progress>=100){
+clearInterval(loader);
+screen.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href="menu.html";
+},1000);
+}
+},40);
+
+/* clique pula */
+document.addEventListener("click",()=>{
+progress=100;
 });
+
 </script>
+
 </body>
 </html>
