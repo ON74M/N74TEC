@@ -108,3 +108,7 @@
    ========================= */
 
 console.log("%cN74 TEC SYSTEM LOADED", "color:#00ff41; font-size:14px; font-weight:bold;");
+
+// 2. Diminuir partículas no celular
+const isMobile = window.innerWidth < 768;
+const drops = isMobile ? 50 : 100; // metade das colunas no mobile
