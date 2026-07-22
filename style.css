@@ -67,3 +67,19 @@ body::before{ content:""; position:fixed; inset:0; background:rgba(0,0,0,0.72); 
 @media(max-width:600px){
  .grid{ grid-template-columns:1fr; }
 }
+
+/* EFEITO BOOT TV */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:999;
+  animation:boot 3s forwards;
+}
+
+@keyframes boot{
+  0%{ opacity:1; }
+ 80%{ opacity:1; }
+  100%{ opacity:0; pointer-events:none; }
+}
