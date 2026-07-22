@@ -1,183 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>N74 TEC | Serviços de TI em São Paulo</title>
-<link rel="canonical" href="https://n74.com.br/menu.html">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Painel - N74 TEC Suporte e Infraestrutura de TI</title>
 
+<!-- Mesmos metadados do index -->
 <meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-
-<!-- Open Graph -->
 <meta property="og:title" content="N74 TEC - Suporte e Infraestrutura de TI">
 <meta property="og:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
 <meta property="og:image" content="https://n74.com.br/og-image.jpg">
-<meta property="og:url" content="https://n74.com.br">
+<meta property="og:url" content="https://n74.com.br/menu.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 
-<!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ITCompany",
   "name": "N74 TEC",
-  "alternateName": "N74 TEC - Soluções em TI",
   "url": "https://n74.com.br",
-  "logo": "https://n74.com.br/og-image.jpg",
-  "description": "Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.",
   "telephone": "+5511958733142",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Paulo",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "areaServed": "São Paulo, SP",
-  "sameAs": [
-    "https://n74.com.br"
-  ]
+  "address": {"@type": "PostalAddress","addressLocality": "São Paulo","addressRegion": "SP","addressCountry": "BR"}
 }
-</script>  
+</script>
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="N74 TEC - Suporte e Infraestrutura de TI">
-<meta name="twitter:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-<meta name="twitter:image" content="https://n74.com.br/og-image.jpg">
-  
-<!-- CSS GLOBAL -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
-
-<style>
-/* ANIMAÇÃO EXCLUSIVA DO MENU */
-.home-screen{
-  opacity:0;
-  animation:fadeInMenu 1.2s forwards;
-  animation-delay:0.3s;
-}
-
-@keyframes fadeInMenu{
-  from{ opacity:0; transform:scale(0.95); filter:blur(4px); }
-  to{ opacity:1; transform:scale(1); filter:blur(0); }
-}
-
-/* GLOW MAIS FORTE NA ENTRADA */
-.logo{
-  animation:letterGlow 2.8s infinite ease-in-out, logoEntry 1.5s ease-out;
-}
-
-@keyframes logoEntry{
-  0%{ transform:scale(0.8); filter:brightness(0.3); }
-  100%{ transform:scale(1); filter:brightness(1); }
-}
-</style>
-
 </head>
 <body>
 <canvas id="matrix"></canvas>
 
-<div class="app">
-  <div class="home-screen">
-    <div class="logo">
-      <span>N</span>
-      <span>7</span>
-      <span>4</span>
-      <span>&nbsp;</span>
-      <span>T</span>
-      <span>E</span>
-      <span>C</span>
-    </div>
-    <div class="subtitle">
-      SOLUÇÕES EM TI
-    </div>
+<header class="topbar">
+  <button onclick="toggleMenu()"><i class="fa fa-bars"></i></button>
+  <h1>Painel de Controle N74 TEC</h1>
+</header>
+
+<main class="container">
+  <!-- 4. H1/H2/H3 -->
+  <h2>Nossos Serviços de TI</h2>
+  
+  <div class="service-card">
+    <h3><i class="fa fa-headset"></i> Suporte Técnico Especializado</h3>
+    <p>Atendimento remoto e presencial para manutenção de computadores, notebooks e periféricos.</p>
   </div>
-</div>
 
-<!-- OVERLAY -->
-<div class="menu-overlay" id="menuOverlay"></div>
+  <div class="service-card">
+    <h3><i class="fa fa-network-wired"></i> Infraestrutura de Redes</h3>
+    <p>Projeto, instalação e gerenciamento de redes corporativas, switches, roteadores e Wi-Fi.</p>
+  </div>
 
-<!-- MENU -->
-<div class="side-menu" id="sideMenu">
-  <div class="menu-title">N74 TEC</div>
-  <a href="pages/suporte-tecnico.html">Suporte Técnico</a>
-  <a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
-  <a href="pages/cftv.html">CFTV</a>
-  <a href="pages/servidores.html">Servidores</a>
-  <a href="pages/backup.html">Backup</a>
-  <a href="pages/suporte-remoto.html">Suporte Remoto</a>
-  <a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
-  <a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
-  <a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
-  <a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
-</div>
+  <div class="service-card">
+    <h3><i class="fa fa-server"></i> Servidores e Cloud</h3>
+    <p>Implantação e manutenção de servidores físicos, virtuais e soluções em nuvem.</p>
+  </div>
 
-<!-- BARRA INFERIOR -->
+  <div class="service-card">
+    <h3><i class="fa fa-tools"></i> Manutenção Preventiva</h3>
+    <p>Contratos de manutenção para garantir 100% de uptime na sua operação.</p>
+  </div>
+
+  <h2>Por que escolher a N74 TEC?</h2>
+  <h3><i class="fa fa-clock"></i> Atendimento 24h</h3>
+  <h3><i class="fa fa-award"></i> Experiência desde 1999</h3>
+  <h3><i class="fa fa-bolt"></i> Suporte Rápido em SP</h3>
+</main>
+
+<!-- Menu Lateral -->
+<aside id="sidemenu" class="sidemenu">
+  <a href="index.html"><i class="fa fa-home"></i> Home</a>
+  <a href="menu.html"><i class="fa fa-server"></i> Serviços</a>
+  <a href="tel:+5511958733142"><i class="fa fa-phone"></i> WhatsApp: 11958733142</a>
+</aside>
+<div id="overlay" onclick="toggleMenu()"></div>
+
 <nav class="bottom-nav">
-  <a class="nav-item" href="#" id="menuButton" title="Menu">
-    <i class="fa-solid fa-bars"></i>
-  </a>
-  <a class="nav-item" href="index.html" title="Início">
-    <i class="fa-solid fa-house"></i>
-  </a>
-  <a class="nav-item" href="https://wa.me/5511958733142" target="_blank" title="WhatsApp">
-    <i class="fa-solid fa-phone"></i>
-  </a>
+  <a href="index.html"><i class="fa fa-home"></i> Home</a>
+  <a href="menu.html"><i class="fa fa-server"></i> Serviços</a>
+  <a href="tel:+5511958733142"><i class="fa fa-phone"></i> Contato</a>
 </nav>
 
-<script>
-/* MATRIX */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-let fontSize = 15;
-let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-let columns;
-let drops = [];
-function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
-}
-function init(){
-  columns = Math.floor(canvas.width / fontSize);
-  drops = Array(columns).fill(1);
-}
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.04)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "#00ff41";
-  ctx.font = fontSize + "px monospace";
-  for(let i=0;i<drops.length;i++){
-    let text = chars[Math.floor(Math.random()*chars.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
-      drops[i] = 0;
-    }
-    drops[i] += 0.75;
-  }
-}
-setInterval(draw,45);
-window.addEventListener("resize",resize);
-resize();
-
-/* MENU */
-const menuButton = document.getElementById("menuButton");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-
-menuButton.addEventListener("click",(e)=>{
-  e.preventDefault();
-  sideMenu.classList.toggle("active");
-  menuOverlay.classList.toggle("active");
-});
-
-menuOverlay.addEventListener("click",()=>{
-  sideMenu.classList.remove("active");
-  menuOverlay.classList.remove("active");
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
