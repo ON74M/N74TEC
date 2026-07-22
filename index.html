@@ -1,87 +1,144 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>N74 TEC - Suporte e Infraestrutura de TI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>N74 TEC | Serviços de TI em São Paulo</title>
+<link rel="canonical" href="https://n74.com.br/menu.html">
 
-<!-- NOVO: Acelera carregamento -->
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="preload" as="image" href="https://n74.com.br/og-image.jpg">
-
-<!-- Meta Description -->
-<meta name="description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-
-<!-- Open Graph -->
-<meta property="og:title" content="N74 TEC - Suporte e Infraestrutura de TI">
-<meta property="og:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-<meta property="og:image" content="https://n74.com.br/og-image.jpg">
-<meta property="og:url" content="https://n74.com.br">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="pt_BR">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="N74 TEC - Suporte e Infraestrutura de TI">
-<meta name="twitter:description" content="N74 TEC - Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.">
-<meta name="twitter:image" content="https://n74.com.br/og-image.jpg">
-
-<!-- Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ITCompany",
-  "name": "N74 TEC",
-  "alternateName": "N74 TEC - Soluções em TI",
-  "url": "https://n74.com.br",
-  "logo": "https://n74.com.br/og-image.jpg",
-  "description": "Suporte Técnico e Infraestrutura de TI em São Paulo. Manutenção, redes, servidores e soluções completas para empresas.",
-  "telephone": "+5511958733142",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Paulo",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "areaServed": "São Paulo, SP"
-}
-</script>
-
+<!-- CSS GLOBAL -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<style>
+/* ANIMAÇÃO EXCLUSIVA DO MENU */
+.home-screen{
+  opacity:0;
+  animation:fadeInMenu 1.2s forwards;
+  animation-delay:0.3s;
+}
+
+@keyframes fadeInMenu{
+  from{ opacity:0; transform:scale(0.95); filter:blur(4px); }
+  to{ opacity:1; transform:scale(1); filter:blur(0); }
+}
+
+/* GLOW MAIS FORTE NA ENTRADA */
+.logo{
+  animation:letterGlow 2.8s infinite ease-in-out, logoEntry 1.5s ease-out;
+}
+
+@keyframes logoEntry{
+  0%{ transform:scale(0.8); filter:brightness(0.3); }
+  100%{ transform:scale(1); filter:brightness(1); }
+}
+</style>
+
 </head>
 <body>
 <canvas id="matrix"></canvas>
 
-<header class="topbar">
-  <!-- IMAGEM ATUALIZADA COM LAZY LOAD + TAMANHO -->
-  <img src="og-image.jpg" alt="N74 TEC Logo - Suporte Técnico e Infraestrutura de TI" class="logo" width="300" height="300" loading="lazy">
-</header>
+<div class="app">
+  <div class="home-screen">
+    <div class="logo">
+      <span>N</span>
+      <span>7</span>
+      <span>4</span>
+      <span>&nbsp;</span>
+      <span>T</span>
+      <span>E</span>
+      <span>C</span>
+    </div>
+    <div class="subtitle">
+      SOLUÇÕES EM TI
+    </div>
+  </div>
+</div>
 
-<main class="container">
-  <h1>N74 TEC - Suporte Técnico e Infraestrutura de TI</h1>
-  <p class="subtitle">Soluções completas em TI para empresas em São Paulo</p>
+<!-- OVERLAY -->
+<div class="menu-overlay" id="menuOverlay"></div>
 
-  <section>
-    <h2>Suporte Técnico e Infraestrutura de TI em São Paulo</h2>
-    <p>
-      A <strong>N74 TEC</strong> é especializada em <strong>suporte técnico</strong>, 
-      <strong>infraestrutura de redes</strong>, <strong>servidores</strong> e 
-      <strong>manutenção de TI</strong> para empresas em <strong>São Paulo</strong>. 
-      Atuamos desde 1999 garantindo que sua operação não pare. Oferecemos soluções 
-      completas em tecnologia para manter sua empresa segura, conectada e produtiva 24h.
-    </p>
-  </section>
+<!-- MENU -->
+<div class="side-menu" id="sideMenu">
+  <div class="menu-title">N74 TEC</div>
+  <a href="pages/suporte-tecnico.html">Suporte Técnico</a>
+  <a href="pages/redes-wifi.html">Redes & Wi-Fi</a>
+  <a href="pages/cftv.html">CFTV</a>
+  <a href="pages/servidores.html">Servidores</a>
+  <a href="pages/backup.html">Backup</a>
+  <a href="pages/suporte-remoto.html">Suporte Remoto</a>
+  <a href="pages/atendimento-avulso.html">Atendimento Avulso</a>
+  <a href="pages/contrato-manutencao.html">Contrato de Manutenção</a>
+  <a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+  <a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
+</div>
 
-  <a href="menu.html" class="btn-enter">ACESSAR PAINEL <i class="fa fa-arrow-right"></i></a>
-</main>
-
+<!-- BARRA INFERIOR -->
 <nav class="bottom-nav">
-  <a href="index.html"><i class="fa fa-home"></i> Home</a>
-  <a href="menu.html"><i class="fa fa-server"></i> Serviços</a>
-  <a href="tel:+5511958733142"><i class="fa fa-phone"></i> Contato</a>
+  <a class="nav-item" href="#" id="menuButton" title="Menu">
+    <i class="fa-solid fa-bars"></i>
+  </a>
+  <a class="nav-item" href="index.html" title="Início">
+    <i class="fa-solid fa-house"></i>
+  </a>
+  <a class="nav-item" href="https://wa.me/5511958733142" target="_blank" title="WhatsApp">
+    <i class="fa-solid fa-phone"></i>
+  </a>
 </nav>
 
-<script src="script.js"></script>
+<script>
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+let fontSize = 15;
+let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+let columns;
+let drops = [];
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+}
+function init(){
+  columns = Math.floor(canvas.width / fontSize);
+  drops = Array(columns).fill(1);
+}
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.04)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#00ff41";
+  ctx.font = fontSize + "px monospace";
+  for(let i=0;i<drops.length;i++){
+    let text = chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i] += 0.75;
+  }
+}
+setInterval(draw,45);
+window.addEventListener("resize",resize);
+resize();
+
+/* MENU */
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuButton.addEventListener("click",(e)=>{
+  e.preventDefault();
+  sideMenu.classList.toggle("active");
+  menuOverlay.classList.toggle("active");
+});
+
+menuOverlay.addEventListener("click",()=>{
+  sideMenu.classList.remove("active");
+  menuOverlay.classList.remove("active");
+});
+</script>
 </body>
 </html>
