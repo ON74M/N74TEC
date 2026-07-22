@@ -1,0 +1,69 @@
+/* N74 TEC - STYLE.CSS V1.0 */
+
+/* RESET */
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Ubuntu',sans-serif; user-select:none; }
+html,body{ width:100%; height:100%; background:#000; overflow:hidden; color:#00ff41; }
+
+/* MATRIX */
+canvas{ position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+body::before{ content:""; position:fixed; inset:0; background:rgba(0,0,0,0.72); z-index:1; }
+
+/* APP */
+.app{ position:relative; z-index:2; width:100%; height:100dvh; }
+
+/* HEADER */
+.header{ text-align:center; padding:24px 12px 10px; }
+.title{ font-family:'Neuropol',sans-serif; font-size:clamp(26px,5vw,42px); color:#00ff41; text-shadow:0 0 10px rgba(0,255,65,0.4); }
+.subtitle{ font-size:14px; color:#b7ffcf; margin-top:6px; letter-spacing:2px; }
+
+/* CONTENT */
+.container{ display:flex; flex-direction:column; gap:12px; padding:12px; max-width:1000px; margin:0 auto; }
+
+/* GRID */
+.grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+
+/* CARD PADRÃO */
+.card{ background:rgba(0,0,0,0.85); border:1px solid rgba(0,255,65,0.15); border-radius:12px; padding:14px; color:#b7ffcf; backdrop-filter:blur(4px); }
+.card h3{ color:#00ff41; font-size:14px; margin-bottom:6px; font-weight:400; }
+.card p{ font-size:14px; line-height:1.5; color:#b7ffcf; }
+
+/* HOME */
+.home-screen{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:20px; }
+.logo{ font-family:'Neuropol',sans-serif; font-size:clamp(44px,10vw,92px); letter-spacing:5px; display:flex; gap:2px; flex-wrap:wrap; justify-content:center; }
+.logo span{ font-family:'Neuropol',sans-serif; display:inline-block; color:#00ff41; animation:letterGlow 2.8s infinite ease-in-out; }
+.logo span:nth-child(1){animation-delay:0s;}
+.logo span:nth-child(2){animation-delay:0.15s;}
+.logo span:nth-child(3){animation-delay:0.30s;}
+.logo span:nth-child(4){animation-delay:0.45s;}
+.logo span:nth-child(5){animation-delay:0.60s;}
+.logo span:nth-child(6){animation-delay:0.75s;}
+.logo span:nth-child(7){animation-delay:0.90s;}
+@keyframes letterGlow{
+0%{ color:#00ff41; text-shadow:0 0 6px rgba(0,255,65,0.25); filter:brightness(0.9); }
+25%{ color:#39ff88; text-shadow:0 0 12px rgba(57,255,136,0.5); filter:brightness(1.1); }
+50%{ color:#00ff9a; text-shadow:0 0 20px rgba(0,255,154,0.7); filter:brightness(1.25); }
+75%{ color:#7CFFB2; text-shadow:0 0 10px rgba(124,255,178,0.4); filter:brightness(1.05); }
+100%{ color:#00ff41; text-shadow:0 0 6px rgba(0,255,65,0.25); filter:brightness(0.95); }
+}
+
+/* SIDE MENU */
+.side-menu{ position:fixed; top:0; left:0; transform:translateX(-100%); width:270px; height:100%; background:rgba(0,0,0,0.96); border-right:1px solid rgba(255,255,255,0.08); padding:22px 18px; z-index:99998; transition:0.25s ease; overflow-y:auto; }
+.side-menu.active{ transform:translateX(0); }
+.menu-title{ font-family:'Neuropol',sans-serif; font-size:22px; color:#00ff41; margin-bottom:24px; }
+.side-menu a{ display:block; padding:13px 0; text-decoration:none; color:#ffffff; font-size:14px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.side-menu a:hover{ color:#00ff41; padding-left:6px; }
+
+/* OVERLAY */
+.menu-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); z-index:99997; display:none; }
+.menu-overlay.active{ display:block; }
+
+/* BOTTOM NAV */
+.bottom-nav{ position:fixed; left:0; bottom:0; width:100%; height:60px; display:flex; justify-content:space-around; align-items:center; background:rgba(0,0,0,0.92); border-top:1px solid rgba(255,255,255,0.08); z-index:99999; }
+.nav-item{ flex:1; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#ffffff; opacity:0.85; }
+.nav-item i{ font-size:16px; }
+.nav-item:hover{ color:#00ff41; opacity:1; }
+
+/* RESPONSIVO */
+@media(max-width:600px){
+ .grid{ grid-template-columns:1fr; }
+}
