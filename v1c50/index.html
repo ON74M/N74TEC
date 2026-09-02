@@ -1,0 +1,640 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Vicente | Área de Estudos</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef6ff 0%,
+            #f5efff 100%
+        );
+
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+
+    margin-bottom: 22px;
+}
+
+.header .icone {
+    font-size: 55px;
+}
+
+.header h1 {
+    margin: 5px 0;
+    font-size: 34px;
+}
+
+.header p {
+    margin: 8px 0 0;
+    font-size: 17px;
+}
+
+/* =========================
+   AVISO
+========================= */
+
+.aviso {
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 16px 18px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.07);
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #475569;
+}
+
+.aviso strong {
+    color: #4338ca;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+
+.titulo-area {
+    text-align: center;
+    margin: 25px 0 18px;
+}
+
+.titulo-area h2 {
+    margin: 0;
+    color: #4338ca;
+}
+
+.titulo-area p {
+    color: #64748b;
+    margin-top: 6px;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 18px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px 20px;
+
+    text-decoration: none;
+
+    color: #1e293b;
+
+    text-align: center;
+
+    border: 2px solid transparent;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.08);
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s;
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.14);
+
+    border-color: #818cf8;
+}
+
+.card .icone-card {
+    font-size: 50px;
+}
+
+.card h3 {
+    margin: 8px 0 5px;
+    font-size: 21px;
+}
+
+.card p {
+
+    margin: 8px 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+/* =========================
+   DESTAQUES
+========================= */
+
+.calendario {
+    border-top: 5px solid #1e40af;
+}
+
+.matematica {
+    border-top: 5px solid #3b82f6;
+}
+
+.portugues {
+    border-top: 5px solid #ef4444;
+}
+
+.ciencias {
+    border-top: 5px solid #22c55e;
+}
+
+.desafios {
+    border-top: 5px solid #f59e0b;
+}
+
+.programacao {
+    border-top: 5px solid #8b5cf6;
+}
+
+.jogos {
+    border-top: 5px solid #ec4899;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+.entrar {
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding: 7px 13px;
+
+    border-radius: 9px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+/* =========================
+   BLOQUEADOS
+========================= */
+
+.bloqueado {
+    opacity: .55;
+    cursor: default;
+}
+
+.bloqueado:hover {
+
+    transform: none;
+
+    border-color: transparent;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.08);
+}
+
+.em-breve {
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    background: #e2e8f0;
+
+    color: #475569;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+/* =========================
+   FRASE
+========================= */
+
+.frase {
+
+    background: white;
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.07);
+}
+
+.frase strong {
+    color: #4f46e5;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    padding: 20px 10px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .header {
+        padding: 28px 15px;
+        border-radius: 18px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .header .icone {
+        font-size: 46px;
+    }
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <!-- CABEÇALHO -->
+
+    <header class="header">
+
+        <div class="icone">
+            🚀
+        </div>
+
+        <h1>
+            Espaço do Vicente
+        </h1>
+
+        <p>
+            Estudos, desafios e descobertas.
+        </p>
+
+    </header>
+
+
+    <!-- AVISO -->
+
+    <div class="aviso">
+
+        📅
+        <strong>
+            Próximas avaliações
+        </strong>
+
+        <br>
+
+        Consulte o calendário para saber
+        qual será a próxima prova.
+
+    </div>
+
+
+    <!-- TÍTULO -->
+
+    <section class="titulo-area">
+
+        <h2>
+            🎮 O que vamos fazer hoje?
+        </h2>
+
+        <p>
+            Escolha uma área para começar.
+        </p>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <main class="menu">
+
+
+        <!-- CALENDÁRIO -->
+
+        <a
+            href="calendario.html"
+            class="card calendario"
+        >
+
+            <div class="icone-card">
+                📅
+            </div>
+
+            <h3>
+                Calendário de Provas
+            </h3>
+
+            <p>
+                Veja as avaliações,
+                datas e próximas provas.
+            </p>
+
+            <span class="entrar">
+                ▶ VER CALENDÁRIO
+            </span>
+
+        </a>
+
+
+        <!-- MATEMÁTICA -->
+
+        <a
+            href="matematica.html"
+            class="card matematica"
+        >
+
+            <div class="icone-card">
+                🔢
+            </div>
+
+            <h3>
+                Matemática
+            </h3>
+
+            <p>
+                Números, contas,
+                lógica e desafios.
+            </p>
+
+            <span class="entrar">
+                ▶ ESTUDAR
+            </span>
+
+        </a>
+
+
+        <!-- PORTUGUÊS -->
+
+        <div class="card portugues bloqueado">
+
+            <div class="icone-card">
+                📚
+            </div>
+
+            <h3>
+                Português
+            </h3>
+
+            <p>
+                Leitura, interpretação,
+                palavras e escrita.
+            </p>
+
+            <span class="em-breve">
+                EM BREVE
+            </span>
+
+        </div>
+
+
+        <!-- CIÊNCIAS -->
+
+        <div class="card ciencias bloqueado">
+
+            <div class="icone-card">
+                🔬
+            </div>
+
+            <h3>
+                Ciências
+            </h3>
+
+            <p>
+                Natureza, experiências
+                e descobertas.
+            </p>
+
+            <span class="em-breve">
+                EM BREVE
+            </span>
+
+        </div>
+
+
+        <!-- DESAFIOS -->
+
+        <div class="card desafios bloqueado">
+
+            <div class="icone-card">
+                🧠
+            </div>
+
+            <h3>
+                Desafios de Lógica
+            </h3>
+
+            <p>
+                Problemas para pensar,
+                investigar e descobrir.
+            </p>
+
+            <span class="em-breve">
+                EM BREVE
+            </span>
+
+        </div>
+
+
+        <!-- PROGRAMAÇÃO -->
+
+        <div class="card programacao bloqueado">
+
+            <div class="icone-card">
+                💻
+            </div>
+
+            <h3>
+                Programação
+            </h3>
+
+            <p>
+                Lógica, computadores,
+                códigos e tecnologia.
+            </p>
+
+            <span class="em-breve">
+                EM BREVE
+            </span>
+
+        </div>
+
+
+        <!-- JOGOS -->
+
+        <div class="card jogos bloqueado">
+
+            <div class="icone-card">
+                🎯
+            </div>
+
+            <h3>
+                Jogos Educativos
+            </h3>
+
+            <p>
+                Aprender brincando com
+                exercícios e desafios.
+            </p>
+
+            <span class="em-breve">
+                EM BREVE
+            </span>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FRASE -->
+
+    <section class="frase">
+
+        🏆
+
+        <strong>
+            Cada desafio resolvido deixa
+            seu cérebro ainda mais forte!
+        </strong>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        Feito com 💙 para o Vicente
+
+        <br>
+
+        N74 TEC © 2026
+
+    </footer>
+
+
+</div>
+
+</body>
+</html>
+```
