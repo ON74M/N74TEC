@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão Vicente - 3º Ano</title>
+<style>
+  body { font-family: 'Segoe UI', Arial; background: #eef6ff; margin:0; padding:12px; }
+ .container { max-width: 820px; margin: auto; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); overflow:hidden; }
+ .header { background: linear-gradient(135deg, #667eea, #764ba2); color:white; padding:22px; text-align:center; }
+ .placar { background:#1e293b; color:white; padding:12px; text-align:center; display:flex; justify-content:space-around; }
+ .placar span { font-weight:bold; font-size:18px; color:#4ade80; }
+ .content { padding:14px; }
+ .capitulo { border:2px solid #eef2f7; border-radius:14px; margin-bottom:18px; overflow:hidden; }
+ .cap-titulo { background:#f5f7ff; padding:12px 16px; font-weight:800; color:#4a4abf; }
+ .questao { padding:14px 16px; border-top:1px solid #eef2f7; }
+ .input-area { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px; }
+ .input-area input { padding:10px; border:2px solid #cbd5e1; border-radius:10px; font-size:18px; width:100px; text-align:center; font-weight:bold; }
+ .btn { padding:10px 16px; border:none; border-radius:10px; cursor:pointer; font-weight:bold; color:white; font-size:14px; }
+ .btn-v { background:#3b82f6; }
+ .feedback { margin-top:10px; padding:12px; border-radius:10px; font-size:14px; display:none; }
+ .ok { background:#dcfce7; border:2px solid #22c55e; color:#166534; display:block; }
+ .erro { background:#fee2e2; border:2px solid #ef4444; color:#991b1b; display:block; }
+ .conta { background:white; padding:8px; border-radius:6px; margin-top:6px; font-family: monospace; text-align:center; border:1px dashed #22c55e; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🎮 Revisão - Vicente 3º Ano B</h1>
+    <p>Digite e clique em VERIFICAR - Prova 02/09</p>
+  </div>
+  <div class="placar">
+    <div>✅ <span id="ac">0</span> acertos</div>
+    <div>❌ <span id="er">0</span> erros</div>
+  </div>
+  <div class="content">
+
+    <div class="capitulo">
+      <div class="cap-titulo">1) ORDEM DOS NÚMEROS</div>
+      <div class="questao">
+        <p><b>a)</b> Quem vem ANTES do 378? (378 - 1)</p>
+        <div class="input-area">
+          <input type="number" id="i1">
+          <button class="btn btn-v" onclick="check('i1',377,'377 = 378-1')">VERIFICAR</button>
+        </div>
+        <div id="f-i1" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>b)</b> Quem vem DEPOIS do 378? (378 + 1)</p>
+        <div class="input-area">
+          <input type="number" id="i2">
+          <button class="btn btn-v" onclick="check('i2',379,'379 = 378+1')">VERIFICAR</button>
+        </div>
+        <div id="f-i2" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>c)</b> Complete: 200 + 1 =?</p>
+        <div class="input-area">
+          <input type="number" id="i3">
+          <button class="btn btn-v" onclick="check('i3',201,'Sequência de 1 em 1')">VERIFICAR</button>
+        </div>
+        <div id="f-i3" class="feedback"></div>
+      </div>
+    </div>
+
+    <div class="capitulo">
+      <div class="cap-titulo">2) RETA NUMÉRICA - Contas Armadas</div>
+      <div class="questao">
+        <p><b>a)</b> 47 + 8 =?</p>
+        <div class="input-area">
+          <input type="number" id="i4">
+          <button class="btn btn-v" onclick="check('i4',55,'<div class=conta>47<br>+ 8<br>---<br>55<br>7+8=15</div>')">VERIFICAR</button>
+        </div>
+        <div id="f-i4" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>b)</b> 62 - 9 =?</p>
+        <div class="input-area">
+          <input type="number" id="i5">
+          <button class="btn btn-v" onclick="check('i5',53,'<div class=conta>62<br>- 9<br>---<br>53</div>')">VERIFICAR</button>
+        </div>
+        <div id="f-i5" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>c)</b> 75 + 18 =? (figurinhas)</p>
+        <div class="input-area">
+          <input type="number" id="i6">
+          <button class="btn btn-v" onclick="check('i6',93,'<div class=conta>75<br>+18<br>---<br>93</div>')">VERIFICAR</button>
+        </div>
+        <div id="f-i6" class="feedback"></div>
+      </div>
+    </div>
+
+    <div class="capitulo">
+      <div class="cap-titulo">3) DESAFIOS FINAIS</div>
+      <div class="questao">
+        <p><b>a)</b> 15º está entre 14º e ___º</p>
+        <div class="input-area">
+          <input type="number" id="i7">
+          <button class="btn btn-v" onclick="check('i7',16,'14, 15, 16')">VERIFICAR</button>
+        </div>
+        <div id="f-i7" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>b)</b> 2º dia + 3 dias = ___º dia</p>
+        <div class="input-area">
+          <input type="number" id="i8">
+          <button class="btn btn-v" onclick="check('i8',5,'2+3=5')">VERIFICAR</button>
+        </div>
+        <div id="f-i8" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>c)</b> Cubo tem quantas faces?</p>
+        <div class="input-area">
+          <input type="number" id="i9">
+          <button class="btn btn-v" onclick="check('i9',6,'Cubo = 6 faces')">VERIFICAR</button>
+        </div>
+        <div id="f-i9" class="feedback"></div>
+      </div>
+      <div class="questao">
+        <p><b>d)</b> Tangram: quantos triângulos?</p>
+        <div class="input-area">
+          <input type="number" id="i10">
+          <button class="btn btn-v" onclick="check('i10',5,'5 triângulos de 7 peças')">VERIFICAR</button>
+        </div>
+        <div id="f-i10" class="feedback"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let ac=0,er=0;
+let respondidas = {};
+function check(id, correto, dica){
+  let input = document.getElementById(id);
+  let fb = document.getElementById('f-'+id);
+  let val = parseInt(input.value);
+  if(isNaN(val)){
+    fb.className='feedback erro';
+    fb.innerHTML='⚠️ Digite um número primeiro!';
+    fb.style.display='block';
+    return;
+  }
+  if(respondidas[id]){ /* já contou */ } else { respondidas[id]=true; }
+
+  if(val===correto){
+    fb.className='feedback ok';
+    fb.innerHTML='🎉 ACERTOU! ✅ Resposta: <b>'+correto+'</b><br>'+dica;
+    input.style.borderColor='#22c55e';
+    input.style.background='#dcfce7';
+    if(!fb.dataset.contado || fb.dataset.contado=='erro'){ ac++; }
+    fb.dataset.contado='ok';
+  } else {
+    fb.className='feedback erro';
+    fb.innerHTML='❌ Ops! A resposta certa é <b>'+correto+'</b><br>'+dica;
+    input.style.borderColor='#ef4444';
+    input.style.background='#fee2e2';
+    if(!fb.dataset.contado){ er++; }
+    else if(fb.dataset.contado=='ok'){ ac--; er++; }
+    fb.dataset.contado='erro';
+  }
+  fb.style.display='block';
+  document.getElementById('ac').innerText=ac;
+  document.getElementById('er').innerText=er;
+  if(ac>=8){ fb.innerHTML+='<br><br>🏆 INCRÍVEL VICENTE!'; }
+}
+</script>
+  <div style="text-align:center; padding:16px; background:#fafafa; font-size:12px; color:#888">Feito com 💙 para o Vicente treinar antes da prova!</div>
+</div>
+</body>
+</html>
