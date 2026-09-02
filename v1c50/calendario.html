@@ -5,7 +5,8 @@
 
 <!--
 ====================================================================
-                 SISTEMA VICENTE - DOCUMENTAÇÃO
+                    SISTEMA VICENTE
+                CENTRAL DE MISSÕES
 ====================================================================
 
 ARQUIVO:
@@ -14,11 +15,8 @@ ARQUIVO:
 LOCAL:
     /v1c50/calendario.html
 
-URL:
-    https://n74.com.br/v1c50/calendario.html
-
 VERSÃO:
-    4.0
+    2.0
 
 DATA:
     02/09/2026
@@ -27,191 +25,53 @@ DATA:
 FINALIDADE
 ====================================================================
 
-Esta página funciona como a CENTRAL DE MISSÕES do Sistema Vicente.
+Apresentar as avaliações do 2º trimestre do 3º Ano B.
 
-Sua função é apresentar as avaliações escolares do 2º trimestre
-de maneira simples, visual e interativa.
+A página é dinâmica e identifica automaticamente:
 
-O calendário não serve apenas para mostrar datas.
-
-Ele também ajuda Vicente a:
-
-    - perceber o que já aconteceu;
-    - identificar a próxima missão;
-    - visualizar quantos dias faltam;
-    - acessar diretamente uma revisão disponível;
-    - organizar sua preparação;
-    - compreender a importância dos horários e combinados.
-
-====================================================================
-PERFIL
-====================================================================
-
-Nome:
-    Vicente
-
-Nascimento:
-    18/12/2017
-
-Idade:
-    8 anos em 2026
-
-====================================================================
-FILOSOFIA
-====================================================================
-
-O calendário utiliza a metáfora de aventura:
-
-    prova       = missão
-    matéria     = ilha
-    preparação  = treinamento
-    revisão     = preparação da tripulação
-    conhecimento = ferramenta
-    resultado   = experiência
-
-O objetivo não é criar pressão.
-
-O objetivo é ajudar Vicente a perceber que preparação,
-organização, descanso e cumprimento dos combinados fazem parte
-da jornada.
-
-====================================================================
-MODO APRENDIZADO
-====================================================================
-
-O sistema reforça:
-
-    APRENDER
-    INVESTIGAR
-    TENTAR
-    ENTENDER
-
-Frase principal:
-
-    "Você não está apenas decorando.
-     Está construindo ferramentas para pensar."
-
-Princípio:
-
-    "Entender como chegou nela
-     é mais importante que decorar a resposta."
-
-====================================================================
-FUNDO GLOBAL
-====================================================================
-
-Todas as páginas do Sistema Vicente utilizam:
-
-    /v1c50/fundo.jpg
-
-Para trocar o fundo de todas as páginas:
-
-    1. substituir o arquivo fundo.jpg;
-    2. manter exatamente o mesmo nome;
-    3. não alterar os HTMLs.
+    - prova de hoje
+    - prova de amanhã
+    - provas futuras
+    - provas já realizadas
 
 ====================================================================
 NAVEGAÇÃO
 ====================================================================
 
-Esta página possui acesso para:
+Sempre disponível:
 
-    - Mapa Principal
-    - Matemática
-    - Topo da página
-
-Toda nova página deverá manter navegação equivalente.
-
-====================================================================
-RESPONSIVIDADE
-====================================================================
-
-Compatível com:
-
-    - celular;
-    - tablet;
-    - notebook;
-    - desktop.
-
-Tecnologias:
-
-    - HTML5
-    - CSS3
-    - JavaScript puro
-
-Não utiliza frameworks externos.
+    MAPA
+    PROVAS
+    MATEMÁTICA
+    DIRETRIZES
+    TOPO
 
 ====================================================================
-CALENDÁRIO ESCOLAR
+INTEGRAÇÃO
 ====================================================================
 
-Avaliações do 2º trimestre:
+Carrega:
 
-    01/09/2026 - História
-    02/09/2026 - Matemática
-    03/09/2026 - Ciências
-    04/09/2026 - Geografia
-    08/09/2026 - Inglês
-    09/09/2026 - Português
+    css/sistema.css
+    config/diretrizes.js
+    js/sistema.js
 
-====================================================================
-INTERATIVIDADE
-====================================================================
-
-O JavaScript calcula automaticamente:
-
-    - HOJE!
-    - AMANHÃ
-    - EM X DIAS
-    - JÁ REALIZADA
-
-Também identifica automaticamente a próxima avaliação.
-
-As datas ficam cadastradas em apenas um local no JavaScript.
-
-Para adicionar uma nova avaliação:
-
-    1. adicionar o objeto correspondente em AVALIACOES;
-    2. informar data;
-    3. informar matéria;
-    4. informar ícone;
-    5. informar página de revisão, quando existir.
+As regras de rotina não ficam neste arquivo.
 
 ====================================================================
 HISTÓRICO
 ====================================================================
 
-v4.0 - 02/09/2026
+v2.0 - 02/09/2026
 
-    - Calendário totalmente reformulado.
-    - Criada Central de Missões.
-    - Criado cálculo automático das datas.
-    - Criado destaque da próxima avaliação.
-    - Criado status automático das provas.
-    - Criado acesso direto à revisão de Matemática.
-    - Criada navegação para o mapa principal.
-    - Adicionado fundo global fundo.jpg.
-    - Melhorada responsividade.
-    - Criados cartões de missão.
-    - Criada área de preparação.
-    - Documentação interna ampliada.
+    - Integrado ao sistema central.
+    - Criada navegação completa.
+    - Mantido fundo global.
+    - Corrigido cálculo de datas.
+    - Mantida atualização automática dos status.
+    - Preparado para futuras matérias.
+    - Documentação interna atualizada.
 
-====================================================================
-MANUTENÇÃO
-====================================================================
-
-NÃO APAGAR ESTA DOCUMENTAÇÃO.
-
-Sempre atualizar:
-
-    - VERSÃO
-    - DATA
-    - HISTÓRICO
-
-quando houver alteração significativa.
-
-====================================================================
-FIM DA DOCUMENTAÇÃO
 ====================================================================
 -->
 
@@ -223,957 +83,226 @@ FIM DA DOCUMENTAÇÃO
 >
 
 <meta
-    name="description"
-    content="Sistema Vicente - Central de Missões e calendário de avaliações."
->
-
-<meta
     name="theme-color"
     content="#07111f"
 >
 
-<title>Sistema Vicente | Central de Missões</title>
+<title>Provas | Sistema Vicente</title>
 
+<link rel="stylesheet" href="css/sistema.css">
 
 <style>
 
-/* ================================================================
-   01. CONFIGURAÇÃO GERAL
-================================================================ */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-
-    margin: 0;
-
     min-height: 100vh;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color: #f8fafc;
-
-    /*
-        FUNDO GLOBAL
-
-        Todas as páginas utilizam fundo.jpg.
-
-        Para alterar o fundo do sistema inteiro,
-        basta substituir o arquivo fundo.jpg.
-    */
-
-    background-image:
-        linear-gradient(
-            rgba(3, 10, 20, 0.70),
-            rgba(3, 10, 20, 0.82)
-        ),
-        url("fundo.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-attachment: fixed;
-
-    background-repeat: no-repeat;
 }
-
-
-/* ================================================================
-   02. PÁGINA
-================================================================ */
 
 .page {
-
-    width: 100%;
-
-    min-height: 100vh;
-
     padding: 10px;
 }
 
-
-/* ================================================================
-   03. NAVEGAÇÃO
-================================================================ */
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(7,17,31,.88);
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 15px 45px rgba(0,0,0,.35);
+}
 
 .topbar {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 0 auto 12px;
-
+    max-width: 900px;
+    margin: 0 auto 10px;
+    padding: 9px;
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
-
-    gap: 8px;
-
-    padding: 9px 11px;
-
-    background:
-        rgba(7, 17, 31, 0.90);
-
-    border:
-        1px solid rgba(255,255,255,.14);
-
-    border-radius: 15px;
-
-    backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.28);
+    gap: 7px;
+    background: rgba(7,17,31,.9);
+    border-radius: 14px;
 }
 
-.logo {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
+.topbar a {
     color: white;
-
     text-decoration: none;
-
-    font-size: 13px;
-
-    font-weight: 900;
+    padding: 8px 10px;
+    background: rgba(255,255,255,.08);
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: 800;
 }
 
-.logo-icon {
-
-    font-size: 24px;
-}
-
-.nav-buttons {
-
+.top-links {
     display: flex;
-
-    gap: 6px;
-
     flex-wrap: wrap;
-
+    gap: 5px;
     justify-content: flex-end;
 }
 
-.nav-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 38px;
-
-    padding: 7px 11px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.09);
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    transition: .2s;
-}
-
-.nav-button:hover {
-
-    background:
-        rgba(255,255,255,.18);
-
-    transform:
-        translateY(-1px);
-}
-
-.nav-button:focus-visible {
-
-    outline:
-        3px solid #facc15;
-
-    outline-offset: 2px;
-}
-
-
-/* ================================================================
-   04. CONTAINER
-================================================================ */
-
-.container {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    padding: 20px 15px 25px;
-
-    background:
-        rgba(7,17,31,.86);
-
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    border-radius: 24px;
-
-    backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.38);
-}
-
-
-/* ================================================================
-   05. CABEÇALHO
-================================================================ */
-
-.hero {
-
-    text-align: center;
-
-    padding: 8px 10px 22px;
-}
-
-.hero-icon {
-
-    font-size: 52px;
-
-    line-height: 1;
-
-    margin-bottom: 8px;
-}
-
-.hero h1 {
-
-    margin: 0;
-
-    font-size:
-        clamp(25px, 6vw, 42px);
-}
-
-.hero h1 span {
-
-    color: #facc15;
-}
-
-.hero p {
-
-    margin:
-        9px auto 0;
-
-    max-width: 700px;
-
-    color: #cbd5e1;
-
-    font-size:
-        clamp(12px, 3vw, 15px);
-
-    line-height: 1.6;
-}
-
-
-/* ================================================================
-   06. STATUS DO SISTEMA
-================================================================ */
-
-.system-status {
-
+.topbar .brand {
     display: flex;
-
-    justify-content: center;
-
     align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-bottom: 20px;
-
-    color: #94a3b8;
-
-    font-size: 11px;
+    gap: 7px;
 }
 
-.online {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    color: #86efac;
-
-    font-weight: 900;
+.topbar .brand span {
+    font-size: 20px;
 }
 
-.online-dot {
-
-    width: 9px;
-
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #22c55e;
-
-    box-shadow:
-        0 0 0 4px rgba(34,197,94,.14);
+.top {
+    height: 8px;
+    background: linear-gradient(
+        90deg,
+        #1e40af 33%,
+        #facc15 33%,
+        #facc15 66%,
+        #ef4444 66%
+    );
 }
 
-
-/* ================================================================
-   07. PRÓXIMA MISSÃO
-================================================================ */
-
-.next-mission {
-
-    margin-bottom: 22px;
-
-    padding: 20px;
-
+.header {
     text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,64,175,.42),
-            rgba(49,46,129,.48)
-        );
-
-    border:
-        1px solid rgba(250,204,21,.25);
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.18);
+    padding: 24px 15px;
+    background: linear-gradient(135deg,#1e3a8a,#3b82f6);
+    color: white;
 }
 
-.next-label {
-
-    color: #facc15;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 1px;
+.header .icon {
+    font-size: 45px;
 }
 
-.next-title {
-
-    margin:
-        7px 0 3px;
-
-    font-size:
-        clamp(20px, 5vw, 29px);
-
-    font-weight: 900;
+.header h1 {
+    margin: 5px 0;
+    font-size: clamp(23px,6vw,34px);
 }
 
-.next-date {
-
-    color: #cbd5e1;
-
+.header p {
+    margin: 0;
+    color: #dbeafe;
     font-size: 13px;
 }
 
-.next-count {
-
-    margin-top: 12px;
-
-    color: #86efac;
-
-    font-size: 14px;
-
-    font-weight: 900;
+.lista {
+    padding: 15px;
 }
 
-.next-action {
-
-    display: inline-flex;
-
-    margin-top: 14px;
-
-    padding: 9px 15px;
-
-    border-radius: 10px;
-
-    background: #facc15;
-
-    color: #111827;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
+.prova {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px;
+    margin-bottom: 11px;
+    border-radius: 14px;
+    border: 2px solid rgba(255,255,255,.08);
+    background: rgba(15,23,42,.80);
+    color: white;
     transition: .2s;
 }
 
-.next-action:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 5px 15px rgba(250,204,21,.25);
-}
-
-
-/* ================================================================
-   08. TÍTULO
-================================================================ */
-
-.section-title {
-
-    text-align: center;
-
-    margin-bottom: 15px;
-}
-
-.section-title h2 {
-
-    margin: 0;
-
-    color: #fde68a;
-
-    font-size: 22px;
-}
-
-.section-title p {
-
-    margin: 6px 0 0;
-
-    color: #94a3b8;
-
-    font-size: 12px;
-}
-
-
-/* ================================================================
-   09. LISTA DE PROVAS
-================================================================ */
-
-.lista {
-
-    display: grid;
-
-    gap: 12px;
-}
-
-
-/* ================================================================
-   10. CARTÃO DE PROVA
-================================================================ */
-
-.prova {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 13px;
-
-    background:
-        rgba(15,23,42,.82);
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-left:
-        5px solid #64748b;
-
-    border-radius: 16px;
-
-    transition:
-        transform .2s,
-        box-shadow .2s,
-        border-color .2s;
-}
-
-.prova:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 8px 22px rgba(0,0,0,.22);
-}
-
-
-/* ================================================================
-   11. PROVA HOJE
-================================================================ */
-
 .prova.hoje {
-
-    border-color:
-        rgba(59,130,246,.75);
-
-    border-left-color:
-        #3b82f6;
-
-    background:
-        rgba(30,64,175,.28);
-
-    box-shadow:
-        0 8px 25px rgba(59,130,246,.18);
-}
-
-.prova.proxima {
-
-    border-left-color:
-        #facc15;
+    border-color: #3b82f6;
+    background: rgba(30,64,175,.30);
+    box-shadow: 0 5px 20px rgba(59,130,246,.2);
 }
 
 .prova.passou {
-
-    opacity: .55;
-
-    background:
-        rgba(15,23,42,.55);
+    opacity: .48;
 }
-
-
-/* ================================================================
-   12. DATA
-================================================================ */
 
 .data-box {
-
-    min-width: 65px;
-
-    padding: 8px 5px;
-
+    min-width: 68px;
     text-align: center;
-
-    background:
-        rgba(255,255,255,.95);
-
-    border-radius: 11px;
-
-    box-shadow:
-        0 3px 9px rgba(0,0,0,.15);
+    background: white;
+    color: #1e3a8a;
+    border-radius: 10px;
+    padding: 8px 6px;
 }
 
-.data-box .dia {
-
-    color: #1e3a8a;
-
-    font-size: 25px;
-
+.dia {
+    font-size: 26px;
     font-weight: 900;
-
     line-height: 1;
 }
 
-.data-box .mes {
-
+.mes {
     margin-top: 3px;
-
-    color: #64748b;
-
     font-size: 11px;
-
     font-weight: 800;
+    color: #64748b;
 }
 
-
-/* ================================================================
-   13. INFORMAÇÕES
-================================================================ */
-
 .info {
-
     flex: 1;
-
-    min-width: 0;
 }
 
 .materia {
-
     font-size: 17px;
-
     font-weight: 900;
 }
 
 .semana {
-
-    margin-top: 3px;
-
+    margin-top: 4px;
     color: #94a3b8;
-
-    font-size: 11px;
+    font-size: 12px;
 }
 
-.missao {
-
-    display: inline-block;
-
-    margin-top: 6px;
-
-    padding: 4px 7px;
-
-    border-radius: 7px;
-
-    background:
-        rgba(250,204,21,.10);
-
-    color: #fde68a;
-
-    font-size: 9px;
-
-    font-weight: 900;
+.semana a {
+    color: #60a5fa;
 }
-
-
-/* ================================================================
-   14. STATUS
-================================================================ */
 
 .status {
-
-    flex-shrink: 0;
-
     padding: 6px 10px;
-
     border-radius: 20px;
-
     font-size: 10px;
-
     font-weight: 900;
-
     white-space: nowrap;
 }
 
 .s-hoje {
-
-    background:
-        #3b82f6;
-
-    color: white;
-
-    animation:
-        pulse 1.5s infinite;
+    background: #3b82f6;
 }
 
 .s-amanha {
-
-    background:
-        #f59e0b;
-
-    color: white;
+    background: #f59e0b;
 }
 
 .s-futuro {
-
-    background:
-        #475569;
-
-    color: #e2e8f0;
-}
-
-.s-proxima {
-
-    background:
-        #ca8a04;
-
-    color: white;
+    background: #64748b;
 }
 
 .s-passou {
-
-    background:
-        #334155;
-
+    background: #334155;
     color: #94a3b8;
 }
 
-@keyframes pulse {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.07);
-    }
-}
-
-
-/* ================================================================
-   15. LINK DE REVISÃO
-================================================================ */
-
-.review-link {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    margin-top: 5px;
-
-    color: #60a5fa;
-
-    text-decoration: underline;
-
-    font-size: 11px;
-
-    font-weight: 900;
-}
-
-.review-link:hover {
-
+.revisao {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 6px 9px;
+    border-radius: 8px;
+    background: rgba(96,165,250,.15);
     color: #93c5fd;
-}
-
-
-/* ================================================================
-   16. PREPARAÇÃO
-================================================================ */
-
-.preparation {
-
-    margin-top: 23px;
-
-    padding: 19px;
-
-    text-align: center;
-
-    background:
-        rgba(2,6,23,.62);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius: 18px;
-}
-
-.preparation h3 {
-
-    margin: 0;
-
-    color: #fde68a;
-
-    font-size: 18px;
-}
-
-.preparation p {
-
-    max-width: 700px;
-
-    margin:
-        8px auto 0;
-
-    color: #94a3b8;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-.preparation-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(150px,1fr)
-        );
-
-    gap: 9px;
-
-    margin-top: 15px;
-}
-
-.preparation-item {
-
-    padding: 12px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    border-radius: 12px;
-}
-
-.preparation-item .icon {
-
-    font-size: 23px;
-}
-
-.preparation-item strong {
-
-    display: block;
-
-    margin-top: 4px;
-
-    font-size: 11px;
-}
-
-.preparation-item span {
-
-    display: block;
-
-    margin-top: 3px;
-
-    color: #94a3b8;
-
-    font-size: 9px;
-
-    line-height: 1.4;
-}
-
-
-/* ================================================================
-   17. BOTÕES INFERIORES
-================================================================ */
-
-.bottom-nav {
-
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-top: 22px;
-}
-
-.bottom-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 40px;
-
-    padding: 8px 13px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 10px;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
     font-weight: 800;
-
-    transition: .2s;
+    text-decoration: none;
+    font-size: 11px;
 }
-
-.bottom-button:hover {
-
-    background:
-        rgba(255,255,255,.15);
-
-    transform:
-        translateY(-1px);
-}
-
-
-/* ================================================================
-   18. RODAPÉ
-================================================================ */
 
 .footer {
-
-    max-width: 1100px;
-
-    margin:
-        12px auto 0;
-
-    padding: 17px;
-
     text-align: center;
-
+    padding: 17px;
     color: #94a3b8;
-
-    font-size: 10px;
-
-    line-height: 1.6;
+    font-size: 11px;
+    background: rgba(2,6,23,.65);
 }
 
-
-/* ================================================================
-   19. RESPONSIVIDADE
-================================================================ */
-
-@media (max-width: 650px) {
-
-    .page {
-        padding: 7px;
-    }
+@media(max-width:600px) {
 
     .topbar {
-        padding: 7px;
+        flex-direction: column;
     }
 
-    .logo span:not(.logo-icon) {
-        display: none;
-    }
-
-    .nav-button {
-        padding: 7px 8px;
-        font-size: 10px;
-    }
-
-    .container {
-        padding:
-            17px 10px 20px;
-
-        border-radius: 20px;
-    }
-
-    .hero-icon {
-        font-size: 45px;
+    .top-links {
+        justify-content: center;
     }
 
     .prova {
@@ -1181,1044 +310,263 @@ body {
         flex-wrap: wrap;
     }
 
-    .data-box {
-        min-width: 58px;
-    }
-
-    .data-box .dia {
-        font-size: 22px;
-    }
-
-    .materia {
-        font-size: 15px;
+    .info {
+        min-width: calc(100% - 90px);
     }
 
     .status {
-        margin-left: 71px;
+        margin-left: 82px;
     }
 
-    .preparation-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
-}
-
-
-@media (max-width: 390px) {
-
-    .nav-buttons {
-        gap: 3px;
-    }
-
-    .nav-button {
-        padding:
-            6px 7px;
-
-        font-size: 9px;
-    }
-
-    .prova {
-        gap: 9px;
-    }
-
-    .status {
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .preparation-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* ================================================================
-   20. ACESSIBILIDADE
-================================================================ */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        scroll-behavior:
-            auto !important;
-
-        transition:
-            none !important;
-
-        animation:
-            none !important;
-    }
 }
 
 </style>
 
 </head>
 
-
 <body>
 
+<div class="page">
 
-<div class="page" id="topo">
+<nav class="topbar">
 
+    <a href="index.html" class="brand">
+        <span>🏴‍☠️</span>
+        SISTEMA VICENTE
+    </a>
 
-    <!-- ============================================================
-         21. NAVEGAÇÃO
-    ============================================================= -->
+    <div class="top-links">
 
-    <nav class="topbar">
+        <a href="index.html">🗺️ MAPA</a>
 
-        <a
-            href="index.html"
-            class="logo"
-            aria-label="Voltar para o mapa principal"
-        >
+        <a href="calendario.html">📅 PROVAS</a>
 
-            <span class="logo-icon">
-                🏴‍☠️
-            </span>
+        <a href="matematica.html">🔢 MATEMÁTICA</a>
 
-            <span>
-                SISTEMA VICENTE
-            </span>
+        <a href="diretriz.html">⚙️ DIRETRIZES</a>
 
-        </a>
+    </div>
 
+</nav>
 
-        <div class="nav-buttons">
+<main class="container">
 
-            <a
-                href="index.html"
-                class="nav-button"
-            >
-                🗺️ MAPA
-            </a>
+<div class="top"></div>
 
-            <a
-                href="matematica.html"
-                class="nav-button"
-            >
-                🔢 MATEMÁTICA
-            </a>
+<header class="header">
 
-        </div>
+    <div class="icon">📅</div>
 
-    </nav>
+    <h1>Central de Missões</h1>
 
-
-    <!-- ============================================================
-         22. CONTAINER
-    ============================================================= -->
-
-    <main class="container">
-
-
-        <!-- ========================================================
-             23. CABEÇALHO
-        ========================================================= -->
-
-        <header class="hero">
-
-            <div class="hero-icon">
-                🧭
-            </div>
-
-            <h1>
-                Central de <span>Missões</span>
-            </h1>
-
-            <p>
-                Aqui você encontra suas próximas missões.
-                Prepare-se, organize sua jornada e avance uma ilha
-                de cada vez.
-            </p>
-
-        </header>
-
-
-        <!-- ========================================================
-             24. STATUS
-        ========================================================= -->
-
-        <div class="system-status">
-
-            <span class="online">
-
-                <span class="online-dot"></span>
-
-                SISTEMA ONLINE
-
-            </span>
-
-            <span>•</span>
-
-            <span>
-                Calendário de avaliações ativo
-            </span>
-
-        </div>
-
-
-        <!-- ========================================================
-             25. PRÓXIMA MISSÃO
-        ========================================================= -->
-
-        <section
-            class="next-mission"
-            id="nextMission"
-        >
-
-            <div class="next-label">
-                PRÓXIMA MISSÃO
-            </div>
-
-            <div
-                class="next-title"
-                id="nextTitle"
-            >
-                Carregando...
-            </div>
-
-            <div
-                class="next-date"
-                id="nextDate"
-            >
-            </div>
-
-            <div
-                class="next-count"
-                id="nextCount"
-            >
-            </div>
-
-            <a
-                href="#"
-                id="nextAction"
-                class="next-action"
-                style="display:none;"
-            >
-                🚀 ABRIR REVISÃO
-            </a>
-
-        </section>
-
-
-        <!-- ========================================================
-             26. TÍTULO DO CALENDÁRIO
-        ========================================================= -->
-
-        <section class="section-title">
-
-            <h2>
-                📅 MAPA DAS AVALIAÇÕES
-            </h2>
-
-            <p>
-                Cada prova é uma missão. A preparação começa antes.
-            </p>
-
-        </section>
-
-
-        <!-- ========================================================
-             27. LISTA
-        ========================================================= -->
-
-        <section
-            class="lista"
-            id="listaProvas"
-        >
-        </section>
-
-
-        <!-- ========================================================
-             28. PREPARAÇÃO
-        ========================================================= -->
-
-        <section class="preparation">
-
-            <h3>
-                ⚓ Preparar também faz parte da missão
-            </h3>
-
-            <p>
-                Um aventureiro precisa cuidar da própria energia.
-                Estudar, dormir, comer, descansar e cumprir os
-                combinados ajudam a preparar a tripulação para
-                cada desafio.
-            </p>
-
-
-            <div class="preparation-grid">
-
-
-                <div class="preparation-item">
-
-                    <div class="icon">
-                        🧠
-                    </div>
-
-                    <strong>
-                        ESTUDAR
-                    </strong>
-
-                    <span>
-                        Treinar o cérebro
-                        antes da missão.
-                    </span>
-
-                </div>
-
-
-                <div class="preparation-item">
-
-                    <div class="icon">
-                        😴
-                    </div>
-
-                    <strong>
-                        DORMIR
-                    </strong>
-
-                    <span>
-                        O cérebro também
-                        precisa descansar.
-                    </span>
-
-                </div>
-
-
-                <div class="preparation-item">
-
-                    <div class="icon">
-                        🍎
-                    </div>
-
-                    <strong>
-                        ALIMENTAR
-                    </strong>
-
-                    <span>
-                        Energia para
-                        continuar a jornada.
-                    </span>
-
-                </div>
-
-
-                <div class="preparation-item">
-
-                    <div class="icon">
-                        ⏰
-                    </div>
-
-                    <strong>
-                        HORÁRIOS
-                    </strong>
-
-                    <span>
-                        Organização ajuda
-                        a missão acontecer.
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================================================
-             29. NAVEGAÇÃO INFERIOR
-        ========================================================= -->
-
-        <nav class="bottom-nav">
-
-            <a
-                href="index.html"
-                class="bottom-button"
-            >
-                🗺️ VOLTAR AO MAPA
-            </a>
-
-            <a
-                href="matematica.html"
-                class="bottom-button"
-            >
-                🔢 REVISAR MATEMÁTICA
-            </a>
-
-            <a
-                href="#topo"
-                class="bottom-button"
-            >
-                ⬆️ TOPO
-            </a>
-
-        </nav>
-
-
-    </main>
-
-
-    <!-- ============================================================
-         30. RODAPÉ
-    ============================================================= -->
-
-    <footer class="footer">
-
-        Sistema Vicente
-
+    <p>
+        Avaliações — 2º Trimestre
         <br>
+        3º Ano B • Professora Jéssica • Vicente
+    </p>
 
-        Uma aventura construída para aprender,
-        pensar e descobrir.
+</header>
 
-        <br><br>
+<section class="lista">
 
-        N74 TEC © 2026
+<div class="prova" id="p01">
 
-    </footer>
+    <div class="data-box">
+        <div class="dia">01</div>
+        <div class="mes">SET</div>
+    </div>
 
+    <div class="info">
+        <div class="materia">🏛️ História</div>
+        <div class="semana">Terça-feira</div>
+    </div>
+
+    <div class="status">CARREGANDO</div>
 
 </div>
 
+<div class="prova" id="p02">
+
+    <div class="data-box">
+        <div class="dia">02</div>
+        <div class="mes">SET</div>
+    </div>
+
+    <div class="info">
+        <div class="materia">📝 Matemática</div>
+        <div class="semana">
+            Quarta-feira
+            <br>
+            <a class="revisao" href="matematica.html">
+                🔢 ABRIR REVISÃO
+            </a>
+        </div>
+    </div>
+
+    <div class="status">CARREGANDO</div>
+
+</div>
+
+<div class="prova" id="p03">
+
+    <div class="data-box">
+        <div class="dia">03</div>
+        <div class="mes">SET</div>
+    </div>
+
+    <div class="info">
+        <div class="materia">🔬 Ciências</div>
+        <div class="semana">Quinta-feira</div>
+    </div>
+
+    <div class="status">CARREGANDO</div>
+
+</div>
+
+<div class="prova" id="p04">
+
+    <div class="data-box">
+        <div class="dia">04</div>
+        <div class="mes">SET</div>
+    </div>
+
+    <div class="info">
+        <div class="materia">🌎 Geografia</div>
+        <div class="semana">Sexta-feira</div>
+    </div>
+
+    <div class="status">CARREGANDO</div>
+
+</div>
+
+<div class="prova" id="p08">
+
+    <div class="data-box">
+        <div class="dia">08</div>
+        <div class="mes">SET</div>
+    </div>
+
+    <div class="info">
+        <div class="materia">🇬🇧 Inglês</div>
+        <div class="semana">Terça-feira</div>
+    </div>
+
+    <div class="status">CARREGANDO</div>
+
+</div>
+
+<div class="prova" id="p09">
+
+    <div class="data-box">
+        <div class="dia">09</div>
+        <div class="mes">SET</div>
+    </div>
+
+    <div class="info">
+        <div class="materia">📚 Português</div>
+        <div class="semana">Quarta-feira</div>
+    </div>
+
+    <div class="status">CARREGANDO</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+    Feito para ajudar Vicente a organizar sua jornada. 💙
+
+    <br><br>
+
+    N74 TEC © 2026
+
+</footer>
+
+</main>
+
+</div>
 
 <script>
 
-/*
-====================================================================
-31. SISTEMA DE AVALIAÇÕES
-====================================================================
+const provas = {
 
-TODAS AS DATAS SÃO CONTROLADAS AQUI.
+    p01: new Date(2026, 8, 1),
+    p02: new Date(2026, 8, 2),
+    p03: new Date(2026, 8, 3),
+    p04: new Date(2026, 8, 4),
+    p08: new Date(2026, 8, 8),
+    p09: new Date(2026, 8, 9)
 
-Para adicionar uma prova:
+};
 
-{
-    data: "2026-09-10",
-    materia: "Nome da matéria",
-    icone: "📚",
-    revisao: "pagina.html"
-}
-
-Se não houver página de revisão:
-
-    revisao: null
-
-====================================================================
-*/
-
-const AVALIACOES = [
-
-    {
-        data: "2026-09-01",
-        materia: "História",
-        icone: "🏛️",
-        revisao: null
-    },
-
-    {
-        data: "2026-09-02",
-        materia: "Matemática",
-        icone: "🔢",
-        revisao: "matematica.html"
-    },
-
-    {
-        data: "2026-09-03",
-        materia: "Ciências",
-        icone: "🔬",
-        revisao: null
-    },
-
-    {
-        data: "2026-09-04",
-        materia: "Geografia",
-        icone: "🌎",
-        revisao: null
-    },
-
-    {
-        data: "2026-09-08",
-        materia: "Inglês",
-        icone: "🇬🇧",
-        revisao: null
-    },
-
-    {
-        data: "2026-09-09",
-        materia: "Português",
-        icone: "📚",
-        revisao: null
-    }
-
-];
-
-
-/*
-====================================================================
-32. FUNÇÕES DE DATA
-====================================================================
-*/
-
-/*
-    Cria a data sem depender do fuso horário
-    utilizado pelo navegador.
-*/
-
-function criarData(dataTexto) {
-
-    const partes = dataTexto.split("-");
-
-    return new Date(
-        Number(partes[0]),
-        Number(partes[1]) - 1,
-        Number(partes[2])
-    );
-}
-
-
-/*
-    Remove horas/minutos/segundos.
-
-    Isso evita problemas de diferença de horário
-    entre celular, computador e servidor.
-*/
-
-function somenteData(data) {
+function dataSemHora(data) {
 
     return new Date(
         data.getFullYear(),
         data.getMonth(),
         data.getDate()
     );
+
 }
 
+const hoje = dataSemHora(new Date());
 
-/*
-====================================================================
-33. FORMATAÇÃO
-====================================================================
-*/
+Object.keys(provas).forEach(function(id) {
 
-function nomeDiaSemana(data) {
+    const elemento = document.getElementById(id);
 
-    const dias = [
+    const status = elemento.querySelector(".status");
 
-        "Domingo",
-        "Segunda-feira",
-        "Terça-feira",
-        "Quarta-feira",
-        "Quinta-feira",
-        "Sexta-feira",
-        "Sábado"
-
-    ];
-
-    return dias[data.getDay()];
-}
-
-
-function formatarData(data) {
-
-    return data.toLocaleDateString(
-        "pt-BR",
-        {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric"
-        }
-    );
-}
-
-
-/*
-====================================================================
-34. CALCULAR DIFERENÇA
-====================================================================
-*/
-
-function diferencaDias(dataAlvo, dataAtual) {
-
-    const umDia =
-        1000 * 60 * 60 * 24;
-
-    return Math.round(
-        (dataAlvo - dataAtual) / umDia
-    );
-}
-
-
-/*
-====================================================================
-35. CRIAÇÃO DOS CARTÕES
-====================================================================
-*/
-
-function criarCartao(avaliacao, hoje) {
-
-    const dataProva =
-        criarData(avaliacao.data);
+    const dataProva = dataSemHora(provas[id]);
 
     const diferenca =
-        diferencaDias(
-            dataProva,
-            hoje
+        Math.round(
+            (dataProva - hoje) /
+            (1000 * 60 * 60 * 24)
         );
 
-    const dia =
-        String(
-            dataProva.getDate()
-        ).padStart(2, "0");
-
-    const mes =
-        String(
-            dataProva.getMonth() + 1
-        ).padStart(2, "0");
-
-
-    const cartao =
-        document.createElement("article");
-
-    cartao.className = "prova";
-
-
-    let statusTexto = "";
-
-    let statusClasse = "s-futuro";
-
-
-    /*
-        PROVA DE HOJE
-    */
+    elemento.classList.remove("hoje","passou");
 
     if (diferenca === 0) {
 
-        cartao.classList.add("hoje");
+        elemento.classList.add("hoje");
 
-        statusTexto = "HOJE!";
-
-        statusClasse = "s-hoje";
-
-    }
-
-
-    /*
-        PROVA JÁ REALIZADA
-    */
-
-    else if (diferenca < 0) {
-
-        cartao.classList.add("passou");
-
-        statusTexto = "JÁ REALIZADA";
-
-        statusClasse = "s-passou";
+        status.className = "status s-hoje";
+        status.innerText = "HOJE!";
 
     }
-
-
-    /*
-        PROVA AMANHÃ
-    */
 
     else if (diferenca === 1) {
 
-        statusTexto = "AMANHÃ";
-
-        statusClasse = "s-amanha";
+        status.className = "status s-amanha";
+        status.innerText = "AMANHÃ";
 
     }
 
+    else if (diferenca < 0) {
 
-    /*
-        PRÓXIMA PROVA
-    */
+        elemento.classList.add("passou");
 
-    else if (
-        diferenca > 1 &&
-        !window.proximaEncontrada
-    ) {
+        status.className = "status s-passou";
+        status.innerText = "JÁ FOI";
 
-        cartao.classList.add("proxima");
+    }
 
-        statusTexto =
+    else {
+
+        status.className = "status s-futuro";
+        status.innerText =
             "EM " + diferenca + " DIAS";
 
-        statusClasse =
-            "s-proxima";
-
     }
 
-
-    /*
-        PROVAS FUTURAS
-    */
-
-    else {
-
-        statusTexto =
-            "EM " + diferenca + " DIAS";
-
-        statusClasse =
-            "s-futuro";
-
-    }
-
-
-    /*
-        LINK DE REVISÃO
-    */
-
-    let revisaoHTML = "";
-
-
-    if (avaliacao.revisao) {
-
-        revisaoHTML = `
-
-            <a
-                href="${avaliacao.revisao}"
-                class="review-link"
-            >
-                🎯 Abrir revisão
-            </a>
-
-        `;
-    }
-
-
-    /*
-        MARCA A PRÓXIMA PROVA
-    */
-
-    let missaoHTML = "";
-
-
-    if (
-        diferenca >= 0 &&
-        !window.proximaEncontrada
-    ) {
-
-        missaoHTML = `
-
-            <span class="missao">
-                ⭐ PRÓXIMA MISSÃO
-            </span>
-
-        `;
-
-        window.proximaEncontrada = true;
-
-    }
-
-
-    cartao.innerHTML = `
-
-        <div class="data-box">
-
-            <div class="dia">
-                ${dia}
-            </div>
-
-            <div class="mes">
-                /${mes}
-            </div>
-
-        </div>
-
-
-        <div class="info">
-
-            <div class="materia">
-                ${avaliacao.icone}
-                ${avaliacao.materia}
-            </div>
-
-            <div class="semana">
-                ${nomeDiaSemana(dataProva)}
-                •
-                ${formatarData(dataProva)}
-            </div>
-
-            ${missaoHTML}
-
-            ${revisaoHTML}
-
-        </div>
-
-
-        <div
-            class="status ${statusClasse}"
-        >
-            ${statusTexto}
-        </div>
-
-    `;
-
-
-    return cartao;
-}
-
-
-/*
-====================================================================
-36. ATUALIZAÇÃO DA PRÓXIMA MISSÃO
-====================================================================
-*/
-
-function atualizarProximaMissao(hoje) {
-
-    const futuras =
-        AVALIACOES
-            .map(avaliacao => {
-
-                return {
-                    ...avaliacao,
-                    dataObjeto:
-                        criarData(avaliacao.data)
-                };
-
-            })
-            .filter(avaliacao =>
-                avaliacao.dataObjeto >= hoje
-            )
-            .sort(
-                (a,b) =>
-                    a.dataObjeto -
-                    b.dataObjeto
-            );
-
-
-    const titulo =
-        document.getElementById(
-            "nextTitle"
-        );
-
-    const data =
-        document.getElementById(
-            "nextDate"
-        );
-
-    const contador =
-        document.getElementById(
-            "nextCount"
-        );
-
-    const acao =
-        document.getElementById(
-            "nextAction"
-        );
-
-
-    /*
-        Nenhuma prova futura.
-    */
-
-    if (futuras.length === 0) {
-
-        titulo.innerText =
-            "🏆 Todas as missões concluídas!";
-
-        data.innerText =
-            "O calendário não possui novas avaliações cadastradas.";
-
-        contador.innerText =
-            "Excelente trabalho, Vicente!";
-
-        acao.style.display = "none";
-
-        return;
-    }
-
-
-    const proxima =
-        futuras[0];
-
-    const dias =
-        diferencaDias(
-            proxima.dataObjeto,
-            hoje
-        );
-
-
-    titulo.innerText =
-        proxima.icone +
-        " " +
-        proxima.materia;
-
-
-    data.innerText =
-        formatarData(
-            proxima.dataObjeto
-        ) +
-        " • " +
-        nomeDiaSemana(
-            proxima.dataObjeto
-        );
-
-
-    if (dias === 0) {
-
-        contador.innerText =
-            "🔥 É HOJE! A missão começou.";
-
-    }
-
-    else if (dias === 1) {
-
-        contador.innerText =
-            "⚡ É amanhã! Hora de preparar a tripulação.";
-
-    }
-
-    else {
-
-        contador.innerText =
-            "⏳ Faltam " +
-            dias +
-            " dias para a missão.";
-
-    }
-
-
-    if (proxima.revisao) {
-
-        acao.href =
-            proxima.revisao;
-
-        acao.style.display =
-            "inline-flex";
-
-        acao.innerText =
-            "🚀 ABRIR REVISÃO";
-
-    }
-
-    else {
-
-        acao.style.display =
-            "none";
-
-    }
-
-}
-
-
-/*
-====================================================================
-37. INICIALIZAÇÃO
-====================================================================
-*/
-
-function iniciarSistema() {
-
-    /*
-        Data atual do dispositivo.
-
-        O calendário acompanha automaticamente
-        o dia em que a página estiver sendo aberta.
-    */
-
-    const hoje =
-        somenteData(
-            new Date()
-        );
-
-
-    /*
-        Controla qual será a primeira
-        prova futura.
-    */
-
-    window.proximaEncontrada = false;
-
-
-    /*
-        Ordena as avaliações.
-    */
-
-    const avaliacoesOrdenadas =
-        [...AVALIACOES].sort(
-            (a,b) =>
-                criarData(a.data) -
-                criarData(b.data)
-        );
-
-
-    const lista =
-        document.getElementById(
-            "listaProvas"
-        );
-
-
-    /*
-        Cria cada cartão.
-    */
-
-    avaliacoesOrdenadas.forEach(
-        avaliacao => {
-
-            const cartao =
-                criarCartao(
-                    avaliacao,
-                    hoje
-                );
-
-            lista.appendChild(
-                cartao
-            );
-
-        }
-    );
-
-
-    /*
-        Atualiza o painel
-        da próxima missão.
-    */
-
-    atualizarProximaMissao(
-        hoje
-    );
-
-}
-
-
-/*
-====================================================================
-38. EXECUÇÃO
-====================================================================
-*/
-
-iniciarSistema();
-
-
-/*
-====================================================================
-39. HISTÓRICO JAVASCRIPT
-====================================================================
-
-v4.0
-
-    - Criado sistema de datas automático.
-    - Criado cálculo de dias restantes.
-    - Criado status das avaliações.
-    - Criado destaque da próxima missão.
-    - Criada integração com páginas de revisão.
-    - Criada ordenação automática.
-    - Criada estrutura para adicionar novas provas.
-
-====================================================================
-*/
+});
 
 </script>
 
+<script src="config/diretrizes.js"></script>
+<script src="js/sistema.js"></script>
 
 </body>
 
