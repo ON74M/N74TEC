@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
 
 <!--
 ====================================================================
-                 SISTEMA VICENTE - DIRETRIZES
+                    SISTEMA VICENTE
+                PAINEL DE DIRETRIZES
 ====================================================================
 
 ARQUIVO:
@@ -28,688 +28,95 @@ DATA:
 FINALIDADE
 ====================================================================
 
-Este arquivo é a CENTRAL DE DIRETRIZES do Sistema Vicente.
+Esta página apresenta as diretrizes utilizadas pelo Sistema Vicente.
 
 IMPORTANTE:
 
-Este arquivo NÃO foi criado para ficar sendo exibido continuamente
-para o Vicente.
+Este arquivo NÃO é a fonte principal das regras.
 
-Ele funciona como uma CENTRAL DE CONFIGURAÇÃO E DOCUMENTAÇÃO.
+As regras ficam centralizadas em:
 
-As demais páginas do Sistema Vicente poderão consultar estas regras
-para apresentar lembretes, mensagens e orientações quando necessário.
+    /config/diretrizes.js
 
-O objetivo é evitar que regras sejam repetidas em cada HTML.
+O sistema operacional das páginas é:
+
+    diretrizes.js
+          ↓
+    sistema.js
+          ↓
+    páginas HTML
+
+Dessa forma, uma alteração de horário ou regra poderá ser realizada
+em um único local.
 
 Exemplo:
 
-Se o horário limite for alterado de 20:00 para 21:00,
-a regra deverá ser alterada na central técnica das diretrizes,
-e as páginas passarão a utilizar o novo valor.
+    limiteSistema: "20:00"
+
+pode ser alterado para:
+
+    limiteSistema: "21:00"
+
+sem necessidade de modificar todas as páginas.
 
 ====================================================================
-FILOSOFIA PRINCIPAL
+FILOSOFIA
 ====================================================================
 
-O Sistema Vicente NÃO é um sistema de controle.
+O sistema deve funcionar como um AJUDANTE.
 
-É um ASSISTENTE.
+Não deve funcionar como ferramenta de punição.
 
-Sua função é ajudar Vicente a:
+Os lembretes devem:
 
-    - organizar sua rotina;
-    - lembrar compromissos;
-    - cuidar do corpo;
-    - cuidar do descanso;
-    - aprender;
-    - desenvolver autonomia;
-    - pensar;
-    - conviver melhor;
-    - utilizar tecnologia de maneira positiva.
+    - orientar
+    - incentivar
+    - ensinar
+    - lembrar
+    - estimular responsabilidade
+    - ajudar na organização
 
-O sistema deve lembrar, incentivar e orientar.
-
-Não deve humilhar, ameaçar ou constranger.
+O objetivo é ensinar Vicente a administrar seu próprio tempo.
 
 ====================================================================
-PRINCÍPIO FUNDAMENTAL
+ÁREAS DAS DIRETRIZES
 ====================================================================
 
-"O Sistema Vicente existe para ajudar Vicente a aprender,
-cuidar de si, organizar sua rotina e desenvolver autonomia.
+As diretrizes podem controlar:
 
-Nunca para controlá-lo, constrangê-lo ou substituí-lo
-nas decisões."
-
-====================================================================
-PERFIL
-====================================================================
-
-Nome:
-    Vicente
-
-Nascimento:
-    18/12/2017
-
-Idade:
-    8 anos em 2026
-
-Interesses considerados:
-
-    - One Piece
-    - aventuras
-    - animais
+    - sono
+    - acordar
+    - alimentação
+    - frutas
+    - verduras
+    - proteínas
+    - hidratação
+    - higiene
+    - estudos
+    - brincadeiras
     - tecnologia
-    - desafios
-    - lógica
-    - rock clássico
-    - Metallica
-
-A temática de aventura deve ser utilizada para aumentar
-o interesse pelo aprendizado.
-
-O sistema deve possuir identidade própria.
-
-Não depende de personagens ou imagens oficiais de One Piece.
+    - descanso
+    - comportamento
+    - respeito
+    - generosidade
+    - palavras mágicas
+    - organização
 
 ====================================================================
-1. ROTINA
+REGRA DE MANUTENÇÃO
 ====================================================================
 
-A rotina deve ser apresentada como uma sequência de missões.
+NÃO duplicar regras nos HTMLs.
 
-Exemplo:
+Sempre que possível:
 
-    acordar
-       ↓
-    alimentar
-       ↓
-    preparar-se
-       ↓
-    escola
-       ↓
-    estudar
-       ↓
-    brincar
-       ↓
-    banho
-       ↓
-    jantar
-       ↓
-    desacelerar
-       ↓
-    dormir
+    regra → diretrizes.js
 
-A rotina não deve ser apresentada como punição.
+    funcionamento → sistema.js
 
-Deve ser apresentada como preparação.
+    aparência → sistema.css
 
-====================================================================
-2. SONO
-====================================================================
-
-OBJETIVO DE SONO:
-
-    aproximadamente 10 horas por noite.
-
-HORÁRIO DE REFERÊNCIA:
-
-    acordar: 07:00
-    dormir: 21:00
-
-A lógica é:
-
-    21:00 → 07:00
-    aproximadamente 10 horas.
-
-O sistema deve lembrar que dormir é importante para:
-
-    - cérebro;
-    - memória;
-    - aprendizado;
-    - concentração;
-    - energia;
-    - recuperação do corpo.
-
-Exemplos de mensagens:
-
-    "Seu cérebro também precisa descansar."
-
-    "Dormir faz parte do treinamento."
-
-    "A missão de hoje terminou.
-     Amanhã teremos novas descobertas."
-
-====================================================================
-3. PREPARAÇÃO PARA DORMIR
-====================================================================
-
-HORÁRIO DE REFERÊNCIA:
-
-    20:00 → encerramento gradual do uso do sistema.
-
-    20:30 → desacelerar.
-
-    21:00 → dormir.
-
-O sistema deve evitar mensagens agressivas.
-
-Não utilizar:
-
-    "SAIA AGORA."
-
-Preferir:
-
-    "A aventura está chegando ao fim."
-
-    "Hora de desacelerar o cérebro."
-
-    "Um aventureiro precisa estar preparado
-     para a próxima missão."
-
-====================================================================
-4. ACORDAR
-====================================================================
-
-HORÁRIO:
-
-    07:00
-
-Mensagem possível:
-
-    "Bom dia, Vicente!
-     O novo dia começou."
-
-Outra:
-
-    "Seu cérebro descansou.
-     Vamos começar uma nova missão?"
-
-====================================================================
-5. ESCOLA
-====================================================================
-
-HORÁRIO DE REFERÊNCIA:
-
-    09:00
-
-A van escolar passa para buscar Vicente aproximadamente
-às 09:00.
-
-O sistema pode lembrar anteriormente:
-
-    "Hora de preparar a mochila."
-
-    "Confira seus materiais."
-
-    "A van está chegando."
-
-O sistema não deve gerar excesso de notificações.
-
-====================================================================
-6. ALIMENTAÇÃO
-====================================================================
-
-A alimentação deve ser tratada como combustível para o corpo.
-
-O sistema deve incentivar:
-
-    - café da manhã;
-    - almoço;
-    - jantar;
-    - frutas;
-    - verduras;
-    - legumes;
-    - proteínas;
-    - água.
-
-Mensagem conceitual:
-
-    "Seu corpo está crescendo e precisa de combustível."
-
-Outra:
-
-    "Frutas, verduras e proteínas ajudam seu corpo
-     a crescer e funcionar bem."
-
-O sistema deve evitar linguagem de culpa.
-
-Não utilizar mensagens que façam Vicente sentir vergonha
-por comer determinado alimento.
-
-====================================================================
-7. ULTRAPROCESSADOS
-====================================================================
-
-O sistema deve incentivar equilíbrio alimentar.
-
-Pode lembrar que alimentos ultraprocessados devem ser consumidos
-com moderação e que alimentos naturais são importantes.
-
-Preferir:
-
-    "Que tal colocar uma fruta nessa missão?"
-
-    "Seu corpo precisa de diferentes nutrientes."
-
-Evitar:
-
-    "Isso faz mal."
-
-    "Você não pode comer isso."
-
-A alimentação deve ser orientada de forma positiva.
-
-====================================================================
-8. CONFIRMAÇÃO DE ROTINA
-====================================================================
-
-Quando apropriado, o sistema poderá perguntar:
-
-    "Você já tomou café da manhã?"
-
-Botões:
-
-    [ SIM ]
-    [ AINDA NÃO ]
-
-Outra possibilidade:
-
-    "Você já tomou sua vitamina?"
-
-    [ SIM ]
-    [ AINDA NÃO ]
-
-IMPORTANTE:
-
-O sistema pode lembrar uma rotina configurada pelo responsável,
-mas não deve determinar medicamentos, doses ou tratamentos.
-
-Medicamentos devem seguir orientação do responsável e
-profissionais de saúde.
-
-====================================================================
-9. HIGIENE
-====================================================================
-
-O sistema poderá lembrar:
-
-    - banho;
-    - escovar os dentes;
-    - organização pessoal.
-
-Exemplo:
-
-    "Missão de higiene:
-     hora de preparar o aventureiro."
-
-O objetivo é desenvolver autonomia.
-
-====================================================================
-10. ATIVIDADE FÍSICA E CORPO
-====================================================================
-
-O sistema deve incentivar movimento e atividade física adequada
-à idade.
-
-Mensagem:
-
-    "Seu corpo também está em treinamento."
-
-    "Músculos precisam de movimento,
-     descanso e boa alimentação."
-
-Não utilizar o sistema para prescrever exercícios específicos
-ou tratamentos.
-
-====================================================================
-11. APRENDIZADO
-====================================================================
-
-O princípio central:
-
-    APRENDER
-    INVESTIGAR
-    TENTAR
-    ENTENDER
-
-Frase principal:
-
-    "Você não está apenas decorando.
-     Está construindo ferramentas para pensar."
-
-Segundo princípio:
-
-    "Entender como chegou nela
-     é mais importante que decorar a resposta."
-
-O erro faz parte do aprendizado.
-
-====================================================================
-12. CONVIVÊNCIA
-====================================================================
-
-O sistema deve incentivar:
-
-    - respeito;
-    - educação;
-    - generosidade;
-    - empatia;
-    - responsabilidade;
-    - capacidade de ouvir;
-    - ajudar outras pessoas.
-
-====================================================================
-13. PALAVRAS MÁGICAS
-====================================================================
-
-O sistema poderá lembrar ocasionalmente:
-
-    POR FAVOR
-    OBRIGADO
-    COM LICENÇA
-    DESCULPA
-
-Exemplo:
-
-    "Uma verdadeira aventura também é saber
-     tratar bem as pessoas."
-
-Outro:
-
-    "Antes de falar, pense:
-     eu gostaria que falassem assim comigo?"
-
-Não repetir excessivamente.
-
-====================================================================
-14. GENEROSIDADE
-====================================================================
-
-O sistema deve incentivar pequenas atitudes:
-
-    - ajudar;
-    - compartilhar;
-    - agradecer;
-    - ouvir;
-    - respeitar;
-    - cuidar dos animais;
-    - cuidar do ambiente.
-
-Exemplo:
-
-    "Hoje você teve uma oportunidade
-     de ajudar alguém?"
-
-Não exigir resposta.
-
-É apenas uma provocação positiva.
-
-====================================================================
-15. TECNOLOGIA
-====================================================================
-
-A tecnologia deve ser utilizada de forma positiva.
-
-Objetivo:
-
-    pouco tempo de tela,
-    mas tempo útil.
-
-O Sistema Vicente não deve tentar substituir
-brincadeiras, amigos, família, atividades físicas
-ou experiências fora da tela.
-
-A tecnologia deve ser uma ferramenta.
-
-====================================================================
-16. ENTRETENIMENTO
-====================================================================
-
-O sistema pode incentivar equilíbrio entre:
-
-    - estudo;
-    - brincadeira;
-    - jogos;
-    - família;
-    - atividade física;
-    - descanso;
-    - sono.
-
-Não utilizar o Sistema Vicente como mecanismo de punição
-contra outros jogos.
-
-O objetivo é oferecer uma alternativa digital positiva.
-
-====================================================================
-17. FREQUÊNCIA DOS LEMBRETES
-====================================================================
-
-REGRA IMPORTANTE:
-
-Não incomodar.
-
-Se Vicente acabou de confirmar uma rotina,
-não perguntar novamente poucos minutos depois.
-
-O sistema deverá futuramente utilizar:
-
-    - intervalo mínimo;
-    - prioridade;
-    - confirmação;
-    - histórico de exibição.
-
-Exemplo:
-
-    uma confirmação deve evitar
-    repetição imediata do mesmo lembrete.
-
-====================================================================
-18. HORÁRIO LIMITE DE ACESSO
-====================================================================
-
-HORÁRIO ATUAL:
-
-    20:00
-
-Este horário é uma referência inicial.
-
-Mensagem antes do encerramento:
-
-    "A aventura está chegando ao fim."
-
-Mensagem no encerramento:
-
-    "Missão encerrada.
-     Hora de descansar e preparar o cérebro
-     para a próxima aventura."
-
-IMPORTANTE:
-
-O sistema NÃO deve bloquear o dispositivo.
-
-O objetivo é lembrar e orientar.
-
-====================================================================
-19. MATRIX
-====================================================================
-
-Vicente conhece o conceito de "Matrix" como uma metáfora
-para compreender que a escola e a sociedade também ensinam
-as pessoas a seguir regras e se preparar para a vida profissional.
-
-O Sistema Vicente deve transformar esse conceito em
-uma oportunidade de desenvolver pensamento crítico.
-
-Ensinar:
-
-    observar
-    questionar
-    compreender
-    resolver
-    criar
-    decidir
-
-O objetivo não é ensinar Vicente a rejeitar regras.
-
-É ensinar que compreender uma regra é diferente
-de simplesmente obedecer sem pensar.
-
-====================================================================
-20. ANIMAIS
-====================================================================
-
-Como Vicente gosta de animais, mensagens e exemplos podem
-ocasionalmente utilizar animais.
-
-Exemplo:
-
-    "Você sabia que alguns animais possuem estratégias
-     incríveis para sobreviver?"
-
-Animais podem ser utilizados principalmente em:
-
-    - Ciências;
-    - desafios;
-    - problemas matemáticos;
-    - exemplos de comportamento;
-    - curiosidades.
-
-====================================================================
-21. AVENTURA
-====================================================================
-
-O sistema pode utilizar conceitos:
-
-    - mapa;
-    - ilha;
-    - missão;
-    - tripulação;
-    - tesouro;
-    - exploração;
-    - descoberta;
-    - experiência;
-    - conquista.
-
-A aventura é uma camada de motivação.
-
-O conteúdo escolar continua sendo o objetivo principal.
-
-====================================================================
-22. REGRAS PARA MENSAGENS
-====================================================================
-
-As mensagens devem ser:
-
-    - curtas;
-    - claras;
-    - positivas;
-    - adequadas para uma criança de 8 anos;
-    - motivadoras;
-    - respeitosas.
-
-Evitar:
-
-    - ameaças;
-    - humilhação;
-    - culpa;
-    - medo;
-    - excesso de notificações;
-    - linguagem adulta excessiva.
-
-====================================================================
-23. PRIORIDADES
-====================================================================
-
-Prioridade ALTA:
-
-    - sono;
-    - alimentação;
-    - escola;
-    - compromissos importantes.
-
-Prioridade NORMAL:
-
-    - estudo;
-    - higiene;
-    - organização.
-
-Prioridade BAIXA:
-
-    - curiosidades;
-    - frases motivacionais;
-    - desafios opcionais.
-
-====================================================================
-24. ARQUITETURA
-====================================================================
-
-Este arquivo documenta as regras.
-
-A implementação técnica deverá utilizar futuramente:
-
-    /v1c50/js/diretrizes.js
-
-As páginas deverão consultar a configuração central.
-
-Estrutura planejada:
-
-    /v1c50/
-
-        index.html
-        diretriz.html
-        calendario.html
-        matematica.html
-        ciencias.html
-        portugues.html
-        historia.html
-        geografia.html
-        ingles.html
-        desafios.html
-        programacao.html
-
-        fundo.jpg
-
-        /js/
-            diretrizes.js
-
-        /css/
-            sistema.css
-
-====================================================================
-25. REGRA DE MANUTENÇÃO
-====================================================================
-
-Sempre que uma regra global for alterada:
-
-    NÃO alterar individualmente todas as páginas.
-
-Alterar a fonte central.
-
-Exemplo:
-
-    HORARIO_LIMITE = "20:00"
-
-pode posteriormente ser alterado para:
-
-    HORARIO_LIMITE = "21:00"
-
-As páginas que utilizam esta configuração deverão
-automaticamente utilizar o novo horário.
-
-====================================================================
-26. DOCUMENTAÇÃO OBRIGATÓRIA
-====================================================================
-
-Toda alteração significativa deverá registrar:
-
-    - versão;
-    - data;
-    - alteração realizada;
-    - motivo da alteração.
-
-Não apagar o histórico anterior.
+    conteúdo → página HTML
 
 ====================================================================
 HISTÓRICO
@@ -717,449 +124,164 @@ HISTÓRICO
 
 v1.0 - 02/09/2026
 
-    - Criada a Central de Diretrizes.
-    - Definida filosofia de assistente digital.
-    - Definido princípio de não controle.
-    - Criadas diretrizes de sono.
-    - Criadas diretrizes de alimentação.
-    - Criadas diretrizes de higiene.
-    - Criadas diretrizes de escola.
-    - Criadas diretrizes de aprendizado.
-    - Criadas diretrizes de convivência.
-    - Criadas diretrizes de tecnologia.
-    - Criadas diretrizes de mensagens.
-    - Criada referência de horário limite.
-    - Criada estrutura para futura integração com JavaScript.
-    - Criado modelo de manutenção centralizada.
+    - Criado painel central das diretrizes.
+    - Preparada integração com diretrizes.js.
+    - Preparada integração com sistema.js.
+    - Criada documentação interna.
+    - Separadas regras de rotina do conteúdo escolar.
 
-====================================================================
-FIM DA DOCUMENTAÇÃO
 ====================================================================
 -->
 
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
-
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
 >
 
 <meta
-name="theme-color"
-content="#07111f"
-
+    name="description"
+    content="Diretrizes do Sistema Vicente."
 >
 
-<title>Sistema Vicente | Central de Diretrizes</title>
+<meta
+    name="theme-color"
+    content="#07111f"
+>
+
+<title>Diretrizes | Sistema Vicente</title>
+
+<link rel="stylesheet" href="css/sistema.css">
 
 <style>
 
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    margin: 0;
     min-height: 100vh;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color: #f8fafc;
-
-    background-image:
-        linear-gradient(
-            rgba(3,10,20,.78),
-            rgba(3,10,20,.86)
-        ),
-        url("fundo.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 
-.page {
+.diretrizes-page {
     width: 100%;
-    min-height: 100vh;
+    max-width: 1000px;
+    margin: auto;
     padding: 12px;
 }
 
-.topbar {
-    max-width: 1050px;
-    margin: 0 auto 14px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 10px;
-
-    padding: 10px 12px;
-
+.painel {
     background: rgba(7,17,31,.88);
-
     border: 1px solid rgba(255,255,255,.13);
-
-    border-radius: 15px;
-
-    backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.25);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,.35);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
+.cabecalho {
+    padding: 25px 18px;
+    text-align: center;
+    background: linear-gradient(135deg,#1e3a8a,#3b82f6);
     color: white;
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 900;
 }
 
-.logo-icon {
-    font-size: 25px;
+.cabecalho .icone {
+    font-size: 50px;
 }
 
-.nav {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+.cabecalho h1 {
+    margin: 8px 0 5px;
+    font-size: clamp(25px,6vw,38px);
 }
 
-.nav a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.cabecalho p {
+    margin: 0;
+    color: #dbeafe;
+}
 
-    min-height: 38px;
+.conteudo {
+    padding: 16px;
+}
 
-    padding: 7px 11px;
-
-    border-radius: 10px;
-
-    color: white;
-    text-decoration: none;
-
-    background: rgba(255,255,255,.09);
-
+.card {
+    margin-bottom: 15px;
+    padding: 17px;
+    background: rgba(15,23,42,.82);
     border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+}
 
+.card h2 {
+    margin: 0 0 10px;
+    color: #fde68a;
+    font-size: 19px;
+}
+
+.card p {
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+    gap: 10px;
+}
+
+.item {
+    padding: 14px;
+    background: rgba(255,255,255,.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.07);
+}
+
+.item strong {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.item span {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.codigo {
+    padding: 14px;
+    border-radius: 12px;
+    background: #020617;
+    color: #86efac;
+    font-family: monospace;
+    font-size: 12px;
+    overflow-x: auto;
+}
+
+.navegacao {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(2,6,23,.75);
+}
+
+.navegacao a {
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,.09);
+    padding: 10px 13px;
+    border-radius: 10px;
     font-size: 12px;
     font-weight: 800;
 }
 
-.nav a:hover {
+.navegacao a:hover {
     background: rgba(255,255,255,.18);
 }
 
-.container {
-    max-width: 1050px;
-    margin: auto;
-
-    padding: 24px 16px 30px;
-
-    background: rgba(7,17,31,.84);
-
-    border: 1px solid rgba(255,255,255,.13);
-
-    border-radius: 24px;
-
-    backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.35);
-}
-
-.hero {
-    text-align: center;
-    padding: 8px 10px 24px;
-}
-
-.hero-icon {
-    font-size: 55px;
-    margin-bottom: 8px;
-}
-
-.hero h1 {
-    margin: 0;
-
-    font-size:
-        clamp(27px, 7vw, 44px);
-}
-
-.hero h1 span {
-    color: #facc15;
-}
-
-.hero p {
-    max-width: 700px;
-
-    margin: 10px auto 0;
-
-    color: #cbd5e1;
-
-    line-height: 1.6;
-
-    font-size:
-        clamp(13px, 3vw, 16px);
-}
-
-.alert {
-    margin: 0 auto 20px;
-
-    max-width: 800px;
-
-    padding: 17px;
-
-    text-align: center;
-
-    border-radius: 16px;
-
-    background: rgba(250,204,21,.10);
-
-    border: 1px solid rgba(250,204,21,.30);
-
-    color: #fde68a;
-
-    line-height: 1.6;
-}
-
-.grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(230px, 1fr)
-        );
-
-    gap: 13px;
-}
-
-.card {
-    padding: 18px;
-
-    background: rgba(15,23,42,.80);
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 17px;
-}
-
-.card h2 {
-    margin: 0 0 8px;
-
-    font-size: 18px;
-}
-
-.card p {
-    margin: 6px 0;
-
-    color: #cbd5e1;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-.value {
-    display: inline-block;
-
-    margin-top: 8px;
-
-    padding: 7px 10px;
-
-    border-radius: 9px;
-
-    background: rgba(34,197,94,.12);
-
-    border: 1px solid rgba(34,197,94,.25);
-
-    color: #86efac;
-
-    font-size: 12px;
-
-    font-weight: 900;
-}
-
-.section {
-    margin-top: 18px;
-
-    padding: 20px;
-
-    background: rgba(2,6,23,.58);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius: 18px;
-}
-
-.section h2 {
-    margin: 0 0 12px;
-
-    color: #fde68a;
-
-    font-size: 21px;
-}
-
-.rule {
-    padding: 12px 0;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
-}
-
-.rule:last-child {
-    border-bottom: none;
-}
-
-.rule strong {
-    display: block;
-
-    margin-bottom: 4px;
-
-    color: #f8fafc;
-}
-
-.rule span {
-    color: #94a3b8;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-.quote {
-    margin-top: 18px;
-
-    padding: 23px 18px;
-
-    text-align: center;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,41,59,.80),
-            rgba(49,46,129,.65)
-        );
-
-    border:
-        1px solid rgba(250,204,21,.18);
-}
-
-.quote p {
-    max-width: 700px;
-
-    margin: 8px auto 0;
-
-    color: #e2e8f0;
-
-    line-height: 1.7;
-
-    font-size: 15px;
-}
-
-.quote strong {
-    color: #fde68a;
-}
-
 .footer {
-    max-width: 1050px;
-
-    margin: 14px auto 0;
-
-    padding: 18px;
-
     text-align: center;
-
     color: #94a3b8;
-
     font-size: 11px;
-}
-
-.footer-links {
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-bottom: 12px;
-}
-
-.footer a {
-    color: #cbd5e1;
-
-    text-decoration: none;
-
-    padding: 7px 10px;
-
-    border-radius: 8px;
-
-    background: rgba(255,255,255,.07);
-}
-
-@media (max-width: 600px) {
-
-    .page {
-        padding: 8px;
-    }
-
-    .topbar {
-        padding: 8px;
-    }
-
-    .logo span:not(.logo-icon) {
-        display: none;
-    }
-
-    .nav a {
-        padding: 7px 9px;
-        font-size: 11px;
-    }
-
-    .container {
-        padding:
-            20px 11px 23px;
-
-        border-radius: 20px;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-    }
-
+    padding: 18px;
 }
 
 </style>
@@ -1168,453 +290,188 @@ body {
 
 <body>
 
-<div class="page">
+<div class="diretrizes-page">
 
-<nav class="topbar">
+<nav class="navegacao">
 
-```
-<a
-    href="index.html"
-    class="logo"
-    aria-label="Voltar ao mapa principal"
->
+    <a href="index.html">🗺️ MAPA</a>
 
-    <span class="logo-icon">🏴‍☠️</span>
+    <a href="calendario.html">📅 PROVAS</a>
 
-    <span>SISTEMA VICENTE</span>
+    <a href="matematica.html">🔢 MATEMÁTICA</a>
 
-</a>
-
-<div class="nav">
-
-    <a href="index.html">
-        🗺️ MAPA
-    </a>
-
-    <a href="calendario.html">
-        📅 PROVAS
-    </a>
-
-    <a href="matematica.html">
-        🔢 MATEMÁTICA
-    </a>
-
-</div>
-```
+    <a href="diretriz.html">⚙️ DIRETRIZES</a>
 
 </nav>
 
-<main class="container">
+<main class="painel">
 
-<header class="hero">
+<header class="cabecalho">
 
-```
-<div class="hero-icon">
-    🧭
-</div>
+    <div class="icone">⚙️</div>
 
-<h1>
-    Central de <span>Diretrizes</span>
-</h1>
+    <h1>Diretrizes do Sistema</h1>
 
-<p>
-    O conjunto de regras que orienta o Sistema Vicente.
-    Esta página é administrativa e serve como documentação
-    para o funcionamento da aventura.
-</p>
-```
+    <p>As regras que ajudam a organizar a aventura.</p>
 
 </header>
 
-<div class="alert">
+<section class="conteudo">
 
-```
-🧠 <strong>REGRA PRINCIPAL</strong><br>
+    <div class="card">
 
-O Sistema Vicente é um ajudante,
-não um fiscal.
-```
+        <h2>🧠 O que são as diretrizes?</h2>
 
-</div>
+        <p>
+            As diretrizes são orientações utilizadas pelo Sistema Vicente
+            para ajudar na organização do dia, nos estudos, no descanso,
+            na alimentação, nos horários e nas relações com outras pessoas.
+        </p>
 
-<section class="grid">
+        <p>
+            Elas existem para ajudar Vicente a aprender a cuidar do próprio
+            tempo e das próprias responsabilidades.
+        </p>
 
-```
-<div class="card">
+    </div>
 
-    <h2>😴 Sono</h2>
+    <div class="card">
 
-    <p>
-        Objetivo aproximado de 10 horas de sono.
-    </p>
+        <h2>🌙 Sono e energia</h2>
 
-    <span class="value">
-        21:00 → 07:00
-    </span>
+        <div class="lista">
 
-</div>
+            <div class="item">
+                <strong>😴 Dormir</strong>
+                <span>O sono é importante para o cérebro, crescimento, memória e aprendizagem.</span>
+            </div>
 
-<div class="card">
+            <div class="item">
+                <strong>🌅 Acordar</strong>
+                <span>Ter horário ajuda o dia a começar com organização.</span>
+            </div>
 
-    <h2>🌅 Acordar</h2>
+            <div class="item">
+                <strong>🧘 Descansar</strong>
+                <span>Descanso também faz parte da missão.</span>
+            </div>
 
-    <p>
-        Horário de referência para iniciar o dia.
-    </p>
+        </div>
 
-    <span class="value">
-        07:00
-    </span>
+    </div>
 
-</div>
+    <div class="card">
 
-<div class="card">
+        <h2>🍎 Alimentação</h2>
 
-    <h2>🚐 Escola</h2>
+        <div class="lista">
 
-    <p>
-        Preparação para a saída e passagem da van.
-    </p>
+            <div class="item">
+                <strong>🍌 Frutas</strong>
+                <span>Incentivar o consumo de frutas.</span>
+            </div>
 
-    <span class="value">
-        09:00
-    </span>
+            <div class="item">
+                <strong>🥦 Verduras</strong>
+                <span>Variar a alimentação.</span>
+            </div>
 
-</div>
+            <div class="item">
+                <strong>💪 Proteínas</strong>
+                <span>Alimentação adequada ajuda o corpo a crescer e construir músculos.</span>
+            </div>
 
-<div class="card">
+            <div class="item">
+                <strong>💧 Água</strong>
+                <span>Lembrar da hidratação durante o dia.</span>
+            </div>
 
-    <h2>🌙 Encerramento</h2>
+        </div>
 
-    <p>
-        Início do encerramento da aventura digital.
-    </p>
+    </div>
 
-    <span class="value">
-        20:00
-    </span>
+    <div class="card">
 
-</div>
-```
+        <h2>🤝 Comportamento</h2>
+
+        <div class="lista">
+
+            <div class="item">
+                <strong>🙏 Por favor</strong>
+                <span>Usar palavras que demonstram educação.</span>
+            </div>
+
+            <div class="item">
+                <strong>❤️ Obrigado</strong>
+                <span>Reconhecer quando alguém ajuda.</span>
+            </div>
+
+            <div class="item">
+                <strong>🤝 Generosidade</strong>
+                <span>Aprender a compartilhar e ajudar.</span>
+            </div>
+
+            <div class="item">
+                <strong>🗣️ Respeito</strong>
+                <span>Falar com educação mesmo quando estiver contrariado.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>💻 Tecnologia</h2>
+
+        <p>
+            A tecnologia deve ser utilizada de forma positiva.
+            O objetivo do Sistema Vicente não é manter Vicente conectado
+            o máximo de tempo possível.
+        </p>
+
+        <p>
+            A proposta é que, quando utilizar tecnologia, parte desse tempo
+            possa ser utilizada para aprender, pensar, criar e descobrir.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>⚙️ Fonte das configurações</h2>
+
+        <div class="codigo">
+/v1c50/config/diretrizes.js
+        </div>
+
+        <p>
+            Este arquivo contém as configurações centrais utilizadas
+            pelo sistema.
+        </p>
+
+    </div>
 
 </section>
-
-<section class="section">
-
-```
-<h2>
-    🧭 Regras fundamentais
-</h2>
-
-<div class="rule">
-
-    <strong>🧠 Aprender</strong>
-
-    <span>
-        O objetivo não é apenas acertar.
-        É compreender como chegou à resposta.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>💪 Cuidar do corpo</strong>
-
-    <span>
-        Sono, alimentação, água, higiene,
-        movimento e descanso fazem parte da jornada.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>❤️ Respeitar</strong>
-
-    <span>
-        Educação, generosidade, empatia e respeito
-        devem fazer parte das missões diárias.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>📱 Usar tecnologia com propósito</strong>
-
-    <span>
-        O tempo digital deve ser útil,
-        equilibrado e não substituir a vida fora da tela.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>🌙 Descansar</strong>
-
-    <span>
-        O cérebro precisa de descanso para aprender,
-        memorizar e funcionar bem.
-    </span>
-
-</div>
-```
-
-</section>
-
-<section class="section">
-
-```
-<h2>
-    ⏰ Rotina de referência
-</h2>
-
-<div class="rule">
-
-    <strong>07:00 — 🌅 Acordar</strong>
-
-    <span>
-        Começar o dia e preparar o aventureiro.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>Manhã — 🍳 Alimentação</strong>
-
-    <span>
-        Café da manhã e preparação para a escola.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>09:00 — 🎒 Escola</strong>
-
-    <span>
-        Horário de referência da van escolar.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>Durante o dia — 🍎 Alimentação</strong>
-
-    <span>
-        Incentivar refeições, frutas, verduras,
-        proteínas e água.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>Durante o dia — 🧩 Missões</strong>
-
-    <span>
-        Estudo, desafios, descobertas e brincadeiras.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>19:00 em diante — 🌙 Desacelerar</strong>
-
-    <span>
-        Reduzir gradualmente atividades digitais
-        e preparar o corpo para o descanso.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>20:00 — 📱 Encerrar aventura digital</strong>
-
-    <span>
-        Lembrete para finalizar o uso do sistema.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>21:00 — 😴 Dormir</strong>
-
-    <span>
-        Objetivo de iniciar o período de sono.
-    </span>
-
-</div>
-```
-
-</section>
-
-<section class="section">
-
-```
-<h2>
-    ❤️ Convivência
-</h2>
-
-<div class="rule">
-
-    <strong>🗣️ Falar com respeito</strong>
-
-    <span>
-        Pensar antes de responder.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>✨ Palavras mágicas</strong>
-
-    <span>
-        Por favor, obrigado, com licença e desculpa.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>🤝 Generosidade</strong>
-
-    <span>
-        Ajudar, compartilhar e perceber quando
-        alguém precisa de ajuda.
-    </span>
-
-</div>
-```
-
-</section>
-
-<section class="section">
-
-```
-<h2>
-    🧠 Modo Aprendizado
-</h2>
-
-<div class="rule">
-
-    <strong>APRENDER</strong>
-
-    <span>
-        Construir ferramentas para pensar.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>INVESTIGAR</strong>
-
-    <span>
-        Observar antes de responder.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>TENTAR</strong>
-
-    <span>
-        O erro também ensina.
-    </span>
-
-</div>
-
-<div class="rule">
-
-    <strong>ENTENDER</strong>
-
-    <span>
-        Descobrir como chegou à resposta.
-    </span>
-
-</div>
-```
-
-</section>
-
-<section class="quote">
-
-```
-<div style="font-size:30px;">
-    🧠
-</div>
-
-<p>
-
-    <strong>
-        Você não está apenas decorando.
-    </strong>
-
-    <br>
-
-    Está construindo ferramentas
-    para pensar.
-
-    <br><br>
-
-    Entender como chegou nela
-    é mais importante que decorar
-    a resposta.
-
-</p>
-```
-
-</section>
-
-</main>
 
 <footer class="footer">
 
-```
-<div class="footer-links">
+    Sistema Vicente<br>
 
-    <a href="index.html">
-        🗺️ Mapa
-    </a>
+    Uma aventura para aprender, pensar e descobrir.
 
-    <a href="calendario.html">
-        📅 Provas
-    </a>
+    <br><br>
 
-    <a href="matematica.html">
-        🔢 Matemática
-    </a>
-
-    <a href="#topo">
-        ⬆️ Topo
-    </a>
-
-</div>
-
-Sistema Vicente
-
-<br>
-
-Central de Diretrizes
-
-<br><br>
-
-N74 TEC © 2026
-```
+    N74 TEC © 2026
 
 </footer>
 
+</main>
+
 </div>
+
+<script src="config/diretrizes.js"></script>
+<script src="js/sistema.js"></script>
 
 </body>
 
