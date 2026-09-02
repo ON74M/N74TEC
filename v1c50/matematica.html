@@ -6,7 +6,7 @@
 <!--
 ====================================================================
                     SISTEMA VICENTE
-             DOCUMENTAÇÃO DA PÁGINA MATEMÁTICA
+                 ILHA DA MATEMÁTICA
 ====================================================================
 
 ARQUIVO:
@@ -15,11 +15,8 @@ ARQUIVO:
 LOCAL:
     /v1c50/matematica.html
 
-URL:
-    https://n74.com.br/v1c50/matematica.html
-
 VERSÃO:
-    4.0
+    2.0
 
 DATA:
     02/09/2026
@@ -28,230 +25,78 @@ DATA:
 FINALIDADE
 ====================================================================
 
-Esta página representa a ILHA DA MATEMÁTICA do Sistema Vicente.
+Revisão interativa de Matemática para Vicente.
 
-O objetivo é criar uma área interativa de revisão escolar.
+A página transforma os exercícios em pequenas missões.
 
-A página não deve funcionar apenas como uma lista de perguntas.
+O objetivo NÃO é apenas acertar.
 
-Ela deve estimular:
+O objetivo é:
 
-    - raciocínio;
-    - tentativa;
-    - investigação;
-    - compreensão;
-    - resolução de problemas;
-    - autonomia.
-
-A resposta correta é importante.
-
-Porém, entender COMO chegou à resposta é mais importante
-do que simplesmente decorar.
-
-====================================================================
-PERFIL DO VICENTE
-====================================================================
-
-Nome:
-    Vicente
-
-Nascimento:
-    18/12/2017
-
-Idade:
-    8 anos em 2026
-
-Ano escolar:
-    3º Ano B
-
-====================================================================
-CONCEITO DA AVENTURA
-====================================================================
-
-Nesta página:
-
-    Matemática = Ilha
-    Questão    = Desafio
-    Resposta   = Descoberta
-    Acerto     = Conquista
-    Erro       = Nova tentativa
-    Explicação = Conhecimento
-
-A temática de aventura existe para aumentar o interesse
-e a participação.
-
-O conteúdo continua sendo escolar.
-
-====================================================================
-MODO APRENDIZADO
-====================================================================
-
-Frase principal:
-
-    "Você não está apenas decorando.
-     Está construindo ferramentas para pensar."
-
-Princípio:
-
-    "Entender como chegou nela
-     é mais importante que decorar a resposta."
-
-O sistema não deve constranger Vicente por errar.
-
-Quando houver erro, a interface deve incentivar uma nova tentativa
-e mostrar uma explicação simples.
+    - pensar
+    - tentar
+    - entender
+    - corrigir
+    - aprender
 
 ====================================================================
 NAVEGAÇÃO
 ====================================================================
 
-Todas as páginas do Sistema Vicente devem permitir:
+A página possui acesso para:
 
-    - voltar ao mapa principal;
-    - acessar o calendário;
-    - voltar ao topo da página.
-
-Esta página utiliza links HTML simples para garantir funcionamento
-mesmo sem JavaScript.
+    - Mapa
+    - Provas
+    - Diretrizes
+    - Topo
 
 ====================================================================
-FUNDO GLOBAL
+INTEGRAÇÃO
 ====================================================================
 
-Todas as páginas utilizam:
+Esta página carrega:
 
-    fundo.jpg
+    css/sistema.css
+    config/diretrizes.js
+    js/sistema.js
 
-Local:
-
-    /v1c50/fundo.jpg
-
-Para trocar o fundo de todas as páginas:
-
-    1. substituir o arquivo fundo.jpg;
-    2. manter exatamente o mesmo nome;
-    3. não alterar os HTMLs.
+As regras de rotina ficam fora desta página.
 
 ====================================================================
-RESPONSIVIDADE
+FUNDO
 ====================================================================
-
-A página foi construída para funcionar em:
-
-    - celular;
-    - tablet;
-    - notebook;
-    - desktop.
-
-Não depende de frameworks externos.
 
 Utiliza:
 
-    HTML5
-    CSS3
-    JavaScript puro
+    /v1c50/fundo.jpg
 
-====================================================================
-FUNCIONAMENTO DO SISTEMA DE QUESTÕES
-====================================================================
+Para alterar o fundo do sistema inteiro:
 
-Cada questão possui:
-
-    - campo para resposta;
-    - botão VERIFICAR;
-    - feedback;
-    - explicação;
-    - indicação visual de acerto ou erro.
-
-Uma questão só conta uma vez no placar.
-
-Se Vicente errar e depois corrigir:
-
-    erro é removido;
-    acerto é acrescentado.
-
-Se acertar e depois alterar para uma resposta errada:
-
-    acerto é removido;
-    erro é acrescentado.
-
-Isso evita distorções no placar.
-
-====================================================================
-PROGRESSO
-====================================================================
-
-O sistema calcula:
-
-    - acertos;
-    - erros;
-    - questões respondidas;
-    - percentual de aproveitamento.
-
-Quando todas as questões forem concluídas,
-é apresentada uma mensagem final.
-
-====================================================================
-FUTURO
-====================================================================
-
-Esta página poderá posteriormente receber:
-
-    - XP;
-    - níveis;
-    - medalhas;
-    - conquistas;
-    - novas fases;
-    - desafios aleatórios;
-    - cronômetro opcional;
-    - histórico de desempenho;
-    - sistema de missões;
-    - banco de questões;
-    - progresso salvo no navegador.
-
-IMPORTANTE:
-
-Não implementar punições.
-
-O objetivo é estimular aprendizagem.
+    substituir fundo.jpg
 
 ====================================================================
 HISTÓRICO
 ====================================================================
 
-v4.0 - 02/09/2026
+v2.0 - 02/09/2026
 
-    - Página reorganizada como Ilha da Matemática.
-    - Criada navegação global.
-    - Criado fundo global fundo.jpg.
-    - Criado sistema de placar.
-    - Corrigido controle de acertos e erros.
-    - Criado contador de questões respondidas.
-    - Criado percentual de aproveitamento.
-    - Criado feedback visual.
-    - Criadas explicações para as respostas.
-    - Criado incentivo à segunda tentativa.
-    - Criada mensagem final de missão.
-    - Criada documentação interna.
-    - Preparada estrutura para evolução futura.
+    - Integrada à arquitetura central.
+    - Criada navegação completa.
+    - Mantido sistema de respostas.
+    - Corrigido controle de pontuação.
+    - Permitidas novas tentativas.
+    - Mantido feedback educativo.
+    - Preparada integração com diretrizes.
+    - Documentação atualizada.
 
-====================================================================
-REGRA PARA ATUALIZAÇÕES
-====================================================================
+v1.0
 
-NÃO APAGAR ESTA DOCUMENTAÇÃO.
+    - Criada revisão interativa.
+    - Criadas 10 questões.
+    - Criado placar de acertos e erros.
 
-Sempre que esta página sofrer alteração significativa:
-
-    - aumentar a versão;
-    - atualizar a data;
-    - registrar a alteração no histórico.
-
-====================================================================
-FIM DA DOCUMENTAÇÃO
 ====================================================================
 -->
-
 
 <meta charset="UTF-8">
 
@@ -261,905 +106,245 @@ FIM DA DOCUMENTAÇÃO
 >
 
 <meta
-    name="description"
-    content="Sistema Vicente - Ilha da Matemática. Revisão interativa para o 3º Ano."
->
-
-<meta
     name="theme-color"
     content="#07111f"
 >
 
-<title>
-    Sistema Vicente | Ilha da Matemática
-</title>
+<title>Matemática | Sistema Vicente</title>
 
+<link rel="stylesheet" href="css/sistema.css">
 
 <style>
 
-/* ================================================================
-   01. CONFIGURAÇÃO GERAL
-================================================================ */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-
-    margin: 0;
-
     min-height: 100vh;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color: #f8fafc;
-
-    /*
-        FUNDO GLOBAL
-
-        O mesmo fundo é utilizado em todas as páginas.
-
-        Para trocar o fundo do Sistema Vicente:
-        substituir /v1c50/fundo.jpg
-        mantendo o mesmo nome.
-    */
-
-    background-image:
-        linear-gradient(
-            rgba(3, 10, 20, 0.72),
-            rgba(3, 10, 20, 0.82)
-        ),
-        url("fundo.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-attachment: fixed;
-
-    background-repeat: no-repeat;
 }
-
-
-/* ================================================================
-   02. ESTRUTURA
-================================================================ */
 
 .page {
-
-    width: 100%;
-
-    min-height: 100vh;
-
     padding: 10px;
 }
-
-
-/* ================================================================
-   03. BARRA DE NAVEGAÇÃO
-================================================================ */
 
 .topbar {
-
-    max-width: 900px;
-
-    margin: 0 auto 12px;
-
+    max-width: 850px;
+    margin: auto auto 10px;
     padding: 9px;
-
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
-
-    gap: 8px;
-
-    background:
-        rgba(7,17,31,.90);
-
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    border-radius: 15px;
-
-    backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.28);
-}
-
-.logo {
-
-    color: white;
-
-    text-decoration: none;
-
-    display: flex;
-
     align-items: center;
-
     gap: 7px;
-
-    font-size: 13px;
-
-    font-weight: 900;
+    background: rgba(7,17,31,.90);
+    border-radius: 14px;
 }
 
-.logo-icon {
-    font-size: 23px;
-}
-
-.nav {
-
-    display: flex;
-
-    gap: 6px;
-}
-
-.nav a {
-
-    min-height: 37px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 7px 10px;
-
-    border-radius: 9px;
-
+.topbar a {
     color: white;
-
     text-decoration: none;
-
-    background:
-        rgba(255,255,255,.09);
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
+    background: rgba(255,255,255,.08);
+    padding: 8px 10px;
+    border-radius: 9px;
     font-size: 11px;
-
     font-weight: 800;
-
-    transition: .2s;
 }
 
-.nav a:hover {
-
-    background:
-        rgba(255,255,255,.18);
-
-    transform: translateY(-1px);
-}
-
-.nav a:focus-visible {
-
-    outline:
-        3px solid #facc15;
-
-    outline-offset: 2px;
-}
-
-
-/* ================================================================
-   04. CONTAINER
-================================================================ */
-
-.container {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    background:
-        rgba(7,17,31,.87);
-
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    border-radius: 22px;
-
-    overflow: hidden;
-
-    backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.38);
-}
-
-
-/* ================================================================
-   05. CABEÇALHO
-================================================================ */
-
-.header {
-
-    text-align: center;
-
-    padding: 25px 18px 21px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,64,175,.92),
-            rgba(67,56,202,.90)
-        );
-
-    border-bottom:
-        1px solid rgba(255,255,255,.12);
-}
-
-.header-icon {
-
-    font-size: 52px;
-
-    line-height: 1;
-
-    margin-bottom: 8px;
-}
-
-.header h1 {
-
-    margin: 0;
-
-    font-size:
-        clamp(25px, 6vw, 38px);
-}
-
-.header h1 span {
-
-    color: #fde68a;
-}
-
-.header p {
-
-    margin: 9px auto 0;
-
-    max-width: 650px;
-
-    color: #dbeafe;
-
-    font-size:
-        clamp(12px, 3vw, 15px);
-
-    line-height: 1.5;
-}
-
-
-/* ================================================================
-   06. MISSÃO
-================================================================ */
-
-.mission {
-
-    margin: 14px;
-
-    padding: 16px;
-
-    text-align: center;
-
-    background:
-        rgba(2,6,23,.65);
-
-    border:
-        1px solid rgba(250,204,21,.18);
-
-    border-radius: 15px;
-}
-
-.mission strong {
-
-    color: #fde68a;
-
-    font-size: 14px;
-}
-
-.mission p {
-
-    margin: 7px 0 0;
-
-    color: #cbd5e1;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-}
-
-
-/* ================================================================
-   07. PLACAR
-================================================================ */
-
-.scoreboard {
-
-    margin: 0 14px 14px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+.brand {
+    display: flex;
+    align-items: center;
     gap: 7px;
 }
 
-.score {
-
-    padding: 11px 5px;
-
-    text-align: center;
-
-    background:
-        rgba(255,255,255,.06);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius: 11px;
-}
-
-.score-number {
-
-    display: block;
-
-    font-size: 21px;
-
-    font-weight: 900;
-}
-
-.score-label {
-
-    display: block;
-
-    margin-top: 2px;
-
-    color: #94a3b8;
-
-    font-size: 9px;
-
-    font-weight: 700;
-}
-
-.score.acertos .score-number {
-    color: #4ade80;
-}
-
-.score.erros .score-number {
-    color: #f87171;
-}
-
-.score.respondidas .score-number {
-    color: #60a5fa;
-}
-
-.score.percentual .score-number {
-    color: #facc15;
-}
-
-
-/* ================================================================
-   08. CONTEÚDO
-================================================================ */
-
-.content {
-
-    padding: 0 14px 20px;
-}
-
-
-/* ================================================================
-   09. CAPÍTULOS
-================================================================ */
-
-.chapter {
-
-    margin-bottom: 17px;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    background:
-        rgba(15,23,42,.72);
-}
-
-.chapter-title {
-
-    padding: 13px 15px;
-
-    background:
-        rgba(59,130,246,.15);
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    color: #dbeafe;
-
-    font-size: 14px;
-
-    font-weight: 900;
-}
-
-
-/* ================================================================
-   10. QUESTÃO
-================================================================ */
-
-.question {
-
-    padding: 16px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
-}
-
-.question:last-child {
-    border-bottom: none;
-}
-
-.question-text {
-
-    margin: 0;
-
-    color: #f8fafc;
-
-    font-size: 15px;
-
-    line-height: 1.55;
-}
-
-.question-number {
-
-    color: #fde68a;
-
-    font-weight: 900;
-}
-
-
-/* ================================================================
-   11. ÁREA DE RESPOSTA
-================================================================ */
-
-.answer-area {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-top: 11px;
-}
-
-.answer-area input {
-
-    width: 120px;
-
-    max-width: 100%;
-
-    padding: 10px;
-
-    border:
-        2px solid #475569;
-
-    border-radius: 9px;
-
-    background:
-        rgba(255,255,255,.96);
-
-    color: #0f172a;
-
-    text-align: center;
-
-    font-size: 18px;
-
-    font-weight: 800;
-}
-
-.answer-area input:focus {
-
-    outline: none;
-
-    border-color: #60a5fa;
-
-    box-shadow:
-        0 0 0 3px rgba(96,165,250,.18);
-}
-
-.verify {
-
-    padding: 10px 15px;
-
-    border: none;
-
-    border-radius: 9px;
-
-    background:
-        #2563eb;
-
-    color: white;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.verify:hover {
-
-    background:
-        #3b82f6;
-
-    transform:
-        translateY(-1px);
-}
-
-.verify:focus-visible {
-
-    outline:
-        3px solid #facc15;
-
-    outline-offset: 2px;
-}
-
-
-/* ================================================================
-   12. FEEDBACK
-================================================================ */
-
-.feedback {
-
-    display: none;
-
-    margin-top: 10px;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-    font-size: 12px;
-
-    line-height: 1.55;
-}
-
-.feedback.ok {
-
-    display: block;
-
-    background:
-        rgba(22,163,74,.15);
-
-    border:
-        1px solid rgba(74,222,128,.55);
-
-    color: #bbf7d0;
-}
-
-.feedback.erro {
-
-    display: block;
-
-    background:
-        rgba(220,38,38,.13);
-
-    border:
-        1px solid rgba(248,113,113,.50);
-
-    color: #fecaca;
-}
-
-.feedback strong {
-    color: white;
-}
-
-
-/* ================================================================
-   13. CONTA ARMADA
-================================================================ */
-
-.calculation {
-
-    margin-top: 9px;
-
-    padding: 9px;
-
-    background:
-        rgba(0,0,0,.28);
-
-    border:
-        1px dashed rgba(74,222,128,.45);
-
-    border-radius: 8px;
-
-    text-align: center;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 15px;
-
-    line-height: 1.35;
-}
-
-
-/* ================================================================
-   14. FINAL DA MISSÃO
-================================================================ */
-
-.mission-complete {
-
-    display: none;
-
-    margin-top: 18px;
-
-    padding: 22px 16px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,64,175,.35),
-            rgba(67,56,202,.30)
-        );
-
-    border:
-        1px solid rgba(250,204,21,.30);
-
-    border-radius: 17px;
-}
-
-.mission-complete h2 {
-
-    margin: 0;
-
-    color: #fde68a;
-
+.brand-icon {
     font-size: 22px;
 }
 
-.mission-complete p {
-
-    margin: 8px auto 0;
-
-    max-width: 600px;
-
-    color: #cbd5e1;
-
-    font-size: 13px;
-
-    line-height: 1.65;
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-end;
 }
 
-.mission-complete .final-score {
+.container {
+    max-width: 850px;
+    margin: auto;
+    background: rgba(248,250,252,.96);
+    color: #0f172a;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,.35);
+}
 
-    margin-top: 12px;
+.header {
+    background: linear-gradient(135deg,#2563eb,#4f46e5);
+    color: white;
+    text-align: center;
+    padding: 22px 15px;
+}
 
-    color: #4ade80;
+.header .icon {
+    font-size: 48px;
+}
 
+.header h1 {
+    margin: 5px 0;
+    font-size: clamp(24px,6vw,35px);
+}
+
+.header p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    opacity: .9;
+}
+
+.placar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: #1e293b;
+    color: white;
+    padding: 12px;
+}
+
+.placar span {
     font-size: 19px;
-
     font-weight: 900;
 }
 
-
-/* ================================================================
-   15. MODO APRENDIZADO
-================================================================ */
-
-.learning {
-
-    margin-top: 18px;
-
-    padding: 18px;
-
-    text-align: center;
-
-    background:
-        rgba(2,6,23,.62);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius: 15px;
+.acertos {
+    color: #4ade80;
 }
 
-.learning h2 {
-
-    margin: 0;
-
-    color: #fde68a;
-
-    font-size: 18px;
+.erros {
+    color: #f87171;
 }
 
-.learning p {
-
-    margin: 8px auto 0;
-
-    max-width: 650px;
-
-    color: #cbd5e1;
-
-    font-size: 12px;
-
-    line-height: 1.65;
+.content {
+    padding: 14px;
 }
 
+.capitulo {
+    margin-bottom: 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: white;
+}
 
-/* ================================================================
-   16. NAVEGAÇÃO FINAL
-================================================================ */
+.cap-titulo {
+    padding: 13px 15px;
+    background: #f1f5ff;
+    color: #3730a3;
+    font-weight: 900;
+}
 
-.bottom-nav {
+.questao {
+    padding: 14px 15px;
+    border-top: 1px solid #e2e8f0;
+}
 
+.questao p {
+    line-height: 1.5;
+}
+
+.input-area {
     display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
     gap: 8px;
-
-    margin-top: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
 }
 
-.bottom-nav a {
-
-    padding: 9px 13px;
-
-    border-radius: 9px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    color: #e2e8f0;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    border:
-        1px solid rgba(255,255,255,.08);
+.input-area input {
+    width: 110px;
+    padding: 10px;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 900;
 }
 
-.bottom-nav a:hover {
-
-    background:
-        rgba(255,255,255,.15);
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    background: #2563eb;
+    font-weight: 900;
 }
 
+.btn:hover {
+    background: #1d4ed8;
+}
 
-/* ================================================================
-   17. RODAPÉ
-================================================================ */
+.feedback {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ok {
+    display: block;
+    background: #dcfce7;
+    border: 2px solid #22c55e;
+    color: #166534;
+}
+
+.erro {
+    display: block;
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #991b1b;
+}
+
+.conta {
+    background: white;
+    padding: 8px;
+    border-radius: 6px;
+    margin-top: 7px;
+    font-family: monospace;
+    text-align: center;
+    border: 1px dashed #22c55e;
+}
+
+.incentivo {
+    margin: 18px 0 4px;
+    padding: 17px;
+    text-align: center;
+    border-radius: 14px;
+    background: #eff6ff;
+    border: 2px solid #bfdbfe;
+    color: #1e3a8a;
+}
 
 .footer {
-
-    padding: 17px;
-
     text-align: center;
-
-    color: #94a3b8;
-
-    font-size: 10px;
-
-    line-height: 1.6;
+    padding: 16px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 11px;
 }
 
-
-/* ================================================================
-   18. RESPONSIVIDADE
-================================================================ */
-
-@media (max-width: 600px) {
-
-    .page {
-        padding: 7px;
-    }
+@media(max-width:600px) {
 
     .topbar {
-        padding: 7px;
-    }
-
-    .logo span:not(.logo-icon) {
-        display: none;
-    }
-
-    .nav a {
-        padding: 7px 8px;
-        font-size: 10px;
-    }
-
-    .container {
-        border-radius: 18px;
-    }
-
-    .header {
-        padding: 22px 14px 19px;
-    }
-
-    .header-icon {
-        font-size: 45px;
-    }
-
-    .scoreboard {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .answer-area {
         flex-direction: column;
+    }
+
+    .links {
+        justify-content: center;
+    }
+
+    .input-area {
         align-items: stretch;
     }
 
-    .answer-area input {
+    .input-area input,
+    .btn {
         width: 100%;
-    }
-
-    .verify {
-        width: 100%;
-    }
-
-}
-
-
-/* ================================================================
-   19. TELAS MUITO PEQUENAS
-================================================================ */
-
-@media (max-width: 360px) {
-
-    .header h1 {
-        font-size: 24px;
-    }
-
-    .mission {
-        margin: 10px;
-    }
-
-    .content {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-}
-
-
-/* ================================================================
-   20. ACESSIBILIDADE
-================================================================ */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        scroll-behavior: auto !important;
-
-        transition: none !important;
-
     }
 
 }
@@ -1168,756 +353,355 @@ body {
 
 </head>
 
-
 <body>
 
-
-<div class="page" id="topo">
-
-
-<!-- ============================================================
-     21. NAVEGAÇÃO
-============================================================= -->
+<div class="page">
 
 <nav class="topbar">
 
-    <a
-        href="index.html"
-        class="logo"
-        aria-label="Voltar para o mapa principal"
-    >
+    <a href="index.html" class="brand">
 
-        <span class="logo-icon">🏴‍☠️</span>
+        <span class="brand-icon">🏴‍☠️</span>
 
-        <span>SISTEMA VICENTE</span>
+        SISTEMA VICENTE
 
     </a>
 
+    <div class="links">
 
-    <div class="nav">
+        <a href="index.html">🗺️ MAPA</a>
 
-        <a href="index.html">
-            🗺️ MAPA
-        </a>
+        <a href="calendario.html">📅 PROVAS</a>
 
-        <a href="calendario.html">
-            📅 PROVAS
-        </a>
+        <a href="matematica.html">🔢 MATEMÁTICA</a>
+
+        <a href="diretriz.html">⚙️ DIRETRIZES</a>
 
     </div>
 
 </nav>
 
-
-<!-- ============================================================
-     22. CONTAINER
-============================================================= -->
-
 <main class="container">
-
-
-<!-- ============================================================
-     23. CABEÇALHO
-============================================================= -->
 
 <header class="header">
 
-    <div class="header-icon">
-        🔢
-    </div>
+    <div class="icon">🔢</div>
 
-    <h1>
-        Ilha da <span>Matemática</span>
-    </h1>
+    <h1>Ilha da Matemática</h1>
 
     <p>
-        Prepare sua tripulação, observe o desafio
-        e descubra a resposta.
+        Revisão — 3º Ano B
+        <br>
+        Missão antes da avaliação
     </p>
 
 </header>
 
+<div class="placar">
 
-<!-- ============================================================
-     24. MISSÃO
-============================================================= -->
-
-<section class="mission">
-
-    <strong>
-        ⚔️ MISSÃO MATEMÁTICA
-    </strong>
-
-    <p>
-        Não tenha pressa para responder.
-        Pense, tente e descubra como chegar ao resultado.
-        Aqui, cada tentativa ajuda você a ficar mais forte.
-    </p>
-
-</section>
-
-
-<!-- ============================================================
-     25. PLACAR
-============================================================= -->
-
-<section class="scoreboard" aria-label="Placar da missão">
-
-    <div class="score acertos">
-
-        <span
-            class="score-number"
-            id="acertos"
-        >
-            0
-        </span>
-
-        <span class="score-label">
-            ACERTOS
-        </span>
-
+    <div>
+        ✅
+        <span class="acertos" id="ac">0</span>
+        acertos
     </div>
 
-
-    <div class="score erros">
-
-        <span
-            class="score-number"
-            id="erros"
-        >
-            0
-        </span>
-
-        <span class="score-label">
-            ERROS
-        </span>
-
+    <div>
+        ❌
+        <span class="erros" id="er">0</span>
+        erros
     </div>
-
-
-    <div class="score respondidas">
-
-        <span
-            class="score-number"
-            id="respondidas"
-        >
-            0
-        </span>
-
-        <span class="score-label">
-            RESPONDIDAS
-        </span>
-
-    </div>
-
-
-    <div class="score percentual">
-
-        <span
-            class="score-number"
-            id="percentual"
-        >
-            0%
-        </span>
-
-        <span class="score-label">
-            APROVEITAMENTO
-        </span>
-
-    </div>
-
-</section>
-
-
-<div class="content">
-
-
-<!-- ============================================================
-     26. CAPÍTULO 1
-============================================================= -->
-
-<section class="chapter">
-
-    <div class="chapter-title">
-        🧭 1) ORDEM DOS NÚMEROS
-    </div>
-
-
-    <!-- QUESTÃO 01 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                01.
-            </span>
-
-            Quem vem ANTES do número 378?
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q1"
-                inputmode="numeric"
-                aria-label="Resposta da questão 1"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q1',377,'Antes significa voltar uma posição na sequência.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q1"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 02 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                02.
-            </span>
-
-            Quem vem DEPOIS do número 378?
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q2"
-                inputmode="numeric"
-                aria-label="Resposta da questão 2"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q2',379,'Depois significa avançar uma posição na sequência.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q2"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 03 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                03.
-            </span>
-
-            Complete:
-
-            <strong>
-                200 + 1 = ?
-            </strong>
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q3"
-                inputmode="numeric"
-                aria-label="Resposta da questão 3"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q3',201,'Na sequência de 1 em 1, depois de 200 vem 201.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q3"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================
-     27. CAPÍTULO 2
-============================================================= -->
-
-<section class="chapter">
-
-    <div class="chapter-title">
-        ⚔️ 2) CONTAS E OPERAÇÕES
-    </div>
-
-
-    <!-- QUESTÃO 04 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                04.
-            </span>
-
-            Resolva:
-
-            <strong>
-                47 + 8 = ?
-            </strong>
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q4"
-                inputmode="numeric"
-                aria-label="Resposta da questão 4"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q4',55,'Some primeiro as unidades: 7 + 8 = 15. O resultado é 55.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q4"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 05 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                05.
-            </span>
-
-            Resolva:
-
-            <strong>
-                62 - 9 = ?
-            </strong>
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q5"
-                inputmode="numeric"
-                aria-label="Resposta da questão 5"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q5',53,'Pense em 62 menos 9. Você pode contar 9 casas para trás.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q5"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 06 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                06.
-            </span>
-
-            Vicente encontrou 75 figurinhas
-            e ganhou mais 18.
-
-            <br><br>
-
-            Quantas figurinhas ele tem agora?
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q6"
-                inputmode="numeric"
-                aria-label="Resposta da questão 6"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q6',93,'Você precisa juntar 75 + 18. Tente separar dezenas e unidades.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q6"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================
-     28. CAPÍTULO 3
-============================================================= -->
-
-<section class="chapter">
-
-    <div class="chapter-title">
-        🧩 3) DESAFIOS DE RACIOCÍNIO
-    </div>
-
-
-    <!-- QUESTÃO 07 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                07.
-            </span>
-
-            O 15º está entre o 14º e o
-            ______º.
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q7"
-                inputmode="numeric"
-                aria-label="Resposta da questão 7"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q7',16,'A sequência é 14, 15, 16.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q7"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 08 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                08.
-            </span>
-
-            Se hoje é o 2º dia de uma missão
-            e ela dura mais 3 dias,
-            chegaremos ao ______º dia.
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q8"
-                inputmode="numeric"
-                aria-label="Resposta da questão 8"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q8',5,'Faça a conta: 2 + 3 = 5.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q8"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 09 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                09.
-            </span>
-
-            Um cubo possui quantas faces?
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q9"
-                inputmode="numeric"
-                aria-label="Resposta da questão 9"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q9',6,'Imagine um dado. Ele possui 6 lados, chamados faces.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q9"
-        ></div>
-
-    </div>
-
-
-    <!-- QUESTÃO 10 -->
-
-    <div class="question">
-
-        <p class="question-text">
-
-            <span class="question-number">
-                10.
-            </span>
-
-            No Tangram tradicional existem
-            7 peças.
-
-            Quantas dessas peças são
-            triângulos?
-
-        </p>
-
-
-        <div class="answer-area">
-
-            <input
-                type="number"
-                id="q10"
-                inputmode="numeric"
-                aria-label="Resposta da questão 10"
-            >
-
-            <button
-                class="verify"
-                onclick="verificar('q10',5,'O Tangram tradicional possui 5 triângulos, 1 quadrado e 1 paralelogramo.')"
-            >
-                VERIFICAR
-            </button>
-
-        </div>
-
-
-        <div
-            class="feedback"
-            id="f-q10"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================
-     29. MISSÃO CONCLUÍDA
-============================================================= -->
-
-<section
-    class="mission-complete"
-    id="missionComplete"
->
-
-    <h2>
-        🏆 MISSÃO CONCLUÍDA!
-    </h2>
-
-    <p>
-        Você chegou ao final da Ilha da Matemática.
-        Mas lembre: o verdadeiro prêmio não é apenas acertar.
-        É descobrir como pensar para encontrar a resposta.
-    </p>
-
-    <div
-        class="final-score"
-        id="finalScore"
-    >
-    </div>
-
-</section>
-
-
-<!-- ============================================================
-     30. MODO APRENDIZADO
-============================================================= -->
-
-<section class="learning">
-
-    <h2>
-        🧠 MODO APRENDIZADO
-    </h2>
-
-    <p>
-
-        Você não está apenas decorando.
-
-        <br>
-
-        Está construindo ferramentas para pensar.
-
-        <br><br>
-
-        Se errar, investigue.
-
-        <br>
-
-        Se precisar, tente novamente.
-
-        <br>
-
-        Entender como chegou nela
-        é mais importante que decorar a resposta.
-
-    </p>
-
-</section>
-
-
-<!-- ============================================================
-     31. NAVEGAÇÃO FINAL
-============================================================= -->
-
-<nav class="bottom-nav">
-
-    <a href="index.html">
-        🗺️ VOLTAR AO MAPA
-    </a>
-
-    <a href="calendario.html">
-        📅 CALENDÁRIO
-    </a>
-
-    <a href="#topo">
-        ⬆️ VOLTAR AO TOPO
-    </a>
-
-</nav>
-
 
 </div>
 
+<section class="content">
 
-<!-- ============================================================
-     32. RODAPÉ
-============================================================= -->
+<div class="capitulo">
 
-<footer class="footer">
+<div class="cap-titulo">
+    1) ORDEM DOS NÚMEROS
+</div>
 
-    Sistema Vicente
+<div class="questao">
 
+<p>
+    <b>a)</b>
+    Quem vem ANTES do 378?
     <br>
+    <small>378 - 1</small>
+</p>
 
-    Ilha da Matemática
+<div class="input-area">
+
+<input type="number" id="i1">
+
+<button class="btn"
+onclick="check('i1',377,'377 = 378 - 1')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i1" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>b)</b>
+    Quem vem DEPOIS do 378?
+    <br>
+    <small>378 + 1</small>
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i2">
+
+<button class="btn"
+onclick="check('i2',379,'379 = 378 + 1')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i2" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>c)</b>
+    Complete:
+    <br>
+    200 + 1 = ?
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i3">
+
+<button class="btn"
+onclick="check('i3',201,'A sequência está avançando de 1 em 1.')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i3" class="feedback"></div>
+
+</div>
+
+</div>
+
+<div class="capitulo">
+
+<div class="cap-titulo">
+    2) CONTAS
+</div>
+
+<div class="questao">
+
+<p>
+    <b>a)</b>
+    47 + 8 = ?
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i4">
+
+<button class="btn"
+onclick="check('i4',55,'<div class=&quot;conta&quot;>47<br>+ 8<br>---<br>55<br><br>7 + 8 = 15</div>')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i4" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>b)</b>
+    62 - 9 = ?
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i5">
+
+<button class="btn"
+onclick="check('i5',53,'<div class=&quot;conta&quot;>62<br>- 9<br>---<br>53</div>')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i5" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>c)</b>
+    Você tem 75 figurinhas
+    e ganha mais 18.
+    <br>
+    Quantas figurinhas você tem agora?
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i6">
+
+<button class="btn"
+onclick="check('i6',93,'<div class=&quot;conta&quot;>75<br>+ 18<br>---<br>93</div>')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i6" class="feedback"></div>
+
+</div>
+
+</div>
+
+<div class="capitulo">
+
+<div class="cap-titulo">
+    3) DESAFIOS FINAIS
+</div>
+
+<div class="questao">
+
+<p>
+    <b>a)</b>
+    15º está entre 14º e ___º
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i7">
+
+<button class="btn"
+onclick="check('i7',16,'14, 15, 16')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i7" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>b)</b>
+    2º dia + 3 dias = ___º dia
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i8">
+
+<button class="btn"
+onclick="check('i8',5,'2 + 3 = 5')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i8" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>c)</b>
+    Um cubo tem quantas faces?
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i9">
+
+<button class="btn"
+onclick="check('i9',6,'Um cubo possui 6 faces.')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i9" class="feedback"></div>
+
+</div>
+
+<div class="questao">
+
+<p>
+    <b>d)</b>
+    No Tangram tradicional,
+    quantos triângulos existem?
+</p>
+
+<div class="input-area">
+
+<input type="number" id="i10">
+
+<button class="btn"
+onclick="check('i10',5,'O Tangram tradicional possui 7 peças, sendo 5 triângulos.')">
+VERIFICAR
+</button>
+
+</div>
+
+<div id="f-i10" class="feedback"></div>
+
+</div>
+
+</div>
+
+<div class="incentivo">
+
+    🧠 <b>Modo Aprendizado</b>
 
     <br><br>
 
-    Aprender • Investigar • Tentar • Entender
+    Você não está apenas decorando.
+    Está construindo ferramentas para pensar.
+
+    <br><br>
+
+    💡 Entender como chegou à resposta
+    é mais importante do que decorar.
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+    🏆 Continue tentando.
+
+    <br>
+
+    Cada erro pode mostrar um caminho novo.
+
+    <br><br>
+
+    <a href="index.html">🗺️ Voltar ao Mapa</a>
+
+    &nbsp; • &nbsp;
+
+    <a href="#topo">⬆️ Topo</a>
 
     <br><br>
 
@@ -1925,145 +709,18 @@ body {
 
 </footer>
 
-
 </main>
-
 
 </div>
 
-
 <script>
 
-/*
-====================================================================
-33. SISTEMA INTERATIVO
-====================================================================
-
-RESPONSABILIDADE:
-
-Este JavaScript controla somente a interação da página.
-
-Funções:
-
-    - verificar respostas;
-    - controlar acertos;
-    - controlar erros;
-    - controlar questões respondidas;
-    - calcular percentual;
-    - mostrar feedback;
-    - detectar conclusão da missão.
-
-====================================================================
-REGRA DO PLACAR
-====================================================================
-
-Cada questão possui três estados possíveis:
-
-    não respondida
-    correta
-    incorreta
-
-Uma questão não pode gerar vários pontos simplesmente
-porque o usuário clicou várias vezes.
-
-Se o estado mudar:
-
-    incorreta -> correta
-        remove 1 erro
-        adiciona 1 acerto
-
-    correta -> incorreta
-        remove 1 acerto
-        adiciona 1 erro
-
-    não respondida -> correta
-        adiciona 1 acerto
-
-    não respondida -> incorreta
-        adiciona 1 erro
-
-====================================================================
-HISTÓRICO JAVASCRIPT
-====================================================================
-
-v4.0 - 02/09/2026
-
-    - Criado sistema de estados das questões.
-    - Corrigida contagem de acertos.
-    - Corrigida contagem de erros.
-    - Criado cálculo de aproveitamento.
-    - Criado detector de missão concluída.
-    - Criado feedback individual.
-
-====================================================================
-*/
-
-
-/* ================================================================
-   34. ESTADO DO SISTEMA
-================================================================ */
-
 let acertos = 0;
-
 let erros = 0;
 
-let estados = {};
+const estadoQuestoes = {};
 
-
-/* ================================================================
-   35. TOTAL DE QUESTÕES
-================================================================ */
-
-const totalQuestoes = 10;
-
-
-/* ================================================================
-   36. ATUALIZA PLACAR
-================================================================ */
-
-function atualizarPlacar() {
-
-    const respondidas =
-        acertos + erros;
-
-    let percentual = 0;
-
-    if (respondidas > 0) {
-
-        percentual =
-            Math.round(
-                (acertos / respondidas) * 100
-            );
-
-    }
-
-
-    document.getElementById("acertos")
-        .innerText = acertos;
-
-
-    document.getElementById("erros")
-        .innerText = erros;
-
-
-    document.getElementById("respondidas")
-        .innerText = respondidas;
-
-
-    document.getElementById("percentual")
-        .innerText = percentual + "%";
-
-
-    verificarConclusao();
-
-}
-
-
-/* ================================================================
-   37. VERIFICAR QUESTÃO
-================================================================ */
-
-function verificar(id, correto, dica) {
+function check(id, correto, dica) {
 
     const input =
         document.getElementById(id);
@@ -2071,115 +728,44 @@ function verificar(id, correto, dica) {
     const feedback =
         document.getElementById("f-" + id);
 
-
     const valor =
-        parseInt(input.value);
+        parseInt(input.value,10);
 
+    if (Number.isNaN(valor)) {
 
-    /* ------------------------------------------------------------
-       CAMPO VAZIO
-    ------------------------------------------------------------ */
-
-    if (isNaN(valor)) {
-
-        feedback.className =
-            "feedback erro";
+        feedback.className = "feedback erro";
 
         feedback.innerHTML =
-            "⚠️ <strong>Digite uma resposta primeiro.</strong><br>" +
-            "Pense com calma e tente novamente.";
-
-        input.focus();
+            "⚠️ Digite um número primeiro.";
 
         return;
+
     }
 
-
-    /* ------------------------------------------------------------
-       ESTADO ANTERIOR
-    ------------------------------------------------------------ */
-
-    const estadoAnterior =
-        estados[id] || "nao-respondida";
-
-
-    /* ------------------------------------------------------------
-       NOVO ESTADO
-    ------------------------------------------------------------ */
-
-    let novoEstado;
-
+    const resultadoAnterior =
+        estadoQuestoes[id];
 
     if (valor === correto) {
 
-        novoEstado = "correta";
+        if (resultadoAnterior !== "ok") {
 
-    } else {
-
-        novoEstado = "incorreta";
-
-    }
-
-
-    /* ------------------------------------------------------------
-       AJUSTE DO PLACAR
-    ------------------------------------------------------------ */
-
-    if (estadoAnterior !== novoEstado) {
-
-
-        if (estadoAnterior === "correta") {
-
-            acertos--;
-
-        }
-
-
-        if (estadoAnterior === "incorreta") {
-
-            erros--;
-
-        }
-
-
-        if (novoEstado === "correta") {
+            if (resultadoAnterior === "erro") {
+                erros--;
+            }
 
             acertos++;
+            estadoQuestoes[id] = "ok";
 
         }
-
-
-        if (novoEstado === "incorreta") {
-
-            erros++;
-
-        }
-
-
-        estados[id] =
-            novoEstado;
-
-    }
-
-
-    /* ------------------------------------------------------------
-       RESPOSTA CORRETA
-    ------------------------------------------------------------ */
-
-    if (novoEstado === "correta") {
 
         feedback.className =
             "feedback ok";
 
         feedback.innerHTML =
-
-            "🎉 <strong>ACERTOU!</strong><br>" +
-
-            "Resposta: <strong>" +
+            "🎉 ACERTOU! ✅<br>" +
+            "Resposta: <b>" +
             correto +
-            "</strong><br><br>" +
-
-            "💡 " +
+            "</b><br>" +
             dica;
 
         input.style.borderColor =
@@ -2190,26 +776,27 @@ function verificar(id, correto, dica) {
 
     }
 
-
-    /* ------------------------------------------------------------
-       RESPOSTA INCORRETA
-    ------------------------------------------------------------ */
-
     else {
+
+        if (resultadoAnterior !== "erro") {
+
+            if (resultadoAnterior === "ok") {
+                acertos--;
+            }
+
+            erros++;
+            estadoQuestoes[id] = "erro";
+
+        }
 
         feedback.className =
             "feedback erro";
 
         feedback.innerHTML =
-
-            "🔎 <strong>AINDA NÃO.</strong><br>" +
-
-            "Isso faz parte da investigação! " +
-            "Observe novamente e tente outra vez." +
-
-            "<br><br>" +
-
-            "💡 Dica: " +
+            "❌ Ainda não.<br>" +
+            "A resposta correta é <b>" +
+            correto +
+            "</b><br>" +
             dica;
 
         input.style.borderColor =
@@ -2220,115 +807,18 @@ function verificar(id, correto, dica) {
 
     }
 
+    document.getElementById("ac")
+        .innerText = acertos;
 
-    feedback.style.display =
-        "block";
-
-
-    atualizarPlacar();
-
-}
-
-
-/* ================================================================
-   38. VERIFICAR CONCLUSÃO
-================================================================ */
-
-function verificarConclusao() {
-
-    const respondidas =
-        acertos + erros;
-
-
-    if (respondidas !== totalQuestoes) {
-
-        return;
-
-    }
-
-
-    const painel =
-        document.getElementById(
-            "missionComplete"
-        );
-
-
-    const resultado =
-        document.getElementById(
-            "finalScore"
-        );
-
-
-    painel.style.display =
-        "block";
-
-
-    resultado.innerText =
-
-        "⭐ " +
-        acertos +
-        " acertos de " +
-        totalQuestoes +
-        " questões";
-
-
-    painel.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    document.getElementById("er")
+        .innerText = erros;
 
 }
-
-
-/* ================================================================
-   39. ENTER PARA RESPONDER
-================================================================
-
-Permite que Vicente pressione ENTER dentro do campo
-para executar a verificação.
-
-================================================================ */
-
-document
-    .querySelectorAll(
-        ".answer-area input"
-    )
-    .forEach(function(input) {
-
-        input.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (event.key === "Enter") {
-
-                    const botao =
-                        input.parentElement
-                            .querySelector(
-                                ".verify"
-                            );
-
-                    if (botao) {
-
-                        botao.click();
-
-                    }
-
-                }
-
-            }
-        );
-
-    });
-
-
-/*
-====================================================================
-FIM DO JAVASCRIPT
-====================================================================
-*/
 
 </script>
 
+<script src="config/diretrizes.js"></script>
+<script src="js/sistema.js"></script>
 
 </body>
 
