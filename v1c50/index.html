@@ -5,7 +5,8 @@
 
 <!--
 ====================================================================
-                 SISTEMA VICENTE - DOCUMENTAÇÃO
+                    SISTEMA VICENTE
+                    MAPA PRINCIPAL
 ====================================================================
 
 ARQUIVO:
@@ -18,7 +19,7 @@ URL:
     https://n74.com.br/v1c50/
 
 VERSÃO:
-    3.0
+    4.0
 
 DATA:
     02/09/2026
@@ -27,273 +28,78 @@ DATA:
 FINALIDADE
 ====================================================================
 
-Esta é a PÁGINA PRINCIPAL do Sistema Vicente.
+Página principal do Sistema Vicente.
 
-Ela funciona como o MAPA CENTRAL da aventura de aprendizado.
-
-O objetivo é transformar o estudo em uma experiência de exploração,
-missões, desafios, descobertas e conquistas, sem retirar o conteúdo
-escolar de sua finalidade.
-
-O conteúdo continua sendo escolar.
-
-A temática de aventura existe para aumentar o interesse,
-participação e motivação do Vicente.
+Representa o MAPA CENTRAL da aventura de aprendizado.
 
 ====================================================================
-PERFIL
+ARQUITETURA
 ====================================================================
 
-Nome:
-    Vicente
+O sistema utiliza três camadas principais:
 
-Nascimento:
-    18/12/2017
+    /config/diretrizes.js
+        ↓
+    /js/sistema.js
+        ↓
+    index.html
 
-Idade:
-    8 anos em 2026
+DIRETRIZES:
+    Regras e configurações.
 
-Interesses considerados no projeto:
+SISTEMA:
+    Interpretação das regras, alertas e funções gerais.
 
-    - One Piece
-    - aventuras
-    - animais
-    - tecnologia
-    - desafios
-    - lógica
-    - rock clássico
-    - Metallica
-
-====================================================================
-CONCEITO DA AVENTURA
-====================================================================
-
-O Sistema Vicente utiliza uma metáfora de exploração:
-
-    conhecimento = território
-    matéria      = ilha
-    estudo       = missão
-    exercício    = desafio
-    progresso    = experiência
-    conquista    = recompensa
-
-A inspiração em aventura/pirataria deve ser utilizada de maneira
-criativa e própria.
-
-IMPORTANTE:
-
-O sistema não deve depender de personagens ou imagens oficiais
-de One Piece.
-
-A intenção é criar uma identidade própria para o Vicente,
-utilizando conceitos como:
-
-    - mapa
-    - ilhas
-    - mar
-    - tesouros
-    - missões
-    - tripulação
-    - exploração
-    - descobertas
-
-====================================================================
-FILOSOFIA DE APRENDIZADO
-====================================================================
-
-MODO APRENDIZADO
-
-    APRENDER
-    INVESTIGAR
-    TENTAR
-    ENTENDER
-
-Frase principal:
-
-    "Você não está apenas decorando.
-     Está construindo ferramentas para pensar."
-
-Outro princípio:
-
-    "Entender como chegou nela
-     é mais importante que decorar a resposta."
-
-O erro deve ser tratado como parte do processo.
-
-====================================================================
-CONCEITO MATRIX
-====================================================================
-
-Vicente conhece o termo "Matrix" como referência à percepção
-de que o sistema escolar treina as pessoas para a vida e para
-o trabalho.
-
-O Sistema Vicente utiliza essa ideia de maneira educacional.
-
-A intenção não é ensinar apenas a seguir respostas.
-
-É ensinar a:
-
-    - observar
-    - questionar
-    - compreender
-    - resolver
-    - criar
-    - tomar decisões
-
-O objetivo é construir ferramentas para pensar.
-
-====================================================================
-ROTINA E COMBINADOS
-====================================================================
-
-O sistema poderá futuramente trabalhar com:
-
-    - horário de estudo
-    - horário de descanso
-    - alimentação
-    - sono
-    - tarefas
-    - tempo de diversão
-    - combinados
-
-A abordagem deve ser positiva.
-
-Exemplo:
-
-    "Um aventureiro precisa estar preparado.
-     Dormir, comer e descansar também fazem parte
-     da missão."
-
-Não utilizar a interface para punição ou constrangimento.
+HTML:
+    Conteúdo e navegação.
 
 ====================================================================
 FUNDO GLOBAL
 ====================================================================
 
-Todas as páginas do /v1c50/ deverão utilizar o mesmo arquivo:
-
-    fundo.jpg
-
-Local:
+Todas as páginas utilizam:
 
     /v1c50/fundo.jpg
 
-Para trocar o fundo de TODAS as páginas:
+Para trocar o fundo:
 
-    1. substituir o arquivo fundo.jpg
-    2. manter exatamente o mesmo nome
-    3. não alterar os HTMLs
+    substituir fundo.jpg
 
-====================================================================
-ARQUITETURA FUTURA
-====================================================================
-
-/v1c50/
-
-    index.html
-    calendario.html
-    matematica.html
-    portugues.html
-    ciencias.html
-    historia.html
-    geografia.html
-    ingles.html
-    desafios.html
-    programacao.html
-
-    fundo.jpg
-
-    /css/
-        sistema.css
-
-    /js/
-        sistema.js
+Não alterar os HTMLs.
 
 ====================================================================
-NAVEGAÇÃO
+REGRAS
 ====================================================================
 
-A página principal possui acesso para:
+Esta página NÃO deve conter regras específicas de rotina.
 
-    - Calendário
-    - Matemática
-    - futuras matérias
-    - futuras áreas de desafios
+As regras devem ficar em:
 
-Toda página criada deverá possuir uma forma clara de retornar
-ao index.html.
-
-====================================================================
-RESPONSIVIDADE
-====================================================================
-
-O layout foi desenvolvido para:
-
-    - celular
-    - tablet
-    - notebook
-    - desktop
-
-Utiliza:
-
-    - HTML5
-    - CSS3
-    - JavaScript puro
-
-Não utiliza frameworks externos.
-
-====================================================================
-REGRAS PARA NOVAS PÁGINAS
-====================================================================
-
-Toda nova página deverá:
-
-    1. possuir documentação interna;
-    2. utilizar fundo.jpg;
-    3. possuir botão/menu para voltar;
-    4. possuir acesso ao mapa principal;
-    5. funcionar em telas pequenas;
-    6. funcionar em telas grandes;
-    7. utilizar linguagem adequada ao Vicente;
-    8. manter a filosofia de aprendizado;
-    9. registrar seu histórico;
-   10. explicar dentro do próprio código como funciona.
+    /config/diretrizes.js
 
 ====================================================================
 HISTÓRICO
 ====================================================================
 
+v4.0 - 02/09/2026
+
+    - Integrado ao sistema central de diretrizes.
+    - Integrado ao sistema.js.
+    - Mantida navegação central.
+    - Mantido fundo global.
+    - Mantida filosofia de aventura.
+    - Preparado para alertas de rotina.
+    - Preparado para evolução futura.
+
 v3.0 - 02/09/2026
 
-    - Sistema transformado em uma experiência de aventura.
-    - Index passou a representar o mapa principal.
-    - Criada estrutura de ilhas/missões.
-    - Criado conceito de exploração do conhecimento.
-    - Criado fundo global através de fundo.jpg.
-    - Criada navegação principal.
-    - Criado acesso ao calendário.
-    - Criado acesso à Matemática.
-    - Criadas áreas futuras para novas matérias.
-    - Mantido Modo Aprendizado.
-    - Mantido conceito de aprender através do raciocínio.
-    - Mantida filosofia de incentivo positivo.
-    - Criada documentação interna completa.
+    - Criado mapa principal.
+    - Criada estrutura de ilhas.
+    - Criada filosofia de aprendizado.
+    - Criado fundo global.
 
-====================================================================
-IMPORTANTE
-====================================================================
-
-NÃO APAGAR ESTA DOCUMENTAÇÃO.
-
-Sempre atualizar a versão e o histórico quando houver alteração
-significativa nesta página.
-
-====================================================================
-FIM DA DOCUMENTAÇÃO
 ====================================================================
 -->
-
 
 <meta charset="UTF-8">
 
@@ -304,7 +110,7 @@ FIM DA DOCUMENTAÇÃO
 
 <meta
     name="description"
-    content="Sistema Vicente - uma aventura de aprendizado através de missões, desafios e descobertas."
+    content="Sistema Vicente - mapa de aprendizado, missões e desafios."
 >
 
 <meta
@@ -312,889 +118,318 @@ FIM DA DOCUMENTAÇÃO
     content="#07111f"
 >
 
-<title>
-    Sistema Vicente | Mapa da Aventura
-</title>
+<title>Sistema Vicente | Mapa da Aventura</title>
 
+<link rel="stylesheet" href="css/sistema.css">
 
 <style>
 
-/* ================================================================
-   01. CONFIGURAÇÃO GERAL
-================================================================ */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-
-    margin: 0;
-
     min-height: 100vh;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color: #f8fafc;
-
-    /*
-        FUNDO GLOBAL
-
-        O arquivo fundo.jpg fica na mesma pasta deste HTML.
-
-        Para trocar o fundo de todas as páginas:
-        substituir o arquivo fundo.jpg.
-    */
-
-    background-image:
-        linear-gradient(
-            rgba(3, 10, 20, 0.68),
-            rgba(3, 10, 20, 0.78)
-        ),
-        url("fundo.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-attachment: fixed;
-
-    background-repeat: no-repeat;
 }
-
-
-/* ================================================================
-   02. CAMADA PRINCIPAL
-================================================================ */
 
 .page {
-
     width: 100%;
-
     min-height: 100vh;
-
-    padding: 14px;
+    padding: 10px;
 }
 
-
-/* ================================================================
-   03. TOPO / NAVEGAÇÃO
-================================================================ */
-
 .topbar {
-
     max-width: 1100px;
-
-    margin: 0 auto 14px;
-
+    margin: auto auto 12px;
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
-
-    gap: 10px;
-
-    padding: 10px 12px;
-
-    background:
-        rgba(7, 17, 31, 0.86);
-
-    border:
-        1px solid rgba(255,255,255,.14);
-
+    align-items: center;
+    gap: 8px;
+    padding: 9px;
+    background: rgba(7,17,31,.88);
+    border: 1px solid rgba(255,255,255,.13);
     border-radius: 15px;
-
     backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.25);
 }
 
 .logo {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
     color: white;
-
     text-decoration: none;
-
     font-weight: 900;
-
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .logo-icon {
-
     font-size: 25px;
 }
 
 .nav-buttons {
-
     display: flex;
-
-    gap: 7px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .nav-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 38px;
-
-    padding: 7px 11px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.10);
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
     color: white;
-
     text-decoration: none;
-
-    font-size: 12px;
-
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 9px;
+    padding: 8px 10px;
+    font-size: 11px;
     font-weight: 800;
-
-    transition: .2s;
 }
 
 .nav-button:hover {
-
-    background:
-        rgba(255,255,255,.20);
-
-    transform: translateY(-1px);
+    background: rgba(255,255,255,.18);
 }
-
-.nav-button:focus-visible {
-
-    outline:
-        3px solid #facc15;
-
-    outline-offset: 2px;
-}
-
-
-/* ================================================================
-   04. MAPA PRINCIPAL
-================================================================ */
 
 .map {
-
     max-width: 1100px;
-
-    margin: 0 auto;
-
-    padding: 25px 18px 30px;
-
-    background:
-        rgba(7, 17, 31, 0.82);
-
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    border-radius: 25px;
-
+    margin: auto;
+    padding: 20px 15px 25px;
+    background: rgba(7,17,31,.84);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 22px;
     backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.35);
+    box-shadow: 0 18px 50px rgba(0,0,0,.35);
 }
 
-
-/* ================================================================
-   05. CABEÇALHO
-================================================================ */
-
 .hero {
-
     text-align: center;
-
-    padding: 10px 10px 25px;
+    padding: 10px 8px 22px;
 }
 
 .hero-icon {
-
-    font-size: 62px;
-
-    line-height: 1;
-
-    margin-bottom: 10px;
+    font-size: 58px;
 }
 
 .hero h1 {
-
-    margin: 0;
-
-    font-size:
-        clamp(29px, 7vw, 48px);
-
-    letter-spacing: .5px;
+    margin: 7px 0;
+    font-size: clamp(28px,7vw,47px);
 }
 
 .hero h1 span {
-
     color: #facc15;
 }
 
 .hero p {
-
     max-width: 680px;
-
-    margin: 10px auto 0;
-
+    margin: auto;
     color: #cbd5e1;
-
-    font-size:
-        clamp(13px, 3vw, 16px);
-
     line-height: 1.6;
+    font-size: 14px;
 }
 
-
-/* ================================================================
-   06. STATUS
-================================================================ */
-
 .status {
-
     display: flex;
-
     justify-content: center;
-
-    align-items: center;
-
     flex-wrap: wrap;
-
     gap: 8px;
-
-    margin: 0 auto 24px;
-
-    font-size: 12px;
-
+    margin-bottom: 22px;
     color: #cbd5e1;
+    font-size: 12px;
 }
 
 .online {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
     color: #86efac;
-
     font-weight: 900;
 }
 
 .online-dot {
-
-    width: 9px;
-
-    height: 9px;
-
+    display: inline-block;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-
     background: #22c55e;
-
-    box-shadow:
-        0 0 0 4px rgba(34,197,94,.15);
+    margin-right: 5px;
 }
 
-
-/* ================================================================
-   07. TÍTULO DO MAPA
-================================================================ */
-
 .map-title {
-
     text-align: center;
-
-    margin-bottom: 17px;
+    margin-bottom: 15px;
 }
 
 .map-title h2 {
-
     margin: 0;
-
-    font-size: 24px;
-
     color: #fde68a;
 }
 
 .map-title p {
-
-    margin: 6px 0 0;
-
     color: #94a3b8;
-
-    font-size: 13px;
+    font-size: 12px;
 }
-
-
-/* ================================================================
-   08. MAPA / ILHAS
-================================================================ */
 
 .islands {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(210px, 1fr)
-        );
-
-    gap: 13px;
+    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+    gap: 12px;
 }
-
-
-/* ================================================================
-   09. CARTÕES DE MISSÃO
-================================================================ */
 
 .island {
-
-    position: relative;
-
+    min-height: 190px;
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
-    min-height: 205px;
-
-    padding: 20px 15px;
-
+    padding: 18px 13px;
     text-align: center;
-
     color: white;
-
     text-decoration: none;
-
-    background:
-        rgba(15, 23, 42, 0.82);
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    border-radius: 19px;
-
-    overflow: hidden;
-
-    transition:
-        transform .22s,
-        box-shadow .22s,
-        border-color .22s;
-}
-
-.island::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-
-    height: 130px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid rgba(255,255,255,.05);
-
-    top: -70px;
-
-    right: -55px;
+    background: rgba(15,23,42,.84);
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 18px;
+    transition: .2s;
 }
 
 .island:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(250,204,21,.55);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.30);
-}
-
-.island:focus-visible {
-
-    outline:
-        3px solid #facc15;
-
-    outline-offset: 3px;
+    transform: translateY(-4px);
+    border-color: rgba(250,204,21,.6);
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
 }
 
 .island-icon {
-
-    font-size: 48px;
-
-    margin-bottom: 8px;
-
-    line-height: 1;
+    font-size: 44px;
 }
 
 .island h3 {
-
-    margin: 4px 0;
-
-    font-size: 19px;
+    margin: 7px 0 3px;
 }
 
 .island p {
-
-    margin: 5px 0;
-
-    max-width: 260px;
-
     color: #cbd5e1;
-
     font-size: 12px;
-
     line-height: 1.5;
+    max-width: 270px;
 }
 
 .mission-button {
-
-    margin-top: 9px;
-
-    padding: 7px 12px;
-
+    margin-top: 6px;
+    padding: 7px 11px;
     border-radius: 9px;
-
-    background:
-        rgba(250,204,21,.13);
-
+    background: rgba(250,204,21,.13);
     color: #fde68a;
-
     font-size: 10px;
-
     font-weight: 900;
-
-    letter-spacing: .4px;
 }
 
+.calendar { border-top: 4px solid #38bdf8; }
+.math { border-top: 4px solid #60a5fa; }
+.portuguese { border-top: 4px solid #f87171; }
+.science { border-top: 4px solid #4ade80; }
+.history { border-top: 4px solid #a78bfa; }
+.geography { border-top: 4px solid #2dd4bf; }
+.english { border-top: 4px solid #fbbf24; }
+.logic { border-top: 4px solid #f472b6; }
+.code { border-top: 4px solid #818cf8; }
 
-/* ================================================================
-   10. CORES TEMÁTICAS
-================================================================ */
-
-.calendar {
-    border-top: 4px solid #38bdf8;
+.learning,
+.quote,
+.rules {
+    margin-top: 18px;
+    padding: 19px;
+    border-radius: 18px;
+    background: rgba(2,6,23,.70);
+    border: 1px solid rgba(255,255,255,.09);
 }
 
-.math {
-    border-top: 4px solid #60a5fa;
-}
-
-.portuguese {
-    border-top: 4px solid #f87171;
-}
-
-.science {
-    border-top: 4px solid #4ade80;
-}
-
-.history {
-    border-top: 4px solid #a78bfa;
-}
-
-.geography {
-    border-top: 4px solid #2dd4bf;
-}
-
-.english {
-    border-top: 4px solid #fbbf24;
-}
-
-.logic {
-    border-top: 4px solid #f472b6;
-}
-
-.code {
-    border-top: 4px solid #818cf8;
-}
-
-
-/* ================================================================
-   11. MODO APRENDIZADO
-================================================================ */
-
-.learning {
-
-    margin-top: 24px;
-
-    padding: 21px;
-
-    background:
-        rgba(2, 6, 23, .65);
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 20px;
-}
-
-.learning-title {
-
+.learning-title,
+.quote,
+.rules {
     text-align: center;
-
-    margin-bottom: 15px;
 }
 
-.learning-title h2 {
-
-    margin: 0;
-
+.learning-title h2,
+.rules h3 {
     color: #fde68a;
-
-    font-size: 21px;
 }
 
-.learning-title p {
-
-    margin: 5px 0 0;
-
+.learning-title p,
+.rules p {
     color: #94a3b8;
-
     font-size: 12px;
+    line-height: 1.7;
 }
 
 .learning-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(150px, 1fr)
-        );
-
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
+    gap: 9px;
 }
 
 .learning-item {
-
-    padding: 14px;
-
+    padding: 13px;
     text-align: center;
-
-    background:
-        rgba(255,255,255,.05);
-
-    border-radius: 13px;
-
-    border:
-        1px solid rgba(255,255,255,.07);
+    background: rgba(255,255,255,.05);
+    border-radius: 12px;
 }
 
 .learning-item .icon {
-
     font-size: 25px;
 }
 
 .learning-item strong {
-
     display: block;
-
-    margin-top: 5px;
-
+    margin-top: 4px;
     font-size: 12px;
 }
 
 .learning-item span {
-
     display: block;
-
     margin-top: 4px;
-
     color: #94a3b8;
-
     font-size: 10px;
-
-    line-height: 1.4;
-}
-
-
-/* ================================================================
-   12. FRASE
-================================================================ */
-
-.quote {
-
-    margin-top: 17px;
-
-    padding: 22px 18px;
-
-    text-align: center;
-
-    border-radius: 17px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,41,59,.80),
-            rgba(49,46,129,.65)
-        );
-
-    border:
-        1px solid rgba(250,204,21,.18);
-}
-
-.quote .icon {
-
-    font-size: 28px;
 }
 
 .quote p {
-
-    margin: 8px auto 0;
-
-    max-width: 650px;
-
     color: #e2e8f0;
-
-    font-size: 15px;
-
-    line-height: 1.65;
-}
-
-.quote strong {
-
-    color: #fde68a;
-}
-
-
-/* ================================================================
-   13. COMBINADOS
-================================================================ */
-
-.rules {
-
-    margin-top: 17px;
-
-    padding: 18px;
-
-    text-align: center;
-
-    border-radius: 17px;
-
-    background:
-        rgba(15,23,42,.72);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-}
-
-.rules h3 {
-
-    margin: 0;
-
-    color: #e2e8f0;
-
-    font-size: 17px;
-}
-
-.rules p {
-
-    max-width: 700px;
-
-    margin: 8px auto 0;
-
-    color: #94a3b8;
-
-    font-size: 12px;
-
     line-height: 1.7;
 }
 
-
-/* ================================================================
-   14. RODAPÉ
-================================================================ */
+.quote strong {
+    color: #fde68a;
+}
 
 .footer {
-
     max-width: 1100px;
-
-    margin: 14px auto 0;
-
-    padding: 18px;
-
+    margin: auto;
+    padding: 17px;
     text-align: center;
-
     color: #94a3b8;
-
     font-size: 11px;
 }
 
 .footer-links {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-bottom: 12px;
+    gap: 7px;
+    margin-bottom: 10px;
 }
 
 .footer a {
-
     color: #cbd5e1;
-
     text-decoration: none;
-
+    background: rgba(255,255,255,.07);
     padding: 7px 10px;
-
     border-radius: 8px;
-
-    background:
-        rgba(255,255,255,.07);
 }
 
-.footer a:hover {
-
-    background:
-        rgba(255,255,255,.13);
-}
-
-
-/* ================================================================
-   15. RESPONSIVIDADE
-================================================================ */
-
-@media (max-width: 600px) {
+@media(max-width:600px) {
 
     .page {
-
-        padding: 8px;
-
-    }
-
-    .topbar {
-
-        padding: 8px;
-
+        padding: 7px;
     }
 
     .logo span:not(.logo-icon) {
-
         display: none;
-
-    }
-
-    .nav-button {
-
-        padding: 7px 9px;
-
-        font-size: 11px;
-
-    }
-
-    .map {
-
-        padding:
-            20px 11px 22px;
-
-        border-radius: 20px;
-
-    }
-
-    .hero-icon {
-
-        font-size: 51px;
-
-    }
-
-    .hero {
-
-        padding-bottom: 20px;
-
     }
 
     .islands {
-
         grid-template-columns: 1fr;
-
     }
 
     .island {
-
-        min-height: 185px;
-
-    }
-
-    .learning-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
-}
-
-@media (max-width: 360px) {
-
-    .learning-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .nav-buttons {
-
-        gap: 4px;
-
-    }
-
-}
-
-
-/* ================================================================
-   16. ACESSIBILIDADE
-================================================================ */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        scroll-behavior: auto !important;
-
-        transition: none !important;
-
+        min-height: 175px;
     }
 
 }
@@ -1203,620 +438,340 @@ body {
 
 </head>
 
-
 <body>
-
 
 <div class="page" id="topo">
 
+<nav class="topbar">
 
-    <!-- =========================================================
-         17. BARRA DE NAVEGAÇÃO
-    ========================================================== -->
+    <a href="index.html" class="logo">
+        <span class="logo-icon">🏴‍☠️</span>
+        <span>SISTEMA VICENTE</span>
+    </a>
 
-    <nav class="topbar">
+    <div class="nav-buttons">
 
-        <a
-            href="index.html"
-            class="logo"
-            aria-label="Voltar para o mapa principal"
-        >
+        <a href="index.html" class="nav-button">🗺️ MAPA</a>
 
-            <span class="logo-icon">
-                🏴‍☠️
-            </span>
+        <a href="calendario.html" class="nav-button">📅 PROVAS</a>
 
-            <span>
-                SISTEMA VICENTE
-            </span>
+        <a href="diretriz.html" class="nav-button">⚙️ DIRETRIZES</a>
 
-        </a>
+    </div>
 
+</nav>
 
-        <div class="nav-buttons">
+<main class="map">
 
-            <a
-                href="index.html"
-                class="nav-button"
-            >
-                🗺️ MAPA
-            </a>
+<header class="hero">
 
-            <a
-                href="calendario.html"
-                class="nav-button"
-            >
-                📅 PROVAS
-            </a>
+    <div class="hero-icon">🏴‍☠️</div>
 
-        </div>
+    <h1>
+        A Grande <span>Aventura</span>
+    </h1>
 
-    </nav>
+    <p>
+        O mapa está aberto.
+        Cada conhecimento é uma nova ilha.
+        Cada desafio é uma nova descoberta.
+    </p>
 
+</header>
 
-    <!-- =========================================================
-         18. MAPA PRINCIPAL
-    ========================================================== -->
+<div class="status">
 
-    <main class="map">
+    <span class="online">
+        <span class="online-dot"></span>
+        SISTEMA ONLINE
+    </span>
 
+    <span>•</span>
 
-        <!-- =====================================================
-             19. CABEÇALHO
-        ====================================================== -->
-
-        <header class="hero">
-
-            <div class="hero-icon">
-                🏴‍☠️
-            </div>
-
-            <h1>
-                A Grande <span>Aventura</span>
-            </h1>
-
-            <p>
-                O mapa está aberto.
-                Cada conhecimento é uma nova ilha.
-                Cada desafio é uma nova descoberta.
-            </p>
-
-        </header>
-
-
-        <!-- =====================================================
-             20. STATUS
-        ====================================================== -->
-
-        <div class="status">
-
-            <span class="online">
-
-                <span class="online-dot"></span>
-
-                SISTEMA ONLINE
-
-            </span>
-
-            <span>•</span>
-
-            <span>
-                Mapa de aprendizado ativo
-            </span>
-
-        </div>
-
-
-        <!-- =====================================================
-             21. TÍTULO DO MAPA
-        ====================================================== -->
-
-        <section class="map-title">
-
-            <h2>
-                🗺️ MAPA DO CONHECIMENTO
-            </h2>
-
-            <p>
-                Escolha uma ilha e comece sua missão.
-            </p>
-
-        </section>
-
-
-        <!-- =====================================================
-             22. ILHAS / MATÉRIAS
-        ====================================================== -->
-
-        <section class="islands">
-
-
-            <!-- =================================================
-                 CALENDÁRIO
-            ================================================== -->
-
-            <a
-                href="calendario.html"
-                class="island calendar"
-            >
-
-                <div class="island-icon">
-                    📅
-                </div>
-
-                <h3>
-                    Central de Missões
-                </h3>
-
-                <p>
-                    Descubra as próximas provas
-                    e organize sua jornada.
-                </p>
-
-                <span class="mission-button">
-                    ABRIR MAPA DE PROVAS
-                </span>
-
-            </a>
-
-
-            <!-- =================================================
-                 MATEMÁTICA
-            ================================================== -->
-
-            <a
-                href="matematica.html"
-                class="island math"
-            >
-
-                <div class="island-icon">
-                    🔢
-                </div>
-
-                <h3>
-                    Ilha da Matemática
-                </h3>
-
-                <p>
-                    Números, contas, problemas
-                    e desafios de raciocínio.
-                </p>
-
-                <span class="mission-button">
-                    INICIAR MISSÃO
-                </span>
-
-            </a>
-
-
-            <!-- =================================================
-                 PORTUGUÊS
-            ================================================== -->
-
-            <div class="island portuguese">
-
-                <div class="island-icon">
-                    📚
-                </div>
-
-                <h3>
-                    Ilha do Português
-                </h3>
-
-                <p>
-                    Palavras, leitura,
-                    interpretação e escrita.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 CIÊNCIAS
-            ================================================== -->
-
-            <div class="island science">
-
-                <div class="island-icon">
-                    🔬
-                </div>
-
-                <h3>
-                    Ilha das Ciências
-                </h3>
-
-                <p>
-                    Animais, natureza,
-                    corpo humano e descobertas.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 HISTÓRIA
-            ================================================== -->
-
-            <div class="island history">
-
-                <div class="island-icon">
-                    🏛️
-                </div>
-
-                <h3>
-                    Ilha da História
-                </h3>
-
-                <p>
-                    Grandes acontecimentos,
-                    pessoas e civilizações.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 GEOGRAFIA
-            ================================================== -->
-
-            <div class="island geography">
-
-                <div class="island-icon">
-                    🌎
-                </div>
-
-                <h3>
-                    Ilha da Geografia
-                </h3>
-
-                <p>
-                    Mapas, lugares,
-                    planeta e sociedade.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 INGLÊS
-            ================================================== -->
-
-            <div class="island english">
-
-                <div class="island-icon">
-                    🇬🇧
-                </div>
-
-                <h3>
-                    Ilha do Inglês
-                </h3>
-
-                <p>
-                    Palavras, frases,
-                    leitura e comunicação.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 DESAFIOS
-            ================================================== -->
-
-            <div class="island logic">
-
-                <div class="island-icon">
-                    🧩
-                </div>
-
-                <h3>
-                    Mar dos Desafios
-                </h3>
-
-                <p>
-                    Lógica, enigmas,
-                    investigação e estratégia.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 PROGRAMAÇÃO
-            ================================================== -->
-
-            <div class="island code">
-
-                <div class="island-icon">
-                    💻
-                </div>
-
-                <h3>
-                    Ilha da Tecnologia
-                </h3>
-
-                <p>
-                    Computadores, lógica,
-                    programação e criação.
-                </p>
-
-                <span class="mission-button">
-                    EM BREVE
-                </span>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =====================================================
-             23. MODO APRENDIZADO
-        ====================================================== -->
-
-        <section class="learning">
-
-            <div class="learning-title">
-
-                <h2>
-                    🧠 MODO APRENDIZADO
-                </h2>
-
-                <p>
-                    A missão não é apenas acertar.
-                </p>
-
-            </div>
-
-
-            <div class="learning-grid">
-
-
-                <div class="learning-item">
-
-                    <div class="icon">
-                        🧠
-                    </div>
-
-                    <strong>
-                        APRENDER
-                    </strong>
-
-                    <span>
-                        Construir ferramentas
-                        para pensar.
-                    </span>
-
-                </div>
-
-
-                <div class="learning-item">
-
-                    <div class="icon">
-                        🔍
-                    </div>
-
-                    <strong>
-                        INVESTIGAR
-                    </strong>
-
-                    <span>
-                        Observar antes
-                        de responder.
-                    </span>
-
-                </div>
-
-
-                <div class="learning-item">
-
-                    <div class="icon">
-                        🔄
-                    </div>
-
-                    <strong>
-                        TENTAR
-                    </strong>
-
-                    <span>
-                        O erro também
-                        ensina.
-                    </span>
-
-                </div>
-
-
-                <div class="learning-item">
-
-                    <div class="icon">
-                        💡
-                    </div>
-
-                    <strong>
-                        ENTENDER
-                    </strong>
-
-                    <span>
-                        Descobrir como
-                        chegou à resposta.
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             24. FRASE
-        ====================================================== -->
-
-        <section class="quote">
-
-            <div class="icon">
-                💡
-            </div>
-
-            <p>
-
-                <strong>
-                    Você não está apenas decorando.
-                </strong>
-
-                <br>
-
-                Está construindo ferramentas
-                para pensar.
-
-                <br><br>
-
-                Entender como chegou nela
-                é mais importante que decorar
-                a resposta.
-
-            </p>
-
-        </section>
-
-
-        <!-- =====================================================
-             25. COMBINADOS
-        ====================================================== -->
-
-        <section class="rules">
-
-            <h3>
-                ⏰ Todo aventureiro precisa cuidar da própria energia
-            </h3>
-
-            <p>
-
-                Estudar é uma missão.
-                Dormir é uma missão.
-                Comer bem é uma missão.
-                Descansar também é uma missão.
-
-                <br><br>
-
-                Horários e combinados existem para ajudar
-                a jornada a funcionar melhor.
-
-            </p>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- =========================================================
-         26. RODAPÉ
-    ========================================================== -->
-
-    <footer class="footer">
-
-        <div class="footer-links">
-
-            <a href="index.html">
-                🗺️ Mapa
-            </a>
-
-            <a href="calendario.html">
-                📅 Provas
-            </a>
-
-            <a href="matematica.html">
-                🔢 Matemática
-            </a>
-
-            <a href="#topo">
-                ⬆️ Topo
-            </a>
-
-        </div>
-
-
-        Sistema Vicente
-
-        <br>
-
-        Uma aventura construída para aprender,
-        pensar e descobrir.
-
-        <br><br>
-
-        N74 TEC © 2026
-
-    </footer>
-
+    <span>Mapa de aprendizado ativo</span>
 
 </div>
 
+<section class="map-title">
 
-<script>
+    <h2>🗺️ MAPA DO CONHECIMENTO</h2>
 
-/*
+    <p>Escolha uma ilha e comece sua missão.</p>
+
+</section>
+
+<section class="islands">
+
+<a href="calendario.html" class="island calendar">
+
+    <div class="island-icon">📅</div>
+
+    <h3>Central de Missões</h3>
+
+    <p>
+        Veja as avaliações e organize
+        sua jornada.
+    </p>
+
+    <span class="mission-button">
+        ABRIR PROVAS
+    </span>
+
+</a>
+
+<a href="matematica.html" class="island math">
+
+    <div class="island-icon">🔢</div>
+
+    <h3>Ilha da Matemática</h3>
+
+    <p>
+        Números, contas, problemas
+        e desafios de raciocínio.
+    </p>
+
+    <span class="mission-button">
+        INICIAR MISSÃO
+    </span>
+
+</a>
+
+<div class="island portuguese">
+
+    <div class="island-icon">📚</div>
+
+    <h3>Ilha do Português</h3>
+
+    <p>
+        Palavras, leitura,
+        interpretação e escrita.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+<div class="island science">
+
+    <div class="island-icon">🔬</div>
+
+    <h3>Ilha das Ciências</h3>
+
+    <p>
+        Animais, natureza,
+        corpo humano e descobertas.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+<div class="island history">
+
+    <div class="island-icon">🏛️</div>
+
+    <h3>Ilha da História</h3>
+
+    <p>
+        Acontecimentos,
+        pessoas e civilizações.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+<div class="island geography">
+
+    <div class="island-icon">🌎</div>
+
+    <h3>Ilha da Geografia</h3>
+
+    <p>
+        Mapas, lugares,
+        planeta e sociedade.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+<div class="island english">
+
+    <div class="island-icon">🇬🇧</div>
+
+    <h3>Ilha do Inglês</h3>
+
+    <p>
+        Palavras, frases,
+        leitura e comunicação.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+<div class="island logic">
+
+    <div class="island-icon">🧩</div>
+
+    <h3>Mar dos Desafios</h3>
+
+    <p>
+        Lógica, enigmas,
+        investigação e estratégia.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+<div class="island code">
+
+    <div class="island-icon">💻</div>
+
+    <h3>Ilha da Tecnologia</h3>
+
+    <p>
+        Computadores, lógica,
+        programação e criação.
+    </p>
+
+    <span class="mission-button">EM BREVE</span>
+
+</div>
+
+</section>
+
+<section class="learning">
+
+<div class="learning-title">
+
+    <h2>🧠 MODO APRENDIZADO</h2>
+
+    <p>
+        A missão não é apenas acertar.
+    </p>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learning-item">
+    <div class="icon">🧠</div>
+    <strong>APRENDER</strong>
+    <span>Construir ferramentas para pensar.</span>
+</div>
+
+<div class="learning-item">
+    <div class="icon">🔍</div>
+    <strong>INVESTIGAR</strong>
+    <span>Observar antes de responder.</span>
+</div>
+
+<div class="learning-item">
+    <div class="icon">🔄</div>
+    <strong>TENTAR</strong>
+    <span>O erro também ensina.</span>
+</div>
+
+<div class="learning-item">
+    <div class="icon">💡</div>
+    <strong>ENTENDER</strong>
+    <span>Descobrir como chegou à resposta.</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="quote">
+
+    <div class="icon">💡</div>
+
+    <p>
+
+        <strong>
+            Você não está apenas decorando.
+        </strong>
+
+        <br>
+
+        Está construindo ferramentas para pensar.
+
+        <br><br>
+
+        Entender como chegou nela
+        é mais importante que decorar a resposta.
+
+    </p>
+
+</section>
+
+<section class="rules">
+
+    <h3>
+        ⏰ Todo aventureiro precisa cuidar da própria energia
+    </h3>
+
+    <p>
+        Estudar é uma missão.
+        Dormir é uma missão.
+        Comer bem é uma missão.
+        Descansar também é uma missão.
+    </p>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+<div class="footer-links">
+
+    <a href="index.html">🗺️ Mapa</a>
+
+    <a href="calendario.html">📅 Provas</a>
+
+    <a href="matematica.html">🔢 Matemática</a>
+
+    <a href="diretriz.html">⚙️ Diretrizes</a>
+
+    <a href="#topo">⬆️ Topo</a>
+
+</div>
+
+Sistema Vicente
+
+<br>
+
+Uma aventura construída para aprender,
+pensar e descobrir.
+
+<br><br>
+
+N74 TEC © 2026
+
+</footer>
+
+</div>
+
+<!--
 ====================================================================
-27. JAVASCRIPT
+INTEGRAÇÃO DO SISTEMA
 ====================================================================
 
-Nesta versão o index utiliza JavaScript mínimo.
+diretrizes.js:
+    contém as configurações.
 
-O sistema de navegação funciona através de links HTML,
-garantindo compatibilidade mesmo quando JavaScript estiver
-desativado.
-
-O JavaScript poderá futuramente controlar:
-
-    - XP
-    - nível
-    - conquistas
-    - missões
-    - progresso
-    - rotina
-    - calendário
-    - recompensas
-    - mensagens personalizadas
+sistema.js:
+    executa as funções globais.
 
 ====================================================================
-HISTÓRICO JAVASCRIPT
-====================================================================
+-->
 
-v3.0:
-    - Estrutura preparada para futuras funções.
-    - Navegação principal permanece independente de JavaScript.
-
-====================================================================
-*/
-
-</script>
-
+<script src="config/diretrizes.js"></script>
+<script src="js/sistema.js"></script>
 
 </body>
 
