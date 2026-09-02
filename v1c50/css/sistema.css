@@ -1,0 +1,774 @@
+/*
+====================================================================
+                    SISTEMA VICENTE
+              CSS CENTRAL DO SISTEMA
+====================================================================
+
+ARQUIVO:
+    sistema.css
+
+LOCAL:
+    /v1c50/css/sistema.css
+
+VERSÃO:
+    1.0
+
+DATA:
+    02/09/2026
+
+====================================================================
+FINALIDADE
+====================================================================
+
+Este arquivo contém o CSS CENTRAL do Sistema Vicente.
+
+A finalidade é permitir que todas as páginas utilizem uma mesma
+identidade visual sem precisar repetir o mesmo código em cada HTML.
+
+Páginas futuras deverão preferencialmente utilizar:
+
+    <link rel="stylesheet" href="css/sistema.css">
+
+====================================================================
+RESPONSABILIDADES
+====================================================================
+
+Este arquivo poderá controlar:
+
+    - fundo global;
+    - cores;
+    - tipografia;
+    - cartões;
+    - botões;
+    - navegação;
+    - cabeçalhos;
+    - rodapés;
+    - avisos;
+    - pop-ups;
+    - mensagens;
+    - componentes do sistema;
+    - responsividade;
+    - acessibilidade.
+
+====================================================================
+FUNDO GLOBAL
+====================================================================
+
+O fundo oficial do Sistema Vicente é:
+
+    /v1c50/fundo.jpg
+
+Todas as páginas deverão utilizar o mesmo arquivo.
+
+Para trocar o fundo de TODO o sistema:
+
+    1. substituir fundo.jpg;
+    2. manter exatamente o mesmo nome;
+    3. não alterar os HTMLs.
+
+====================================================================
+RESPONSIVIDADE
+====================================================================
+
+O CSS foi projetado para:
+
+    - celular;
+    - tablet;
+    - notebook;
+    - desktop.
+
+Não deve depender de tamanho específico de aparelho.
+
+====================================================================
+FILOSOFIA VISUAL
+====================================================================
+
+A interface deve transmitir:
+
+    - aventura;
+    - exploração;
+    - descoberta;
+    - tecnologia;
+    - aprendizado;
+    - organização.
+
+A inspiração de aventura é própria do Sistema Vicente.
+
+Não utilizar personagens ou imagens oficiais de One Piece como
+elementos obrigatórios do sistema.
+
+====================================================================
+ACESSIBILIDADE
+====================================================================
+
+São considerados:
+
+    - contraste;
+    - tamanho de toque;
+    - navegação por teclado;
+    - redução de animações;
+    - telas pequenas.
+
+====================================================================
+HISTÓRICO
+====================================================================
+
+v1.0 - 02/09/2026
+
+    - Criado CSS central do Sistema Vicente.
+    - Criado fundo global.
+    - Criados componentes básicos.
+    - Criados botões e navegação.
+    - Criado sistema visual para mensagens.
+    - Criado sistema visual para pop-ups.
+    - Criada responsividade.
+    - Criada base de acessibilidade.
+
+====================================================================
+REGRA PARA ALTERAÇÕES
+====================================================================
+
+Antes de criar CSS específico em uma nova página, verificar se o
+componente já pode ser colocado aqui.
+
+O objetivo é evitar duplicação de código.
+
+====================================================================
+FIM DA DOCUMENTAÇÃO
+====================================================================
+*/
+
+
+/* ================================================================
+   01. CONFIGURAÇÃO GLOBAL
+================================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #f8fafc;
+
+    background-image:
+        linear-gradient(
+            rgba(3, 10, 20, 0.68),
+            rgba(3, 10, 20, 0.78)
+        ),
+        url("../fundo.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+/* ================================================================
+   02. LINKS
+================================================================ */
+
+a {
+    color: inherit;
+}
+
+
+/* ================================================================
+   03. CONTAINER CENTRAL
+================================================================ */
+
+.sv-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 14px;
+}
+
+.sv-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* ================================================================
+   04. BARRA DE NAVEGAÇÃO
+================================================================ */
+
+.sv-topbar {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    background:
+        rgba(7, 17, 31, 0.88);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 15px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ================================================================
+   05. LOGO
+================================================================ */
+
+.sv-logo {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.sv-logo-icon {
+    font-size: 25px;
+}
+
+
+/* ================================================================
+   06. BOTÕES DE NAVEGAÇÃO
+================================================================ */
+
+.sv-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.sv-nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 7px 12px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+}
+
+.sv-nav-button:hover {
+    background:
+        rgba(255, 255, 255, 0.20);
+
+    transform: translateY(-1px);
+}
+
+.sv-nav-button:focus-visible {
+    outline:
+        3px solid #facc15;
+
+    outline-offset: 2px;
+}
+
+
+/* ================================================================
+   07. CARTÃO
+================================================================ */
+
+.sv-card {
+    width: 100%;
+
+    background:
+        rgba(7, 17, 31, 0.84);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.13);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.35);
+
+    padding: 20px;
+}
+
+
+/* ================================================================
+   08. CABEÇALHO
+================================================================ */
+
+.sv-header {
+    text-align: center;
+
+    padding: 10px 10px 20px;
+}
+
+.sv-header h1 {
+    margin: 0;
+
+    font-size:
+        clamp(26px, 6vw, 44px);
+}
+
+.sv-header p {
+    max-width: 700px;
+
+    margin: 10px auto 0;
+
+    color: #cbd5e1;
+
+    font-size:
+        clamp(13px, 3vw, 16px);
+
+    line-height: 1.6;
+}
+
+
+/* ================================================================
+   09. TÍTULOS
+================================================================ */
+
+.sv-title {
+    color: #fde68a;
+}
+
+.sv-subtitle {
+    color: #94a3b8;
+}
+
+
+/* ================================================================
+   10. BOTÃO PRINCIPAL
+================================================================ */
+
+.sv-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 10px 16px;
+
+    border: 0;
+    border-radius: 11px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        filter 0.2s;
+}
+
+.sv-button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.sv-button:focus-visible {
+    outline:
+        3px solid #facc15;
+
+    outline-offset: 2px;
+}
+
+
+/* ================================================================
+   11. BOTÃO SECUNDÁRIO
+================================================================ */
+
+.sv-button-secondary {
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* ================================================================
+   12. ÁREA DE AÇÕES
+================================================================ */
+
+.sv-actions {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 18px;
+}
+
+
+/* ================================================================
+   13. ALERTA
+================================================================ */
+
+.sv-alert {
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.88);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.sv-alert-title {
+    font-size: 17px;
+    font-weight: 900;
+
+    margin-bottom: 7px;
+}
+
+.sv-alert-text {
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ================================================================
+   14. POP-UP / LEMBRETE
+================================================================ */
+
+.sv-reminder-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    background:
+        rgba(0, 0, 0, 0.62);
+
+    backdrop-filter: blur(5px);
+}
+
+.sv-reminder-overlay.sv-visible {
+    display: flex;
+}
+
+.sv-reminder {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    background:
+        rgba(7, 17, 31, 0.97);
+
+    border:
+        2px solid rgba(250, 204, 21, 0.35);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55);
+}
+
+.sv-reminder-icon {
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+.sv-reminder h2 {
+    margin: 0;
+
+    font-size: 23px;
+
+    color: #fde68a;
+}
+
+.sv-reminder p {
+    margin: 12px 0;
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* ================================================================
+   15. CHECK / CONFIRMAÇÃO
+================================================================ */
+
+.sv-check-area {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+
+/* ================================================================
+   16. RODAPÉ
+================================================================ */
+
+.sv-footer {
+    max-width: 1100px;
+
+    margin: 14px auto 0;
+
+    padding: 18px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+.sv-footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+}
+
+.sv-footer a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+}
+
+.sv-footer a:hover {
+    background:
+        rgba(255, 255, 255, 0.13);
+}
+
+
+/* ================================================================
+   17. UTILITÁRIOS
+================================================================ */
+
+.sv-hidden {
+    display: none !important;
+}
+
+.sv-center {
+    text-align: center;
+}
+
+.sv-muted {
+    color: #94a3b8;
+}
+
+
+/* ================================================================
+   18. RESPONSIVIDADE
+================================================================ */
+
+@media (max-width: 600px) {
+
+    .sv-page {
+        padding: 8px;
+    }
+
+    .sv-topbar {
+        padding: 8px;
+    }
+
+    .sv-logo span:not(.sv-logo-icon) {
+        display: none;
+    }
+
+    .sv-nav-button {
+        padding: 7px 9px;
+        font-size: 11px;
+    }
+
+    .sv-card {
+        padding: 15px;
+        border-radius: 18px;
+    }
+
+    .sv-button {
+        width: 100%;
+    }
+
+    .sv-actions {
+        flex-direction: column;
+    }
+
+    .sv-actions > * {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 360px) {
+
+    .sv-nav {
+        gap: 4px;
+    }
+
+    .sv-nav-button {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+}
+
+
+/* ================================================================
+   19. ACESSIBILIDADE
+================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ================================================================
+   20. IMPRESSÃO
+================================================================ */
+
+@media print {
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .sv-topbar,
+    .sv-footer,
+    .sv-nav {
+        display: none;
+    }
+
+    .sv-card {
+        background: white;
+        color: black;
+
+        box-shadow: none;
+
+        border: 1px solid #ccc;
+    }
+}
+
+
+/*
+====================================================================
+FIM DO ARQUIVO
+====================================================================
+*/
