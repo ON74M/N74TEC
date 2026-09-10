@@ -1,0 +1,1474 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<!--
+====================================================================
+                    SISTEMA VICENTE
+====================================================================
+
+ARQUIVO:
+    desafios.html
+
+LOCAL:
+    /v1c50/desafios.html
+
+FINALIDADE:
+    Página interativa de desafios de lógica e raciocínio.
+
+OBJETIVO:
+    Estimular o Vicente a observar, comparar, raciocinar,
+    tomar decisões e explicar o motivo de suas escolhas.
+
+IMPORTANTE:
+    Esta página não foi criada para simplesmente medir acertos.
+
+    O objetivo principal é observar COMO o Vicente pensa.
+
+====================================================================
+NAVEGAÇÃO
+====================================================================
+
+MAPA PRINCIPAL:
+    index.html
+
+CALENDÁRIO:
+    calendario.html
+
+MATEMÁTICA:
+    matematica.html
+
+DIRETRIZES:
+    diretriz.html
+
+FUNDO GLOBAL:
+    fundo.jpg
+
+CSS GLOBAL:
+    /v1c50/css/sistema.css
+
+JAVASCRIPT GLOBAL:
+    /v1c50/js/sistema.js
+
+DIRETRIZES JAVASCRIPT:
+    /v1c50/js/diretrizes.js
+
+====================================================================
+FILOSOFIA
+====================================================================
+
+MODO APRENDIZADO:
+
+    Você não está apenas decorando.
+    Está construindo ferramentas para pensar.
+
+PRINCÍPIO:
+
+    Entender como chegou nela
+    é mais importante que decorar a resposta.
+
+O erro faz parte da investigação.
+
+====================================================================
+ESTRUTURA DO DESAFIO
+====================================================================
+
+FASE 1:
+    O DETETIVE DO VALOR
+
+    Trabalha percepção de valor e impacto.
+
+FASE 2:
+    O ESTRATEGISTA
+
+    Trabalha estratégia, distribuição e justificativa.
+
+FASE 3:
+    O INVENTOR
+
+    Trabalha cooperação, consequências e tomada de decisão.
+
+====================================================================
+REGRAS DE INTERAÇÃO
+====================================================================
+
+1. O Vicente escolhe A, B, C ou D.
+2. O sistema informa imediatamente se acertou.
+3. A resposta pode ser alterada antes da conclusão.
+4. A Fase 2 possui campo para justificar a estratégia.
+5. O resultado final mostra o desempenho.
+6. O sistema valoriza o raciocínio, não somente a resposta.
+7. Não existe punição por erro.
+8. Não existe constrangimento.
+9. A mensagem final incentiva nova tentativa.
+
+====================================================================
+RESPONSIVIDADE
+====================================================================
+
+Compatível com:
+
+    celular
+    tablet
+    notebook
+    desktop
+
+Tecnologias:
+
+    HTML5
+    CSS3
+    JavaScript puro
+
+Não utiliza frameworks externos.
+
+====================================================================
+FUNDO
+====================================================================
+
+Esta página utiliza:
+
+    /v1c50/fundo.jpg
+
+Para trocar o fundo de todas as páginas:
+
+    substituir fundo.jpg
+
+Não alterar o nome do arquivo.
+
+====================================================================
+HISTÓRICO
+====================================================================
+
+v1.0 - 10/09/2026
+
+    - Criada página de desafios de lógica.
+    - Criadas 3 fases.
+    - Criadas respostas interativas A/B/C/D.
+    - Criado campo de justificativa da Fase 2.
+    - Criado sistema de pontuação.
+    - Criado resultado final.
+    - Integrada navegação do Sistema Vicente.
+    - Integrado fundo global.
+    - Integrado sistema.css.
+    - Integrado sistema.js.
+    - Integrado diretrizes.js.
+    - Criada documentação interna.
+
+====================================================================
+REGRA PARA FUTURAS ALTERAÇÕES
+====================================================================
+
+Sempre atualizar:
+
+    VERSÃO
+    DATA
+    HISTÓRICO
+
+Não apagar esta documentação.
+
+====================================================================
+-->
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="description"
+    content="Sistema Vicente - Desafio de lógica em três fases."
+>
+
+<meta
+    name="theme-color"
+    content="#07111f"
+>
+
+<title>
+    Sistema Vicente | Desafio de Lógica
+</title>
+
+<link rel="stylesheet" href="css/sistema.css">
+
+<style>
+
+/* ================================================================
+   CONFIGURAÇÃO ESPECÍFICA DESTA PÁGINA
+================================================================ */
+
+.desafio-page {
+    width: 100%;
+    max-width: 1050px;
+    margin: auto;
+    padding: 10px;
+}
+
+.desafio-header {
+    text-align: center;
+    padding: 20px 12px 24px;
+}
+
+.desafio-header .icone {
+    font-size: 58px;
+    margin-bottom: 8px;
+}
+
+.desafio-header h1 {
+    margin: 0;
+    font-size: clamp(25px, 6vw, 42px);
+}
+
+.desafio-header h1 span {
+    color: #facc15;
+}
+
+.desafio-header p {
+    max-width: 720px;
+    margin: 10px auto 0;
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+/* ================================================================
+   PLACAR
+================================================================ */
+
+.placar-desafio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto 18px;
+}
+
+.placar-box {
+    min-width: 120px;
+    padding: 10px 14px;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, .85);
+    border: 1px solid rgba(255,255,255,.10);
+}
+
+.placar-box strong {
+    display: block;
+    font-size: 20px;
+    color: #fde68a;
+}
+
+.placar-box span {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+
+/* ================================================================
+   FASE
+================================================================ */
+
+.fase {
+    margin-bottom: 18px;
+    padding: 18px;
+    border-radius: 19px;
+    background: rgba(15, 23, 42, .86);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,.20);
+}
+
+.fase-cabecalho {
+    margin-bottom: 15px;
+}
+
+.fase-numero {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: rgba(250,204,21,.13);
+    color: #fde68a;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.fase h2 {
+    margin: 8px 0 4px;
+    font-size: 22px;
+}
+
+.fase-subtitulo {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+
+/* ================================================================
+   PERGUNTA
+================================================================ */
+
+.pergunta {
+    margin-top: 15px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.pergunta-texto {
+    margin: 0 0 13px;
+    color: #f8fafc;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.enunciado {
+    margin: 10px 0;
+    padding: 13px;
+    border-left: 4px solid #facc15;
+    border-radius: 8px;
+    background: rgba(250,204,21,.07);
+    color: #e2e8f0;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+
+/* ================================================================
+   ALTERNATIVAS
+================================================================ */
+
+.alternativas {
+    display: grid;
+    gap: 9px;
+}
+
+.alternativa {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 11px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.055);
+    color: #f8fafc;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    transition: .2s;
+}
+
+.alternativa:hover {
+    background: rgba(255,255,255,.11);
+    transform: translateX(3px);
+}
+
+.alternativa:focus-visible {
+    outline: 3px solid #facc15;
+    outline-offset: 2px;
+}
+
+.alternativa.selecionada {
+    border-color: #facc15;
+    background: rgba(250,204,21,.12);
+}
+
+.alternativa.correta {
+    border-color: #22c55e;
+    background: rgba(34,197,94,.14);
+}
+
+.alternativa.errada {
+    border-color: #ef4444;
+    background: rgba(239,68,68,.12);
+}
+
+
+/* ================================================================
+   FEEDBACK
+================================================================ */
+
+.feedback-desafio {
+    display: none;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 11px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.feedback-desafio.mostrar {
+    display: block;
+}
+
+.feedback-desafio.ok {
+    background: rgba(34,197,94,.13);
+    border: 1px solid #22c55e;
+    color: #bbf7d0;
+}
+
+.feedback-desafio.erro {
+    background: rgba(239,68,68,.12);
+    border: 1px solid #ef4444;
+    color: #fecaca;
+}
+
+
+/* ================================================================
+   JUSTIFICATIVA
+================================================================ */
+
+.justificativa {
+    margin-top: 15px;
+}
+
+.justificativa label {
+    display: block;
+    margin-bottom: 7px;
+    color: #fde68a;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.justificativa textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    resize: vertical;
+    border-radius: 11px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(2,6,23,.70);
+    color: white;
+    font: inherit;
+    font-size: 13px;
+}
+
+.justificativa textarea:focus {
+    outline: 2px solid #facc15;
+    border-color: #facc15;
+}
+
+
+/* ================================================================
+   BOTÃO
+================================================================ */
+
+.btn-finalizar {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 11px;
+    background: #facc15;
+    color: #111827;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-finalizar:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.btn-finalizar:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+
+/* ================================================================
+   RESULTADO
+================================================================ */
+
+.resultado {
+    display: none;
+    margin-top: 20px;
+    padding: 22px;
+    text-align: center;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,41,59,.95),
+            rgba(49,46,129,.85)
+        );
+    border: 1px solid rgba(250,204,21,.25);
+}
+
+.resultado.mostrar {
+    display: block;
+}
+
+.resultado .trofeu {
+    font-size: 48px;
+}
+
+.resultado h2 {
+    margin: 8px 0;
+    color: #fde68a;
+}
+
+.resultado p {
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+.resultado .frase-final {
+    margin-top: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.06);
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+
+/* ================================================================
+   NAVEGAÇÃO INFERIOR
+================================================================ */
+
+.navegacao-final {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.navegacao-final a {
+    display: inline-block;
+    padding: 9px 12px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.08);
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.navegacao-final a:hover {
+    background: rgba(255,255,255,.15);
+}
+
+
+/* ================================================================
+   CELULAR
+================================================================ */
+
+@media (max-width: 600px) {
+
+    .desafio-page {
+        padding: 6px;
+    }
+
+    .fase {
+        padding: 13px;
+        border-radius: 16px;
+    }
+
+    .pergunta {
+        padding: 13px;
+    }
+
+    .desafio-header .icone {
+        font-size: 48px;
+    }
+
+    .placar-box {
+        flex: 1;
+        min-width: 95px;
+    }
+
+}
+
+
+/* ================================================================
+   ACESSIBILIDADE
+================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page" id="topo">
+
+
+<!-- ============================================================
+     NAVEGAÇÃO
+============================================================= -->
+
+<nav class="topbar">
+
+    <a
+        href="index.html"
+        class="logo"
+        aria-label="Voltar ao mapa principal"
+    >
+        <span class="logo-icon">🏴‍☠️</span>
+        <span>SISTEMA VICENTE</span>
+    </a>
+
+    <div class="nav-buttons">
+
+        <a href="index.html" class="nav-button">
+            🗺️ MAPA
+        </a>
+
+        <a href="calendario.html" class="nav-button">
+            📅 PROVAS
+        </a>
+
+        <a href="#topo" class="nav-button">
+            ⬆️ TOPO
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="map">
+
+
+<div class="desafio-page">
+
+
+<!-- ============================================================
+     CABEÇALHO
+============================================================= -->
+
+<header class="desafio-header">
+
+    <div class="icone">
+        🧠
+    </div>
+
+    <h1>
+        Desafio de <span>Lógica</span>
+    </h1>
+
+    <p>
+        Vicente, quero ver como você pensa.
+        Não existe pressa.
+        Leia com atenção e investigue antes de responder.
+    </p>
+
+</header>
+
+
+<!-- ============================================================
+     PLACAR
+============================================================= -->
+
+<div class="placar-desafio">
+
+    <div class="placar-box">
+        <strong id="acertos">0</strong>
+        <span>ACERTOS</span>
+    </div>
+
+    <div class="placar-box">
+        <strong id="respondidas">0</strong>
+        <span>RESPONDIDAS</span>
+    </div>
+
+    <div class="placar-box">
+        <strong id="percentual">0%</strong>
+        <span>PROGRESSO</span>
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     FASE 1
+============================================================= -->
+
+<section class="fase">
+
+    <div class="fase-cabecalho">
+
+        <span class="fase-numero">
+            🔎 FASE 1
+        </span>
+
+        <h2>
+            O DETETIVE DO VALOR
+        </h2>
+
+        <p class="fase-subtitulo">
+            Investigue o poder de uma escolha.
+        </p>
+
+    </div>
+
+
+    <div class="pergunta">
+
+        <p class="pergunta-texto">
+
+            Tem um envelope com
+            <strong>5 notas de R$100</strong>.
+
+            Total:
+            <strong>R$500</strong>.
+
+        </p>
+
+        <div class="enunciado">
+
+            Para o Léo, isso compra 5 videogames.
+
+            <br><br>
+
+            Para a Dona que limpa a escola,
+            isso paga 6 dias de trabalho +
+            o ônibus do mês +
+            a compra da semana da família.
+
+            <br><br>
+
+            Onde esse envelope tem mais
+            <strong>PODER de mudar a semana?</strong>
+
+        </div>
+
+
+        <div class="alternativas">
+
+            <button
+                class="alternativa"
+                data-fase="1"
+                data-correta="false"
+                onclick="responder(this, 1, false)"
+            >
+                <strong>A)</strong>
+                Na loja do Léo
+            </button>
+
+
+            <button
+                class="alternativa"
+                data-fase="1"
+                data-correta="true"
+                onclick="responder(this, 1, true)"
+            >
+                <strong>B)</strong>
+                Na vida da Dona da limpeza
+            </button>
+
+
+            <button
+                class="alternativa"
+                data-fase="1"
+                data-correta="false"
+                onclick="responder(this, 1, false)"
+            >
+                <strong>C)</strong>
+                Tem o mesmo poder nos dois,
+                porque são 5 notas de R$100
+            </button>
+
+
+            <button
+                class="alternativa"
+                data-fase="1"
+                data-correta="false"
+                onclick="responder(this, 1, false)"
+            >
+                <strong>D)</strong>
+                Em nenhum, é pouco para todo mundo
+            </button>
+
+        </div>
+
+
+        <div
+            id="feedback1"
+            class="feedback-desafio"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FASE 2
+============================================================= -->
+
+<section class="fase">
+
+    <div class="fase-cabecalho">
+
+        <span class="fase-numero">
+            ⚔️ FASE 2
+        </span>
+
+        <h2>
+            O ESTRATEGISTA
+        </h2>
+
+        <p class="fase-subtitulo">
+            Uma boa estratégia precisa fazer sentido.
+        </p>
+
+    </div>
+
+
+    <div class="pergunta">
+
+        <p class="pergunta-texto">
+
+            Você tem
+            <strong>R$100</strong>
+            e 10 personagens sem nenhum item.
+
+        </p>
+
+        <div class="enunciado">
+
+            Qual estratégia deixa o
+            <strong>TIME mais forte</strong>
+            no final?
+
+        </div>
+
+
+        <div class="alternativas">
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 2, true)"
+            >
+                <strong>A)</strong>
+                Dar R$10 para cada um dos 10
+            </button>
+
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 2, false)"
+            >
+                <strong>B)</strong>
+                Dar R$100 para 1 só.
+                Ele fica super forte e protege os outros 9
+            </button>
+
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 2, false)"
+            >
+                <strong>C)</strong>
+                Não dar nada porque R$10 é muito pouco
+            </button>
+
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 2, false)"
+            >
+                <strong>D)</strong>
+                Dar R$50 para 2 e os outros 8 ficam sem nada
+            </button>
+
+        </div>
+
+
+        <div
+            id="feedback2"
+            class="feedback-desafio"
+        ></div>
+
+
+        <div class="justificativa">
+
+            <label for="explicacao">
+
+                🧠 Agora explique:
+
+                <br>
+
+                POR QUE SUA ESTRATÉGIA VENCE?
+
+            </label>
+
+            <textarea
+                id="explicacao"
+                maxlength="500"
+                placeholder="Escreva com suas próprias palavras..."
+            ></textarea>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FASE 3
+============================================================= -->
+
+<section class="fase">
+
+    <div class="fase-cabecalho">
+
+        <span class="fase-numero">
+            🤖 FASE 3
+        </span>
+
+        <h2>
+            O INVENTOR
+        </h2>
+
+        <p class="fase-subtitulo">
+            Pense nas consequências das suas escolhas.
+        </p>
+
+    </div>
+
+
+    <div class="pergunta">
+
+        <p class="pergunta-texto">
+
+            Você programa um robô.
+
+        </p>
+
+        <div class="enunciado">
+
+            <strong>Programa 1:</strong>
+
+            <br>
+
+            Ele pega energia só para ele
+            e para a família dele.
+
+            <br><br>
+
+            <strong>Programa 2:</strong>
+
+            <br>
+
+            Ele pega energia para ele
+            <strong>E divide um pouco</strong>
+            para carregar outros robôs sem bateria.
+
+            <br><br>
+
+            Qual robô vai ser mais chamado para jogar
+            e vai ter mais ajuda quando ficar sem bateria?
+
+        </div>
+
+
+        <div class="alternativas">
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 3, false)"
+            >
+                <strong>A)</strong>
+                O do Programa 1,
+                porque guardou tudo
+            </button>
+
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 3, true)"
+            >
+                <strong>B)</strong>
+                O do Programa 2,
+                porque os outros vão lembrar dele
+            </button>
+
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 3, false)"
+            >
+                <strong>C)</strong>
+                Os dois igual
+            </button>
+
+
+            <button
+                class="alternativa"
+                onclick="responder(this, 3, false)"
+            >
+                <strong>D)</strong>
+                Nenhum,
+                robô não precisa de ajuda
+            </button>
+
+        </div>
+
+
+        <div
+            id="feedback3"
+            class="feedback-desafio"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FINALIZAR
+============================================================= -->
+
+<button
+    class="btn-finalizar"
+    onclick="finalizarDesafio()"
+>
+    🏁 FINALIZAR MISSÃO
+</button>
+
+
+<!-- ============================================================
+     RESULTADO
+============================================================= -->
+
+<section
+    id="resultado"
+    class="resultado"
+>
+
+    <div
+        id="resultadoIcone"
+        class="trofeu"
+    >
+        🏆
+    </div>
+
+    <h2 id="resultadoTitulo">
+        MISSÃO CONCLUÍDA!
+    </h2>
+
+    <p id="resultadoTexto"></p>
+
+    <div class="frase-final">
+
+        🧠 Você não está apenas decorando.
+
+        <br>
+
+        Está construindo ferramentas
+        para pensar.
+
+        <br><br>
+
+        Entender como chegou nela
+        é mais importante que decorar
+        a resposta.
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     NAVEGAÇÃO
+============================================================= -->
+
+<div class="navegacao-final">
+
+    <a href="index.html">
+        🗺️ MAPA PRINCIPAL
+    </a>
+
+    <a href="calendario.html">
+        📅 PROVAS
+    </a>
+
+    <a href="matematica.html">
+        🔢 MATEMÁTICA
+    </a>
+
+    <a href="diretriz.html">
+        📜 DIRETRIZES
+    </a>
+
+    <a href="#topo">
+        ⬆️ TOPO
+    </a>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<footer class="footer">
+
+    Sistema Vicente
+
+    <br>
+
+    Uma aventura para aprender,
+    pensar e descobrir.
+
+    <br><br>
+
+    N74 TEC © 2026
+
+</footer>
+
+
+</div>
+
+
+<script>
+
+/*
+====================================================================
+                 JAVASCRIPT - DESAFIO DE LÓGICA
+====================================================================
+
+FUNÇÃO:
+
+    Controlar as respostas das três fases.
+
+VARIÁVEIS:
+
+    acertos
+        quantidade de respostas corretas.
+
+    respondidas
+        quantidade de fases respondidas.
+
+    respostas
+        controla se cada fase já foi respondida.
+
+====================================================================
+REGRAS
+====================================================================
+
+Cada fase só conta uma vez.
+
+O Vicente pode clicar novamente em outra alternativa,
+mas a pontuação não será duplicada.
+
+A Fase 2 também possui uma caixa de explicação.
+
+====================================================================
+*/
+
+let acertos = 0;
+
+let respondidas = 0;
+
+const respostas = {
+    1: false,
+    2: false,
+    3: false
+};
+
+
+/*
+====================================================================
+RESPONDER
+====================================================================
+*/
+
+function responder(botao, fase, correta) {
+
+    const grupo = botao
+        .parentElement
+        .querySelectorAll(".alternativa");
+
+    grupo.forEach(function(item) {
+
+        item.classList.remove(
+            "selecionada",
+            "correta",
+            "errada"
+        );
+
+    });
+
+
+    botao.classList.add("selecionada");
+
+
+    const feedback =
+        document.getElementById(
+            "feedback" + fase
+        );
+
+
+    if (correta) {
+
+        botao.classList.add("correta");
+
+        feedback.className =
+            "feedback-desafio mostrar ok";
+
+        feedback.innerHTML =
+            "🎉 ACERTOU!<br>" +
+            "Você encontrou uma boa estratégia. " +
+            "Agora pense no motivo dessa escolha.";
+
+    } else {
+
+        botao.classList.add("errada");
+
+        feedback.className =
+            "feedback-desafio mostrar erro";
+
+        feedback.innerHTML =
+            "🔎 Ainda não. " +
+            "Isso faz parte da investigação. " +
+            "Observe novamente as opções e pense nas consequências.";
+
+    }
+
+
+    if (!respostas[fase]) {
+
+        respostas[fase] = true;
+
+        respondidas++;
+
+        if (correta) {
+            acertos++;
+        }
+
+    }
+
+
+    atualizarPlacar();
+
+}
+
+
+/*
+====================================================================
+ATUALIZAR PLACAR
+====================================================================
+*/
+
+function atualizarPlacar() {
+
+    document.getElementById("acertos").innerText =
+        acertos;
+
+    document.getElementById("respondidas").innerText =
+        respondidas;
+
+    const percentual =
+        Math.round(
+            (respondidas / 3) * 100
+        );
+
+    document.getElementById("percentual").innerText =
+        percentual + "%";
+
+}
+
+
+/*
+====================================================================
+FINALIZAR
+====================================================================
+*/
+
+function finalizarDesafio() {
+
+    const resultado =
+        document.getElementById("resultado");
+
+    const titulo =
+        document.getElementById("resultadoTitulo");
+
+    const texto =
+        document.getElementById("resultadoTexto");
+
+    const icone =
+        document.getElementById("resultadoIcone");
+
+
+    if (respondidas < 3) {
+
+        resultado.className =
+            "resultado mostrar";
+
+        icone.innerText = "🔎";
+
+        titulo.innerText =
+            "AINDA FALTA INVESTIGAR!";
+
+        texto.innerHTML =
+            "Você respondeu " +
+            respondidas +
+            " de 3 fases.<br><br>" +
+            "Volte ao mapa, investigue as fases " +
+            "que faltam e depois finalize a missão.";
+
+        resultado.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        return;
+
+    }
+
+
+    const explicacao =
+        document.getElementById("explicacao").value.trim();
+
+
+    resultado.className =
+        "resultado mostrar";
+
+
+    if (acertos === 3) {
+
+        icone.innerText = "🏆";
+
+        titulo.innerText =
+            "CAPITÃO DA LÓGICA!";
+
+        texto.innerHTML =
+            "Você acertou <strong>3 de 3</strong> desafios!<br><br>" +
+            "Excelente missão. " +
+            "Mas lembre: acertar é bom, " +
+            "entender o raciocínio é ainda melhor.";
+
+    }
+
+    else if (acertos === 2) {
+
+        icone.innerText = "⭐";
+
+        titulo.innerText =
+            "ESTRATEGISTA!";
+
+        texto.innerHTML =
+            "Você acertou <strong>2 de 3</strong> desafios.<br><br>" +
+            "Muito bom! Continue investigando " +
+            "e tente descobrir onde estava a pista.";
+
+    }
+
+    else if (acertos === 1) {
+
+        icone.innerText = "🔎";
+
+        titulo.innerText =
+            "INVESTIGADOR!";
+
+        texto.innerHTML =
+            "Você acertou <strong>1 de 3</strong> desafios.<br><br>" +
+            "Isso não significa fracasso. " +
+            "Significa que existem pistas para investigar novamente.";
+
+    }
+
+    else {
+
+        icone.innerText = "🧭";
+
+        titulo.innerText =
+            "MISSÃO DE INVESTIGAÇÃO!";
+
+        texto.innerHTML =
+            "Você terminou as três fases.<br><br>" +
+            "Agora o desafio é voltar, pensar com calma " +
+            "e descobrir o que cada pergunta estava tentando ensinar.";
+
+    }
+
+
+    if (explicacao.length > 0) {
+
+        texto.innerHTML +=
+            "<br><br>" +
+            "🧠 Você também explicou sua estratégia. " +
+            "Isso é importante porque mostra como você está pensando.";
+
+    }
+
+    else {
+
+        texto.innerHTML +=
+            "<br><br>" +
+            "💡 Na próxima missão, tente explicar " +
+            "também o motivo da sua escolha.";
+
+    }
+
+
+    resultado.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+/*
+====================================================================
+INICIALIZAÇÃO
+====================================================================
+*/
+
+atualizarPlacar();
+
+
+/*
+====================================================================
+HISTÓRICO DO JAVASCRIPT
+====================================================================
+
+v1.0 - 10/09/2026
+
+    - Criado sistema de respostas.
+    - Criado controle de acertos.
+    - Criado controle de fases respondidas.
+    - Criado percentual de progresso.
+    - Criado feedback imediato.
+    - Criado campo de justificativa.
+    - Criado resultado final.
+    - Criado incentivo baseado no desempenho.
+
+====================================================================
+*/
+
+</script>
+
+
+</body>
+
+</html>
+```
