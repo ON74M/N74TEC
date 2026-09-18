@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!--
+    ============================================================
+    N74 TEC — PLATAFORMA
+    Arquivo: index.html
+    Versão: 1.0
+    ============================================================
+
+    FINALIDADE
+    ----------
+    Esta é a primeira página da Plataforma N74 TEC.
+
+    Ela representa a porta de entrada do sistema e foi projetada
+    inicialmente como tela de apresentação + autenticação.
+
+    A plataforma será independente do site institucional
+    https://n74.com.br/
+
+    SITE INSTITUCIONAL
+    ------------------
+    n74.com.br
+    Responsável por:
+      - Apresentação da N74 TEC
+      - Serviços
+      - Contato
+      - Marketing
+      - SEO
+      - Captação de clientes
+
+    PLATAFORMA
+    ----------
+    Responsável futuramente por:
+      - Cadastro de usuários
+      - Login
+      - Clientes
+      - Chamados
+      - Técnicos
+      - Contratos
+      - Financeiro
+      - Histórico
+      - Administração
+      - Permissões
+
+    ARQUITETURA FUTURA
+    ------------------
+    
+       NAVEGADOR
+           │
+           ▼
+       FRONTEND
+           │
+           ▼
+       BACKEND JAVA
+       Spring Boot
+       Spring Security
+           │
+           ▼
+       PostgreSQL
+
+    PERFIS PREVISTOS
+    -----------------
+      OWNER
+      ADMIN
+      TECHNICIAN
+      FINANCE
+      CLIENT
+
+    IMPORTANTE
+    ----------
+    Nesta primeira versão NÃO existe autenticação real.
+
+    O formulário abaixo é apenas a interface inicial.
+    A validação real de usuário e senha deverá ser feita
+    futuramente pelo backend.
+
+    SEGURANÇA
+    ---------
+    Nunca confiar somente no frontend para controlar permissões.
+
+    O backend deverá validar:
+      - identidade
+      - sessão
+      - perfil
+      - permissões
+      - acesso aos recursos
+
+    IDENTIDADE VISUAL
+    -----------------
+    A plataforma mantém a identidade N74 TEC:
+
+      - estética tecnológica
+      - inspiração Matrix/Hacker
+      - fundo escuro
+      - verde tecnológico
+      - N74 TEC em Neuropol
+      - Ubuntu para textos
+
+    DEPENDÊNCIAS
+    ------------
+    Google Fonts:
+      Neuropol
+      Ubuntu
+
+    Font Awesome:
+      versão 6.5
+
+    FUTURA ESTRUTURA
+    -----------------
+    /portal-n74tec/
+        index.html
+        login.html
+        dashboard.html
+
+        /css/
+            n74-platform.css
+
+        /js/
+            n74-platform.js
+
+        /components/
+            menu.html
+            footer.html
+
+        /backend/
+            Java / Spring Boot
+
+        /database/
+            migrations/
+
+    PRÓXIMAS ETAPAS
+    ---------------
+    1. Criar estrutura visual
+    2. Criar login real
+    3. Criar backend
+    4. Criar PostgreSQL
+    5. Criar sistema de usuários
+    6. Criar perfis e permissões
+    7. Criar área do cliente
+    8. Criar chamados
+    9. Criar área técnica
+    10. Criar financeiro
+    11. Criar administração
+
+    ============================================================
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>N74 TEC | Plataforma</title>
+
+    <!-- Ubuntu -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Neuropol -->
+    <style>
+
+        @font-face {
+            font-family: "Neuropol";
+            src: url("https://fonts.cdnfonts.com/s/15001/Neuropol-Regular.woff")
+                format("woff");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --matrix-green: #00ff41;
+            --matrix-dark: #020b05;
+            --matrix-black: #000000;
+            --matrix-soft: #07150c;
+            --text: #d7ffe2;
+            --text-soft: #7ca889;
+            --border: rgba(0, 255, 65, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: "Ubuntu", sans-serif;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #07150c 0%,
+                    #020b05 45%,
+                    #000000 100%
+                );
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* ======================================================
+           MATRIX BACKGROUND
+           ====================================================== */
+
+        #matrix {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.18;
+        }
+
+        /* ======================================================
+           MAIN CONTAINER
+           ====================================================== */
+
+        .platform {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        /* ======================================================
+           LOGIN PANEL
+           ====================================================== */
+
+        .login-panel {
+            width: 100%;
+            max-width: 430px;
+
+            background: rgba(0, 10, 5, 0.88);
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 0 30px rgba(0, 255, 65, 0.08),
+                inset 0 0 30px rgba(0, 255, 65, 0.025);
+
+            padding: 42px 38px;
+
+            backdrop-filter: blur(8px);
+        }
+
+        /* ======================================================
+           LOGO
+           ====================================================== */
+
+        .logo {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .logo h1 {
+            font-family: "Neuropol", sans-serif;
+            font-size: 38px;
+            letter-spacing: 3px;
+            color: var(--matrix-green);
+
+            text-shadow:
+                0 0 5px rgba(0, 255, 65, 0.8),
+                0 0 15px rgba(0, 255, 65, 0.35);
+        }
+
+        .logo p {
+            margin-top: 10px;
+
+            font-size: 12px;
+            letter-spacing: 3px;
+
+            color: var(--text-soft);
+            text-transform: uppercase;
+        }
+
+        /* ======================================================
+           SYSTEM STATUS
+           ====================================================== */
+
+        .status {
+            margin: 28px 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            font-size: 11px;
+            letter-spacing: 1.5px;
+
+            color: var(--text-soft);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--matrix-green);
+
+            box-shadow:
+                0 0 6px var(--matrix-green),
+                0 0 12px rgba(0, 255, 65, 0.6);
+
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+        /* ======================================================
+           FORM
+           ====================================================== */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 12px;
+            letter-spacing: 1px;
+
+            color: var(--text-soft);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            height: 46px;
+
+            padding: 0 14px 0 40px;
+
+            background: rgba(0, 255, 65, 0.025);
+
+            border: 1px solid var(--border);
+
+            color: var(--text);
+
+            font-family: "Ubuntu", sans-serif;
+            font-size: 14px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--matrix-green);
+
+            box-shadow:
+                0 0 10px rgba(0, 255, 65, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #456550;
+        }
+
+        /* ======================================================
+           OPTIONS
+           ====================================================== */
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin: 8px 0 22px;
+
+            font-size: 12px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: var(--text-soft);
+        }
+
+        .remember input {
+            accent-color: var(--matrix-green);
+        }
+
+        .forgot {
+            color: var(--matrix-green);
+            text-decoration: none;
+
+            transition: opacity 0.2s;
+        }
+
+        .forgot:hover {
+            opacity: 0.7;
+        }
+
+        /* ======================================================
+           BUTTON
+           ====================================================== */
+
+        .login-button {
+            width: 100%;
+            height: 48px;
+
+            border: 1px solid var(--matrix-green);
+
+            background: rgba(0, 255, 65, 0.08);
+
+            color: var(--matrix-green);
+
+            font-family: "Ubuntu", sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s,
+                box-shadow 0.2s,
+                color 0.2s;
+        }
+
+        .login-button:hover {
+            background: rgba(0, 255, 65, 0.16);
+
+            box-shadow:
+                0 0 15px rgba(0, 255, 65, 0.18);
+        }
+
+        .login-button i {
+            margin-right: 8px;
+        }
+
+        /* ======================================================
+           REGISTER
+           ====================================================== */
+
+        .register {
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-size: 12px;
+            color: var(--text-soft);
+        }
+
+        .register a {
+            color: var(--matrix-green);
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+        /* ======================================================
+           FOOTER
+           ====================================================== */
+
+        .footer {
+            margin-top: 30px;
+
+            text-align: center;
+
+            font-size: 10px;
+            letter-spacing: 1px;
+
+            color: #456550;
+        }
+
+        .footer span {
+            color: var(--matrix-green);
+        }
+
+        /* ======================================================
+           MOBILE
+           ====================================================== */
+
+        @media (max-width: 500px) {
+
+            .platform {
+                padding: 14px;
+            }
+
+            .login-panel {
+                padding: 32px 24px;
+            }
+
+            .logo h1 {
+                font-size: 31px;
+            }
+
+            .logo p {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================================
+         FUNDO MATRIX
+         ======================================================== -->
+
+    <canvas id="matrix"></canvas>
+
+
+    <!-- ========================================================
+         PLATAFORMA
+         ======================================================== -->
+
+    <main class="platform">
+
+        <section class="login-panel">
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <h1>N74 TEC</h1>
+
+                <p>Plataforma de Serviços</p>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                SISTEMA ONLINE
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seu@email.com"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Senha
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        Lembrar acesso
+
+                    </label>
+
+
+                    <a href="#" class="forgot">
+                        Esqueci minha senha
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Entrar na plataforma
+
+                </button>
+
+            </form>
+
+
+            <!-- CADASTRO -->
+
+            <div class="register">
+
+                Ainda não possui acesso?
+
+                <a href="#">
+                    Solicitar cadastro
+                </a>
+
+            </div>
+
+
+            <!-- RODAPÉ -->
+
+            <div class="footer">
+
+                N74 TEC • Soluções em TI
+
+                <br>
+
+                <span>INFRAESTRUTURA • SUPORTE • TECNOLOGIA</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================================
+         JAVASCRIPT
+         ======================================================== -->
+
+    <script>
+
+        /*
+        ============================================================
+        N74 TEC — MATRIX ENGINE
+        ============================================================
+
+        Nesta primeira versão o JavaScript possui apenas funções
+        visuais e de demonstração.
+
+        NÃO existe autenticação real.
+
+        Quando o backend for criado, este formulário deverá enviar
+        os dados para uma API, por exemplo:
+
+            POST /api/auth/login
+
+        O backend será responsável por:
+
+            - validar usuário
+            - validar senha
+            - criar sessão/token
+            - identificar perfil
+            - aplicar permissões
+            - redirecionar para o dashboard apropriado
+
+        ============================================================
+        */
+
+
+        /* ========================================================
+           MATRIX
+           ======================================================== */
+
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        let width;
+        let height;
+        let columns;
+        let drops;
+
+        const characters =
+            "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@<>[]{}";
+
+
+        function resizeMatrix() {
+
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+
+            const fontSize = 14;
+
+            columns = Math.floor(width / fontSize);
+
+            drops = [];
+
+            for (let i = 0; i < columns; i++) {
+
+                drops[i] =
+                    Math.floor(
+                        Math.random() * height / fontSize
+                    );
+
+            }
+
+        }
+
+
+        function drawMatrix() {
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+
+            ctx.fillRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+            ctx.font = "14px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+
+                const text =
+                    characters.charAt(
+                        Math.floor(
+                            Math.random() * characters.length
+                        )
+                    );
+
+                ctx.fillStyle = "#00ff41";
+
+                ctx.fillText(
+                    text,
+                    i * 14,
+                    drops[i] * 14
+                );
+
+                if (
+                    drops[i] * 14 > height &&
+                    Math.random() > 0.975
+                ) {
+
+                    drops[i] = 0;
+
+                }
+
+                drops[i]++;
+
+            }
+
+        }
+
+
+        resizeMatrix();
+
+        setInterval(
+            drawMatrix,
+            50
+        );
+
+
+        window.addEventListener(
+            "resize",
+            resizeMatrix
+        );
+
+
+        /* ========================================================
+           LOGIN — SOMENTE DEMONSTRAÇÃO
+           ======================================================== */
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                /*
+                ----------------------------------------------------
+                ATENÇÃO
+
+                Este trecho não autentica ninguém.
+
+                Ele existe somente para impedir o envio tradicional
+                do formulário nesta primeira versão.
+
+                A autenticação real será implementada quando
+                conectarmos o frontend ao backend.
+                ----------------------------------------------------
+                */
+
+                const button =
+                    loginForm.querySelector(
+                        ".login-button"
+                    );
+
+                button.innerHTML =
+                    '<i class="fa-solid fa-spinner fa-spin"></i> PROCESSANDO...';
+
+                button.disabled = true;
+
+
+                setTimeout(
+                    function () {
+
+                        button.innerHTML =
+                            '<i class="fa-solid fa-right-to-bracket"></i> ENTRAR NA PLATAFORMA';
+
+                        button.disabled = false;
+
+                        alert(
+                            "Interface inicial da Plataforma N74 TEC.\n\nA autenticação será conectada ao backend nas próximas etapas."
+                        );
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
