@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!--
+    ============================================================
+    N74 TEC | PAINEL METEOROLÓGICO
+    ============================================================
+
+    ARQUIVO:
+        tempo.html
+
+    FINALIDADE:
+        Painel meteorológico da N74 TEC apresentando,
+        na mesma tela:
+
+        • São Paulo - Zona Norte
+        • Bertioga - Litoral de São Paulo
+        • Condições atuais
+        • Previsão para 7 dias
+        • Temperatura mínima e máxima
+        • Probabilidade de chuva
+        • Precipitação prevista
+        • Vento
+        • Umidade
+        • Sensação térmica
+        • Nascer e pôr do sol
+        • Atualização automática
+
+    PADRÃO N74 TEC:
+        Visual institucional tecnológico / Matrix
+        Fundo escuro
+        Verde Matrix
+        Laranja N74
+        Tipografia Ubuntu
+        Títulos com Neuropol quando disponível
+
+    DADOS METEOROLÓGICOS:
+        Open-Meteo API
+        Não necessita chave de API.
+
+    LOCALIZAÇÃO:
+        São Paulo:
+            Coordenada aproximada para referência da Zona Norte.
+
+        Bertioga:
+            Coordenada aproximada do município.
+
+    IMPORTANTE:
+        A localização utilizada NÃO representa o endereço exato
+        do usuário. São coordenadas de referência das cidades.
+
+    SEO:
+        Página preparada com:
+        • title
+        • description
+        • canonical
+        • Open Graph
+        • robots
+        • estrutura semântica
+
+    ATUALIZAÇÃO:
+        Os dados são atualizados automaticamente ao carregar
+        a página e novamente a cada 15 minutos.
+
+    FUTURAS EVOLUÇÕES:
+        • Alertas oficiais INMET / Defesa Civil
+        • Histórico
+        • Gráficos
+        • Radar
+        • Qualidade do ar
+        • Integração com n74.com.br
+        • PWA / instalação no celular
+    ============================================================
+    -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#050805">
+
+    <meta name="description"
+          content="Painel meteorológico N74 TEC com previsão do tempo para São Paulo Zona Norte e Bertioga, litoral de São Paulo, com previsão de 7 dias.">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <link rel="canonical"
+          href="https://n74.com.br/tempo.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:title"
+          content="N74 TEC | Previsão do Tempo">
+
+    <meta property="og:description"
+          content="Previsão do tempo para São Paulo Zona Norte e Bertioga.">
+
+    <meta property="og:url"
+          content="https://n74.com.br/tempo.html">
+
+    <meta property="og:image"
+          content="https://n74.com.br/imag/20260713_nwe_Logo.png">
+
+    <title>
+        N74 TEC | Previsão do Tempo — São Paulo e Bertioga
+    </title>
+
+    <!-- Fontes -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* ========================================================
+           RESET
+        ======================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 20% 0%,
+                    rgba(0, 255, 65, 0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 10%,
+                    rgba(255, 165, 0, 0.07),
+                    transparent 30%
+                ),
+                #050805;
+
+            color: #e9ffe9;
+
+            font-family:
+                "Ubuntu",
+                Arial,
+                sans-serif;
+
+            overflow-x: hidden;
+        }
+
+        /* ========================================================
+           MATRIX GRID
+        ======================================================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(0,255,65,0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,255,65,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        /* ========================================================
+           CONTAINER
+        ======================================================== */
+
+        .container {
+            width: min(1500px, 94%);
+            margin: 0 auto;
+        }
+
+        /* ========================================================
+           HEADER
+        ======================================================== */
+
+        header {
+            padding: 25px 0 18px;
+
+            border-bottom:
+                1px solid rgba(0,255,65,0.15);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            width: 48px;
+            height: 48px;
+
+            border:
+                1px solid #00ff41;
+
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #00ff41;
+
+            box-shadow:
+                0 0 15px rgba(0,255,65,0.25);
+
+            font-size: 22px;
+        }
+
+        .brand-text strong {
+            display: block;
+
+            color: #ffa500;
+
+            font-size: 21px;
+            letter-spacing: 1px;
+        }
+
+        .brand-text span {
+            display: block;
+
+            color: #7d9b7d;
+
+            font-size: 12px;
+
+            margin-top: 2px;
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #00ff41;
+
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+
+            background: #00ff41;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px #00ff41;
+
+            animation:
+                pulse 1.7s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .35;
+            }
+        }
+
+        /* ========================================================
+           TITLES
+        ======================================================== */
+
+        .page-title {
+            padding: 34px 0 22px;
+
+            text-align: center;
+        }
+
+        .page-title h1 {
+            color: #00ff41;
+
+            font-size:
+                clamp(26px, 4vw, 44px);
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 0 18px rgba(0,255,65,.35);
+        }
+
+        .page-title p {
+            margin-top: 9px;
+
+            color: #819981;
+
+            font-size: 14px;
+        }
+
+        /* ========================================================
+           UPDATE BAR
+        ======================================================== */
+
+        .update-bar {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+
+            margin-bottom: 24px;
+
+            color: #7f9d7f;
+
+            font-size: 12px;
+        }
+
+        .update-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+        .update-item i {
+            color: #ffa500;
+        }
+
+        /* ========================================================
+           CITY GRID
+        ======================================================== */
+
+        .cities {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 22px;
+        }
+
+        /* ========================================================
+           CITY CARD
+        ======================================================== */
+
+        .city-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(10,25,12,.92),
+                    rgba(4,10,5,.96)
+                );
+
+            border:
+                1px solid rgba(0,255,65,.22);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.35),
+                inset 0 0 30px rgba(0,255,65,.025);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .city-card:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(0,255,65,.5);
+        }
+
+        .city-card.bertioga {
+            border-color:
+                rgba(255,165,0,.23);
+        }
+
+        .city-card.bertioga:hover {
+            border-color:
+                rgba(255,165,0,.55);
+        }
+
+        .city-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            right: -100px;
+            top: -100px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,255,65,.09),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+        }
+
+        .bertioga::after {
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,165,0,.09),
+                    transparent 70%
+                );
+        }
+
+        /* ========================================================
+           CITY HEADER
+        ======================================================== */
+
+        .city-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            margin-bottom: 25px;
+        }
+
+        .city-name {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .city-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #00ff41;
+
+            border:
+                1px solid rgba(0,255,65,.3);
+
+            background:
+                rgba(0,255,65,.05);
+
+            font-size: 19px;
+        }
+
+        .bertioga .city-icon {
+            color: #ffa500;
+
+            border-color:
+                rgba(255,165,0,.3);
+
+            background:
+                rgba(255,165,0,.05);
+        }
+
+        .city-name h2 {
+            font-size: 20px;
+
+            font-weight: 500;
+
+            color: #f1fff1;
+        }
+
+        .city-name span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #779077;
+
+            font-size: 12px;
+        }
+
+        .city-code {
+            color: #526952;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+        /* ========================================================
+           CURRENT WEATHER
+        ======================================================== */
+
+        .current-weather {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+
+            align-items: center;
+
+            margin-bottom: 24px;
+        }
+
+        .temperature-box {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .weather-symbol {
+            font-size: 55px;
+
+            width: 75px;
+
+            text-align: center;
+
+            filter:
+                drop-shadow(0 0 10px rgba(255,255,255,.08));
+        }
+
+        .temperature {
+            font-size:
+                clamp(48px, 6vw, 72px);
+
+            line-height: .9;
+
+            color: #fff;
+
+            font-weight: 300;
+        }
+
+        .temperature small {
+            font-size: 24px;
+
+            color: #7e9b7e;
+
+            vertical-align: top;
+        }
+
+        .condition {
+            margin-top: 8px;
+
+            color: #00ff41;
+
+            font-size: 14px;
+        }
+
+        .bertioga .condition {
+            color: #ffa500;
+        }
+
+        /* ========================================================
+           METRICS
+        ======================================================== */
+
+        .metrics {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+        }
+
+        .metric {
+            padding: 12px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            border:
+                1px solid rgba(255,255,255,.055);
+
+            border-radius: 10px;
+        }
+
+        .metric-label {
+            color: #617461;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .6px;
+
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            color: #dffff0;
+
+            font-size: 14px;
+
+            font-weight: 500;
+        }
+
+        .metric-value i {
+            width: 18px;
+
+            color: #00ff41;
+        }
+
+        .bertioga .metric-value i {
+            color: #ffa500;
+        }
+
+        /* ========================================================
+           SUN
+        ======================================================== */
+
+        .sun-info {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+            margin-top: 10px;
+        }
+
+        .sun-item {
+            padding: 10px;
+
+            border-top:
+                1px solid rgba(0,255,65,.09);
+
+            color: #789078;
+
+            font-size: 11px;
+        }
+
+        .sun-item strong {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #dfffe5;
+
+            font-size: 13px;
+        }
+
+        /* ========================================================
+           FORECAST SECTION
+        ======================================================== */
+
+        .forecast-section {
+            margin-top: 28px;
+        }
+
+        .section-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            color: #00ff41;
+
+            font-size: 16px;
+
+            letter-spacing: .7px;
+        }
+
+        .section-title i {
+            margin-right: 8px;
+        }
+
+        .section-note {
+            color: #526952;
+
+            font-size: 11px;
+        }
+
+        /* ========================================================
+           FORECAST GRID
+        ======================================================== */
+
+        .forecast-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, minmax(130px, 1fr));
+
+            gap: 10px;
+
+            overflow-x: auto;
+
+            padding-bottom: 8px;
+        }
+
+        .day-card {
+            min-width: 130px;
+
+            padding: 15px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(8,18,9,.85);
+
+            border:
+                1px solid rgba(0,255,65,.13);
+
+            text-align: center;
+
+            transition:
+                border-color .2s,
+                transform .2s;
+        }
+
+        .day-card:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(0,255,65,.4);
+        }
+
+        .day-card.today {
+            border-color:
+                rgba(255,165,0,.5);
+
+            box-shadow:
+                0 0 18px rgba(255,165,0,.06);
+        }
+
+        .day-name {
+            color: #d8fbd8;
+
+            font-weight: 500;
+
+            font-size: 12px;
+        }
+
+        .day-date {
+            color: #536a53;
+
+            font-size: 10px;
+
+            margin-top: 3px;
+        }
+
+        .day-icon {
+            font-size: 30px;
+
+            margin: 15px 0 8px;
+        }
+
+        .day-condition {
+            min-height: 30px;
+
+            color: #8aa18a;
+
+            font-size: 10px;
+
+            line-height: 1.35;
+        }
+
+        .day-temperature {
+            margin-top: 10px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+        .max-temp {
+            color: #ffa500;
+
+            font-weight: 500;
+        }
+
+        .min-temp {
+            color: #789178;
+        }
+
+        .rain {
+            margin-top: 9px;
+
+            color: #68c8ff;
+
+            font-size: 11px;
+        }
+
+        .rain i {
+            margin-right: 4px;
+        }
+
+        /* ========================================================
+           COMPARISON
+        ======================================================== */
+
+        .comparison {
+            margin-top: 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .info-panel {
+            background:
+                rgba(5,13,6,.92);
+
+            border:
+                1px solid rgba(0,255,65,.14);
+
+            border-radius: 15px;
+
+            padding: 20px;
+        }
+
+        .info-panel h3 {
+            color: #00ff41;
+
+            font-size: 15px;
+
+            margin-bottom: 16px;
+        }
+
+        .bertioga-panel h3 {
+            color: #ffa500;
+        }
+
+        .travel-status {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,165,0,.045);
+
+            border:
+                1px solid rgba(255,165,0,.13);
+        }
+
+        .travel-status i {
+            color: #ffa500;
+
+            font-size: 22px;
+        }
+
+        .travel-status strong {
+            display: block;
+
+            color: #eee;
+
+            font-size: 13px;
+        }
+
+        .travel-status span {
+            display: block;
+
+            color: #788878;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+        /* ========================================================
+           LOADING
+        ======================================================== */
+
+        .loading {
+            color: #617461;
+
+            text-align: center;
+
+            padding: 30px;
+
+            font-size: 13px;
+        }
+
+        .loading i {
+            color: #00ff41;
+
+            margin-right: 8px;
+        }
+
+        /* ========================================================
+           ERROR
+        ======================================================== */
+
+        .error-box {
+            display: none;
+
+            margin: 20px 0;
+
+            padding: 15px;
+
+            border:
+                1px solid rgba(255,80,80,.35);
+
+            background:
+                rgba(255,50,50,.05);
+
+            border-radius: 10px;
+
+            color: #ff9b9b;
+
+            font-size: 13px;
+        }
+
+        /* ========================================================
+           FOOTER
+        ======================================================== */
+
+        footer {
+            margin-top: 45px;
+
+            padding: 25px 0;
+
+            border-top:
+                1px solid rgba(0,255,65,.1);
+
+            text-align: center;
+        }
+
+        footer strong {
+            color: #ffa500;
+
+            font-size: 13px;
+        }
+
+        footer p {
+            margin-top: 6px;
+
+            color: #526452;
+
+            font-size: 10px;
+        }
+
+        /* ========================================================
+           RESPONSIVE
+        ======================================================== */
+
+        @media (max-width: 1000px) {
+
+            .cities {
+                grid-template-columns: 1fr;
+            }
+
+            .forecast-grid {
+                grid-template-columns:
+                    repeat(7, 135px);
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .container {
+                width: 92%;
+            }
+
+            .header-top {
+                align-items: flex-start;
+            }
+
+            .system-status {
+                display: none;
+            }
+
+            .current-weather {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .city-card {
+                padding: 18px;
+            }
+
+            .page-title {
+                padding-top: 25px;
+            }
+
+            .page-title h1 {
+                font-size: 27px;
+            }
+
+            .temperature {
+                font-size: 55px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container">
+
+            <div class="header-top">
+
+                <div class="brand">
+
+                    <div class="brand-mark">
+                        <i class="fa-solid fa-cloud-sun"></i>
+                    </div>
+
+                    <div class="brand-text">
+
+                        <strong>N74 TEC</strong>
+
+                        <span>
+                            Monitoramento meteorológico
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    SISTEMA ONLINE
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <div class="container">
+
+            <section class="page-title">
+
+                <h1>
+                    PREVISÃO DO TEMPO
+                </h1>
+
+                <p>
+                    São Paulo — Zona Norte
+                    &nbsp; × &nbsp;
+                    Bertioga — Litoral de São Paulo
+                </p>
+
+            </section>
+
+
+            <div class="update-bar">
+
+                <div class="update-item">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span id="current-date">
+                        Carregando...
+                    </span>
+
+                </div>
+
+                <div class="update-item">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    Atualização:
+                    <span id="update-time">
+                        --
+                    </span>
+
+                </div>
+
+                <div class="update-item">
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    Próxima atualização automática:
+                    15 min
+
+                </div>
+
+            </div>
+
+
+            <div id="error-box"
+                 class="error-box">
+            </div>
+
+
+            <!-- ==================================================
+                 CIDADES
+            ================================================== -->
+
+            <section class="cities">
+
+
+                <!-- ==================================================
+                     SÃO PAULO
+                ================================================== -->
+
+                <article class="city-card">
+
+                    <div class="city-header">
+
+                        <div class="city-name">
+
+                            <div class="city-icon">
+
+                                <i class="fa-solid fa-city"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    São Paulo
+                                </h2>
+
+                                <span>
+                                    Zona Norte
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="city-code">
+                            SP-ZN
+                        </div>
+
+                    </div>
+
+
+                    <div id="sp-current"
+                         class="loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Consultando condições...
+
+                    </div>
+
+
+                    <div id="sp-metrics"
+                         style="display:none;">
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==================================================
+                     BERTIOGA
+                ================================================== -->
+
+                <article class="city-card bertioga">
+
+                    <div class="city-header">
+
+                        <div class="city-name">
+
+                            <div class="city-icon">
+
+                                <i class="fa-solid fa-umbrella-beach"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Bertioga
+                                </h2>
+
+                                <span>
+                                    Litoral de São Paulo
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="city-code">
+                            BERT-SP
+                        </div>
+
+                    </div>
+
+
+                    <div id="bertioga-current"
+                         class="loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Consultando condições...
+
+                    </div>
+
+
+                    <div id="bertioga-metrics"
+                         style="display:none;">
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================================
+                 PREVISÃO 7 DIAS
+            ================================================== -->
+
+            <section class="forecast-section">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        PREVISÃO — 7 DIAS
+
+                    </h2>
+
+                    <span class="section-note">
+                        São Paulo × Bertioga
+                    </span>
+
+                </div>
+
+
+                <div class="cities">
+
+                    <div>
+
+                        <div class="section-title"
+                             style="margin-bottom:10px;font-size:13px;">
+
+                            <i class="fa-solid fa-city"></i>
+
+                            SÃO PAULO — ZONA NORTE
+
+                        </div>
+
+                        <div id="sp-forecast"
+                             class="forecast-grid">
+
+                            <div class="loading">
+
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                Carregando previsão...
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="section-title"
+                             style="margin-bottom:10px;font-size:13px;color:#ffa500;">
+
+                            <i class="fa-solid fa-umbrella-beach"></i>
+
+                            BERTIOGA
+
+                        </div>
+
+                        <div id="bertioga-forecast"
+                             class="forecast-grid">
+
+                            <div class="loading">
+
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                Carregando previsão...
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 INFORMAÇÕES PRÁTICAS
+            ================================================== -->
+
+            <section class="comparison">
+
+
+                <div class="info-panel">
+
+                    <h3>
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        VISÃO GERAL
+
+                    </h3>
+
+                    <div id="comparison-text">
+
+                        <div class="loading">
+
+                            Analisando as duas previsões...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-panel bertioga-panel">
+
+                    <h3>
+
+                        <i class="fa-solid fa-car"></i>
+
+                        VIAGEM PARA BERTIOGA
+
+                    </h3>
+
+                    <div id="travel-info">
+
+                        <div class="loading">
+
+                            Avaliando condições...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================================================
+         FOOTER
+    ======================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <strong>
+                N74 TEC | Soluções em TI
+            </strong>
+
+            <p>
+                Suporte técnico e infraestrutura de TI em São Paulo
+            </p>
+
+            <p>
+                Dados meteorológicos atualizados automaticamente.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /* ========================================================
+           N74 TEC | MOTOR METEOROLÓGICO
+        ======================================================== */
+
+
+        /*
+         * Coordenadas de referência.
+         *
+         * São Paulo:
+         * ponto aproximado na região da Zona Norte.
+         *
+         * Bertioga:
+         * ponto de referência do município.
+         */
+
+        const LOCATIONS = {
+
+            saoPaulo: {
+                name: "São Paulo",
+                latitude: -23.5075,
+                longitude: -46.6240
+            },
+
+            bertioga: {
+                name: "Bertioga",
+                latitude: -23.8545,
+                longitude: -46.1386
+            }
+
+        };
+
+
+        /*
+         * API utilizada.
+         *
+         * Não é necessário criar conta ou colocar chave.
+         */
+
+        const API =
+            "https://api.open-meteo.com/v1/forecast";
+
+
+        /*
+         * Código meteorológico WMO
+         */
+
+        function weatherInfo(code) {
+
+            const map = {
+
+                0: {
+                    icon: "☀️",
+                    text: "Céu limpo"
+                },
+
+                1: {
+                    icon: "🌤️",
+                    text: "Principalmente limpo"
+                },
+
+                2: {
+                    icon: "⛅",
+                    text: "Parcialmente nublado"
+                },
+
+                3: {
+                    icon: "☁️",
+                    text: "Nublado"
+                },
+
+                45: {
+                    icon: "🌫️",
+                    text: "Neblina"
+                },
+
+                48: {
+                    icon: "🌫️",
+                    text: "Neblina com gelo"
+                },
+
+                51: {
+                    icon: "🌦️",
+                    text: "Garoa leve"
+                },
+
+                53: {
+                    icon: "🌦️",
+                    text: "Garoa"
+                },
+
+                55: {
+                    icon: "🌧️",
+                    text: "Garoa forte"
+                },
+
+                61: {
+                    icon: "🌦️",
+                    text: "Chuva leve"
+                },
+
+                63: {
+                    icon: "🌧️",
+                    text: "Chuva moderada"
+                },
+
+                65: {
+                    icon: "🌧️",
+                    text: "Chuva forte"
+                },
+
+                71: {
+                    icon: "🌨️",
+                    text: "Neve leve"
+                },
+
+                73: {
+                    icon: "🌨️",
+                    text: "Neve"
+                },
+
+                75: {
+                    icon: "❄️",
+                    text: "Neve forte"
+                },
+
+                80: {
+                    icon: "🌦️",
+                    text: "Pancadas leves"
+                },
+
+                81: {
+                    icon: "🌧️",
+                    text: "Pancadas"
+                },
+
+                82: {
+                    icon: "⛈️",
+                    text: "Pancadas fortes"
+                },
+
+                95: {
+                    icon: "⛈️",
+                    text: "Trovoada"
+                },
+
+                96: {
+                    icon: "⛈️",
+                    text: "Trovoada com granizo"
+                },
+
+                99: {
+                    icon: "⛈️",
+                    text: "Trovoada forte"
+                }
+
+            };
+
+            return map[code] || {
+                icon: "🌡️",
+                text: "Condição variável"
+            };
+
+        }
+
+
+        /*
+         * Formatação de data.
+         */
+
+        function formatDate(dateString) {
+
+            const date =
+                new Date(dateString + "T12:00:00");
+
+            return date.toLocaleDateString(
+                "pt-BR",
+                {
+                    day: "2-digit",
+                    month: "2-digit"
+                }
+            );
+
+        }
+
+
+        /*
+         * Nome do dia.
+         */
+
+        function weekday(dateString) {
+
+            const date =
+                new Date(dateString + "T12:00:00");
+
+            return date
+                .toLocaleDateString(
+                    "pt-BR",
+                    {
+                        weekday: "short"
+                    }
+                )
+                .replace(".", "")
+                .toUpperCase();
+
+        }
+
+
+        /*
+         * Data atual no topo.
+         */
+
+        function showCurrentDate() {
+
+            const now =
+                new Date();
+
+            document
+                .getElementById("current-date")
+                .textContent =
+                now.toLocaleDateString(
+                    "pt-BR",
+                    {
+                        weekday: "long",
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+        }
+
+
+        /*
+         * Hora de atualização.
+         */
+
+        function showUpdateTime() {
+
+            const now =
+                new Date();
+
+            document
+                .getElementById("update-time")
+                .textContent =
+                now.toLocaleTimeString(
+                    "pt-BR",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                );
+
+        }
+
+
+        /*
+         * Monta URL da API.
+         */
+
+        function buildURL(location) {
+
+            const params =
+                new URLSearchParams({
+
+                    latitude:
+                        location.latitude,
+
+                    longitude:
+                        location.longitude,
+
+                    timezone:
+                        "America/Sao_Paulo",
+
+                    forecast_days:
+                        "7",
+
+                    current:
+                        [
+                            "temperature_2m",
+                            "relative_humidity_2m",
+                            "apparent_temperature",
+                            "precipitation",
+                            "rain",
+                            "weather_code",
+                            "wind_speed_10m",
+                            "wind_gusts_10m"
+                        ].join(","),
+
+                    daily:
+                        [
+                            "weather_code",
+                            "temperature_2m_max",
+                            "temperature_2m_min",
+                            "apparent_temperature_max",
+                            "apparent_temperature_min",
+                            "precipitation_sum",
+                            "rain_sum",
+                            "precipitation_probability_max",
+                            "wind_speed_10m_max",
+                            "wind_gusts_10m_max",
+                            "relative_humidity_2m_max",
+                            "relative_humidity_2m_min",
+                            "sunrise",
+                            "sunset"
+                        ].join(",")
+
+                });
+
+            return `${API}?${params}`;
+
+        }
+
+
+        /*
+         * Consulta uma cidade.
+         */
+
+        async function getWeather(location) {
+
+            const response =
+                await fetch(
+                    buildURL(location),
+                    {
+                        cache: "no-store"
+                    }
+                );
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Falha na consulta meteorológica."
+                );
+
+            }
+
+            return await response.json();
+
+        }
+
+
+        /*
+         * Cria card de informações atuais.
+         */
+
+        function renderCurrent(
+            data,
+            elementId,
+            location
+        ) {
+
+            const current =
+                data.current;
+
+            const info =
+                weatherInfo(
+                    current.weather_code
+                );
+
+            const daily =
+                data.daily;
+
+            const max =
+                daily.temperature_2m_max[0];
+
+            const min =
+                daily.temperature_2m_min[0];
+
+            const sunrise =
+                daily.sunrise[0]
+                    .split("T")[1];
+
+            const sunset =
+                daily.sunset[0]
+                    .split("T")[1];
+
+
+            const html = `
+
+                <div class="current-weather">
+
+                    <div class="temperature-box">
+
+                        <div class="weather-symbol">
+                            ${info.icon}
+                        </div>
+
+                        <div>
+
+                            <div class="temperature">
+                                ${Math.round(
+                                    current.temperature_2m
+                                )}<small>°C</small>
+                            </div>
+
+                            <div class="condition">
+                                ${info.text}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metrics">
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Mínima / Máxima
+                            </div>
+
+                            <div class="metric-value">
+                                ${Math.round(min)}°
+                                /
+                                ${Math.round(max)}°
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Sensação
+                            </div>
+
+                            <div class="metric-value">
+                                ${Math.round(
+                                    current.apparent_temperature
+                                )}°C
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Umidade
+                            </div>
+
+                            <div class="metric-value">
+
+                                <i class="fa-solid fa-droplet"></i>
+
+                                ${current.relative_humidity_2m}%
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Chuva agora
+                            </div>
+
+                            <div class="metric-value">
+
+                                <i class="fa-solid fa-cloud-rain"></i>
+
+                                ${Number(
+                                    current.precipitation
+                                ).toFixed(1)} mm
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Vento
+                            </div>
+
+                            <div class="metric-value">
+
+                                <i class="fa-solid fa-wind"></i>
+
+                                ${Math.round(
+                                    current.wind_speed_10m
+                                )} km/h
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Rajadas
+                            </div>
+
+                            <div class="metric-value">
+
+                                <i class="fa-solid fa-wind"></i>
+
+                                ${Math.round(
+                                    current.wind_gusts_10m
+                                )} km/h
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sun-info">
+
+                    <div class="sun-item">
+
+                        <i class="fa-solid fa-sun"></i>
+
+                        Nascer do sol
+
+                        <strong>
+                            ${sunrise}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="sun-item">
+
+                        <i class="fa-solid fa-moon"></i>
+
+                        Pôr do sol
+
+                        <strong>
+                            ${sunset}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            document
+                .getElementById(elementId)
+                .outerHTML =
+                `<div id="${elementId}">
+                    ${html}
+                </div>`;
+
+        }
+
+
+        /*
+         * Renderiza os 7 dias.
+         */
+
+        function renderForecast(
+            data,
+            elementId
+        ) {
+
+            const daily =
+                data.daily;
+
+            let html = "";
+
+
+            for (
+                let i = 0;
+                i < daily.time.length;
+                i++
+            ) {
+
+                const info =
+                    weatherInfo(
+                        daily.weather_code[i]
+                    );
+
+
+                const probability =
+                    daily
+                        .precipitation_probability_max[i];
+
+
+                const rain =
+                    Number(
+                        daily.precipitation_sum[i]
+                    ).toFixed(1);
+
+
+                html += `
+
+                    <div class="day-card
+                        ${i === 0 ? "today" : ""}">
+
+                        <div class="day-name">
+
+                            ${i === 0
+                                ? "HOJE"
+                                : weekday(
+                                    daily.time[i]
+                                )
+                            }
+
+                        </div>
+
+                        <div class="day-date">
+
+                            ${formatDate(
+                                daily.time[i]
+                            )}
+
+                        </div>
+
+
+                        <div class="day-icon">
+
+                            ${info.icon}
+
+                        </div>
+
+
+                        <div class="day-condition">
+
+                            ${info.text}
+
+                        </div>
+
+
+                        <div class="day-temperature">
+
+                            <span class="max-temp">
+
+                                ${Math.round(
+                                    daily
+                                    .temperature_2m_max[i]
+                                )}°
+
+                            </span>
+
+                            <span class="min-temp">
+
+                                ${Math.round(
+                                    daily
+                                    .temperature_2m_min[i]
+                                )}°
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="rain">
+
+                            <i class="fa-solid fa-droplet"></i>
+
+                            ${probability ?? 0}%
+
+                        </div>
+
+
+                        <div
+                            style="
+                                margin-top:5px;
+                                color:#526952;
+                                font-size:9px;
+                            "
+                        >
+
+                            ${rain} mm
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            document
+                .getElementById(elementId)
+                .innerHTML =
+                html;
+
+        }
+
+
+        /*
+         * Análise simples das condições para viagem.
+         */
+
+        function renderTravel(
+            dataSP,
+            dataBertioga
+        ) {
+
+            const daily =
+                dataBertioga.daily;
+
+
+            const todayRain =
+                daily
+                .precipitation_probability_max[0]
+                || 0;
+
+
+            const todayCode =
+                daily
+                .weather_code[0];
+
+
+            const weekendRain =
+                Math.max(
+                    daily
+                    .precipitation_probability_max[2]
+                    || 0,
+
+                    daily
+                    .precipitation_probability_max[3]
+                    || 0
+                );
+
+
+            let icon =
+                "fa-circle-check";
+
+            let title =
+                "Condições meteorológicas favoráveis";
+
+            let description =
+                "A previsão atual não indica chuva significativa como principal fator de atenção.";
+
+
+            if (
+                todayRain >= 70 ||
+                [65,82,95,96,99]
+                    .includes(todayCode)
+            ) {
+
+                icon =
+                    "fa-triangle-exclamation";
+
+                title =
+                    "Atenção para chuva";
+
+                description =
+                    "A previsão indica possibilidade elevada de chuva. Verifique novamente antes de sair.";
+
+            }
+
+            else if (
+                todayRain >= 40
+            ) {
+
+                icon =
+                    "fa-cloud-sun";
+
+                title =
+                    "Tempo variável";
+
+                description =
+                    "Existe possibilidade de chuva. Vale acompanhar a atualização mais próxima da viagem.";
+
+            }
+
+
+            document
+                .getElementById("travel-info")
+                .innerHTML = `
+
+                    <div class="travel-status">
+
+                        <i class="fa-solid ${icon}"></i>
+
+                        <div>
+
+                            <strong>
+                                ${title}
+                            </strong>
+
+                            <span>
+                                ${description}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        style="
+                            margin-top:14px;
+                            color:#657865;
+                            font-size:11px;
+                            line-height:1.6;
+                        "
+                    >
+
+                        Probabilidade de chuva hoje:
+                        <strong style="color:#ffa500;">
+                            ${todayRain}%
+                        </strong>
+
+                        <br>
+
+                        Maior probabilidade entre sábado e domingo:
+                        <strong style="color:#ffa500;">
+                            ${weekendRain}%
+                        </strong>
+
+                    </div>
+
+                `;
+
+        }
+
+
+        /*
+         * Comparação das cidades.
+         */
+
+        function renderComparison(
+            sp,
+            bertioga
+        ) {
+
+            const spMax =
+                Math.round(
+                    sp.daily
+                    .temperature_2m_max[0]
+                );
+
+            const bertMax =
+                Math.round(
+                    bertioga.daily
+                    .temperature_2m_max[0]
+                );
+
+            const spRain =
+                sp.daily
+                .precipitation_probability_max[0]
+                || 0;
+
+            const bertRain =
+                bertioga.daily
+                .precipitation_probability_max[0]
+                || 0;
+
+
+            document
+                .getElementById(
+                    "comparison-text"
+                )
+                .innerHTML = `
+
+                    <div
+                        style="
+                            display:grid;
+                            gap:10px;
+                        "
+                    >
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Temperatura máxima hoje
+                            </div>
+
+                            <div class="metric-value">
+                                São Paulo:
+                                ${spMax}°C
+                                &nbsp; × &nbsp;
+                                Bertioga:
+                                ${bertMax}°C
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-label">
+                                Probabilidade de chuva
+                            </div>
+
+                            <div class="metric-value">
+                                São Paulo:
+                                ${spRain}%
+                                &nbsp; × &nbsp;
+                                Bertioga:
+                                ${bertRain}%
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                color:#687c68;
+                                font-size:11px;
+                                line-height:1.6;
+                                margin-top:4px;
+                            "
+                        >
+
+                            O painel compara automaticamente
+                            as duas localidades usando a mesma
+                            janela de previsão de 7 dias.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+        }
+
+
+        /*
+         * Carregamento principal.
+         */
+
+        async function loadWeather() {
+
+            try {
+
+                showCurrentDate();
+
+                const [
+                    sp,
+                    bertioga
+                ] =
+                await Promise.all([
+
+                    getWeather(
+                        LOCATIONS.saoPaulo
+                    ),
+
+                    getWeather(
+                        LOCATIONS.bertioga
+                    )
+
+                ]);
+
+
+                renderCurrent(
+                    sp,
+                    "sp-current",
+                    LOCATIONS.saoPaulo
+                );
+
+
+                renderCurrent(
+                    bertioga,
+                    "bertioga-current",
+                    LOCATIONS.bertioga
+                );
+
+
+                renderForecast(
+                    sp,
+                    "sp-forecast"
+                );
+
+
+                renderForecast(
+                    bertioga,
+                    "bertioga-forecast"
+                );
+
+
+                renderComparison(
+                    sp,
+                    bertioga
+                );
+
+
+                renderTravel(
+                    sp,
+                    bertioga
+                );
+
+
+                showUpdateTime();
+
+
+                document
+                    .getElementById("error-box")
+                    .style.display =
+                    "none";
+
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+
+                const box =
+                    document
+                    .getElementById(
+                        "error-box"
+                    );
+
+
+                box.style.display =
+                    "block";
+
+
+                box.innerHTML = `
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Não foi possível atualizar os dados meteorológicos
+                    neste momento.
+
+                    <br><br>
+
+                    Verifique sua conexão com a internet e tente
+                    novamente.
+
+                `;
+
+            }
+
+        }
+
+
+        /*
+         * Primeira execução.
+         */
+
+        loadWeather();
+
+
+        /*
+         * Atualização automática:
+         * 15 minutos.
+         */
+
+        setInterval(
+            loadWeather,
+            15 * 60 * 1000
+        );
+
+
+        /*
+         * Atualiza relógio/data sem consultar a API.
+         */
+
+        setInterval(
+            showCurrentDate,
+            60 * 1000
+        );
+
+    </script>
+
+</body>
+</html>
