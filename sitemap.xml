@@ -1,96 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
         <loc>https://n74.com.br/</loc>
-        <lastmod>2026-07-13</lastmod>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/index.html</loc>
-        <lastmod>2026-07-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-
-    <url>
-        <loc>https://n74.com.br/menu.html</loc>
-        <lastmod>2026-07-13</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://n74.com.br/pages/contrato-manutencao.html</loc>
+        <lastmod>2026-09-24</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.95</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/services.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/suporte-tecnico.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/suporte-tecnico.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/servidores.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/redes-wifi.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/redes-wifi.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/cftv.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/cftv.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/servidores.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/backup.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/backup.html</loc>
-        <lastmod>2026-07-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://n74.com.br/suporte-remoto.html</loc>
-        <lastmod>2026-07-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://n74.com.br/atendimento-avulso.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/suporte-remoto.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.80</priority>
     </url>
 
     <url>
-        <loc>https://n74.com.br/contrato-manutencao.html</loc>
-        <lastmod>2026-07-13</lastmod>
+        <loc>https://n74.com.br/pages/atendimento-avulso.html</loc>
+        <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.90</priority>
-    </url>
-
-    <url>
-        <loc>https://n74.com.br/agendamento.html</loc>
-        <lastmod>2026-07-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
+        <priority>0.75</priority>
     </url>
 
 </urlset>
