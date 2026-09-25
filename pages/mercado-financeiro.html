@@ -1179,3 +1179,887 @@
 
             <div class="section-note">
                 Principais índices
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-market-data
+                    symbol-sectors='[
+                        {
+                            "sectionName":"Índices",
+                            "symbols":[
+                                "FOREXCOM:SPXUSD",
+                                "FOREXCOM:NSXUSD",
+                                "FOREXCOM:DJI",
+                                "TVC:VIX"
+                            ]
+                        },
+                        {
+                            "sectionName":"Treasuries",
+                            "symbols":[
+                                "TVC:US10Y"
+                            ]
+                        }
+                    ]'
+                    theme="dark"
+                    locale="pt">
+                </tv-market-data>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EUROPA E ÁSIA
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-earth-europe"></i>
+
+                Europa e Ásia
+
+            </div>
+
+            <div class="section-note">
+                Mercados internacionais
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-market-data
+                    symbol-sectors='[
+                        {
+                            "sectionName":"Europa",
+                            "symbols":[
+                                "INDEX:DEU40",
+                                "FOREXCOM:UKXGBP",
+                                "INDEX:STOXX50E"
+                            ]
+                        },
+                        {
+                            "sectionName":"Ásia",
+                            "symbols":[
+                                "INDEX:NKY",
+                                "INDEX:HSI",
+                                "INDEX:000001"
+                            ]
+                        }
+                    ]'
+                    theme="dark"
+                    locale="pt">
+                </tv-market-data>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MOEDAS
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-money-bill-transfer"></i>
+
+                Câmbio Global
+
+            </div>
+
+            <div class="section-note">
+                Forex
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-market-data
+                    symbol-sectors='[
+                        {
+                            "sectionName":"Principais pares",
+                            "symbols":[
+                                "FX:EURUSD",
+                                "FX:GBPUSD",
+                                "FX:USDJPY",
+                                "FX:USDCHF",
+                                "FX:AUDUSD",
+                                "FX:USDCAD"
+                            ]
+                        },
+                        {
+                            "sectionName":"Brasil",
+                            "symbols":[
+                                "FX:USDBRL",
+                                "FX:EURBRL"
+                            ]
+                        }
+                    ]'
+                    theme="dark"
+                    locale="pt">
+                </tv-market-data>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COMMODITIES
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-oil-well"></i>
+
+                Commodities
+
+            </div>
+
+            <div class="section-note">
+                Mercado global
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-market-data
+                    symbol-sectors='[
+                        {
+                            "sectionName":"Metais",
+                            "symbols":[
+                                "TVC:GOLD",
+                                "TVC:SILVER"
+                            ]
+                        },
+                        {
+                            "sectionName":"Energia",
+                            "symbols":[
+                                "TVC:USOIL",
+                                "TVC:UKOIL"
+                            ]
+                        }
+                    ]'
+                    theme="dark"
+                    locale="pt">
+                </tv-market-data>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CRIPTO
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-brands fa-bitcoin"></i>
+
+                Criptoativos
+
+            </div>
+
+            <div class="section-note">
+                Mercado 24 horas
+            </div>
+
+        </div>
+
+
+        <div class="grid-2">
+
+
+            <div class="widget-box">
+
+                <div class="widget-title">
+                    Bitcoin
+                </div>
+
+                <div class="widget-content">
+
+                    <tv-symbol-overview
+                        symbol="BITSTAMP:BTCUSD"
+                        chart-only="false"
+                        date-range="1D"
+                        color-theme="dark"
+                        locale="pt"
+                        is-transparent="true">
+                    </tv-symbol-overview>
+
+                </div>
+
+            </div>
+
+
+            <div class="widget-box">
+
+                <div class="widget-title">
+                    Ethereum
+                </div>
+
+                <div class="widget-content">
+
+                    <tv-symbol-overview
+                        symbol="BITSTAMP:ETHUSD"
+                        chart-only="false"
+                        date-range="1D"
+                        color-theme="dark"
+                        locale="pt"
+                        is-transparent="true">
+                    </tv-symbol-overview>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GRÁFICO PRINCIPAL
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-chart-area"></i>
+
+                Gráfico de Mercado
+
+            </div>
+
+            <div class="section-note">
+                Ibovespa
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-symbol-overview
+                    symbol="BMFBOVESPA:IBOV"
+                    chart-only="false"
+                    date-range="1D"
+                    color-theme="dark"
+                    locale="pt"
+                    is-transparent="true">
+                </tv-symbol-overview>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CALENDÁRIO ECONÔMICO
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                Calendário Econômico
+
+            </div>
+
+            <div class="section-note">
+                Eventos globais
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-economic-calendar
+                    importance-filter="0,1"
+                    country-filter="br,us,eu,gb,jp,cn"
+                    color-theme="dark"
+                    locale="pt"
+                    is-transparent="true">
+                </tv-economic-calendar>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NOTÍCIAS
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-newspaper"></i>
+
+                Mercado e Notícias
+
+            </div>
+
+            <div class="section-note">
+                TradingView
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content">
+
+                <tv-market-overview
+                    mode="market-movers"
+                    theme="dark"
+                    locale="pt">
+                </tv-market-overview>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AVISO
+         ===================================================== -->
+
+    <div class="disclaimer">
+
+        <strong>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Informação financeira:
+        </strong>
+
+        este painel tem finalidade exclusivamente
+        informativa e educacional.
+
+        As cotações podem apresentar atraso ou diferentes
+        condições de disponibilidade conforme o mercado e
+        a fonte de dados.
+
+        Informações exibidas neste painel não constituem
+        recomendação, indicação ou aconselhamento de
+        investimento.
+
+        Consulte sempre a fonte oficial e as condições
+        específicas do mercado antes de utilizar qualquer
+        informação para tomada de decisão.
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <strong>N74 TEC</strong>
+
+    • Soluções em TI para sua casa e sua empresa.
+
+    <br><br>
+
+    Mercado Financeiro • Brasil • Mundo
+
+</footer>
+
+
+<!-- =========================================================
+     TRADINGVIEW WIDGETS
+     ========================================================= -->
+
+<script
+    type="module"
+    src="https://www.tradingview-widget.com/w/en/tv-ticker-tape.js">
+</script>
+
+
+<script
+    type="module"
+    src="https://www.tradingview-widget.com/w/en/tv-market-data.js">
+</script>
+
+
+<script
+    type="module"
+    src="https://www.tradingview-widget.com/w/en/tv-symbol-overview.js">
+</script>
+
+
+<script
+    type="module"
+    src="https://www.tradingview-widget.com/w/en/tv-economic-calendar.js">
+</script>
+
+
+<script
+    type="module"
+    src="https://www.tradingview-widget.com/w/en/tv-market-overview.js">
+</script>
+
+
+<!-- =========================================================
+     JAVASCRIPT N74
+     ========================================================= -->
+
+<script>
+
+    /* =========================================================
+       RELÓGIO
+       ========================================================= */
+
+    function atualizarRelogio() {
+
+        const agora = new Date();
+
+        const hora =
+            agora.toLocaleTimeString(
+                "pt-BR",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                }
+            );
+
+        const data =
+            agora.toLocaleDateString(
+                "pt-BR",
+                {
+                    weekday: "long",
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+        document.getElementById("clock")
+            .textContent = hora;
+
+        document.getElementById("date")
+            .textContent =
+                data.charAt(0).toUpperCase()
+                + data.slice(1);
+
+    }
+
+
+    atualizarRelogio();
+
+    setInterval(
+        atualizarRelogio,
+        1000
+    );
+
+
+    /* =========================================================
+       BANCO CENTRAL DO BRASIL
+       ========================================================= */
+
+    const BCB_SGS =
+        "https://api.bcb.gov.br/dados/serie/bcdata.sgs";
+
+
+    async function buscarSerieBCB(
+        codigo,
+        dias = 10
+    ) {
+
+        const url =
+            `${BCB_SGS}.${codigo}/dados/ultimos/${dias}?formato=json`;
+
+        const resposta =
+            await fetch(url);
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "BCB indisponível"
+            );
+
+        }
+
+        return await resposta.json();
+
+    }
+
+
+    /* =========================================================
+       SELIC
+       Série 1178:
+       Selic anualizada base 252
+       ========================================================= */
+
+    async function carregarSelic() {
+
+        try {
+
+            const dados =
+                await buscarSerieBCB(
+                    1178,
+                    10
+                );
+
+            if (!dados.length) {
+
+                throw new Error();
+
+            }
+
+            const ultimo =
+                dados[dados.length - 1];
+
+            document.getElementById(
+                "selicValue"
+            ).textContent =
+                `${Number(
+                    ultimo.valor
+                ).toLocaleString(
+                    "pt-BR",
+                    {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    }
+                )}% a.a.`;
+
+            document.getElementById(
+                "selicDate"
+            ).textContent =
+                `Data: ${ultimo.data}`;
+
+        }
+
+        catch (erro) {
+
+            document.getElementById(
+                "selicValue"
+            ).textContent =
+                "Indisponível";
+
+            document.getElementById(
+                "selicDate"
+            ).textContent =
+                "Não foi possível consultar o BCB";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       PTAX
+       ========================================================= */
+
+    async function carregarPTAX(
+        moeda,
+        elementoValor,
+        elementoData
+    ) {
+
+        try {
+
+            const hoje =
+                new Date();
+
+            const data =
+                hoje.toLocaleDateString(
+                    "en-CA",
+                    {
+                        timeZone:
+                            "America/Sao_Paulo"
+                    }
+                );
+
+            const url =
+                `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='${moeda}'&@dataCotacao='${data}'&$format=json`;
+
+            const resposta =
+                await fetch(url);
+
+            if (!resposta.ok) {
+
+                throw new Error();
+
+            }
+
+            const json =
+                await resposta.json();
+
+            if (
+                !json.value ||
+                !json.value.length
+            ) {
+
+                throw new Error();
+
+            }
+
+            const ultimo =
+                json.value[
+                    json.value.length - 1
+                ];
+
+            const valor =
+                Number(
+                    ultimo.cotacaoVenda
+                );
+
+            document.getElementById(
+                elementoValor
+            ).textContent =
+                `R$ ${valor.toLocaleString(
+                    "pt-BR",
+                    {
+                        minimumFractionDigits: 4,
+                        maximumFractionDigits: 4
+                    }
+                )}`;
+
+            document.getElementById(
+                elementoData
+            ).textContent =
+                `PTAX • ${ultimo.dataHoraCotacao
+                    ? new Date(
+                        ultimo.dataHoraCotacao
+                    ).toLocaleDateString(
+                        "pt-BR"
+                    )
+                    : data}`;
+
+        }
+
+        catch (erro) {
+
+            document.getElementById(
+                elementoValor
+            ).textContent =
+                "Indisponível";
+
+            document.getElementById(
+                elementoData
+            ).textContent =
+                "Consulte o BCB";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       INICIALIZAÇÃO
+       ========================================================= */
+
+    carregarSelic();
+
+    carregarPTAX(
+        "USD",
+        "usdValue",
+        "usdDate"
+    );
+
+    carregarPTAX(
+        "EUR",
+        "eurValue",
+        "eurDate"
+    );
+
+
+    /* =========================================================
+       MATRIX
+       ========================================================= */
+
+    const canvas =
+        document.getElementById(
+            "matrixCanvas"
+        );
+
+    const ctx =
+        canvas.getContext("2d");
+
+    let width;
+    let height;
+
+    let columns;
+    let drops;
+
+    const caracteres =
+        "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>";
+
+
+    function redimensionarMatrix() {
+
+        width =
+            canvas.width =
+                window.innerWidth;
+
+        height =
+            canvas.height =
+                window.innerHeight;
+
+        const tamanho =
+            14;
+
+        columns =
+            Math.floor(
+                width / tamanho
+            );
+
+        drops =
+            Array(columns)
+                .fill(1);
+
+    }
+
+
+    function desenharMatrix() {
+
+        ctx.fillStyle =
+            "rgba(2,6,4,.08)";
+
+        ctx.fillRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+        ctx.fillStyle =
+            "#00ff41";
+
+        ctx.font =
+            "14px monospace";
+
+
+        for (
+            let i = 0;
+            i < drops.length;
+            i++
+        ) {
+
+            const texto =
+                caracteres.charAt(
+                    Math.floor(
+                        Math.random()
+                        *
+                        caracteres.length
+                    )
+                );
+
+
+            ctx.fillText(
+                texto,
+                i * 14,
+                drops[i] * 14
+            );
+
+
+            if (
+                drops[i] * 14 >
+                height &&
+                Math.random() > .975
+            ) {
+
+                drops[i] = 0;
+
+            }
+
+
+            drops[i]++;
+
+        }
+
+    }
+
+
+    redimensionarMatrix();
+
+
+    window.addEventListener(
+        "resize",
+        redimensionarMatrix
+    );
+
+
+    setInterval(
+        desenharMatrix,
+        60
+    );
+
+</script>
+
+
+</body>
+
+</html>
