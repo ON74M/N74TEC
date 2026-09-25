@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="N74 TEC - Painel de Mercado Financeiro com acompanhamento do Brasil e dos principais mercados globais.">
+
+    <meta name="keywords"
+          content="mercado financeiro, Ibovespa, dólar, Selic, S&P 500, Nasdaq, Dow Jones, Nikkei, ouro, petróleo, Bitcoin">
+
+    <meta name="author"
+          content="N74 TEC">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <link rel="canonical"
+          href="https://n74.com.br/pages/mercado-financeiro.html">
+
+    <title>N74 TEC | Mercado Financeiro</title>
+
+    <!-- =====================================================
+         FONTES
+         ===================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* =====================================================
+           N74 TEC
+           MERCADO FINANCEIRO
+           ===================================================== */
+
+        :root {
+
+            --matrix: #00ff41;
+            --matrix-soft: rgba(0,255,65,.15);
+            --matrix-border: rgba(0,255,65,.25);
+
+            --background: #020604;
+            --background-card: rgba(4,12,7,.92);
+
+            --text: #eaffec;
+            --muted: #8aa18e;
+
+            --positive: #00ff41;
+            --negative: #ff5555;
+            --warning: #ffa500;
+
+            --font: "Ubuntu", sans-serif;
+
+        }
+
+
+        * {
+
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+
+                radial-gradient(
+                    circle at top,
+                    rgba(0,255,65,.07),
+                    transparent 42%
+                ),
+
+                var(--background);
+
+            color: var(--text);
+
+            font-family: var(--font);
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =====================================================
+           MATRIX
+           ===================================================== */
+
+        #matrixCanvas {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: -2;
+
+            opacity: .12;
+
+            pointer-events: none;
+
+        }
+
+
+        .background-glow {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            pointer-events: none;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(0,255,65,.04),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(0,255,65,.03),
+                    transparent 30%
+                );
+
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            border-bottom:
+
+                1px solid
+                var(--matrix-border);
+
+            background:
+
+                rgba(2,6,4,.94);
+
+            backdrop-filter:
+
+                blur(14px);
+
+        }
+
+
+        .header-inner {
+
+            width: min(1450px,94%);
+
+            min-height: 72px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+        }
+
+
+        .brand-icon {
+
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+
+                1px solid
+                var(--matrix);
+
+            color: var(--matrix);
+
+            box-shadow:
+
+                0 0 12px
+                rgba(0,255,65,.22);
+
+        }
+
+
+        .brand-name {
+
+            color: var(--matrix);
+
+            font-size: 1.05rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .brand-description {
+
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: .73rem;
+
+        }
+
+
+        .header-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            color: var(--muted);
+
+            font-size: .74rem;
+
+        }
+
+
+        .live-dot {
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--positive);
+
+            box-shadow:
+
+                0 0 9px
+                rgba(0,255,65,.8);
+
+            animation: pulse 1.6s infinite;
+
+        }
+
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+
+                opacity: 1;
+
+            }
+
+            50% {
+
+                opacity: .35;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CONTAINER
+           ===================================================== */
+
+        main {
+
+            width: min(1450px,94%);
+
+            margin: auto;
+
+            padding:
+
+                32px 0 70px;
+
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+
+            border:
+
+                1px solid
+                var(--matrix-border);
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(0,255,65,.08),
+                    rgba(0,0,0,.22)
+                );
+
+        }
+
+
+        .hero-label {
+
+            color: var(--matrix);
+
+            font-size: .72rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .hero h1 {
+
+            margin-top: 8px;
+
+            font-size:
+
+                clamp(1.8rem,4vw,3rem);
+
+            font-weight: 400;
+
+            text-shadow:
+
+                0 0 15px
+                rgba(0,255,65,.3);
+
+        }
+
+
+        .hero p {
+
+            max-width: 900px;
+
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+            font-size: .9rem;
+
+        }
+
+
+        .hero-meta {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+        }
+
+
+        .pill {
+
+            padding: 7px 11px;
+
+            border:
+
+                1px solid
+                var(--matrix-border);
+
+            color: var(--muted);
+
+            font-size: .7rem;
+
+        }
+
+
+        .pill i {
+
+            margin-right: 5px;
+
+            color: var(--matrix);
+
+        }
+
+
+        /* =====================================================
+           SECTIONS
+           ===================================================== */
+
+        .section {
+
+            margin-top: 32px;
+
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 12px;
+
+            padding-bottom: 9px;
+
+            border-bottom:
+
+                1px solid
+                var(--matrix-border);
+
+        }
+
+
+        .section-title-main {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: var(--matrix);
+
+            font-size: 1.05rem;
+
+        }
+
+
+        .section-title-main i {
+
+            font-size: .9rem;
+
+        }
+
+
+        .section-note {
+
+            color: var(--muted);
+
+            font-size: .68rem;
+
+        }
+
+
+        /* =====================================================
+           TRADINGVIEW CONTAINERS
+           ===================================================== */
+
+        .widget-box {
+
+            width: 100%;
+
+            min-height: 120px;
+
+            border:
+
+                1px solid
+                var(--matrix-border);
+
+            background:
+
+                rgba(3,10,6,.85);
+
+            overflow: hidden;
+
+        }
+
+
+        .widget-title {
+
+            padding: 11px 14px;
+
+            border-bottom:
+
+                1px solid
+                var(--matrix-border);
+
+            color: var(--matrix);
+
+            font-size: .78rem;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        .widget-content {
+
+            width: 100%;
+
+            min-height: 350px;
+
+        }
+
+
+        .widget-content.ticker {
+
+            min-height: 90px;
+
+        }
+
+
+        /* =====================================================
+           GRID
+           ===================================================== */
+
+        .grid-2 {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(2,minmax(0,1fr));
+
+            gap: 15px;
+
+        }
+
+
+        .grid-3 {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(3,minmax(0,1fr));
+
+            gap: 15px;
+
+        }
+
+
+        /* =====================================================
+           BCB CARDS
+           ===================================================== */
+
+        .bcb-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(3,minmax(0,1fr));
+
+            gap: 14px;
+
+        }
+
+
+        .bcb-card {
+
+            padding: 18px;
+
+            border:
+
+                1px solid
+                var(--matrix-border);
+
+            background:
+
+                var(--background-card);
+
+        }
+
+
+        .bcb-label {
+
+            color: var(--muted);
+
+            font-size: .72rem;
+
+        }
+
+
+        .bcb-value {
+
+            margin-top: 12px;
+
+            min-height: 36px;
+
+            color: var(--matrix);
+
+            font-size: 1.55rem;
+
+            font-weight: 500;
+
+        }
+
+
+        .bcb-date {
+
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: .65rem;
+
+        }
+
+
+        .bcb-source {
+
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            font-size: .61rem;
+
+        }
+
+
+        /* =====================================================
+           STATUS
+           ===================================================== */
+
+        .status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+        }
+
+
+        .status i {
+
+            color: var(--matrix);
+
+        }
+
+
+        /* =====================================================
+           DISCLAIMER
+           ===================================================== */
+
+        .disclaimer {
+
+            margin-top: 35px;
+
+            padding: 15px 17px;
+
+            border-left:
+
+                3px solid
+                var(--warning);
+
+            background:
+
+                rgba(255,165,0,.045);
+
+            color: var(--muted);
+
+            font-size: .68rem;
+
+            line-height: 1.6;
+
+        }
+
+
+        .disclaimer strong {
+
+            color: var(--warning);
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            border-top:
+
+                1px solid
+                var(--matrix-border);
+
+            padding: 25px 15px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: .68rem;
+
+        }
+
+
+        footer strong {
+
+            color: var(--matrix);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width:900px) {
+
+            .grid-2,
+            .grid-3,
+            .bcb-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width:650px) {
+
+            .header-inner {
+
+                min-height: 64px;
+
+            }
+
+
+            .brand-description {
+
+                display: none;
+
+            }
+
+
+            .header-info span:not(.live-dot) {
+
+                display: none;
+
+            }
+
+
+            main {
+
+                width: 92%;
+
+                padding-top: 22px;
+
+            }
+
+
+            .hero {
+
+                padding: 20px;
+
+            }
+
+
+            .widget-content {
+
+                min-height: 300px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<canvas id="matrixCanvas"></canvas>
+
+<div class="background-glow"></div>
+
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+            </div>
+
+            <div>
+
+                <div class="brand-name">
+                    N74 TEC
+                </div>
+
+                <div class="brand-description">
+                    Mercado Financeiro
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-info">
+
+            <span class="live-dot"></span>
+
+            <span>
+                Dados de mercado
+            </span>
+
+            <span id="clock">
+                --:--:--
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
+
+<main>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-label">
+            N74 TEC • FINANCE
+        </div>
+
+        <h1>
+            Mercado Financeiro
+        </h1>
+
+        <p>
+            Central de acompanhamento dos principais mercados
+            financeiros do Brasil e do mundo, com índices,
+            moedas, commodities, criptoativos e eventos
+            econômicos.
+        </p>
+
+        <div class="hero-meta">
+
+            <div class="pill">
+
+                <i class="fa-solid fa-earth-americas"></i>
+
+                Brasil + Mundo
+
+            </div>
+
+
+            <div class="pill">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Mercados
+
+            </div>
+
+
+            <div class="pill">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <span id="date">
+                    --
+                </span>
+
+            </div>
+
+
+            <div class="pill status">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Fontes integradas
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TICKER
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-bars-staggered"></i>
+
+                Mercado em destaque
+
+            </div>
+
+            <div class="section-note">
+                TradingView
+            </div>
+
+        </div>
+
+
+        <div class="widget-box">
+
+            <div class="widget-content ticker">
+
+                <tv-ticker-tape
+                    symbols="BMFBOVESPA:IBOV,BMFBOVESPA:WIN1!,FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,FX:USDBRL,FX:EURBRL,TVC:GOLD,TVC:USOIL,BITSTAMP:BTCUSD"
+                    show-chart="false"
+                    item-size="compact"
+                    theme="dark">
+                </tv-ticker-tape>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BRASIL
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-flag"></i>
+
+                Brasil
+
+            </div>
+
+            <div class="section-note">
+                BCB + mercado
+            </div>
+
+        </div>
+
+
+        <div class="bcb-grid">
+
+
+            <div class="bcb-card">
+
+                <div class="bcb-label">
+                    Selic
+                </div>
+
+                <div
+                    class="bcb-value"
+                    id="selicValue">
+
+                    Carregando...
+
+                </div>
+
+                <div
+                    class="bcb-date"
+                    id="selicDate">
+
+                    Banco Central do Brasil
+
+                </div>
+
+                <div class="bcb-source">
+
+                    Fonte:
+                    Banco Central do Brasil
+
+                </div>
+
+            </div>
+
+
+            <div class="bcb-card">
+
+                <div class="bcb-label">
+                    Dólar PTAX
+                </div>
+
+                <div
+                    class="bcb-value"
+                    id="usdValue">
+
+                    Carregando...
+
+                </div>
+
+                <div
+                    class="bcb-date"
+                    id="usdDate">
+
+                    Banco Central do Brasil
+
+                </div>
+
+                <div class="bcb-source">
+
+                    Fonte:
+                    Banco Central do Brasil
+
+                </div>
+
+            </div>
+
+
+            <div class="bcb-card">
+
+                <div class="bcb-label">
+                    Euro PTAX
+                </div>
+
+                <div
+                    class="bcb-value"
+                    id="eurValue">
+
+                    Carregando...
+
+                </div>
+
+                <div
+                    class="bcb-date"
+                    id="eurDate">
+
+                    Banco Central do Brasil
+
+                </div>
+
+                <div class="bcb-source">
+
+                    Fonte:
+                    Banco Central do Brasil
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="widget-box">
+
+            <div class="widget-title">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Índices e ativos brasileiros
+
+            </div>
+
+            <div class="widget-content">
+
+                <tv-market-data
+                    symbol-sectors='[
+                        {
+                            "sectionName":"Brasil",
+                            "symbols":[
+                                "BMFBOVESPA:IBOV",
+                                "BMFBOVESPA:WIN1!",
+                                "BMFBOVESPA:IFIX",
+                                "BMFBOVESPA:DI1!"
+                            ]
+                        }
+                    ]'
+                    theme="dark"
+                    locale="pt">
+                </tv-market-data>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ESTADOS UNIDOS
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-main">
+
+                <i class="fa-solid fa-flag-usa"></i>
+
+                Estados Unidos
+
+            </div>
+
+            <div class="section-note">
+                Principais índices
