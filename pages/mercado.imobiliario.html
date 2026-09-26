@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="N74 TEC - Painel Mercado Imobiliário com FIIs, INCC, IGP-M, Selic, financiamento e ações de construtoras em tempo real.">
+<meta name="theme-color" content="#020604">
+<title>N74 TEC | Mercado Imobiliário - Ultra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--matrix:#00ff41;--matrix-border:rgba(0,255,65,.25);--background:#020604;--background-card:rgba(4,12,7,.92);--text:#eaffec;--muted:#a3b8a7;--font:"Ubuntu",sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:radial-gradient(circle at top,rgba(0,255,65,.07),transparent 42%),var(--background);color:var(--text);font-family:var(--font);overflow-x:hidden}
+#matrixCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.08;pointer-events:none}
+header{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--matrix-border);background:rgba(2,6,4,.92);backdrop-filter:blur(14px)}
+.header-inner{width:min(1450px,94%);min-height:72px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--matrix);color:var(--matrix);box-shadow:0 0 12px rgba(0,255,65,.22)}
+.brand-name{color:var(--matrix);font-weight:700;letter-spacing:1px}
+.brand-description{color:var(--muted);font-size:.73rem;margin-top:3px}
+.header-info{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.74rem}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#00ff41;box-shadow:0 0 9px rgba(0,255,65,.8);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+main{width:min(1450px,94%);margin:auto;padding:32px 0 70px}
+.hero{padding:28px;border:1px solid var(--matrix-border);background:linear-gradient(135deg,rgba(0,255,65,.08),rgba(0,0,0,.22));margin-bottom:25px}
+.hero-label{color:var(--matrix);font-size:.72rem;letter-spacing:2px;text-transform:uppercase}
+.hero h1{margin-top:8px;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;text-shadow:0 0 15px rgba(0,255,65,.3)}
+.hero p{max-width:900px;margin-top:10px;color:var(--muted);line-height:1.6;font-size:.9rem}
+.hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:7px 11px;border:1px solid var(--matrix-border);color:var(--muted);font-size:.7rem}
+.pill i{margin-right:5px;color:var(--matrix)}
+.section{margin-top:32px}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--matrix-border)}
+.section-title-main{display:flex;align-items:center;gap:9px;color:var(--matrix);font-size:1.05rem}
+.widget-box{width:100%;border:1px solid var(--matrix-border);background:rgba(3,10,6,.85);overflow:hidden}
+.widget-title{padding:11px 14px;border-bottom:1px solid var(--matrix-border);color:var(--matrix);font-size:.78rem}
+.widget-content{width:100%;min-height:350px}
+.bcb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.bcb-card{padding:18px;border:1px solid var(--matrix-border);background:var(--background-card)}
+.bcb-card:hover{border-color:var(--matrix);box-shadow:0 0 12px rgba(0,255,65,.12)}
+.bcb-label{color:var(--muted);font-size:.72rem}
+.bcb-value{margin-top:12px;min-height:36px;color:var(--matrix);font-size:1.45rem;font-weight:500}
+.bcb-date{margin-top:5px;color:var(--muted);font-size:.65rem}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.disclaimer{margin-top:35px;padding:15px 17px;border-left:3px solid #ffa500;background:rgba(255,165,0,.045);color:var(--muted);font-size:.68rem;line-height:1.6}
+footer{border-top:1px solid var(--matrix-border);padding:25px 15px;text-align:center;color:var(--muted);font-size:.68rem}
+footer strong{color:var(--matrix)}
+@media(max-width:1000px){.bcb-grid,.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="matrixCanvas"></canvas>
+<header>
+<div class="header-inner">
+<div class="brand"><div class="brand-icon"><i class="fa-solid fa-building"></i></div><div><div class="brand-name">N74 TEC</div><div class="brand-description">Mercado Imobiliário • Ultra</div></div></div>
+<div class="header-info"><span class="live-dot"></span><span id="statusBCB">BCB + FIIs</span><span id="clock">--:--:--</span></div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-label">N74 TEC • REAL ESTATE • ULTRA</div>
+<h1>Mercado Imobiliário</h1>
+<p>Painel ultra com tudo que move imóvel no Brasil: Selic (juros do financiamento), IGP-M (reajuste de aluguel), INCC (custo da obra), IFIX e ações das maiores construtoras em tempo real.</p>
+<div class="hero-meta">
+<div class="pill"><i class="fa-solid fa-house"></i>Aluguel e Venda</div>
+<div class="pill"><i class="fa-solid fa-chart-line"></i>FIIs + Construtoras</div>
+<div class="pill"><i class="fa-solid fa-clock"></i><span id="date">--</span></div>
+<div class="pill"><i class="fa-solid fa-circle-check"></i>BCB + TradingView</div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-bars-staggered"></i>Construção e Aluguel em destaque</div></div>
+<div class="widget-box"><div class="widget-content" style="min-height:90px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{"symbols":[{"proName":"BMFBOVESPA:IFIX","title":"IFIX"},{"proName":"BMFBOVESPA:CYRE3","title":"Cyrela"},{"proName":"BMFBOVESPA:MRVE3","title":"MRV"},{"proName":"BMFBOVESPA:EZTC3","title":"Eztec"},{"proName":"BMFBOVESPA:ALMI11","title":"ALMI11"},{"proName":"BMFBOVESPA:HGLG11","title":"HGLG11"},{"proName":"BMFBOVESPA:KNRI11","title":"KNRI11"}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"br"}
+</script></div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-flag"></i>Indicadores que definem seu imóvel - BCB / FGV</div><div class="section-note" id="bcbUpdate">Dados oficiais</div></div>
+<div class="bcb-grid">
+<div class="bcb-card"><div class="bcb-label">Selic Meta - Define Juros Financiamento</div><div class="bcb-value" id="selicValue">Carregando...</div><div class="bcb-date" id="selicDate">BCB Série 432</div></div>
+<div class="bcb-card"><div class="bcb-label">IGP-M - Reajuste Aluguel (Série 189)</div><div class="bcb-value" id="igpmValue">Carregando...</div><div class="bcb-date" id="igpmDate">FGV/BCB</div></div>
+<div class="bcb-card"><div class="bcb-label">INCC-M - Custo da Obra (Série 745)</div><div class="bcb-value" id="inccValue">Carregando...</div><div class="bcb-date" id="inccDate">FGV/BCB</div></div>
+<div class="bcb-card"><div class="bcb-label">IPCA - Inflação Oficial</div><div class="bcb-value" id="ipcaValue">Carregando...</div><div class="bcb-date" id="ipcaDate">IBGE/BCB Série 433</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-building-columns"></i>FIIs - Fundo Imobiliário (IFIX)</div></div>
+<div class="widget-box"><div class="widget-content" style="height:450px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{"width":"100%","height":450,"symbolsGroups":[{"name":"FIIs Principais","symbols":[{"name":"BMFBOVESPA:IFIX","displayName":"IFIX"},{"name":"BMFBOVESPA:HGLG11"},{"name":"BMFBOVESPA:KNRI11"},{"name":"BMFBOVESPA:XPLG11"},{"name":"BMFBOVESPA:BCFF11"},{"name":"BMFBOVESPA:HGFF11"}]},{"name":"Construtoras","symbols":[{"name":"BMFBOVESPA:CYRE3"},{"name":"BMFBOVESPA:MRVE3"},{"name":"BMFBOVESPA:EZTC3"},{"name":"BMFBOVESPA:MDNE3"},{"name":"BMFBOVESPA:TEND3"}]}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"locale":"br"}
+</script></div>
+</div></div>
+</section>
+
+<section class="section"><div class="section-title"><div class="section-title-main"><i class="fa-solid fa-chart-area"></i>Raio-X do Setor</div></div>
+<div class="grid-2">
+<div class="widget-box"><div class="widget-title">IFIX - Índice FIIs</div><div class="widget-content" style="height:400px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+{"symbols":[["IFIX","BMFBOVESPA:IFIX|1D"]],"chartOnly":false,"width":"100%","height":400,"locale":"br","colorTheme":"dark","isTransparent":true,"autosize":false,"showVolume":true,"chartType":"area","lineWidth":2,"dateRanges":["1d|1","1m|30","3m|60","12m|1D","all|1M"]}
+</script></div>
+</div></div>
+<div class="widget-box"><div class="widget-title">Cyrela + MRV - Termômetro da Construção</div><div class="widget-content" style="height:400px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+{"symbols":[["Cyrela","BMFBOVESPA:CYRE3|1D"],["MRV","BMFBOVESPA:MRVE3|1D"]],"chartOnly":false,"width":"100%","height":400,"locale":"br","colorTheme":"dark","isTransparent":true,"autosize":false,"showVolume":true,"chartType":"area","lineWidth":2,"dateRanges":["1d|1","1m|30","3m|60","12m|1D","all|1M"]}
+</script></div>
+</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-calculator"></i>Simulador Inteligente</div><div class="section-note">Selic real-time</div></div>
+<div class="bcb-grid" style="grid-template-columns:repeat(3,1fr)">
+<div class="bcb-card"><div class="bcb-label">Se Selic está em</div><div class="bcb-value" id="simSelic">--%</div><div class="bcb-date">Financiamento ~ Selic + 2% a 5% a.a.</div></div>
+<div class="bcb-card"><div class="bcb-label">IGP-M acumulado 12m</div><div class="bcb-value" id="simIgpm">--%</div><div class="bcb-date">Seu aluguel reajusta por isso</div></div>
+<div class="bcb-card"><div class="bcb-label">INCC acumulado</div><div class="bcb-value" id="simIncc">--%</div><div class="bcb-date">Obra ficou X% mais cara</div></div>
+</div>
+</section>
+
+<div class="disclaimer"><strong>Como ler:</strong> Selic alta = financiamento caro, bom pra quem tem dinheiro pra comprar à vista. IGP-M alto = aluguel sobe. INCC alto = construir ficou mais caro. IFIX caindo = FIIs baratos. Use com dados oficiais BCB/FGV.</div>
+</main>
+<footer><strong>N74 TEC</strong> • Mercado Imobiliário • Ultra • <span id="footerDate"></span></footer>
+
+<script>
+function relogio(){
+ const a=new Date();
+ document.getElementById("clock").textContent=a.toLocaleTimeString("pt-BR");
+ document.getElementById("date").textContent=a.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+ document.getElementById("footerDate").textContent=a.getFullYear();
+}
+relogio(); setInterval(relogio,1000);
+
+async function fetchBCB(serie){
+ const url=`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${serie}/dados/ultimos/12?formato=json`;
+ const r=await fetch(url,{cache:"no-store"});
+ if(!r.ok) throw new Error();
+ return await r.json();
+}
+function fmtPct(v){ return `${Number(v).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})}%`; }
+
+async function load(){
+ try{
+  const selic = await fetchBCB(432);
+  const ultS=selic[selic.length-1];
+  document.getElementById("selicValue").textContent=fmtPct(ultS.valor)+" a.a.";
+  document.getElementById("selicDate").textContent=`Data: ${ultS.data}`;
+  document.getElementById("simSelic").textContent=fmtPct(ultS.valor);
+ }catch(e){ document.getElementById("selicValue").textContent="Indisponível"; }
+
+ try{
+  const igpm = await fetchBCB(189);
+  const ult=igpm[igpm.length-1];
+  const acc = igpm.slice(-12).reduce((s,x)=>s+Number(x.valor),0);
+  document.getElementById("igpmValue").textContent=fmtPct(ult.valor)+" mês";
+  document.getElementById("igpmDate").textContent=`Data: ${ult.data} • 12m: ${fmtPct(acc)}`;
+  document.getElementById("simIgpm").textContent=fmtPct(acc)+" 12m";
+ }catch(e){ document.getElementById("igpmValue").textContent="Indisponível"; }
+
+ try{
+  const incc = await fetchBCB(745);
+  const ult=incc[incc.length-1];
+  const acc = incc.slice(-12).reduce((s,x)=>s+Number(x.valor),0);
+  document.getElementById("inccValue").textContent=fmtPct(ult.valor)+" mês";
+  document.getElementById("inccDate").textContent=`Data: ${ult.data} • 12m: ${fmtPct(acc)}`;
+  document.getElementById("simIncc").textContent=fmtPct(acc)+" 12m";
+ }catch(e){ document.getElementById("inccValue").textContent="Indisponível"; }
+
+ try{
+  const ipca = await fetchBCB(433);
+  const ult=ipca[ipca.length-1];
+  const acc = ipca.slice(-12).reduce((s,x)=>s+Number(x.valor),0);
+  document.getElementById("ipcaValue").textContent=fmtPct(ult.valor)+" mês";
+  document.getElementById("ipcaDate").textContent=`Data: ${ult.data} • 12m: ${fmtPct(acc)}`;
+  document.getElementById("bcbUpdate").textContent=`Atualizado: ${ult.data} • BCB Online`;
+ }catch(e){ document.getElementById("ipcaValue").textContent="Indisponível"; }
+}
+load();
+
+// MATRIX LEVE
+const canvas=document.getElementById("matrixCanvas"),ctx=canvas.getContext("2d");
+let w,h,cols,drops; const chars="01N74IMOB$#";
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;let s=innerWidth<650?12:14;cols=Math.floor(w/s);drops=Array(cols).fill(0).map(()=>Math.random()*-40);canvas.dataset.s=s}
+let last=0;
+function draw(t){if(t-last<90){requestAnimationFrame(draw);return}last=t;ctx.fillStyle="rgba(2,6,4,.15)";ctx.fillRect(0,0,w,h);ctx.fillStyle="#00ff41";let s=parseInt(canvas.dataset.s||14);ctx.font=s+"px monospace";for(let i=0;i<drops.length;i++){ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*s,drops[i]*s);if(drops[i]*s>h&&Math.random()>.97)drops[i]=0;drops[i]+=0.8}requestAnimationFrame(draw)}
+resize();addEventListener("resize",resize);requestAnimationFrame(draw);
+</script>
+</body>
+</html>
