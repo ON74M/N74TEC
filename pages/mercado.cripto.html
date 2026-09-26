@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="N74 TEC - Painel Cripto com Bitcoin, Ethereum, Dominância, Fear&Greed e altcoins em tempo real.">
+<title>N74 TEC | Cripto Ultra</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--matrix:#00ff41;--matrix-border:rgba(0,255,65,.25);--background:#020604;--background-card:rgba(4,12,7,.92);--text:#eaffec;--muted:#a3b8a7;--font:"Ubuntu",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}body{min-height:100vh;background:radial-gradient(circle at top,rgba(0,255,65,.07),transparent 42%),var(--background);color:var(--text);font-family:var(--font)}
+#matrixCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.10;pointer-events:none}
+header{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--matrix-border);background:rgba(2,6,4,.92);backdrop-filter:blur(14px)}
+.header-inner{width:min(1450px,94%);min-height:72px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:13px}.brand-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--matrix);color:var(--matrix)}.brand-name{color:var(--matrix);font-weight:700}
+.header-info{display:flex;gap:14px;color:var(--muted);font-size:.74rem}.live-dot{width:8px;height:8px;border-radius:50%;background:#00ff41;animation:pulse 1.6s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+main{width:min(1450px,94%);margin:auto;padding:32px 0 70px}.hero{padding:28px;border:1px solid var(--matrix-border);background:linear-gradient(135deg,rgba(0,255,65,.08),rgba(0,0,0,.22));margin-bottom:25px}.hero-label{color:var(--matrix);font-size:.72rem;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:400;margin-top:8px}.hero p{color:var(--muted);margin-top:10px;line-height:1.6}.section{margin-top:32px}.section-title{display:flex;justify-content:space-between;border-bottom:1px solid var(--matrix-border);padding-bottom:9px;margin-bottom:12px;color:var(--matrix)}.widget-box{border:1px solid var(--matrix-border);background:rgba(3,10,6,.85);overflow:hidden}.widget-title{padding:11px 14px;border-bottom:1px solid var(--matrix-border);color:var(--matrix);font-size:.78rem}.widget-content{min-height:350px}.bcb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.bcb-card{padding:18px;border:1px solid var(--matrix-border);background:var(--background-card)}.bcb-label{color:var(--muted);font-size:.72rem}.bcb-value{margin-top:12px;color:var(--matrix);font-size:1.4rem;font-weight:500}.bcb-date{color:var(--muted);font-size:.65rem;margin-top:5px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}@media(max-width:1000px){.bcb-grid,.grid-2,.grid-3{grid-template-columns:1fr}}
+</style></head><body>
+<canvas id="matrixCanvas"></canvas>
+<header><div class="header-inner"><div class="brand"><div class="brand-icon"><i class="fa-brands fa-bitcoin"></i></div><div><div class="brand-name">N74 TEC</div><div style="color:var(--muted);font-size:.73rem">Cripto • Ultra • 24h</div></div></div><div class="header-info"><span class="live-dot"></span><span id="dominance">BTC Dominance: --</span><span id="clock"></span></div></div></header>
+<main>
+<section class="hero"><div class="hero-label">N74 TEC • CRYPTO • ULTRA 24H</div><h1>Mercado Cripto</h1><p>Bitcoin, Ethereum, altcoins, dominância, market cap total e medo do mercado em tempo real. 24 horas por dia, 7 dias por semana.</p></section>
+
+<section class="section"><div class="section-title"><div><i class="fa-solid fa-fire"></i> Cripto em destaque</div></div>
+<div class="widget-box"><div class="widget-content" style="min-height:90px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{"symbols":[{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"},{"proName":"BINANCE:SOLUSDT","title":"Solana"},{"proName":"BINANCE:BNBUSDT","title":"BNB"},{"proName":"BINANCE:XRPUSDT","title":"XRP"},{"proName":"BITSTAMP:BTCUSD","title":"Dominância"}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"br"}
+</script></div></div></div></section>
+
+<section class="section"><div class="section-title"><div><i class="fa-solid fa-coins"></i> Preços ao vivo - Binance / Bitstamp</div></div>
+<div class="bcb-grid">
+<div class="bcb-card"><div class="bcb-label">Bitcoin BTC</div><div class="bcb-value" id="btc">Carregando...</div><div class="bcb-date" id="btcChange">24h</div></div>
+<div class="bcb-card"><div class="bcb-label">Ethereum ETH</div><div class="bcb-value" id="eth">Carregando...</div><div class="bcb-date" id="ethChange">24h</div></div>
+<div class="bcb-card"><div class="bcb-label">Market Cap Total</div><div class="bcb-value" id="mcap">$ --</div><div class="bcb-date">Crypto Total Market</div></div>
+<div class="bcb-card"><div class="bcb-label">Fear & Greed</div><div class="bcb-value" id="fng">--</div><div class="bcb-date" id="fngText">Carregando índice</div></div>
+</div></section>
+
+<section class="section"><div class="section-title"><div><i class="fa-solid fa-chart-area"></i> Gráficos Ultra</div></div>
+<div class="grid-2">
+<div class="widget-box"><div class="widget-title">Bitcoin BTC/USD</div><div class="widget-content" style="height:450px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+{"autosize":true,"symbol":"BITSTAMP:BTCUSD","interval":"60","timezone":"America/Sao_Paulo","theme":"dark","style":"1","locale":"br","backgroundColor":"rgba(0,0,0,0)","gridColor":"rgba(0,255,65,0.06)","hide_top_toolbar":false,"hide_legend":false,"allow_symbol_change":true,"save_image":false,"calendar":false,"hide_volume":false,"support_host":"https://www.tradingview.com"}
+</script></div></div></div>
+<div class="widget-box"><div class="widget-title">Ethereum + Solana + Total Market</div><div class="widget-content" style="height:450px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{"width":"100%","height":450,"symbolsGroups":[{"name":"Principais","symbols":[{"name":"BITSTAMP:BTCUSD"},{"name":"BITSTAMP:ETHUSD"},{"name":"BINANCE:SOLUSDT"},{"name":"BINANCE:BNBUSDT"},{"name":"BINANCE:AVAXUSDT"},{"name":"BINANCE:DOGEUSDT"}]},{"name":"DeFi","symbols":[{"name":"BINANCE:LINKUSDT"},{"name":"BINANCE:UNIUSDT"},{"name":"BINANCE:AAVEUSDT"}]}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"locale":"br"}
+</script></div></div></div>
+</div></section>
+
+<section class="section"><div class="section-title"><div><i class="fa-solid fa-ranking-star"></i> Heatmap Cripto + Dominância</div></div>
+<div class="widget-box"><div class="widget-content" style="height:500px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+{"dataSource":"Crypto","blockSize":"market_cap_calc","blockColor":"change","locale":"br","symbolUrl":"","colorTheme":"dark","hasTopBar":true,"isDataSetEnabled":true,"isZoomEnabled":true,"hasSymbolTooltip":true,"isMonoSize":false,"width":"100%","height":500}
+</script></div></div></div></section>
+</main>
+<script>
+function clock(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("pt-BR")}setInterval(clock,1000);clock();
+async function loadCrypto(){
+ try{
+  let r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true");
+  let j=await r.json();
+  document.getElementById("btc").textContent="$ "+Number(j.bitcoin.usd).toLocaleString("en-US");
+  document.getElementById("btcChange").textContent=(j.bitcoin.usd_24h_change>0?"+":"")+j.bitcoin.usd_24h_change.toFixed(2)+"% 24h";
+  document.getElementById("eth").textContent="$ "+Number(j.ethereum.usd).toLocaleString("en-US");
+  document.getElementById("ethChange").textContent=(j.ethereum.usd_24h_change>0?"+":"")+j.ethereum.usd_24h_change.toFixed(2)+"% 24h";
+ }catch{}
+ try{
+  let r=await fetch("https://api.coingecko.com/api/v3/global");
+  let j=await r.json();
+  let mcap=j.data.total_market_cap.usd;
+  document.getElementById("mcap").textContent="$ "+(mcap/1e12).toFixed(2)+"T";
+  document.getElementById("dominance").textContent="BTC Dom: "+j.data.market_cap_percentage.btc.toFixed(1)+"%";
+ }catch{}
+ try{
+  let r=await fetch("https://api.alternative.me/fng/?limit=1");
+  let j=await r.json();
+  let v=j.data[0]; document.getElementById("fng").textContent=v.value+" / 100"; document.getElementById("fngText").textContent=v.value_classification;
+ }catch{}
+}
+loadCrypto(); setInterval(loadCrypto,60000);
+const c=document.getElementById("matrixCanvas"),x=c.getContext("2d");let w,h,cols,drops;function rs(){w=c.width=innerWidth;h=c.height=innerHeight;cols=Math.floor(w/14);drops=Array(cols).fill(0).map(()=>Math.random()*-20)}let l=0;function dr(t){if(t-l<90){requestAnimationFrame(dr);return}l=t;x.fillStyle="rgba(2,6,4,.15)";x.fillRect(0,0,w,h);x.fillStyle="#00ff41";x.font="14px monospace";for(let i=0;i<drops.length;i++){x.fillText("01BTC$#@"[Math.floor(Math.random()*7)],i*14,drops[i]*14);if(drops[i]*14>h&&Math.random()>.97)drops[i]=0;drops[i]+=0.8}requestAnimationFrame(dr)}rs();addEventListener("resize",rs);requestAnimationFrame(dr);
+</script></body></html>
