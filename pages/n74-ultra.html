@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="N74 TEC ULTRA - Financeiro, Imobiliário, Agro, Cripto e Simulador em um painel só">
+<title>N74 TEC | ULTRA - Painel Único</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--m:#00ff41;--b:rgba(0,255,65,.25);--bg:#020604;--card:rgba(4,12,7,.92);--t:#eaffec;--mut:#a3b8a7;--f:"Ubuntu",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{min-height:100vh;background:radial-gradient(circle at top,rgba(0,255,65,.07),transparent 42%),var(--bg);color:var(--t);font-family:var(--f)}
+#matrixCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.09;pointer-events:none}
+header{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--b);background:rgba(2,6,4,.94);backdrop-filter:blur(14px)}
+.header-inner{width:min(1450px,94%);min-height:64px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;gap:12px;align-items:center}.brand-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--m);color:var(--m)}
+.brand-name{color:var(--m);font-weight:700}.header-info{display:flex;gap:10px;color:var(--mut);font-size:.72rem}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--m);animation:pulse 1.6s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+nav{position:sticky;top:64px;z-index:999;background:rgba(2,6,4,.92);border-bottom:1px solid var(--b)}
+.nav-inner{width:min(1450px,94%);margin:auto;display:flex;gap:6px;overflow-x:auto;padding:10px 0}
+.nav-inner a{white-space:nowrap;padding:8px 14px;border:1px solid var(--b);color:var(--mut);text-decoration:none;font-size:.72rem}
+.nav-inner a.active{border-color:var(--m);color:var(--m)}
+main{width:min(1450px,94%);margin:auto;padding:22px 0 70px}
+.hero{padding:26px;border:1px solid var(--b);background:linear-gradient(135deg,rgba(0,255,65,.08),transparent);margin-bottom:18px}
+.section{margin-top:38px;scroll-margin-top:120px}.section-title{display:flex;justify-content:space-between;border-bottom:1px solid var(--b);padding-bottom:9px;margin-bottom:12px;color:var(--m)}
+.widget-box{border:1px solid var(--b);background:rgba(3,10,6,.88);overflow:hidden}.widget-title{padding:11px 14px;border-bottom:1px solid var(--b);color:var(--m);font-size:.78rem}
+.widget-content{min-height:300px}.bcb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.bcb-card{padding:16px;border:1px solid var(--b);background:var(--card)}
+.bcb-label{color:var(--mut);font-size:.7rem}.bcb-value{margin-top:10px;color:var(--m);font-size:1.35rem;font-weight:500}.bcb-date{color:var(--mut);font-size:.62rem;margin-top:5px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}label{color:var(--mut);font-size:.72rem;display:block;margin-top:10px}input{width:100%;margin-top:5px;background:#000;border:1px solid var(--b);color:var(--t);padding:11px}
+.result{margin-top:14px;padding:12px;border:1px solid var(--m);background:rgba(0,255,65,.05)}.btn{width:100%;margin-top:12px;padding:11px;background:var(--m);color:#000;border:0;font-weight:700;cursor:pointer}
+.disclaimer{margin-top:30px;border-left:3px solid #ffa500;padding:14px;background:rgba(255,165,0,.05);color:var(--mut);font-size:.68rem}
+@media(max-width:1000px){.bcb-grid,.grid-2{grid-template-columns:1fr}}
+</style></head><body>
+<canvas id="matrixCanvas"></canvas>
+<header><div class="header-inner"><div class="brand"><div class="brand-icon"><i class="fa-solid fa-layer-group"></i></div><div><div class="brand-name">N74 TEC • ULTRA</div><div style="color:#a3b8a7;font-size:.7rem">Financeiro • Imobiliário • Agro • Cripto • Simulador</div></div></div><div class="header-info"><span class="live-dot"></span><span id="statusBCB">BCB Online</span><span id="usdTop">USD --</span><span id="clock"></span></div></div></header>
+<nav><div class="nav-inner">
+<a href="#financeiro" class="active">Financeiro</a><a href="#imobiliario">Imobiliário</a><a href="#agro">Agro</a><a href="#cripto">Cripto 24h</a><a href="#simulador">Simulador</a>
+</div></nav>
+<main>
+<div class="hero"><div style="color:#00ff41;font-size:.7rem;letter-spacing:2px">N74 TEC • PAINEL ÚNICO • 5 EM 1</div><h1 style="margin-top:8px;font-size:2.6rem;font-weight:400;text-shadow:0 0 15px rgba(0,255,65,.3)">N74 ULTRA</h1><p style="color:#a3b8a7;margin-top:10px;line-height:1.6">5 mercados em 1 arquivo. 1 busca no BCB alimenta tudo. TradingView + Coingecko real time + Simulador com taxa real.</p></div>
+
+<section id="financeiro" class="section"><div class="section-title"><div><i class="fa-solid fa-chart-line"></i> Financeiro</div></div>
+<div class="bcb-grid"><div class="bcb-card"><div class="bcb-label">Selic Meta</div><div class="bcb-value" id="selicV">--</div><div class="bcb-date" id="selicD">Série 432</div></div><div class="bcb-card"><div class="bcb-label">Dólar PTAX</div><div class="bcb-value" id="usdV">--</div><div class="bcb-date" id="usdD">PTAX</div></div><div class="bcb-card"><div class="bcb-label">Euro PTAX</div><div class="bcb-value" id="eurV">--</div><div class="bcb-date" id="eurD">PTAX</div></div><div class="bcb-card"><div class="bcb-label">IPCA 12m</div><div class="bcb-value" id="ipcaV">--</div><div class="bcb-date" id="ipcaD">433</div></div></div>
+<div class="widget-box" style="margin-top:12px"><div class="widget-title">Ibovespa + S&P + Dólar</div><div class="widget-content" style="height:380px"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>{"symbols":[["IBOV","BMFBOVESPA:IBOV|1D"],["S&P","FOREXCOM:SPXUSD|1D"],["Dólar","FX:USDBRL|1D"]],"width":"100%","height":380,"locale":"br","colorTheme":"dark","isTransparent":true,"chartType":"area"}</script></div></div></div></section>
+
+<section id="imobiliario" class="section"><div class="section-title"><div><i class="fa-solid fa-building"></i> Imobiliário</div></div>
+<div class="bcb-grid"><div class="bcb-card"><div class="bcb-label">IGP-M Aluguel</div><div class="bcb-value" id="igpmV">--</div><div class="bcb-date" id="igpmD">189</div></div><div class="bcb-card"><div class="bcb-label">INCC Obra</div><div class="bcb-value" id="inccV">--</div><div class="bcb-date" id="inccD">745</div></div><div class="bcb-card"><div class="bcb-label">IFIX</div><div class="bcb-value">TradingView</div><div class="bcb-date">FIIs</div></div><div class="bcb-card"><div class="bcb-label">Construtoras</div><div class="bcb-value" style="font-size:1rem">CYRE3 MRVE3 EZTC3</div></div></div></section>
+
+<section id="agro" class="section"><div class="section-title"><div><i class="fa-solid fa-tractor"></i> Agro</div></div>
+<div class="widget-box"><div class="widget-content" style="height:380px"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>{"width":"100%","height":380,"symbolsGroups":[{"name":"B3 Agro","symbols":[{"name":"BMFBOVESPA:BGI1!","displayName":"Boi"},{"name":"BMFBOVESPA:CCM1!","displayName":"Milho"},{"name":"BMFBOVESPA:ICF1!","displayName":"Café"}]},{"name":"Chicago","symbols":[{"name":"CME:ZS1!","displayName":"Soja"}]}],"colorTheme":"dark","isTransparent":true,"locale":"br"}</script></div></div></div></section>
+
+<section id="cripto" class="section"><div class="section-title"><div><i class="fa-brands fa-bitcoin"></i> Cripto</div><div id="btcDom" style="color:#a3b8a7;font-size:.68rem">Dom --</div></div>
+<div class="bcb-grid" style="grid-template-columns:repeat(3,1fr)"><div class="bcb-card"><div class="bcb-label">Bitcoin</div><div class="bcb-value" id="btcV">$ --</div><div class="bcb-date" id="btcCh">24h</div></div><div class="bcb-card"><div class="bcb-label">Ethereum</div><div class="bcb-value" id="ethV">$ --</div><div class="bcb-date" id="ethCh">24h</div></div><div class="bcb-card"><div class="bcb-label">Market Cap</div><div class="bcb-value" id="mcapV">$ -- T</div></div></div></section>
+
+<section id="simulador" class="section"><div class="section-title"><div><i class="fa-solid fa-calculator"></i> Simulador com taxa REAL</div></div>
+<div class="grid-2"><div class="bcb-card"><label>Tem hoje R$</label><input id="p" value="1000" type="number"><label>Aporte mês</label><input id="pm" value="300" type="number"><label>Taxa a.a. %</label><input id="tx" value="13.15" type="number"><label>Anos</label><input id="anos" value="10" type="number"><button class="btn" onclick="calc()">CALCULAR</button><div class="result"><b id="tot">R$ 0</b><div style="color:#a3b8a7;font-size:.7rem">Investiu <b id="inv"></b> • Juros <b id="jur"></b></div></div></div><div class="bcb-card"><label>Valor R$</label><input id="cVal" value="10000" type="number"><label>Meses</label><input id="cMes" value="12" type="number"><button class="btn" onclick="comp()">COMPARAR CDI vs POUP vs IPCA+</button><div class="result"><div>Poupança: <b id="rPoup">--</b></div><div>CDI: <b id="rCdi">--</b></div><div>IPCA+6%: <b id="rIpca">--</b></div><div>FII 0,8% a.m.: <b id="rFii">--</b></div></div></div></div></section>
+<div class="disclaimer"><b style="color:#ffa500">AVISO:</b> Educacional. BCB D-1, TradingView 15min atraso, Coingecko real-time. Não é recomendação.</div>
+</main>
+<footer><strong>N74 TEC ULTRA</strong> • 5 em 1</footer>
+<script>
+function $(id){return document.getElementById(id)}
+function clk(){$( "clock").textContent=new Date().toLocaleTimeString("pt-BR")}setInterval(clk,1000);clk();
+async function fetchBCB(s){let r=await fetch(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${s}/dados/ultimos/12?formato=json`,{cache:"no-store"});return await r.json()}
+async function fetchPTAX(m){for(let i=0;i<7;i++){let d=new Date();d.setDate(d.getDate()-i);let iso=d.toISOString().split("T")[0];try{let r=await fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='${m}'&@dataCotacao='${iso}'&$format=json`);let j=await r.json();if(j.value?.length)return j.value[0]}catch{}}return null}
+async function loadAll(){
+ try{let selic=await fetchBCB(432);let u=selic[selic.length-1];$("selicV").textContent=Number(u.valor).toLocaleString("pt-BR",{minimumFractionDigits:2})+"% a.a.";$("selicD").textContent=u.data;$("tx").value=(Number(u.valor)-0.1).toFixed(2)}catch{}
+ try{let p=await fetchPTAX("USD");if(p){$("usdV").textContent="R$ "+Number(p.cotacaoVenda).toFixed(4);$("usdD").textContent=new Date(p.dataHoraCotacao).toLocaleDateString("pt-BR");$("usdTop").textContent="USD R$ "+Number(p.cotacaoVenda).toFixed(4)}}catch{}
+ try{let p=await fetchPTAX("EUR");if(p){$("eurV").textContent="R$ "+Number(p.cotacaoVenda).toFixed(4);$("eurD").textContent=new Date(p.dataHoraCotacao).toLocaleDateString("pt-BR")}}catch{}
+ try{let ipca=await fetchBCB(433);let u=ipca[ipca.length-1];let acc=ipca.slice(-12).reduce((s,x)=>s+Number(x.valor),0);$("ipcaV").textContent=acc.toFixed(2)+"% 12m";$("ipcaD").textContent=u.data}catch{}
+ try{let igpm=await fetchBCB(189);let u=igpm[igpm.length-1];let acc=igpm.slice(-12).reduce((s,x)=>s+Number(x.valor),0);$("igpmV").textContent=Number(u.valor).toFixed(2)+"% mês";$("igpmD").textContent=u.data+" 12m "+acc.toFixed(2)+"%"}catch{}
+ try{let incc=await fetchBCB(745);let u=incc[incc.length-1];let acc=incc.slice(-12).reduce((s,x)=>s+Number(x.valor),0);$("inccV").textContent=Number(u.valor).toFixed(2)+"% mês";$("inccD").textContent=u.data+" 12m "+acc.toFixed(2)+"%"}catch{}
+}loadAll();
+async function loadCrypto(){try{let r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true");let j=await r.json();$("btcV").textContent="$ "+Number(j.bitcoin.usd).toLocaleString("en-US");$("btcCh").textContent=j.bitcoin.usd_24h_change.toFixed(2)+"% 24h";$("ethV").textContent="$ "+Number(j.ethereum.usd).toLocaleString("en-US");$("ethCh").textContent=j.ethereum.usd_24h_change.toFixed(2)+"% 24h"}catch{} try{let r=await fetch("https://api.coingecko.com/api/v3/global");let j=await r.json();$("mcapV").textContent="$ "+(j.data.total_market_cap.usd/1e12).toFixed(2)+"T";$("btcDom").textContent="BTC Dom "+j.data.market_cap_percentage.btc.toFixed(1)+"%"}catch{}}loadCrypto();
+function calc(){let P=parseFloat($("p").value)||0,PM=parseFloat($("pm").value)||0,tx=parseFloat($("tx").value)/100,anos=parseInt($("anos").value)||0;let m=Math.pow(1+tx,1/12)-1;let meses=anos*12;let tot=P*Math.pow(1+m,meses);for(let i=0;i<meses;i++)tot+=PM*Math.pow(1+m,meses-i-1);let inv=P+PM*meses;$("inv").textContent="R$ "+inv.toLocaleString("pt-BR");$("tot").textContent="R$ "+tot.toLocaleString("pt-BR",{minimumFractionDigits:2});$("jur").textContent="R$ "+(tot-inv).toLocaleString("pt-BR",{minimumFractionDigits:2})}
+function comp(){let v=parseFloat($("cVal").value)||0,meses=parseInt($("cMes").value)||0;let selic=13.25/100;function fut(t){return v*Math.pow(1+t,meses)} $("rPoup").textContent="R$ "+fut((selic*0.7)/12).toLocaleString("pt-BR");$("rCdi").textContent="R$ "+fut((selic-0.001)/12).toLocaleString("pt-BR");$("rIpca").textContent="R$ "+fut((0.105)/12).toLocaleString("pt-BR");$("rFii").textContent="R$ "+fut(0.008).toLocaleString("pt-BR")}calc();comp();
+const canvas=document.getElementById("matrixCanvas"),ctx=canvas.getContext("2d");let w,h,cols,drops;function rs(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;cols=Math.floor(w/14);drops=Array(cols).fill(0).map(()=>Math.random()*-30)}let last=0;function dr(t){if(t-last<85){requestAnimationFrame(dr);return}last=t;ctx.fillStyle="rgba(2,6,4,.14)";ctx.fillRect(0,0,w,h);ctx.fillStyle="#00ff41";ctx.font="14px monospace";for(let i=0;i<drops.length;i++){ctx.fillText("01ULTRA"[Math.floor(Math.random()*7)],i*14,drops[i]*14);if(drops[i]*14>h&&Math.random()>.975)drops[i]=0;drops[i]+=0.85}requestAnimationFrame(dr)}rs();addEventListener("resize",rs);requestAnimationFrame(dr);
+</script></body></html>
