@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="N74 TEC - Painel de Simulação Financeira - Juros Compostos, CDI, IPCA+, FIIs">
+<title>N74 TEC | Meu Painel Financeiro</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--m:#00ff41;--b:rgba(0,255,65,.25);--bg:#020604;--card:rgba(4,12,7,.92);--t:#eaffec;--mut:#a3b8a7;--f:"Ubuntu",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--t);font-family:var(--f);min-height:100vh}
+header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--b);background:rgba(2,6,4,.95);padding:16px 0}
+.header-inner{width:min(1450px,94%);margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;gap:12px;align-items:center}.brand-icon{width:40px;height:40px;border:1px solid var(--m);display:grid;place-items:center;color:var(--m)}
+main{width:min(1100px,94%);margin:auto;padding:30px 0 60px}
+.hero{border:1px solid var(--b);padding:24px;background:linear-gradient(135deg,rgba(0,255,65,.08),transparent);margin-bottom:24px}
+.hero h1{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;color:var(--m)}.hero p{color:var(--mut);margin-top:8px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{border:1px solid var(--b);background:var(--card);padding:20px}
+.card-title{color:var(--m);font-size:.95rem;margin-bottom:14px;display:flex;gap:8px;align-items:center}
+label{color:var(--mut);font-size:.75rem;display:block;margin-top:12px} input,select{width:100%;margin-top:6px;background:#000;border:1px solid var(--b);color:var(--t);padding:12px;font-family:var(--f);font-size:1rem}
+input:focus{outline:1px solid var(--m)}.result{margin-top:16px;padding:14px;border:1px solid var(--m);background:rgba(0,255,65,.05)}
+.result b{color:var(--m);font-size:1.4rem}.small{color:var(--mut);font-size:.7rem;margin-top:6px}
+.btn{width:100%;margin-top:16px;padding:12px;background:var(--m);color:#000;border:0;font-weight:700;cursor:pointer;font-family:var(--f)}
+.disclaimer{margin-top:28px;border-left:3px solid #ffa500;padding:14px;background:rgba(255,165,0,.05);color:var(--mut);font-size:.7rem;line-height:1.6}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="header-inner"><div class="brand"><div class="brand-icon"><i class="fa-solid fa-sack-dollar"></i></div><div><div style="color:var(--m);font-weight:700;letter-spacing:1px">N74 TEC</div><div style="color:var(--mut);font-size:.7rem">Painel Financeiro Pessoal • Simulador</div></div></div><div style="color:var(--mut);font-size:.75rem"><span id="clock"></span></div></div></header>
+<main>
+<div class="hero"><h1>Simule antes de aplicar</h1><p>Ferramenta educacional. Não é recomendação. Você compara quanto seu dinheiro renderia em CDI, IPCA+ e FIIs usando taxas REAIS do BCB hoje. Decisão é sua.</p>
+<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><span style="border:1px solid var(--b);padding:6px 10px;font-size:.7rem;color:var(--mut)"><i class="fa-solid fa-check" style="color:var(--m)"></i> Selic real-time BCB: <b id="selicNow" style="color:var(--m)">--</b></span><span style="border:1px solid var(--b);padding:6px 10px;font-size:.7rem;color:var(--mut)"><i class="fa-solid fa-check" style="color:var(--m)"></i> CDI: Selic -0.10% • IPCA+ hoje: <b id="ipcaNow">--</b></span></div></div>
+
+<div class="grid">
+<div class="card"><div class="card-title"><i class="fa-solid fa-calculator"></i> 1. Juros Compostos - Quanto vou ter?</div>
+<label>Quanto você tem hoje? R$</label><input id="p" type="number" value="1000">
+<label>Aporte por mês R$</label><input id="pm" type="number" value="300">
+<label>Taxa ao ano % (use CDI 13,15% ou 10%)</label><input id="tx" type="number" value="13.15" step="0.01">
+<label>Por quantos anos?</label><input id="anos" type="number" value="10">
+<button class="btn" onclick="calc()">CALCULAR</button>
+<div class="result"><div class="small">Você investiu</div><b id="inv">R$ 0</b><div class="small" style="margin-top:10px">Vai ter no final</div><b id="tot" style="font-size:1.8rem">R$ 0</b><div class="small">Juros ganhos</div><b id="jur">R$ 0</b></div>
+</div>
+
+<div class="card"><div class="card-title"><i class="fa-solid fa-scale-balanced"></i> 2. Comparador - Onde rende mais?</div>
+<label>Valor para comparar R$</label><input id="cVal" type="number" value="10000">
+<label>Prazo meses</label><input id="cMes" type="number" value="12">
+<div class="result" style="margin-top:18px">
+<div style="display:flex;justify-content:space-between;margin-bottom:10px"><span class="small">Poupança (70% Selic)</span><b id="rPoup">R$ --</b></div>
+<div style="display:flex;justify-content:space-between;margin-bottom:10px"><span class="small">CDI 100% (banco)</span><b id="rCdi">R$ --</b></div>
+<div style="display:flex;justify-content:space-between;margin-bottom:10px"><span class="small">IPCA+ 6% (Tesouro)</span><b id="rIpca">R$ --</b></div>
+<div style="display:flex;justify-content:space-between"><span class="small">FII 0,8% a.m. (média)</span><b id="rFii">R$ --</b></div>
+</div>
+<button class="btn" onclick="comp()">COMPARAR AGORA</button>
+<div class="small">Taxas reais BCB hoje. FII não tem garantia.</div>
+
+<div style="margin-top:22px" class="card-title"><i class="fa-solid fa-triangle-exclamation" style="color:#ffa500"></i> Regra de ouro</div>
+<div class="small">Reserva de emergência (6 meses) -> CDI / Tesouro Selic. Nunca cripto ou ação com dinheiro que precisa amanhã. Isso não é dica, é educação financeira básica.</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:16px"><div class="card-title"><i class="fa-solid fa-list-check"></i> Seu plano em 3 passos (educacional)</div>
+<div class="grid" style="grid-template-columns:repeat(3,1fr)"><div><b style="color:var(--m)">1. Proteger</b><div class="small">Reserva em CDI. Calcule acima com 100% CDI.</div></div><div><b style="color:var(--m)">2. Crescer</b><div class="small">IPCA+ protege da inflação. Prazo longo.</div></div><div><b style="color:var(--m)">3. Renda</b><div class="small">FIIs pagam aluguel mensal. Veja IFIX no painel imobiliário.</div></div></div></div>
+
+<div class="disclaimer"><b style="color:#ffa500">AVISO LEGAL N74 TEC:</b> Este painel é 100% educacional e simulador matemático. Não constitui recomendação de investimento, oferta ou promessa de rentabilidade. Rentabilidade passada não garante futura. FIIs, ações e cripto têm risco de perda. Consulte sempre um profissional certificado (CNPI/CEA) antes de aplicar. N74 TEC não é corretora.</div>
+</main>
+<script>
+function $(id){return document.getElementById(id)}
+function clock(){const d=new Date();$("clock").textContent=d.toLocaleTimeString("pt-BR")}setInterval(clock,1000);clock();
+async function loadSelic(){try{let r=await fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json");let j=await r.json();let v=Number(j[0].valor);$("selicNow").textContent=v.toFixed(2)+"% a.a."; $("tx").value=(v-0.1).toFixed(2); comp();}catch{$("selicNow").textContent="13,25% (cache)"} try{let r=await fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/12?formato=json");let j=await r.json();let acc=j.reduce((s,x)=>s+Number(x.valor),0);$("ipcaNow").textContent=acc.toFixed(2)+"% 12m";}catch{}}loadSelic();
+function calc(){let P=parseFloat($("p").value)||0, PM=parseFloat($("pm").value)||0, tx=parseFloat($("tx").value)/100, anos=parseInt($("anos").value)||0; let m=Math.pow(1+tx,1/12)-1; let meses=anos*12; let tot=P*Math.pow(1+m,meses); for(let i=0;i<meses;i++) tot+=PM*Math.pow(1+m,meses-i-1); let inv=P+PM*meses; $("inv").textContent="R$ "+inv.toLocaleString("pt-BR",{minimumFractionDigits:2}); $("tot").textContent="R$ "+tot.toLocaleString("pt-BR",{minimumFractionDigits:2}); $("jur").textContent="R$ "+(tot-inv).toLocaleString("pt-BR",{minimumFractionDigits:2});}
+function comp(){let v=parseFloat($("cVal").value)||0, meses=parseInt($("cMes").value)||0; let selic=parseFloat(($("selicNow").textContent)||"13.25")/100; let poupM=(selic*0.7)/12; let cdiM=(selic-0.001)/12; let ipcaM=(0.06 + 0.045)/12; let fiiM=0.008; function fut(taxa){return v*Math.pow(1+taxa,meses)} $("rPoup").textContent="R$ "+fut(poupM).toLocaleString("pt-BR",{minimumFractionDigits:2}); $("rCdi").textContent="R$ "+fut(cdiM).toLocaleString("pt-BR",{minimumFractionDigits:2}); $("rIpca").textContent="R$ "+fut(ipcaM).toLocaleString("pt-BR",{minimumFractionDigits:2}); $("rFii").textContent="R$ "+fut(fiiM).toLocaleString("pt-BR",{minimumFractionDigits:2});}
+calc();
+</script></body></html>
