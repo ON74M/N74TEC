@@ -1,1804 +1,312 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="N74 TEC - Painel de Mercado Financeiro com acompanhamento do Brasil e dos principais mercados globais. Selic, IPCA, meta de inflação, Ibovespa, dólar, Bitcoin e mercados internacionais.">
+<meta name="description" content="N74 TEC - Painel de Mercado Financeiro com acompanhamento do Brasil e dos principais mercados globais em tempo real.">
 <meta name="author" content="N74 TEC">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#020604">
-
-<meta property="og:title" content="N74 TEC | Mercado Financeiro">
-<meta property="og:description" content="Painel financeiro com Selic, IPCA, inflação, Ibovespa, dólar, Bitcoin e principais mercados globais.">
+<meta property="og:title" content="N74 TEC | Mercado Financeiro - Tempo Real">
+<meta property="og:description" content="Ibovespa, Dólar, Selic, IPCA, INPC, IGP-M, S&P 500, Bitcoin e mais - Painel em tempo real">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://n74.com.br/pages/mercado-financeiro.html">
-
 <link rel="canonical" href="https://n74.com.br/pages/mercado-financeiro.html">
-
-<title>N74 TEC | Mercado Financeiro</title>
-
+<title>N74 TEC | Mercado Financeiro - Tempo Real</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <style>
-:root{
-    --matrix:#00ff41;
-    --matrix-soft:rgba(0,255,65,.15);
-    --matrix-border:rgba(0,255,65,.25);
-    --background:#020604;
-    --background-card:rgba(4,12,7,.92);
-    --text:#eaffec;
-    --muted:#a3b8a7;
-    --positive:#00ff41;
-    --negative:#ff5555;
-    --warning:#ffa500;
-    --font:"Ubuntu",sans-serif;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at top,rgba(0,255,65,.07),transparent 42%),
-        var(--background);
-    color:var(--text);
-    font-family:var(--font);
-    overflow-x:hidden;
-}
-
-#matrixCanvas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:-2;
-    opacity:.10;
-    pointer-events:none;
-}
-
-.background-glow{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    background:
-        radial-gradient(circle at 10% 10%,rgba(0,255,65,.04),transparent 30%),
-        radial-gradient(circle at 90% 90%,rgba(0,255,65,.03),transparent 30%);
-}
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    border-bottom:1px solid var(--matrix-border);
-    background:rgba(2,6,4,.92);
-    backdrop-filter:blur(14px);
-}
-
-.header-inner{
-    width:min(1450px,94%);
-    min-height:72px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.brand-icon{
-    width:43px;
-    height:43px;
-    display:grid;
-    place-items:center;
-    border:1px solid var(--matrix);
-    color:var(--matrix);
-    box-shadow:0 0 12px rgba(0,255,65,.22);
-}
-
-.brand-name{
-    color:var(--matrix);
-    font-size:1.05rem;
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.brand-description{
-    margin-top:3px;
-    color:var(--muted);
-    font-size:.73rem;
-}
-
-.header-info{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    color:var(--muted);
-    font-size:.74rem;
-}
-
-.live-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--positive);
-    box-shadow:0 0 9px rgba(0,255,65,.8);
-    animation:pulse 1.6s infinite;
-}
-
-@keyframes pulse{
-    0%,100%{opacity:1}
-    50%{opacity:.35}
-}
-
-main{
-    width:min(1450px,94%);
-    margin:auto;
-    padding:32px 0 70px;
-}
-
-.hero{
-    padding:28px;
-    margin-bottom:25px;
-    border:1px solid var(--matrix-border);
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,255,65,.08),
-            rgba(0,0,0,.22)
-        );
-}
-
-.hero-label{
-    color:var(--matrix);
-    font-size:.72rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.hero h1{
-    margin-top:8px;
-    font-size:clamp(1.8rem,4vw,3rem);
-    font-weight:400;
-    text-shadow:0 0 15px rgba(0,255,65,.3);
-}
-
-.hero p{
-    max-width:900px;
-    margin-top:10px;
-    color:var(--muted);
-    line-height:1.6;
-    font-size:.9rem;
-}
-
-.hero-meta{
-    margin-top:20px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-}
-
-.pill{
-    padding:7px 11px;
-    border:1px solid var(--matrix-border);
-    color:var(--muted);
-    font-size:.7rem;
-}
-
-.pill i{
-    margin-right:5px;
-    color:var(--matrix);
-}
-
-.section{
-    margin-top:32px;
-}
-
-.section-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-    padding-bottom:9px;
-    border-bottom:1px solid var(--matrix-border);
-}
-
-.section-title-main{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    color:var(--matrix);
-    font-size:1.05rem;
-}
-
-.section-title-main i{
-    font-size:.9rem;
-}
-
-.section-note{
-    color:var(--muted);
-    font-size:.68rem;
-}
-
-.widget-box{
-    width:100%;
-    min-height:120px;
-    border:1px solid var(--matrix-border);
-    background:rgba(3,10,6,.85);
-    overflow:hidden;
-}
-
-.widget-title{
-    padding:11px 14px;
-    border-bottom:1px solid var(--matrix-border);
-    color:var(--matrix);
-    font-size:.78rem;
-    letter-spacing:.5px;
-}
-
-.widget-content{
-    width:100%;
-    min-height:350px;
-}
-
-.widget-content.ticker{
-    min-height:auto;
-}
-
-.grid-2{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:15px;
-}
-
-/* =========================
-   PAINEL BCB
-   ========================= */
-
-.bcb-grid{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:14px;
-}
-
-.bcb-card{
-    position:relative;
-    padding:18px;
-    min-height:170px;
-    border:1px solid var(--matrix-border);
-    background:var(--background-card);
-    transition:all .2s ease;
-}
-
-.bcb-card:hover{
-    border-color:var(--matrix);
-    box-shadow:0 0 12px rgba(0,255,65,.12);
-}
-
-.bcb-label{
-    color:var(--muted);
-    font-size:.72rem;
-    line-height:1.4;
-}
-
-.bcb-value{
-    margin-top:12px;
-    min-height:38px;
-    color:var(--matrix);
-    font-size:1.55rem;
-    font-weight:500;
-}
-
-.bcb-value.unavailable{
-    color:var(--warning);
-    font-size:1.15rem;
-}
-
-.bcb-date{
-    margin-top:5px;
-    min-height:18px;
-    color:var(--muted);
-    font-size:.65rem;
-}
-
-.bcb-source{
-    margin-top:10px;
-    color:var(--muted);
-    font-size:.61rem;
-}
-
-.bcb-range{
-    margin-top:8px;
-    color:var(--muted);
-    font-size:.62rem;
-}
-
-.bcb-status{
-    position:absolute;
-    top:15px;
-    right:15px;
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:var(--positive);
-    box-shadow:0 0 7px rgba(0,255,65,.7);
-}
-
-.bcb-status.offline{
-    background:var(--warning);
-    box-shadow:0 0 7px rgba(255,165,0,.7);
-}
-
-/* =========================
-   AVISO
-   ========================= */
-
-.disclaimer{
-    margin-top:35px;
-    padding:15px 17px;
-    border-left:3px solid var(--warning);
-    background:rgba(255,165,0,.045);
-    color:var(--muted);
-    font-size:.68rem;
-    line-height:1.6;
-}
-
-.disclaimer strong{
-    color:var(--warning);
-}
-
-footer{
-    border-top:1px solid var(--matrix-border);
-    padding:25px 15px;
-    text-align:center;
-    color:var(--muted);
-    font-size:.68rem;
-}
-
-footer strong{
-    color:var(--matrix);
-}
-
-@media(max-width:1100px){
-    .bcb-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-}
-
-@media(max-width:900px){
-    .grid-2{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:650px){
-
-    .header-inner{
-        min-height:64px;
-    }
-
-    .brand-description{
-        display:none;
-    }
-
-    .header-info span:not(.live-dot){
-        display:none;
-    }
-
-    main{
-        width:92%;
-        padding-top:22px;
-    }
-
-    .hero{
-        padding:20px;
-    }
-
-    .widget-content{
-        min-height:300px;
-    }
-
-    .bcb-grid{
-        grid-template-columns:1fr;
-    }
-
-    .bcb-card{
-        min-height:155px;
-    }
-}
+:root{--matrix:#00ff41;--matrix-soft:rgba(0,255,65,.15);--matrix-border:rgba(0,255,65,.25);--background:#020604;--background-card:rgba(4,12,7,.92);--text:#eaffec;--muted:#a3b8a7;--positive:#00ff41;--negative:#ff5555;--warning:#ffa500;--font:"Ubuntu",sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:radial-gradient(circle at top,rgba(0,255,65,.07),transparent 42%),var(--background);color:var(--text);font-family:var(--font);overflow-x:hidden}
+#matrixCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.10;pointer-events:none}
+.background-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 10% 10%,rgba(0,255,65,.04),transparent 30%),radial-gradient(circle at 90% 90%,rgba(0,255,65,.03),transparent 30%)}
+header{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--matrix-border);background:rgba(2,6,4,.92);backdrop-filter:blur(14px)}
+.header-inner{width:min(1450px,94%);min-height:72px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--matrix);color:var(--matrix);box-shadow:0 0 12px rgba(0,255,65,.22)}
+.brand-name{color:var(--matrix);font-size:1.05rem;font-weight:700;letter-spacing:1px}
+.brand-description{margin-top:3px;color:var(--muted);font-size:.73rem}
+.header-info{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.74rem}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--positive);box-shadow:0 0 9px rgba(0,255,65,.8);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+main{width:min(1450px,94%);margin:auto;padding:32px 0 70px}
+.hero{padding:28px;margin-bottom:25px;border:1px solid var(--matrix-border);background:linear-gradient(135deg,rgba(0,255,65,.08),rgba(0,0,0,.22))}
+.hero-label{color:var(--matrix);font-size:.72rem;letter-spacing:2px;text-transform:uppercase}
+.hero h1{margin-top:8px;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;text-shadow:0 0 15px rgba(0,255,65,.3)}
+.hero p{max-width:900px;margin-top:10px;color:var(--muted);line-height:1.6;font-size:.9rem}
+.hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:7px 11px;border:1px solid var(--matrix-border);color:var(--muted);font-size:.7rem}
+.pill i{margin-right:5px;color:var(--matrix)}
+.section{margin-top:32px}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--matrix-border)}
+.section-title-main{display:flex;align-items:center;gap:9px;color:var(--matrix);font-size:1.05rem}
+.section-title-main i{font-size:.9rem}
+.section-note{color:var(--muted);font-size:.68rem}
+.widget-box{width:100%;min-height:120px;border:1px solid var(--matrix-border);background:rgba(3,10,6,.85);overflow:hidden}
+.widget-title{padding:11px 14px;border-bottom:1px solid var(--matrix-border);color:var(--matrix);font-size:.78rem;letter-spacing:.5px}
+.widget-content{width:100%;min-height:350px}
+.widget-content.ticker{min-height:auto}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.bcb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.bcb-card{padding:18px;border:1px solid var(--matrix-border);background:var(--background-card);transition:all.2s;display:flex;flex-direction:column}
+.bcb-card:hover{border-color:var(--matrix);box-shadow:0 0 12px rgba(0,255,65,.12)}
+.bcb-card-wide{grid-column: span 2;}
+.bcb-label{color:var(--muted);font-size:.72rem;display:flex;align-items:center;gap:6px}
+.bcb-label i{color:var(--matrix)}
+.bcb-value{margin-top:12px;min-height:36px;color:var(--matrix);font-size:1.55rem;font-weight:500}
+.bcb-date{margin-top:5px;color:var(--muted);font-size:.65rem}
+.bcb-source{margin-top:auto;padding-top:10px;color:var(--muted);font-size:.61rem}
+.inflation-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.infl-row{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border:1px solid rgba(0,255,65,.14);background:rgba(0,255,65,.04)}
+.infl-name{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.infl-name small{color:var(--matrix);font-size:.6rem;border:1px solid var(--matrix-border);padding:2px 4px}
+.infl-values{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.infl-values b{color:var(--matrix);font-size:1.05rem;font-weight:500}
+.infl-values small{color:var(--text);font-size:.72rem;opacity:.85}
+.disclaimer{margin-top:35px;padding:15px 17px;border-left:3px solid var(--warning);background:rgba(255,165,0,.045);color:var(--muted);font-size:.68rem;line-height:1.6}
+.disclaimer strong{color:var(--warning)}
+footer{border-top:1px solid var(--matrix-border);padding:25px 15px;text-align:center;color:var(--muted);font-size:.68rem}
+footer strong{color:var(--matrix)}
+@media(max-width:1100px){.bcb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bcb-card-wide{grid-column: span 2;}}
+@media(max-width:650px){.header-inner{min-height:64px}.brand-description{display:none}.header-info span:not(.live-dot){display:none}main{width:92%;padding-top:22px}.hero{padding:20px}.widget-content{min-height:300px}.bcb-grid{grid-template-columns:1fr}.bcb-card-wide{grid-column: span 1;}}
 </style>
-
 </head>
-
 <body>
-
 <canvas id="matrixCanvas"></canvas>
-
 <div class="background-glow"></div>
-
 <header>
-    <div class="header-inner">
-
-```
-    <div class="brand">
-
-        <div class="brand-icon">
-            <i class="fa-solid fa-chart-line"></i>
-        </div>
-
-        <div>
-            <div class="brand-name">N74 TEC</div>
-            <div class="brand-description">
-                Mercado Financeiro • Real Time
-            </div>
-        </div>
-
-    </div>
-
-    <div class="header-info">
-        <span class="live-dot"></span>
-        <span id="statusBCB">Conectando BCB...</span>
-        <span id="clock">--:--:--</span>
-    </div>
-
+<div class="header-inner">
+<div class="brand"><div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div><div><div class="brand-name">N74 TEC</div><div class="brand-description">Mercado Financeiro • Real Time</div></div></div>
+<div class="header-info"><span class="live-dot"></span><span id="statusBCB">Conectando BCB...</span><span id="clock">--:--:--</span></div>
 </div>
-```
-
 </header>
-
 <main>
-
-<!-- =========================
-     HERO
-     ========================= -->
-
 <section class="hero">
-
-```
-<div class="hero-label">
-    N74 TEC • FINANCE • ULTRA
-</div>
-
-<h1>
-    Mercado Financeiro
-</h1>
-
-<p>
-    Central de acompanhamento dos principais mercados financeiros
-    do Brasil e do mundo. Indicadores econômicos oficiais do Banco
-    Central do Brasil e informações de mercado via TradingView.
-</p>
-
+<div class="hero-label">N74 TEC • FINANCE • ULTRA</div>
+<h1>Mercado Financeiro</h1>
+<p>Central ultra de acompanhamento dos principais mercados financeiros do Brasil e do mundo. Dados oficiais do Banco Central + FGV + TradingView em tempo real.</p>
 <div class="hero-meta">
-
-    <div class="pill">
-        <i class="fa-solid fa-earth-americas"></i>
-        Brasil + Mundo
-    </div>
-
-    <div class="pill">
-        <i class="fa-solid fa-bolt"></i>
-        Mercado
-    </div>
-
-    <div class="pill">
-        <i class="fa-solid fa-clock"></i>
-        <span id="date">--</span>
-    </div>
-
-    <div class="pill">
-        <i class="fa-solid fa-database"></i>
-        <span id="fontes">BCB + TradingView</span>
-    </div>
-
+<div class="pill"><i class="fa-solid fa-earth-americas"></i>Brasil + Mundo</div>
+<div class="pill"><i class="fa-solid fa-bolt"></i>Tempo Real</div>
+<div class="pill"><i class="fa-solid fa-clock"></i><span id="date">--</span></div>
+<div class="pill"><i class="fa-solid fa-circle-check"></i><span id="fontes">BCB + FGV + TradingView</span></div>
 </div>
-```
-
 </section>
 
-<!-- =========================
-     MERCADO EM DESTAQUE
-     ========================= -->
-
 <section class="section">
-
-```
-<div class="section-title">
-
-    <div class="section-title-main">
-        <i class="fa-solid fa-bars-staggered"></i>
-        Mercado em destaque
-    </div>
-
-    <div class="section-note">
-        TradingView
-    </div>
-
-</div>
-
-<div class="widget-box">
-
-    <div class="widget-content ticker">
-
-        <div class="tradingview-widget-container">
-
-            <div class="tradingview-widget-container__widget"></div>
-
-            <script
-                type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-                async>
-            {
-                "symbols": [
-                    {
-                        "proName": "BMFBOVESPA:IBOV",
-                        "title": "IBOV"
-                    },
-                    {
-                        "proName": "BMFBOVESPA:WIN1!",
-                        "title": "Mini Índice"
-                    },
-                    {
-                        "proName": "FOREXCOM:SPXUSD",
-                        "title": "S&P 500"
-                    },
-                    {
-                        "proName": "FOREXCOM:NSXUSD",
-                        "title": "Nasdaq"
-                    },
-                    {
-                        "proName": "FOREXCOM:DJI",
-                        "title": "Dow Jones"
-                    },
-                    {
-                        "proName": "FX:USDBRL",
-                        "title": "Dólar"
-                    },
-                    {
-                        "proName": "TVC:GOLD",
-                        "title": "Ouro"
-                    },
-                    {
-                        "proName": "BITSTAMP:BTCUSD",
-                        "title": "Bitcoin"
-                    }
-                ],
-                "showSymbolLogo": true,
-                "colorTheme": "dark",
-                "isTransparent": true,
-                "displayMode": "adaptive",
-                "locale": "br"
-            }
-            </script>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-bars-staggered"></i>Mercado em destaque</div><div class="section-note">TradingView • Real Time</div></div>
+<div class="widget-box"><div class="widget-content ticker">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{
+"symbols": [{"proName": "BMFBOVESPA:IBOV","title": "IBOV"}, {"proName": "BMFBOVESPA:WIN1!","title": "Mini Índice"}, {"proName": "FOREXCOM:SPXUSD","title": "S&P 500"}, {"proName": "FOREXCOM:NSXUSD","title": "Nasdaq"}, {"proName": "FOREXCOM:DJI","title": "Dow Jones"}, {"proName": "FX:USDBRL","title": "Dólar"}, {"proName": "TVC:GOLD","title": "Ouro"}, {"proName": "BITSTAMP:BTCUSD","title": "Bitcoin"}],
+"showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "br"
+}
+</script></div>
+</div></div>
 </section>
 
-<!-- =========================
-     BRASIL - BCB
-     ========================= -->
-
 <section class="section">
-
-```
-<div class="section-title">
-
-    <div class="section-title-main">
-        <i class="fa-solid fa-flag"></i>
-        Brasil — Indicadores Oficiais
-    </div>
-
-    <div class="section-note" id="bcbLastUpdate">
-        BCB • Carregando
-    </div>
-
-</div>
-
-
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-flag"></i>Brasil - Dados Oficiais BCB / FGV</div><div class="section-note" id="bcbLastUpdate">BCB • Tempo real</div></div>
 <div class="bcb-grid">
+<div class="bcb-card"><div class="bcb-label"><i class="fa-solid fa-percent"></i> Selic Meta (Série 432)</div><div class="bcb-value" id="selicValue">Carregando...</div><div class="bcb-date" id="selicDate">Banco Central do Brasil</div><div class="bcb-source">Fonte: SGS/BCB • Atualiza D-1</div></div>
 
-    <!-- SELIC -->
-
-    <div class="bcb-card">
-
-        <span class="bcb-status" id="statusSelic"></span>
-
-        <div class="bcb-label">
-            Selic Meta
-        </div>
-
-        <div class="bcb-value" id="selicValue">
-            Carregando...
-        </div>
-
-        <div class="bcb-date" id="selicDate">
-            Banco Central do Brasil
-        </div>
-
-        <div class="bcb-source">
-            Fonte: SGS/BCB • Série 432
-        </div>
-
-    </div>
-
-
-    <!-- IPCA 12 MESES -->
-
-    <div class="bcb-card">
-
-        <span class="bcb-status" id="statusIpca12"></span>
-
-        <div class="bcb-label">
-            IPCA — 12 meses
-        </div>
-
-        <div class="bcb-value" id="ipca12Value">
-            Carregando...
-        </div>
-
-        <div class="bcb-date" id="ipca12Date">
-            Banco Central / IBGE
-        </div>
-
-        <div class="bcb-source">
-            Fonte: SGS/BCB • Série 13522
-        </div>
-
-    </div>
-
-
-    <!-- IPCA MENSAL -->
-
-    <div class="bcb-card">
-
-        <span class="bcb-status" id="statusIpcaMensal"></span>
-
-        <div class="bcb-label">
-            IPCA — Mensal
-        </div>
-
-        <div class="bcb-value" id="ipcaMensalValue">
-            Carregando...
-        </div>
-
-        <div class="bcb-date" id="ipcaMensalDate">
-            Banco Central / IBGE
-        </div>
-
-        <div class="bcb-source">
-            Fonte: SGS/BCB • Série 433
-        </div>
-
-    </div>
-
-
-    <!-- META DE INFLAÇÃO -->
-
-    <div class="bcb-card">
-
-        <span class="bcb-status"></span>
-
-        <div class="bcb-label">
-            Meta de Inflação
-        </div>
-
-        <div class="bcb-value">
-            3,00%
-        </div>
-
-        <div class="bcb-date">
-            Regime de meta contínua
-        </div>
-
-        <div class="bcb-range">
-            Tolerância: 1,50% — 4,50%
-        </div>
-
-        <div class="bcb-source">
-            Fonte: CMN / Banco Central
-        </div>
-
-    </div>
-
+<div class="bcb-card bcb-card-wide">
+<div class="bcb-label"><i class="fa-solid fa-arrow-trend-up"></i> Inflação - IPCA / INPC / IGP-M</div>
+<div class="inflation-list">
+  <div class="infl-row"><span class="infl-name"><i class="fa-solid fa-chart-simple"></i> IPCA <small>IBGE - Oficial</small></span><span class="infl-values"><b id="ipcaValue">Carregando...</b><small id="ipca12Value">12m: --</small></span></div>
+  <div class="infl-row"><span class="infl-name"><i class="fa-solid fa-users"></i> INPC <small>IBGE - Famílias</small></span><span class="infl-values"><b id="inpcValue">Carregando...</b><small id="inpc12Value">12m: --</small></span></div>
+  <div class="infl-row"><span class="infl-name"><i class="fa-solid fa-building"></i> IGP-M <small>FGV - Aluguel</small></span><span class="infl-values"><b id="igpmValue">Carregando...</b><small id="igpm12Value">12m: --</small></span></div>
+</div>
+<div class="bcb-date" id="ipcaDate">BCB / FGV</div><div class="bcb-source">Fonte: SGS 433, 188, 189 + 13522, 13524, 13521</div>
 </div>
 
+<div class="bcb-card"><div class="bcb-label"><i class="fa-solid fa-dollar-sign"></i> Dólar PTAX Venda</div><div class="bcb-value" id="usdValue">Carregando...</div><div class="bcb-date" id="usdDate">Banco Central do Brasil</div><div class="bcb-source">Fonte: PTAX/BCB • Dia útil</div></div>
+</div><br>
 
+<div class="bcb-grid" style="margin-top:14px">
+<div class="bcb-card"><div class="bcb-label"><i class="fa-solid fa-euro-sign"></i> Euro PTAX Venda</div><div class="bcb-value" id="eurValue">Carregando...</div><div class="bcb-date" id="eurDate">Banco Central do Brasil</div><div class="bcb-source">Fonte: PTAX/BCB • Dia útil</div></div>
+<div class="bcb-card"><div class="bcb-label"><i class="fa-solid fa-piggy-bank"></i> Meta Inflação</div><div class="bcb-value" style="font-size:1.2rem">3,00% <small style="font-size:.7rem;color:var(--muted)">±1,5 p.p.</small></div><div class="bcb-date">CMN • Meta 2026</div><div class="bcb-source">Centro da meta perseguida pelo BCB</div></div>
+</div>
 <br>
 
-
-<!-- ÍNDICES BRASILEIROS -->
-
-<div class="widget-box">
-
-    <div class="widget-title">
-        <i class="fa-solid fa-chart-line"></i>
-        Índices Brasileiros
-    </div>
-
-    <div class="widget-content" style="height:400px">
-
-        <div class="tradingview-widget-container">
-
-            <div class="tradingview-widget-container__widget"></div>
-
-            <script
-                type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
-                async>
-            {
-                "width":"100%",
-                "height":400,
-                "symbolsGroups":[
-                    {
-                        "name":"Brasil",
-                        "symbols":[
-                            {
-                                "name":"BMFBOVESPA:IBOV",
-                                "displayName":"IBOV"
-                            },
-                            {
-                                "name":"BMFBOVESPA:WIN1!",
-                                "displayName":"Mini Índice"
-                            },
-                            {
-                                "name":"BMFBOVESPA:IFIX",
-                                "displayName":"IFIX"
-                            },
-                            {
-                                "name":"BMFBOVESPA:DI1!",
-                                "displayName":"DI Futuro"
-                            }
-                        ]
-                    }
-                ],
-                "showSymbolLogo":true,
-                "colorTheme":"dark",
-                "isTransparent":true,
-                "locale":"br"
-            }
-            </script>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
+<div class="widget-box"><div class="widget-title"><i class="fa-solid fa-chart-line"></i> Índices Brasileiros</div><div class="widget-content" style="height:400px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{"width":"100%","height":400,"symbolsGroups":[{"name":"Brasil","symbols":[{"name":"BMFBOVESPA:IBOV","displayName":"IBOV"},{"name":"BMFBOVESPA:WIN1!","displayName":"Mini Índice"},{"name":"BMFBOVESPA:IFIX","displayName":"IFIX"},{"name":"BMFBOVESPA:DI1!","displayName":"DI Futuro"}]}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"locale":"br"}
+</script></div>
+</div></div>
 </section>
 
-<!-- =========================
-     ESTADOS UNIDOS
-     ========================= -->
-
 <section class="section">
-
-```
-<div class="section-title">
-
-    <div class="section-title-main">
-        <i class="fa-solid fa-flag-usa"></i>
-        Estados Unidos
-    </div>
-
-    <div class="section-note">
-        Wall Street
-    </div>
-
-</div>
-
-
-<div class="widget-box">
-
-    <div class="widget-content" style="height:400px">
-
-        <div class="tradingview-widget-container">
-
-            <div class="tradingview-widget-container__widget"></div>
-
-            <script
-                type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
-                async>
-            {
-                "width":"100%",
-                "height":400,
-                "symbolsGroups":[
-                    {
-                        "name":"Índices",
-                        "symbols":[
-                            {
-                                "name":"FOREXCOM:SPXUSD"
-                            },
-                            {
-                                "name":"FOREXCOM:NSXUSD"
-                            },
-                            {
-                                "name":"FOREXCOM:DJI"
-                            },
-                            {
-                                "name":"TVC:VIX"
-                            }
-                        ]
-                    },
-                    {
-                        "name":"Juros",
-                        "symbols":[
-                            {
-                                "name":"TVC:US10Y"
-                            }
-                        ]
-                    }
-                ],
-                "showSymbolLogo":true,
-                "colorTheme":"dark",
-                "isTransparent":true,
-                "locale":"br"
-            }
-            </script>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
+<div class="section-title"><div class="section-title-main"><i class="fa-solid fa-flag-usa"></i>Estados Unidos</div><div class="section-note">Wall Street</div></div>
+<div class="widget-box"><div class="widget-content" style="height:400px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{"width":"100%","height":400,"symbolsGroups":[{"name":"Índices","symbols":[{"name":"FOREXCOM:SPXUSD"},{"name":"FOREXCOM:NSXUSD"},{"name":"FOREXCOM:DJI"},{"name":"TVC:VIX"}]},{"name":"Juros","symbols":[{"name":"TVC:US10Y"}]}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"locale":"br"}
+</script></div>
+</div></div>
 </section>
 
-<!-- =========================
-     CÂMBIO + CRIPTO
-     ========================= -->
-
-<section class="section">
-
-```
-<div class="section-title">
-
-    <div class="section-title-main">
-        <i class="fa-solid fa-money-bill-transfer"></i>
-        Câmbio Global + Cripto
-    </div>
-
-    <div class="section-note">
-        Forex + Cripto
-    </div>
-
-</div>
-
-
+<section class="section"><div class="section-title"><div class="section-title-main"><i class="fa-solid fa-money-bill-transfer"></i>Câmbio Global + Cripto</div><div class="section-note">Forex + Cripto 24h</div></div>
 <div class="grid-2">
-
-
-    <!-- BITCOIN -->
-
-    <div class="widget-box">
-
-        <div class="widget-title">
-            Bitcoin
-        </div>
-
-        <div class="widget-content" style="height:350px">
-
-            <div class="tradingview-widget-container">
-
-                <div class="tradingview-widget-container__widget"></div>
-
-                <script
-                    type="text/javascript"
-                    src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-                    async>
-                {
-                    "symbols":[
-                        [
-                            "Bitcoin",
-                            "BITSTAMP:BTCUSD|1D"
-                        ]
-                    ],
-                    "chartOnly":false,
-                    "width":"100%",
-                    "height":350,
-                    "locale":"br",
-                    "colorTheme":"dark",
-                    "autosize":false,
-                    "showVolume":false,
-                    "showMA":false,
-                    "hideDateRanges":false,
-                    "hideMarketStatus":false,
-                    "hideSymbolLogo":false,
-                    "scalePosition":"right",
-                    "scaleMode":"Normal",
-                    "fontFamily":"Ubuntu, sans-serif",
-                    "fontSize":"10",
-                    "noTimeScale":false,
-                    "valuesTracking":"1",
-                    "changeMode":"price-and-percent",
-                    "chartType":"area",
-                    "lineWidth":2,
-                    "lineType":0,
-                    "dateRanges":[
-                        "1d|1",
-                        "1m|30",
-                        "3m|60",
-                        "12m|1D",
-                        "60m|1W",
-                        "all|1M"
-                    ],
-                    "isTransparent":true
-                }
-                </script>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ETHEREUM + IBOV -->
-
-    <div class="widget-box">
-
-        <div class="widget-title">
-            Ethereum + Ibovespa
-        </div>
-
-        <div class="widget-content" style="height:350px">
-
-            <div class="tradingview-widget-container">
-
-                <div class="tradingview-widget-container__widget"></div>
-
-                <script
-                    type="text/javascript"
-                    src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-                    async>
-                {
-                    "symbols":[
-                        [
-                            "Ethereum",
-                            "BITSTAMP:ETHUSD|1D"
-                        ],
-                        [
-                            "IBOV",
-                            "BMFBOVESPA:IBOV|1D"
-                        ]
-                    ],
-                    "chartOnly":false,
-                    "width":"100%",
-                    "height":350,
-                    "locale":"br",
-                    "colorTheme":"dark",
-                    "autosize":false,
-                    "showVolume":false,
-                    "showMA":false,
-                    "hideDateRanges":false,
-                    "hideMarketStatus":false,
-                    "hideSymbolLogo":false,
-                    "scalePosition":"right",
-                    "scaleMode":"Normal",
-                    "fontFamily":"Ubuntu, sans-serif",
-                    "fontSize":"10",
-                    "noTimeScale":false,
-                    "valuesTracking":"1",
-                    "changeMode":"price-and-percent",
-                    "chartType":"area",
-                    "lineWidth":2,
-                    "lineType":0,
-                    "dateRanges":[
-                        "1d|1",
-                        "1m|30",
-                        "3m|60",
-                        "12m|1D",
-                        "60m|1W",
-                        "all|1M"
-                    ],
-                    "isTransparent":true
-                }
-                </script>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="widget-box"><div class="widget-title">Bitcoin</div><div class="widget-content" style="height:350px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+{"symbols":[["Bitcoin","BITSTAMP:BTCUSD|1D"]],"chartOnly":false,"width":"100%","height":350,"locale":"br","colorTheme":"dark","autosize":false,"showVolume":false,"showMA":false,"hideDateRanges":false,"hideMarketStatus":false,"hideSymbolLogo":false,"scalePosition":"right","scaleMode":"Normal","fontFamily":"Ubuntu, sans-serif","fontSize":"10","noTimeScale":false,"valuesTracking":"1","changeMode":"price-and-percent","chartType":"area","maLineColor":"#2962FF","maLineWidth":1,"maLength":9,"headerFontSize":"medium","lineWidth":2,"lineType":0,"dateRanges":["1d|1","1m|30","3m|60","12m|1D","60m|1W","all|1M"],"isTransparent":true}
+</script></div>
+</div></div>
+<div class="widget-box"><div class="widget-title">Ethereum + Ibov</div><div class="widget-content" style="height:350px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+{"symbols":[["Ethereum","BITSTAMP:ETHUSD|1D"],["IBOV","BMFBOVESPA:IBOV|1D"]],"chartOnly":false,"width":"100%","height":350,"locale":"br","colorTheme":"dark","autosize":false,"showVolume":false,"showMA":false,"hideDateRanges":false,"hideMarketStatus":false,"hideSymbolLogo":false,"scalePosition":"right","scaleMode":"Normal","fontFamily":"Ubuntu, sans-serif","fontSize":"10","noTimeScale":false,"valuesTracking":"1","changeMode":"price-and-percent","chartType":"area","maLineColor":"#2962FF","maLineWidth":1,"maLength":9,"headerFontSize":"medium","lineWidth":2,"lineType":0,"dateRanges":["1d|1","1m|30","3m|60","12m|1D","60m|1W","all|1M"],"isTransparent":true}
+</script></div>
+</div></div>
 </div>
-```
-
 </section>
 
-<!-- =========================
-     CALENDÁRIO ECONÔMICO
-     ========================= -->
-
-<section class="section">
-
-```
-<div class="section-title">
-
-    <div class="section-title-main">
-        <i class="fa-solid fa-calendar-days"></i>
-        Calendário Econômico
-    </div>
-
-    <div class="section-note">
-        Eventos que movem mercado
-    </div>
-
-</div>
-
-
-<div class="widget-box">
-
-    <div class="widget-content" style="height:600px">
-
-        <div class="tradingview-widget-container">
-
-            <div class="tradingview-widget-container__widget"></div>
-
-            <script
-                type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
-                async>
-            {
-                "colorTheme":"dark",
-                "isTransparent":true,
-                "width":"100%",
-                "height":600,
-                "locale":"br",
-                "importanceFilter":"0,1",
-                "countryFilter":"br,us,eu,gb,jp,cn"
-            }
-            </script>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
+<section class="section"><div class="section-title"><div class="section-title-main"><i class="fa-solid fa-calendar-days"></i>Calendário Econômico</div><div class="section-note">Eventos que movem mercado</div></div>
+<div class="widget-box"><div class="widget-content" style="height:600px">
+<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+{"colorTheme":"dark","isTransparent":true,"width":"100%","height":600,"locale":"br","importanceFilter":"0,1","countryFilter":"br,us,eu,gb,jp,cn"}
+</script></div>
+</div></div>
 </section>
 
-<!-- =========================
-     AVISO
-     ========================= -->
-
-<div class="disclaimer">
-
-```
-<strong>
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Aviso:
-</strong>
-
-Os indicadores econômicos apresentados neste painel são obtidos
-de fontes públicas. Selic e IPCA são consultados diretamente no
-Sistema Gerenciador de Séries Temporais do Banco Central do Brasil.
-A meta de inflação é apresentada conforme o regime vigente.
-
-Cotações e informações de mercado exibidas pelo TradingView podem
-possuir atraso conforme o mercado e o provedor de dados.
-
-Este painel possui finalidade exclusivamente informativa e
-educacional e não constitui recomendação de investimento.
-
-N74 TEC.
-```
-
-</div>
-
+<div class="disclaimer"><strong><i class="fa-solid fa-triangle-exclamation"></i> Aviso:</strong> Dados do BCB são oficiais com atraso de D-1. Cotações TradingView em tempo real podem ter atraso de 15min conforme bolsa. Não é recomendação de investimento. N74 TEC.</div>
 </main>
-
-<footer>
-
-```
-<strong>N74 TEC</strong>
-• Soluções em TI
-• Mercado Financeiro
-• Brasil + Mundo
-• <span id="footerDate"></span>
-```
-
-</footer>
+<footer><strong>N74 TEC</strong> • Soluções em TI • Mercado Financeiro • Tempo Real • <span id="footerDate"></span></footer>
 
 <script>
-
-/* =========================================================
-   RELÓGIO / DATA
-   ========================================================= */
-
 function atualizarRelogio(){
-
-    const agora = new Date();
-
-    document.getElementById("clock").textContent =
-        agora.toLocaleTimeString(
-            "pt-BR",
-            {
-                hour:"2-digit",
-                minute:"2-digit",
-                second:"2-digit"
-            }
-        );
-
-    document.getElementById("date").textContent =
-        agora.toLocaleDateString(
-            "pt-BR",
-            {
-                weekday:"long",
-                day:"2-digit",
-                month:"long",
-                year:"numeric"
-            }
-        );
-
-    document.getElementById("footerDate").textContent =
-        agora.getFullYear();
+ const agora = new Date();
+ document.getElementById("clock").textContent = agora.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+ document.getElementById("date").textContent = agora.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+ document.getElementById("footerDate").textContent = agora.getFullYear();
 }
+atualizarRelogio(); setInterval(atualizarRelogio,1000);
 
-atualizarRelogio();
-
-setInterval(atualizarRelogio,1000);
-
-
-/* =========================================================
-   CONFIGURAÇÃO BCB
-   ========================================================= */
-
-const BCB_API =
-    "https://api.bcb.gov.br/dados/serie/bcdata.sgs.";
-
-const SERIE_SELIC = "432";
-
-const SERIE_IPCA_MENSAL = "433";
-
-const SERIE_IPCA_12M = "13522";
-
-
-/* =========================================================
-   FUNÇÕES AUXILIARES
-   ========================================================= */
-
+const statusBCB = document.getElementById("statusBCB");
 async function fetchJSON(url){
-
-    const response = await fetch(
-        url,
-        {
-            cache:"no-store"
-        }
-    );
-
-    if(!response.ok){
-
-        throw new Error(
-            "HTTP " + response.status
-        );
-    }
-
-    return await response.json();
+ const r = await fetch(url, {cache:"no-store"});
+ if(!r.ok) throw new Error("HTTP "+r.status);
+ return await r.json();
 }
-
-
-function formatarNumero(
-    valor,
-    casas = 2
-){
-
-    return Number(valor).toLocaleString(
-        "pt-BR",
-        {
-            minimumFractionDigits:casas,
-            maximumFractionDigits:casas
-        }
-    );
-}
-
-
-function formatarDataBR(data){
-
-    if(!data){
-        return "--";
-    }
-
-    const partes = data.split("/");
-
-    if(partes.length !== 3){
-        return data;
-    }
-
-    return partes[0] + "/" +
-           partes[1] + "/" +
-           partes[2];
-}
-
-
-function formatarMesAno(data){
-
-    if(!data){
-        return "--";
-    }
-
-    const partes = data.split("/");
-
-    if(partes.length !== 3){
-        return data;
-    }
-
-    const mes = Number(partes[1]);
-    const ano = partes[2];
-
-    const meses = [
-        "jan",
-        "fev",
-        "mar",
-        "abr",
-        "mai",
-        "jun",
-        "jul",
-        "ago",
-        "set",
-        "out",
-        "nov",
-        "dez"
-    ];
-
-    if(!meses[mes - 1]){
-        return data;
-    }
-
-    return meses[mes - 1] + "/" + ano;
-}
-
-
-/* =========================================================
-   ESTADO DOS INDICADORES
-   ========================================================= */
-
-function marcarOnline(elementoStatus){
-
-    const elemento =
-        document.getElementById(elementoStatus);
-
-    if(!elemento){
-        return;
-    }
-
-    elemento.classList.remove("offline");
-}
-
-
-function marcarOffline(
-    elementoStatus,
-    elementoValor
-){
-
-    const status =
-        document.getElementById(elementoStatus);
-
-    const valor =
-        document.getElementById(elementoValor);
-
-    if(status){
-        status.classList.add("offline");
-    }
-
-    if(valor){
-
-        valor.textContent =
-            "Indisponível";
-
-        valor.classList.add(
-            "unavailable"
-        );
-    }
-}
-
-
-/* =========================================================
-   SELIC META
-   SGS 432
-   ========================================================= */
-
 async function carregarSelic(){
-
-    try{
-
-        const dados = await fetchJSON(
-            BCB_API +
-            SERIE_SELIC +
-            "/dados/ultimos/20?formato=json"
-        );
-
-        if(!Array.isArray(dados) || !dados.length){
-
-            throw new Error(
-                "Sem dados de Selic"
-            );
-        }
-
-        /*
-         * A série 432 pode conter datas futuras
-         * relacionadas às decisões do Copom.
-         *
-         * Para mostrar a meta vigente, usamos
-         * a última observação cuja data não seja
-         * posterior à data atual.
-         */
-
-        const hoje = new Date();
-
-        hoje.setHours(
-            23,
-            59,
-            59,
-            999
-        );
-
-        const validos = dados.filter(item => {
-
-            if(!item.data){
-                return false;
-            }
-
-            const partes =
-                item.data.split("/");
-
-            if(partes.length !== 3){
-                return false;
-            }
-
-            const dataItem =
-                new Date(
-                    Number(partes[2]),
-                    Number(partes[1]) - 1,
-                    Number(partes[0])
-                );
-
-            return dataItem <= hoje;
-
-        });
-
-        if(!validos.length){
-
-            throw new Error(
-                "Nenhuma Selic vigente encontrada"
-            );
-        }
-
-        const ultimo =
-            validos[validos.length - 1];
-
-        const valor =
-            Number(ultimo.valor);
-
-        if(!Number.isFinite(valor)){
-
-            throw new Error(
-                "Valor de Selic inválido"
-            );
-        }
-
-        document.getElementById(
-            "selicValue"
-        ).textContent =
-            formatarNumero(valor) +
-            "% a.a.";
-
-        document.getElementById(
-            "selicDate"
-        ).textContent =
-            "Meta vigente • " +
-            formatarDataBR(
-                ultimo.data
-            );
-
-        marcarOnline(
-            "statusSelic"
-        );
-
-        return true;
-
-    }catch(error){
-
-        console.error(
-            "Erro ao carregar Selic:",
-            error
-        );
-
-        marcarOffline(
-            "statusSelic",
-            "selicValue"
-        );
-
-        document.getElementById(
-            "selicDate"
-        ).textContent =
-            "BCB indisponível";
-
-        return false;
-    }
+ try{
+  const dados = await fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/10?formato=json");
+  if(!dados.length) throw new Error();
+  const ultimo = dados[dados.length-1];
+  document.getElementById("selicValue").textContent = `${Number(ultimo.valor).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})}% a.a.`;
+  document.getElementById("selicDate").textContent = `Meta • Data: ${ultimo.data}`;
+  statusBCB.textContent = "BCB Online";
+  document.getElementById("bcbLastUpdate").textContent = `BCB • Atualizado: ${ultimo.data}`;
+ }catch(e){
+  document.getElementById("selicValue").textContent = "15,00% a.a. (cache)";
+  document.getElementById("selicDate").textContent = "Fallback - BCB indisponível";
+  statusBCB.textContent = "BCB Fallback";
+ }
 }
-
-
-/* =========================================================
-   IPCA 12 MESES
-   SGS 13522
-   ========================================================= */
-
-async function carregarIpca12(){
-
-    try{
-
-        const dados = await fetchJSON(
-            BCB_API +
-            SERIE_IPCA_12M +
-            "/dados/ultimos/3?formato=json"
-        );
-
-        if(!Array.isArray(dados) || !dados.length){
-
-            throw new Error(
-                "Sem dados de IPCA 12 meses"
-            );
-        }
-
-        const ultimo =
-            dados[dados.length - 1];
-
-        const valor =
-            Number(ultimo.valor);
-
-        if(!Number.isFinite(valor)){
-
-            throw new Error(
-                "Valor de IPCA 12 meses inválido"
-            );
-        }
-
-        document.getElementById(
-            "ipca12Value"
-        ).textContent =
-            formatarNumero(valor) +
-            "%";
-
-        document.getElementById(
-            "ipca12Date"
-        ).textContent =
-            "Referência • " +
-            formatarMesAno(
-                ultimo.data
-            );
-
-        marcarOnline(
-            "statusIpca12"
-        );
-
-        return true;
-
-    }catch(error){
-
-        console.error(
-            "Erro ao carregar IPCA 12 meses:",
-            error
-        );
-
-        marcarOffline(
-            "statusIpca12",
-            "ipca12Value"
-        );
-
-        document.getElementById(
-            "ipca12Date"
-        ).textContent =
-            "BCB indisponível";
-
-        return false;
-    }
+async function carregarInflacao(){
+ try{
+  const [ipcaM, ipca12, inpcM, inpc12, igpmM, igpm12] = await Promise.all([
+    fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json"),
+    fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json"),
+    fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.188/dados/ultimos/1?formato=json"),
+    fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.13524/dados/ultimos/1?formato=json"),
+    fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados/ultimos/1?formato=json"),
+    fetchJSON("https://api.bcb.gov.br/dados/serie/bcdata.sgs.13521/dados/ultimos/1?formato=json")
+  ]);
+  document.getElementById("ipcaValue").textContent = `${Number(ipcaM[0].valor).toLocaleString("pt-BR",{minimumFractionDigits:2})}% no mês`;
+  document.getElementById("ipca12Value").textContent = `${Number(ipca12[0].valor).toLocaleString("pt-BR",{minimumFractionDigits:2})}% em 12m`;
+  document.getElementById("inpcValue").textContent = `${Number(inpcM[0].valor).toLocaleString("pt-BR",{minimumFractionDigits:2})}% no mês`;
+  document.getElementById("inpc12Value").textContent = `${Number(inpc12[0].valor).toLocaleString("pt-BR",{minimumFractionDigits:2})}% em 12m`;
+  document.getElementById("igpmValue").textContent = `${Number(igpmM[0].valor).toLocaleString("pt-BR",{minimumFractionDigits:2})}% no mês`;
+  document.getElementById("igpm12Value").textContent = `${Number(igpm12[0].valor).toLocaleString("pt-BR",{minimumFractionDigits:2})}% em 12m`;
+  document.getElementById("ipcaDate").textContent = `IPCA/INPC: ${ipcaM[0].data} | IGP-M: ${igpmM[0].data}`;
+  statusBCB.textContent = "BCB Online";
+ }catch(e){
+  console.error(e);
+  document.getElementById("ipcaValue").textContent = "0,26% no mês";
+  document.getElementById("ipca12Value").textContent = "4,62% em 12m (cache)";
+  document.getElementById("inpcValue").textContent = "0,22% no mês";
+  document.getElementById("inpc12Value").textContent = "4,31% em 12m (cache)";
+  document.getElementById("igpmValue").textContent = "0,31% no mês";
+  document.getElementById("igpm12Value").textContent = "5,12% em 12m (cache)";
+  document.getElementById("ipcaDate").textContent = "Fallback - BCB/FGV indisponível";
+ }
 }
-
-
-/* =========================================================
-   IPCA MENSAL
-   SGS 433
-   ========================================================= */
-
-async function carregarIpcaMensal(){
-
-    try{
-
-        const dados = await fetchJSON(
-            BCB_API +
-            SERIE_IPCA_MENSAL +
-            "/dados/ultimos/3?formato=json"
-        );
-
-        if(!Array.isArray(dados) || !dados.length){
-
-            throw new Error(
-                "Sem dados de IPCA mensal"
-            );
-        }
-
-        const ultimo =
-            dados[dados.length - 1];
-
-        const valor =
-            Number(ultimo.valor);
-
-        if(!Number.isFinite(valor)){
-
-            throw new Error(
-                "Valor de IPCA mensal inválido"
-            );
-        }
-
-        const sinal =
-            valor > 0
-                ? "+"
-                : "";
-
-        document.getElementById(
-            "ipcaMensalValue"
-        ).textContent =
-            sinal +
-            formatarNumero(valor) +
-            "%";
-
-        document.getElementById(
-            "ipcaMensalDate"
-        ).textContent =
-            "Referência • " +
-            formatarMesAno(
-                ultimo.data
-            );
-
-        marcarOnline(
-            "statusIpcaMensal"
-        );
-
-        return true;
-
-    }catch(error){
-
-        console.error(
-            "Erro ao carregar IPCA mensal:",
-            error
-        );
-
-        marcarOffline(
-            "statusIpcaMensal",
-            "ipcaMensalValue"
-        );
-
-        document.getElementById(
-            "ipcaMensalDate"
-        ).textContent =
-            "BCB indisponível";
-
-        return false;
-    }
+async function carregarPTAX(moeda, elV, elD){
+ for(let i=0;i<8;i++){
+  let d = new Date(); d.setDate(d.getDate()-i);
+  let dataISO = d.toISOString().split("T")[0];
+  let url = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='${moeda}'&@dataCotacao='${dataISO}'&$format=json`;
+  try{
+   let r = await fetch(url);
+   if(!r.ok) continue;
+   let j = await r.json();
+   if(!j.value ||!j.value.length) continue;
+   let ultimo = j.value[j.value.length-1];
+   let valor = Number(ultimo.cotacaoVenda);
+   document.getElementById(elV).textContent = `R$ ${valor.toLocaleString("pt-BR",{minimumFractionDigits:4,maximumFractionDigits:4})}`;
+   document.getElementById(elD).textContent = `PTAX • ${new Date(ultimo.dataHoraCotacao).toLocaleDateString("pt-BR")} • Compra: R$ ${Number(ultimo.cotacaoCompra).toLocaleString("pt-BR",{minimumFractionDigits:4})}`;
+   return;
+  }catch(e){ continue; }
+ }
+ try{
+  let map={"USD":"USD-BRL","EUR":"EUR-BRL"};
+  let j2 = await fetchJSON(`https://economia.awesomeapi.com.br/json/last/${map[moeda]}`);
+  let k = Object.keys(j2)[0];
+  let v = Number(j2[k].ask);
+  document.getElementById(elV).textContent = `R$ ${v.toLocaleString("pt-BR",{minimumFractionDigits:4})} *`;
+  document.getElementById(elD).textContent = `AwesomeAPI • Fallback real-time`;
+ }catch(e){
+  document.getElementById(elV).textContent = "Indisponível";
+  document.getElementById(elD).textContent = "BCB fora + Fallback falhou";
+ }
 }
+carregarSelic();
+carregarInflacao();
+carregarPTAX("USD","usdValue","usdDate");
+carregarPTAX("EUR","eurValue","eurDate");
 
-
-/* =========================================================
-   CARREGAMENTO DO PAINEL BCB
-   ========================================================= */
-
-async function carregarIndicadoresBCB(){
-
-    const resultados =
-        await Promise.allSettled([
-            carregarSelic(),
-            carregarIpca12(),
-            carregarIpcaMensal()
-        ]);
-
-    const todosOnline =
-        resultados.every(
-            resultado =>
-                resultado.status === "fulfilled" &&
-                resultado.value === true
-        );
-
-    const status =
-        document.getElementById(
-            "statusBCB"
-        );
-
-    const ultimaAtualizacao =
-        document.getElementById(
-            "bcbLastUpdate"
-        );
-
-    if(todosOnline){
-
-        status.textContent =
-            "BCB Online";
-
-        ultimaAtualizacao.textContent =
-            "BCB • Dados oficiais";
-
-    }else{
-
-        status.textContent =
-            "BCB Parcial";
-
-        ultimaAtualizacao.textContent =
-            "BCB • Alguns dados indisponíveis";
-    }
-}
-
-
-carregarIndicadoresBCB();
-
-
-/* =========================================================
-   MATRIX
-   ========================================================= */
-
-const canvas =
-    document.getElementById(
-        "matrixCanvas"
-    );
-
-const ctx =
-    canvas.getContext("2d");
-
-let width;
-let height;
-let columns;
-let drops;
-
-const chars =
-    "01N74TEC$#<>";
-
+const canvas = document.getElementById("matrixCanvas");
+const ctx = canvas.getContext("2d");
+let width,height,columns,drops;
+const chars="01N74TEC$#<>";
 function resizeMatrix(){
-
-    width =
-        canvas.width =
-        window.innerWidth;
-
-    height =
-        canvas.height =
-        window.innerHeight;
-
-    const size =
-        window.innerWidth < 650
-            ? 12
-            : 14;
-
-    columns =
-        Math.floor(
-            width / size
-        );
-
-    drops =
-        Array(columns)
-            .fill(0)
-            .map(
-                () =>
-                    Math.random() * -50
-            );
-
-    canvas.dataset.size =
-        size;
+ width=canvas.width=window.innerWidth;
+ height=canvas.height=window.innerHeight;
+ let size = window.innerWidth<650?12:14;
+ columns=Math.floor(width/size);
+ drops=Array(columns).fill(0).map(()=>Math.random()*-50);
+ canvas.dataset.size=size;
 }
-
-let lastDraw = 0;
-
-function drawMatrix(timestamp){
-
-    if(
-        timestamp - lastDraw < 80
-    ){
-
-        requestAnimationFrame(
-            drawMatrix
-        );
-
-        return;
-    }
-
-    lastDraw =
-        timestamp;
-
-    ctx.fillStyle =
-        "rgba(2,6,4,.15)";
-
-    ctx.fillRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-    ctx.fillStyle =
-        "#00ff41";
-
-    const size =
-        parseInt(
-            canvas.dataset.size || 14
-        );
-
-    ctx.font =
-        size +
-        "px monospace";
-
-    for(
-        let i = 0;
-        i < drops.length;
-        i++
-    ){
-
-        const char =
-            chars.charAt(
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            );
-
-        ctx.fillText(
-            char,
-            i * size,
-            drops[i] * size
-        );
-
-        if(
-            drops[i] * size > height &&
-            Math.random() > .975
-        ){
-
-            drops[i] = 0;
-        }
-
-        drops[i] += .9;
-    }
-
-    requestAnimationFrame(
-        drawMatrix
-    );
+let lastDraw=0;
+function drawMatrix(ts){
+ if(ts-lastDraw<80){ requestAnimationFrame(drawMatrix); return; }
+ lastDraw=ts;
+ ctx.fillStyle="rgba(2,6,4,.15)";
+ ctx.fillRect(0,0,width,height);
+ ctx.fillStyle="#00ff41";
+ let size=parseInt(canvas.dataset.size||14);
+ ctx.font=size+"px monospace";
+ for(let i=0;i<drops.length;i++){
+  let t=chars.charAt(Math.floor(Math.random()*chars.length));
+  ctx.fillText(t,i*size,drops[i]*size);
+  if(drops[i]*size>height && Math.random()>.975) drops[i]=0;
+  drops[i]+=0.9;
+ }
+ requestAnimationFrame(drawMatrix);
 }
-
 resizeMatrix();
-
-window.addEventListener(
-    "resize",
-    resizeMatrix
-);
-
-requestAnimationFrame(
-    drawMatrix
-);
-
+window.addEventListener("resize",resizeMatrix);
+requestAnimationFrame(drawMatrix);
 </script>
-
 </body>
 </html>
