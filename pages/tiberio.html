@@ -1,0 +1,2875 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Imóveis Tibério | Catálogo Imobiliário N74 TEC</title>
+  <meta name="description" content="Consulte empreendimentos da Construtora Tibério, filtre imóveis por localização, categoria e estágio da obra e compare características em um catálogo independente N74 TEC.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#080d0a">
+
+  <link rel="canonical" href="https://n74.com.br/pages/tiberio.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="N74 TEC">
+  <meta property="og:title" content="Catálogo Imobiliário Tibério | N74 TEC">
+  <meta property="og:description" content="Catálogo independente para consulta e comparação de empreendimentos da Construtora Tibério.">
+  <meta property="og:url" content="https://n74.com.br/pages/tiberio.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Catálogo Imobiliário Tibério | N74 TEC",
+    "url": "https://n74.com.br/pages/tiberio.html",
+    "description": "Catálogo independente de consulta de empreendimentos imobiliários associados à Construtora Tibério.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "N74 TEC",
+      "url": "https://n74.com.br/"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "Tibério Construtora",
+      "url": "https://www.tiberio.com.br/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #080d0a;
+      --bg-soft: #0d1510;
+      --panel: #101a13;
+      --panel-2: #142019;
+      --green: #00ff41;
+      --green-soft: #9cffb0;
+      --orange: #ffa500;
+      --text: #edf5ef;
+      --muted: #9aada0;
+      --line: #263b2c;
+      --danger: #ff7777;
+      --radius: 14px;
+      --max: 1320px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Ubuntu", Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: var(--green-soft);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--green);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button,
+    select,
+    input {
+      min-width: 0;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .matrix-background {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 13, 10, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      min-width: 0;
+    }
+
+    .brand-symbol {
+      width: 43px;
+      height: 43px;
+      border: 1px solid var(--green);
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      box-shadow: 0 0 16px rgba(0, 255, 65, 0.1);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      display: block;
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    .brand-subtitle {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 66px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 85% 15%, rgba(0, 255, 65, 0.09), transparent 40%),
+        radial-gradient(ellipse at 5% 90%, rgba(255, 165, 0, 0.05), transparent 35%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.7fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 20px 0;
+      font-size: clamp(2.1rem, 5vw, 4.3rem);
+      line-height: 1.08;
+      letter-spacing: -1.6px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero-description {
+      max-width: 730px;
+      color: #bac9bd;
+      font-size: 1.06rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 11px 17px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 500;
+      text-align: center;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #071009;
+      font-weight: 700;
+    }
+
+    .button-primary:hover {
+      background: #a4ffb8;
+      border-color: #a4ffb8;
+      color: #071009;
+    }
+
+    .button-small {
+      min-height: 37px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+
+    .hero-side {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 25px;
+      background: rgba(16, 26, 19, 0.82);
+    }
+
+    .hero-side h2 {
+      color: var(--green);
+      font-size: 1rem;
+      margin-bottom: 17px;
+    }
+
+    .hero-point {
+      display: flex;
+      gap: 12px;
+      margin: 14px 0;
+      color: #c4d2c8;
+      font-size: 0.92rem;
+    }
+
+    .hero-point i {
+      color: var(--green);
+      margin-top: 5px;
+    }
+
+    .disclaimer {
+      margin-top: 25px;
+      border-left: 3px solid var(--orange);
+      padding: 12px 15px;
+      color: var(--muted);
+      background: rgba(255, 165, 0, 0.045);
+      font-size: 0.83rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 28px 0;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(13, 21, 16, 0.9);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      margin: 7px 0 0;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      max-width: 600px;
+    }
+
+    .filter-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field label {
+      color: #c4d3c8;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 45px;
+      border: 1px solid #314537;
+      border-radius: 7px;
+      background: #09110c;
+      color: var(--text);
+      padding: 10px 12px;
+    }
+
+    .field input::placeholder {
+      color: #718578;
+    }
+
+    .filter-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .filter-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .results-count {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .results-count strong {
+      color: var(--green);
+    }
+
+    .notice {
+      border: 1px solid #3d3421;
+      background: rgba(255, 165, 0, 0.045);
+      border-radius: 9px;
+      padding: 13px 15px;
+      margin: 0 0 24px;
+      color: #c4bda9;
+      font-size: 0.85rem;
+    }
+
+    .notice i {
+      color: var(--orange);
+      margin-right: 8px;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 19px;
+    }
+
+    .property-card {
+      min-width: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(150deg, #111d15, #0b120d 75%);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .property-card:hover {
+      border-color: #427b4e;
+      transform: translateY(-3px);
+    }
+
+    .card-visual {
+      min-height: 104px;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      background:
+        linear-gradient(135deg, rgba(0, 255, 65, 0.08), transparent 55%),
+        #0e1912;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .building-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #31573a;
+      border-radius: 10px;
+      color: var(--green);
+      font-size: 1.25rem;
+    }
+
+    .stage {
+      display: inline-block;
+      border: 1px solid #31573a;
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--green-soft);
+      background: #102016;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .stage.ready {
+      color: #b8d5ff;
+      border-color: #354b6a;
+      background: #111c2a;
+    }
+
+    .stage.store {
+      color: #ffd48b;
+      border-color: #66502b;
+      background: #251d0e;
+    }
+
+    .card-content {
+      padding: 19px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-location {
+      color: var(--muted);
+      font-size: 0.79rem;
+      margin-bottom: 7px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 13px;
+      font-size: 1.23rem;
+      line-height: 1.3;
+    }
+
+    .card-description {
+      color: #b8c8bc;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #26392b;
+      border-radius: 6px;
+      padding: 6px 8px;
+      color: #c6d4ca;
+      font-size: 0.76rem;
+    }
+
+    .feature i {
+      color: var(--green);
+    }
+
+    .card-price {
+      margin-top: auto;
+      padding-top: 13px;
+      border-top: 1px solid #233329;
+      margin-bottom: 16px;
+    }
+
+    .card-price small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .card-price strong {
+      display: block;
+      color: var(--orange);
+      font-size: 1rem;
+      margin-top: 3px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-actions .button {
+      flex: 1;
+    }
+
+    .compare-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 0.81rem;
+      cursor: pointer;
+    }
+
+    .compare-check input {
+      accent-color: var(--green);
+      width: 16px;
+      height: 16px;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 48px 20px;
+      border: 1px dashed #3a5140;
+      border-radius: var(--radius);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty-state i {
+      display: block;
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .catalog-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .learning-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+
+    .learning-card > i {
+      font-size: 1.4rem;
+      color: var(--green);
+      margin-bottom: 15px;
+    }
+
+    .learning-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .learning-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .cta-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px;
+      border: 1px solid #315c39;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 90% 10%, rgba(0, 255, 65, 0.1), transparent 45%),
+        var(--panel);
+    }
+
+    .cta-panel h2 {
+      margin-bottom: 8px;
+    }
+
+    .cta-panel p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 100px;
+      background: #070b08;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 28px;
+    }
+
+    .footer-title {
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .footer-text,
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: #78897d;
+      font-size: 0.78rem;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(760px, 100%);
+      max-height: 88vh;
+      overflow-y: auto;
+      border: 1px solid #3a6242;
+      border-radius: 15px;
+      background: #0b130e;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      background: #0b130e;
+    }
+
+    .modal-header h2 {
+      margin: 8px 0 0;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    .modal-body {
+      padding: 22px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .detail-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      background: var(--panel);
+    }
+
+    .detail-item small {
+      display: block;
+      color: var(--muted);
+    }
+
+    .detail-item strong {
+      display: block;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .compare-dock {
+      position: fixed;
+      z-index: 60;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      width: min(650px, calc(100% - 28px));
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border: 1px solid #367244;
+      border-radius: 12px;
+      background: rgba(9, 17, 12, 0.97);
+      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    .compare-dock.visible {
+      display: flex;
+    }
+
+    .compare-dock-text {
+      font-size: 0.88rem;
+    }
+
+    .compare-dock-text strong {
+      color: var(--green);
+    }
+
+    .compare-modal {
+      width: min(1050px, 100%);
+    }
+
+    .compare-table-wrap {
+      overflow-x: auto;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 580px;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 0.88rem;
+    }
+
+    .compare-table th {
+      color: var(--green);
+      background: #101b13;
+    }
+
+    .compare-table td:first-child {
+      color: var(--muted);
+      width: 150px;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 150;
+      right: 18px;
+      bottom: 88px;
+      max-width: min(390px, calc(100% - 36px));
+      padding: 13px 16px;
+      border: 1px solid #42784c;
+      border-radius: 9px;
+      background: #102016;
+      color: var(--text);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+      display: none;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    @media (max-width: 1000px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-grid {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 26px, var(--max));
+      }
+
+      .header-inner {
+        min-height: 66px;
+        gap: 10px;
+      }
+
+      .brand-title {
+        font-size: 0.9rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+      }
+
+      .brand-symbol {
+        width: 38px;
+        height: 38px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.78rem;
+      }
+
+      .nav-links .optional-link {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 0 38px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -0.7px;
+      }
+
+      .hero-side {
+        padding: 19px;
+      }
+
+      .stats {
+        gap: 8px;
+        padding: 18px 0;
+      }
+
+      .stat {
+        padding: 12px;
+      }
+
+      .stat strong {
+        font-size: 1.15rem;
+      }
+
+      .stat span {
+        font-size: 0.73rem;
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .filter-panel {
+        padding: 15px;
+      }
+
+      .filter-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+      }
+
+      .field-search {
+        grid-column: 1 / -1;
+      }
+
+      .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card-visual {
+        min-height: 86px;
+      }
+
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-panel {
+        flex-direction: column;
+        align-items: start;
+        padding: 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .compare-dock {
+        bottom: 10px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .filter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field-search {
+        grid-column: auto;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 0.72rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="matrixCanvas" class="matrix-background" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://n74.com.br/" aria-label="N74 TEC - página inicial">
+        <span class="brand-symbol"><i class="fa-solid fa-terminal"></i></span>
+        <span>
+          <span class="brand-title">N74 TEC</span>
+          <span class="brand-subtitle">MERCADO IMOBILIÁRIO</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#estudos" class="optional-link">Estudos</a>
+        <a href="mercado-imobiliario.html">Painel geral</a>
+        <a href="https://www.tiberio.com.br/imoveis/" target="_blank" rel="noopener noreferrer">
+          Tibério oficial <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">N74 // CATÁLOGO IMOBILIÁRIO</span>
+          <h1>Explore os empreendimentos da <span>Tibério.</span></h1>
+          <p class="hero-description">
+            Consulte características, filtre opções por região e estágio da obra
+            e compare empreendimentos em um catálogo independente desenvolvido
+            para apoiar estudos e consultas imobiliárias.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalogo">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              Explorar catálogo
+            </a>
+            <a class="button" href="https://www.tiberio.com.br/imoveis/" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Site oficial
+            </a>
+          </div>
+
+          <div class="disclaimer">
+            <i class="fa-solid fa-circle-info"></i>
+            Este é um painel independente da N74 TEC. Não é o site oficial da
+            Tibério nem afirma parceria ou representação comercial. Preços,
+            disponibilidade, condições e prazos devem ser confirmados nos
+            canais oficiais.
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <h2><i class="fa-solid fa-sliders"></i> O que você pode fazer</h2>
+          <div class="hero-point">
+            <i class="fa-solid fa-check"></i>
+            <span>Pesquisar por empreendimento, bairro e categoria.</span>
+          </div>
+          <div class="hero-point">
+            <i class="fa-solid fa-check"></i>
+            <span>Consultar metragem e características publicadas.</span>
+          </div>
+          <div class="hero-point">
+            <i class="fa-solid fa-check"></i>
+            <span>Comparar até três opções lado a lado.</span>
+          </div>
+          <div class="hero-point">
+            <i class="fa-solid fa-check"></i>
+            <span>Abrir a fonte oficial para conferir as condições atuais.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="stats" aria-label="Resumo do catálogo local">
+        <div class="stat">
+          <strong id="statTotal">0</strong>
+          <span>Registros no catálogo local</span>
+        </div>
+        <div class="stat">
+          <strong id="statStages">0</strong>
+          <span>Estágios de obra representados</span>
+        </div>
+        <div class="stat">
+          <strong>Manual</strong>
+          <span>Cadastro com conferência de fontes</span>
+        </div>
+      </section>
+    </div>
+
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">CONSULTA DE IMÓVEIS</span>
+            <h2>Catálogo de empreendimentos</h2>
+          </div>
+          <p>
+            Os registros iniciais foram montados a partir de informações
+            publicadas no catálogo oficial consultado. A data de conferência
+            está indicada; confirme sempre a situação atual.
+          </p>
+        </div>
+
+        <div class="filter-panel">
+          <div class="filter-grid">
+            <div class="field field-search">
+              <label for="searchInput">Buscar empreendimento</label>
+              <input id="searchInput" type="search" placeholder="Ex.: Hub Belém, Saúde, Mooca..." autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label for="categoryFilter">Categoria</label>
+              <select id="categoryFilter">
+                <option value="">Todas as categorias</option>
+                <option value="Apartamento">Apartamentos</option>
+                <option value="Studio">Studios</option>
+                <option value="Loja">Lojas</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="stageFilter">Estágio</label>
+              <select id="stageFilter">
+                <option value="">Todos os estágios</option>
+                <option value="Lançamento">Lançamento</option>
+                <option value="Em construção">Em construção</option>
+                <option value="Pronto para morar">Pronto para morar</option>
+                <option value="Loja">Registro de loja</option>
+                <option value="Portfólio">Portfólio</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="neighborhoodFilter">Bairro / região</label>
+              <select id="neighborhoodFilter">
+                <option value="">Todos os bairros</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="minArea">Área mínima (m²)</label>
+              <input id="minArea" type="number" min="0" step="1" placeholder="Ex.: 25">
+            </div>
+
+            <div class="field">
+              <label for="maxArea">Área máxima (m²)</label>
+              <input id="maxArea" type="number" min="0" step="1" placeholder="Ex.: 60">
+            </div>
+
+            <div class="field">
+              <label for="bedroomFilter">Dormitórios</label>
+              <select id="bedroomFilter">
+                <option value="">Todos</option>
+                <option value="0">Studio</option>
+                <option value="1">1 dormitório</option>
+                <option value="2">2 dormitórios</option>
+                <option value="3">3 dormitórios</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-bottom">
+            <div class="results-count" id="resultsCount" aria-live="polite">
+              Carregando catálogo...
+            </div>
+            <div class="filter-actions">
+              <button class="button button-small" id="clearFilters" type="button">
+                <i class="fa-solid fa-rotate-left"></i> Limpar filtros
+              </button>
+              <a class="button button-small" href="https://www.tiberio.com.br/imoveis/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Conferir no oficial
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="notice">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <strong>Sobre os dados:</strong> esta é uma base manual de consulta,
+          não um feed de disponibilidade em tempo real. Nenhum preço foi
+          cadastrado nesta versão. As características podem mudar; confirme
+          cada informação com a construtora antes de apresentá-la como atual.
+        </div>
+
+        <div id="catalogGrid" class="catalog-grid" aria-live="polite"></div>
+
+        <div class="catalog-footer">
+          <span>
+            <i class="fa-solid fa-calendar-check"></i>
+            Conferência inicial dos registros: <strong>13/10/2026</strong>
+          </span>
+          <a href="https://www.tiberio.com.br/imoveis/" target="_blank" rel="noopener noreferrer">
+            Abrir catálogo oficial da Tibério
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="estudos">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">DESENVOLVIMENTO PROFISSIONAL</span>
+            <h2>Estude antes de atender</h2>
+          </div>
+          <p>
+            Use o catálogo como apoio à pesquisa. Antes de orientar um
+            interessado, confira a ficha oficial, as condições comerciais e
+            as informações que dependem de confirmação.
+          </p>
+        </div>
+
+        <div class="learning-grid">
+          <article class="learning-card">
+            <i class="fa-solid fa-building"></i>
+            <h3>Entenda o empreendimento</h3>
+            <p>
+              Localização, metragem, dormitórios, vagas, áreas comuns e estágio
+              da obra. Diferencie características publicadas de informações
+              ainda não confirmadas.
+            </p>
+          </article>
+
+          <article class="learning-card">
+            <i class="fa-solid fa-comments"></i>
+            <h3>Qualifique o interessado</h3>
+            <p>
+              Identifique região desejada, objetivo de compra, faixa de
+              investimento, necessidade de dormitórios e prazo pretendido,
+              respeitando a privacidade do interessado.
+            </p>
+          </article>
+
+          <article class="learning-card">
+            <i class="fa-solid fa-clipboard-check"></i>
+            <h3>Prepare a consulta</h3>
+            <p>
+              Confira preço, unidade disponível, condições de pagamento,
+              previsão de entrega e regras comerciais diretamente na fonte
+              responsável antes de transmitir informações.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <h2>Confirme as informações na fonte oficial</h2>
+            <p>
+              Consulte o catálogo da Tibério para verificar dados atuais,
+              condições de venda e disponibilidade.
+            </p>
+          </div>
+          <a class="button button-primary" href="https://www.tiberio.com.br/imoveis/" target="_blank" rel="noopener noreferrer">
+            Acessar catálogo oficial
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">
+            <span class="brand-symbol"><i class="fa-solid fa-terminal"></i></span>
+            <span>
+              <span class="brand-title">N74 TEC</span>
+              <span class="brand-subtitle">SOLUÇÕES EM TI</span>
+            </span>
+          </div>
+          <p class="footer-text" style="margin-top:14px">
+            Painel independente para consulta e estudo de empreendimentos
+            imobiliários.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Navegação</div>
+          <div class="footer-links">
+            <a href="#catalogo">Catálogo</a>
+            <a href="#estudos">Central de estudos</a>
+            <a href="mercado-imobiliario.html">Mercado imobiliário</a>
+            <a href="https://n74.com.br/">Site N74 TEC</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Fontes e transparência</div>
+          <div class="footer-links">
+            <a href="https://www.tiberio.com.br/" target="_blank" rel="noopener noreferrer">Site oficial Tibério</a>
+            <a href="https://www.tiberio.com.br/imoveis/" target="_blank" rel="noopener noreferrer">Catálogo oficial de imóveis</a>
+            <span class="footer-text">Painel independente, sem alegação de vínculo oficial.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> N74 TEC. Conteúdo sujeito a revisão.</span>
+        <span>Desenvolvido no padrão N74 Matrix.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="detailBackdrop" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">FICHA DO EMPREENDIMENTO</span>
+          <h2 id="detailTitle">Detalhes</h2>
+        </div>
+        <button class="icon-button" type="button" data-close="detailBackdrop" aria-label="Fechar detalhes">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="detailBody"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="compareBackdrop" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+    <div class="modal compare-modal">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">ANÁLISE LADO A LADO</span>
+          <h2 id="compareTitle">Comparar empreendimentos</h2>
+        </div>
+        <button class="icon-button" type="button" data-close="compareBackdrop" aria-label="Fechar comparação">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="compareBody"></div>
+    </div>
+  </div>
+
+  <div class="compare-dock" id="compareDock">
+    <div class="compare-dock-text">
+      <strong id="compareCount">0</strong> de 3 imóveis selecionados
+    </div>
+    <div class="filter-actions">
+      <button class="button button-small" id="clearCompare" type="button">Limpar</button>
+      <button class="button button-primary button-small" id="openCompare" type="button">Comparar</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+
+    /*
+      N74 TEC — CATÁLOGO TIBÉRIO
+
+      COMO MANTER O CADASTRO:
+      1. Edite a lista IMOVEIS abaixo.
+      2. Use somente dados conferidos em fonte oficial.
+      3. Atualize "conferidoEm" após revisar cada ficha.
+      4. Não publique preços antigos como atuais.
+      5. Use URLs oficiais específicas quando conseguir confirmá-las.
+
+      IMPORTANTE:
+      Este catálogo é público e manual. Não contém login, banco privado,
+      atualização automática nem disponibilidade em tempo real.
+    */
+
+    const URL_CATALOGO_OFICIAL = "https://www.tiberio.com.br/imoveis/";
+
+    // Defina o WhatsApp imobiliário quando o número estiver confirmado.
+    // Formato internacional apenas com números, exemplo: 5511999999999.
+    // Enquanto estiver vazio, o botão direciona para o catálogo oficial.
+    const WHATSAPP_IMOBILIARIO = "";
+
+    const DATA_CONFERENCIA_INICIAL = "2026-10-13";
+
+    /*
+      Os registros abaixo foram montados com base nas informações encontradas
+      na consulta do catálogo oficial. Não incluem preços ou disponibilidade
+      de unidades. Confirme novamente cada registro antes de utilizá-lo
+      comercialmente.
+
+      categorias aceitas: "Apartamento", "Studio", "Loja"
+      estágios aceitos: "Lançamento", "Em construção",
+      "Pronto para morar", "Loja", "Portfólio"
+
+      areasMin e areasMax são números em m² ou null.
+      dormitorios é uma lista de quantidades; 0 representa studio.
+    */
+
+    const IMOVEIS = [
+      {
+        id: "hub-belem",
+        nome: "Hub Belém",
+        bairro: "Belém",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Lançamento",
+        dormitorios: [0, 1, 2, 3],
+        areasMin: 24,
+        areasMax: 64,
+        descricao: "Studios e unidades de 1, 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opções com vagas e suítes",
+          "Aproximadamente 2 min da Estação Belém"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar estágio da obra, condições de lançamento, unidades e disponibilidade."
+      },
+      {
+        id: "essence-saude",
+        nome: "Essence Saúde",
+        bairro: "Saúde",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Lançamento",
+        dormitorios: [0, 1, 2],
+        areasMin: 27,
+        areasMax: 57,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção com suíte e vaga",
+          "Aproximadamente 500 m da Estação Saúde"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar estágio da obra, condições de lançamento, unidades e disponibilidade."
+      },
+      {
+        id: "supera-conceicao",
+        nome: "Supera Conceição",
+        bairro: "Conceição",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Em construção",
+        dormitorios: [2, 3],
+        areasMin: 40,
+        areasMax: 76,
+        descricao: "Unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção de suíte, vaga e depósito",
+          "Aproximadamente 600 m da Estação Conceição"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar metragens disponíveis, opções de planta, entrega e condições."
+      },
+      {
+        id: "fusion-perdizes",
+        nome: "Fusion Perdizes",
+        bairro: "Perdizes",
+        cidade: "São Paulo",
+        categorias: ["Studio"],
+        estagio: "Em construção",
+        dormitorios: [0],
+        areasMin: 26,
+        areasMax: 32,
+        descricao: "Studios com áreas publicadas de 26 a 32 m².",
+        caracteristicas: [
+          "Aproximadamente 150 m da Estação Perdizes"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar estágio, disponibilidade, áreas e previsão de entrega."
+      },
+      {
+        id: "link-alto-boa-vista",
+        nome: "Link Alto da Boa Vista",
+        bairro: "Santo Amaro",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Em construção",
+        dormitorios: [0, 1, 2],
+        areasMin: 27,
+        areasMax: 45,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção de vaga",
+          "Próximo à Estação Alto da Boa Vista"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar estágio, unidades, disponibilidade e condições comerciais."
+      },
+      {
+        id: "supremo-parque-mooca",
+        nome: "Supremo Parque da Mooca",
+        bairro: "Mooca",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Em construção",
+        dormitorios: [0, 1, 2],
+        areasMin: 24,
+        areasMax: 48,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção de suíte e vaga",
+          "Próximo à Avenida Paes de Barros"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar distâncias, estágio, plantas, unidades e previsão de entrega."
+      },
+      {
+        id: "metropolitan-consolacao",
+        nome: "Metropolitan Consolação",
+        bairro: "República / Consolação",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Em construção",
+        dormitorios: [0, 2],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Studios e unidades de 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Lazer no rooftop",
+          "Aproximadamente 500 m da Estação República"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Metragens não incluídas nesta ficha; confirmar na fonte oficial."
+      },
+      {
+        id: "top-mooca",
+        nome: "Top Mooca",
+        bairro: "Mooca",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Em construção",
+        dormitorios: [0, 1, 2],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Lazer no rooftop",
+          "Localizado na região da Mooca"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Metragens, distâncias, disponibilidade e previsão de entrega a confirmar."
+      },
+      {
+        id: "sublime-pompeia",
+        nome: "Sublime Pompeia",
+        bairro: "Pompéia",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Em construção",
+        dormitorios: [0, 2, 3],
+        areasMin: 24,
+        areasMax: 77,
+        descricao: "Studios e unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção de suíte e vaga",
+          "Terraço com churrasqueira em unidades especificadas"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar detalhes por planta, distância de estações e previsão de entrega."
+      },
+      {
+        id: "blend-saude",
+        nome: "Blend Saúde",
+        bairro: "Saúde",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [1, 2],
+        areasMin: 30,
+        areasMax: 42,
+        descricao: "Unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Aproximadamente 500 m da Estação Saúde"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade de unidades e valores atuais."
+      },
+      {
+        id: "jump-tatuape",
+        nome: "Jump Tatuapé",
+        bairro: "Tatuapé",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 1, 2],
+        areasMin: 25,
+        areasMax: 42,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Aproximadamente 550 m da Estação Tatuapé"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade, áreas por unidade e condições comerciais."
+      },
+      {
+        id: "hit-mooca",
+        nome: "Hit Mooca",
+        bairro: "Mooca",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 2],
+        areasMin: 25,
+        areasMax: 45,
+        descricao: "Studios e unidades de 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção de suíte",
+          "Próximo à Estação Bresser-Mooca"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar unidades, características e condições atuais."
+      },
+      {
+        id: "my-space-conceicao",
+        nome: "My Space Conceição",
+        bairro: "Conceição",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [2, 3],
+        areasMin: 50,
+        areasMax: 76,
+        descricao: "Unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Informação publicada de 1 vaga"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e características da unidade específica."
+      },
+      {
+        id: "max-belem",
+        nome: "Max Belém",
+        bairro: "Belém",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 1, 2],
+        areasMin: 26,
+        areasMax: 52,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção com vaga"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade, áreas e condições comerciais."
+      },
+      {
+        id: "prisma-pinheiros",
+        nome: "Prisma Pinheiros",
+        bairro: "Pinheiros",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 1],
+        areasMin: 25,
+        areasMax: 31,
+        descricao: "Studios e unidades de 1 dormitório, conforme informações publicadas.",
+        caracteristicas: [
+          "Região das ruas Cardeal e Oscar Freire"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar unidades disponíveis e dados de localização."
+      },
+      {
+        id: "hype-vila-mariana",
+        nome: "Hype Vila Mariana",
+        bairro: "Vila Mariana",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 1, 2],
+        areasMin: 27,
+        areasMax: 33,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Aproximadamente 550 m da Estação Ana Rosa"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e características por unidade."
+      },
+      {
+        id: "hello-santana",
+        nome: "Hello Santana",
+        bairro: "Santana",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 1, 2],
+        areasMin: 27,
+        areasMax: 40,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Localização na região de Santana"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar distância a estações e disponibilidade atual."
+      },
+      {
+        id: "dom-bras",
+        nome: "Dom Brás",
+        bairro: "Brás",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 1, 2],
+        areasMin: 27,
+        areasMax: 37,
+        descricao: "Studios e unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Aproximadamente 600 m da Estação Pedro II"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e condições atuais."
+      },
+      {
+        id: "hello-higienopolis",
+        nome: "Hello Higienópolis",
+        bairro: "Higienópolis",
+        cidade: "São Paulo",
+        categorias: ["Studio"],
+        estagio: "Pronto para morar",
+        dormitorios: [0],
+        areasMin: 24,
+        areasMax: 32,
+        descricao: "Studios com áreas publicadas de 24 a 32 m².",
+        caracteristicas: [
+          "Aproximadamente 500 m da Estação Santa Cecília"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e condições atuais."
+      },
+      {
+        id: "constantino-campo-belo",
+        nome: "Constantino Campo Belo",
+        bairro: "Campo Belo",
+        cidade: "São Paulo",
+        categorias: ["Studio", "Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [0, 2, 3],
+        areasMin: 24,
+        areasMax: 70,
+        descricao: "Studios e unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção de vaga"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar plantas, unidades e disponibilidade."
+      },
+      {
+        id: "infini-vila-mariana",
+        nome: "Infini Vila Mariana",
+        bairro: "Vila Mariana",
+        cidade: "São Paulo",
+        categorias: ["Studio"],
+        estagio: "Pronto para morar",
+        dormitorios: [0],
+        areasMin: 27,
+        areasMax: 31,
+        descricao: "Studios com áreas publicadas de 27 a 31 m².",
+        caracteristicas: [
+          "Aproximadamente 300 m da Estação Ana Rosa"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e condições atuais."
+      },
+      {
+        id: "nico-vila-mariana",
+        nome: "Nico Vila Mariana",
+        bairro: "Vila Mariana",
+        cidade: "São Paulo",
+        categorias: ["Studio"],
+        estagio: "Pronto para morar",
+        dormitorios: [0],
+        areasMin: 30,
+        areasMax: 36,
+        descricao: "Studios com áreas publicadas de 30 a 36 m².",
+        caracteristicas: [
+          "Região entre as estações Ana Rosa e Paraíso"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e detalhes de localização."
+      },
+      {
+        id: "origens-santana",
+        nome: "Origens Santana",
+        bairro: "Santana",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [2, 3],
+        areasMin: 52,
+        areasMax: 67,
+        descricao: "Unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opções com 1 ou 2 vagas"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e características por unidade."
+      },
+      {
+        id: "giro-tatuape",
+        nome: "Giro Tatuapé",
+        bairro: "Tatuapé",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [2],
+        areasMin: 50,
+        areasMax: 50,
+        descricao: "Unidades de 2 dormitórios com área publicada de 50 m².",
+        caracteristicas: [
+          "Aproximadamente 8 min da Estação Carrão, conforme catálogo"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar unidade disponível, distância e condições atuais."
+      },
+      {
+        id: "homeclub-carrao",
+        nome: "HomeClub Carrão",
+        bairro: "Carrão",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [2, 3],
+        areasMin: 45,
+        areasMax: 61,
+        descricao: "Unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Informação publicada de 1 vaga"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e características por unidade."
+      },
+      {
+        id: "giro-vila-matilde",
+        nome: "Giro Vila Matilde",
+        bairro: "Vila Matilde",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [2, 3],
+        areasMin: 51,
+        areasMax: 60,
+        descricao: "Unidades de 2 e 3 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Opção com vaga",
+          "Aproximadamente 4 min da Estação Vila Matilde"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e condições atuais."
+      },
+      {
+        id: "my-wish-saude",
+        nome: "My Wish Saúde",
+        bairro: "Saúde",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [2, 3],
+        areasMin: 76,
+        areasMax: 76,
+        descricao: "Unidades com área publicada de 76 m².",
+        caracteristicas: [
+          "Informação publicada de 2 vagas"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar plantas, vagas, disponibilidade e condições."
+      },
+      {
+        id: "my-joy-saude",
+        nome: "My Joy Saúde",
+        bairro: "Saúde",
+        cidade: "São Paulo",
+        categorias: ["Apartamento"],
+        estagio: "Pronto para morar",
+        dormitorios: [1, 2],
+        areasMin: 41,
+        areasMax: 62,
+        descricao: "Unidades de 1 e 2 dormitórios, conforme informações publicadas.",
+        caracteristicas: [
+          "Informação publicada de 1 vaga"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar disponibilidade e características da unidade."
+      },
+      {
+        id: "max-belem-lojas",
+        nome: "Max Belém – Lojas",
+        bairro: "Belém",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Max Belém.",
+        caracteristicas: [
+          "Próximo à Estação Belém"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "jump-tatuape-loja",
+        nome: "Jump Tatuapé – Loja",
+        bairro: "Tatuapé",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Jump Tatuapé.",
+        caracteristicas: [
+          "Próximo à Estação Tatuapé"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "hit-mooca-lojas",
+        nome: "Hit Mooca – Lojas",
+        bairro: "Mooca",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Hit Mooca.",
+        caracteristicas: [
+          "Próximo à Estação Bresser-Mooca"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "prisma-pinheiros-lojas",
+        nome: "Prisma Pinheiros – Lojas",
+        bairro: "Pinheiros",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Prisma Pinheiros.",
+        caracteristicas: [
+          "Região das ruas Cardeal e Oscar Freire"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "link-alto-boa-vista-lojas",
+        nome: "Link Alto da Boa Vista – Lojas",
+        bairro: "Santo Amaro",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Link Alto da Boa Vista.",
+        caracteristicas: [
+          "Próximo à Estação Alto da Boa Vista"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "blend-saude-lojas",
+        nome: "Blend Saúde – Lojas",
+        bairro: "Saúde",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Blend Saúde.",
+        caracteristicas: [
+          "Região da Estação Saúde"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "constantino-campo-belo-lojas",
+        nome: "Constantino Campo Belo – Lojas",
+        bairro: "Campo Belo",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Constantino Campo Belo.",
+        caracteristicas: [
+          "Empreendimento na região do Campo Belo"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Quantidade, metragem, disponibilidade e condições comerciais precisam de confirmação."
+      },
+      {
+        id: "hype-vila-mariana-loja",
+        nome: "Hype Vila Mariana – Loja",
+        bairro: "Vila Mariana",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de loja associado ao empreendimento Hype Vila Mariana.",
+        caracteristicas: [
+          "Região da Estação Ana Rosa"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar metragem, disponibilidade e condições comerciais."
+      },
+      {
+        id: "hello-vila-mariana-loja",
+        nome: "Hello Vila Mariana – Loja",
+        bairro: "Vila Mariana",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de loja associado ao empreendimento Hello Vila Mariana.",
+        caracteristicas: [
+          "Região da Estação Ana Rosa"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar metragem, disponibilidade e condições comerciais."
+      },
+      {
+        id: "infini-vila-mariana-lojas",
+        nome: "Infini Vila Mariana – Lojas",
+        bairro: "Vila Mariana",
+        cidade: "São Paulo",
+        categorias: ["Loja"],
+        estagio: "Loja",
+        dormitorios: [],
+        areasMin: null,
+        areasMax: null,
+        descricao: "Registro comercial de lojas associado ao empreendimento Infini Vila Mariana.",
+        caracteristicas: [
+          "Região da Estação Ana Rosa"
+        ],
+        fonte: URL_CATALOGO_OFICIAL,
+        conferidoEm: DATA_CONFERENCIA_INICIAL,
+        preco: null,
+        observacoes: "Confirmar metragem, disponibilidade e condições comerciais."
+      }
+    ];
+
+    const $ = (selector) => document.querySelector(selector);
+
+    const state = {
+      filtered: [],
+      compared: []
+    };
+
+    const elements = {
+      search: $("#searchInput"),
+      category: $("#categoryFilter"),
+      stage: $("#stageFilter"),
+      neighborhood: $("#neighborhoodFilter"),
+      minArea: $("#minArea"),
+      maxArea: $("#maxArea"),
+      bedrooms: $("#bedroomFilter"),
+      grid: $("#catalogGrid"),
+      count: $("#resultsCount"),
+      dock: $("#compareDock"),
+      compareCount: $("#compareCount"),
+      detailBackdrop: $("#detailBackdrop"),
+      detailTitle: $("#detailTitle"),
+      detailBody: $("#detailBody"),
+      compareBackdrop: $("#compareBackdrop"),
+      compareBody: $("#compareBody"),
+      toast: $("#toast")
+    };
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[character]);
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return "Não informada";
+      const parts = dateString.split("-");
+      if (parts.length !== 3) return dateString;
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+
+    function formatArea(property) {
+      if (property.areasMin == null && property.areasMax == null) {
+        return "Não informada";
+      }
+
+      if (property.areasMin != null && property.areasMax != null) {
+        if (property.areasMin === property.areasMax) {
+          return `${property.areasMin} m²`;
+        }
+        return `${property.areasMin} a ${property.areasMax} m²`;
+      }
+
+      if (property.areasMin != null) {
+        return `A partir de ${property.areasMin} m²`;
+      }
+
+      return `Até ${property.areasMax} m²`;
+    }
+
+    function formatBedrooms(property) {
+      if (!property.dormitorios || property.dormitorios.length === 0) {
+        return "Não aplicável";
+      }
+
+      if (property.dormitorios.includes(0) && property.dormitorios.length === 1) {
+        return "Studio";
+      }
+
+      const values = property.dormitorios.map((value) =>
+        value === 0 ? "Studio" : `${value} dorm.`
+      );
+
+      return values.join(", ");
+    }
+
+    function stageClass(property) {
+      if (property.categorias.includes("Loja")) return "store";
+      if (property.estagio === "Pronto para morar") return "ready";
+      return "";
+    }
+
+    function propertyIcon(property) {
+      if (property.categorias.includes("Loja")) return "fa-shop";
+      if (property.categorias.includes("Studio")) return "fa-building";
+      return "fa-city";
+    }
+
+    function priceText(property) {
+      if (typeof property.preco === "number" && property.preco > 0) {
+        return property.preco.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL"
+        });
+      }
+      return "Consultar condições atuais";
+    }
+
+    function populateNeighborhoods() {
+      const neighborhoods = [...new Set(IMOVEIS.map((property) => property.bairro))]
+        .sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+      elements.neighborhood.innerHTML =
+        '<option value="">Todos os bairros</option>' +
+        neighborhoods.map((name) =>
+          `<option value="${escapeHTML(name)}">${escapeHTML(name)}</option>`
+        ).join("");
+    }
+
+    function renderStats() {
+      $("#statTotal").textContent = String(IMOVEIS.length);
+      $("#statStages").textContent = String(new Set(IMOVEIS.map((property) => property.estagio)).size);
+    }
+
+    function renderCard(property) {
+      const categories = property.categorias.map(escapeHTML).join(" / ");
+      const features = (property.caracteristicas || []).slice(0, 2)
+        .map((feature) =>
+          `<span class="feature"><i class="fa-solid fa-check"></i>${escapeHTML(feature)}</span>`
+        ).join("");
+
+      const checked = state.compared.includes(property.id) ? "checked" : "";
+      const checkedDate = formatDate(property.conferidoEm);
+
+      return `
+        <article class="property-card">
+          <div class="card-visual">
+            <div class="building-icon" aria-hidden="true">
+              <i class="fa-solid ${propertyIcon(property)}"></i>
+            </div>
+            <span class="stage ${stageClass(property)}">${escapeHTML(property.estagio)}</span>
+          </div>
+
+          <div class="card-content">
+            <div class="card-location">
+              <i class="fa-solid fa-location-dot"></i>
+              ${escapeHTML(property.bairro)} · ${escapeHTML(property.cidade)}
+            </div>
+
+            <h3>${escapeHTML(property.nome)}</h3>
+
+            <p class="card-description">${escapeHTML(property.descricao)}</p>
+
+            <div class="card-features">
+              <span class="feature"><i class="fa-solid fa-house"></i>${categories}</span>
+              <span class="feature"><i class="fa-solid fa-ruler-combined"></i>${escapeHTML(formatArea(property))}</span>
+              <span class="feature"><i class="fa-solid fa-bed"></i>${escapeHTML(formatBedrooms(property))}</span>
+              ${features}
+            </div>
+
+            <div class="card-price">
+              <small>Preço e disponibilidade</small>
+              <strong>${escapeHTML(priceText(property))}</strong>
+              <small>Conferência registrada: ${escapeHTML(checkedDate)}</small>
+            </div>
+
+            <div class="card-actions">
+              <button class="button button-small" type="button" data-details="${escapeHTML(property.id)}">
+                <i class="fa-solid fa-list"></i> Detalhes
+              </button>
+              <a class="button button-primary button-small"
+                 href="${escapeHTML(property.fonte || URL_CATALOGO_OFICIAL)}"
+                 target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Fonte
+              </a>
+            </div>
+
+            <label class="compare-check">
+              <input type="checkbox" data-compare="${escapeHTML(property.id)}" ${checked}>
+              Selecionar para comparação
+            </label>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderCatalog() {
+      const search = elements.search.value.trim().toLocaleLowerCase("pt-BR");
+      const category = elements.category.value;
+      const stage = elements.stage.value;
+      const neighborhood = elements.neighborhood.value;
+      const minArea = elements.minArea.value === "" ? null : Number(elements.minArea.value);
+      const maxArea = elements.maxArea.value === "" ? null : Number(elements.maxArea.value);
+      const bedrooms = elements.bedrooms.value;
+
+      state.filtered = IMOVEIS.filter((property) => {
+        const searchable = [
+          property.nome,
+          property.bairro,
+          property.cidade,
+          property.descricao,
+          ...(property.categorias || []),
+          ...(property.caracteristicas || [])
+        ].join(" ").toLocaleLowerCase("pt-BR");
+
+        if (search && !searchable.includes(search)) return false;
+        if (category && !property.categorias.includes(category)) return false;
+        if (stage && property.estagio !== stage) return false;
+        if (neighborhood && property.bairro !== neighborhood) return false;
+
+        if (bedrooms !== "" && !property.dormitorios.includes(Number(bedrooms))) {
+          return false;
+        }
+
+        if (minArea !== null) {
+          if (property.areasMax === null || property.areasMax < minArea) return false;
+        }
+
+        if (maxArea !== null) {
+          if (property.areasMin === null || property.areasMin > maxArea) return false;
+        }
+
+        return true;
+      });
+
+      elements.count.innerHTML =
+        `<strong>${state.filtered.length}</strong> empreendimento(s) encontrado(s)`;
+
+      if (state.filtered.length === 0) {
+        elements.grid.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <strong>Nenhum empreendimento encontrado.</strong>
+            <p>Altere os filtros ou limpe a busca para ver outros registros.</p>
+            <button class="button button-small" id="emptyClear" type="button">Limpar filtros</button>
+          </div>
+        `;
+        return;
+      }
+
+      elements.grid.innerHTML = state.filtered.map(renderCard).join("");
+    }
+
+    function showToast(message) {
+      elements.toast.textContent = message;
+      elements.toast.classList.add("show");
+      window.clearTimeout(showToast.timeout);
+      showToast.timeout = window.setTimeout(() => {
+        elements.toast.classList.remove("show");
+      }, 3500);
+    }
+
+    function openModal(backdrop) {
+      backdrop.classList.add("open");
+      document.body.classList.add("modal-open");
+      const closeButton = backdrop.querySelector("[data-close]");
+      if (closeButton) closeButton.focus();
+    }
+
+    function closeModal(backdrop) {
+      backdrop.classList.remove("open");
+
+      if (!document.querySelector(".modal-backdrop.open")) {
+        document.body.classList.remove("modal-open");
+      }
+    }
+
+    function openDetails(id) {
+      const property = IMOVEIS.find((item) => item.id === id);
+      if (!property) return;
+
+      elements.detailTitle.textContent = property.nome;
+
+      const features = (property.caracteristicas || []).length
+        ? property.caracteristicas.map((feature) => `
+            <div class="detail-item">
+              <small>Diferencial publicado</small>
+              <strong>${escapeHTML(feature)}</strong>
+            </div>
+          `).join("")
+        : "";
+
+      elements.detailBody.innerHTML = `
+        <p class="card-location">
+          <i class="fa-solid fa-location-dot"></i>
+          ${escapeHTML(property.bairro)} · ${escapeHTML(property.cidade)}
+        </p>
+
+        <p>${escapeHTML(property.descricao)}</p>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <small>Categoria</small>
+            <strong>${escapeHTML(property.categorias.join(", "))}</strong>
+          </div>
+          <div class="detail-item">
+            <small>Estágio cadastrado</small>
+            <strong>${escapeHTML(property.estagio)}</strong>
+          </div>
+          <div class="detail-item">
+            <small>Área publicada</small>
+            <strong>${escapeHTML(formatArea(property))}</strong>
+          </div>
+          <div class="detail-item">
+            <small>Dormitórios</small>
+            <strong>${escapeHTML(formatBedrooms(property))}</strong>
+          </div>
+          <div class="detail-item">
+            <small>Preço</small>
+            <strong>${escapeHTML(priceText(property))}</strong>
+          </div>
+          <div class="detail-item">
+            <small>Última conferência registrada</small>
+            <strong>${escapeHTML(formatDate(property.conferidoEm))}</strong>
+          </div>
+          ${features}
+        </div>
+
+        <div class="notice">
+          <i class="fa-solid fa-circle-info"></i>
+          ${escapeHTML(property.observacoes || "Confirme as condições atuais diretamente na fonte oficial.")}
+        </div>
+
+        <div class="filter-actions">
+          <a class="button button-primary" href="${escapeHTML(property.fonte || URL_CATALOGO_OFICIAL)}"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            Consultar fonte oficial
+          </a>
+          <button class="button" type="button" data-modal-compare="${escapeHTML(property.id)}">
+            <i class="fa-solid fa-scale-balanced"></i>
+            Comparar
+          </button>
+          <button class="button" type="button" data-contact="${escapeHTML(property.id)}">
+            <i class="fa-brands fa-whatsapp"></i>
+            Contato
+          </button>
+        </div>
+      `;
+
+      openModal(elements.detailBackdrop);
+    }
+
+    function updateCompareDock() {
+      elements.compareCount.textContent = String(state.compared.length);
+      elements.dock.classList.toggle("visible", state.compared.length > 0);
+    }
+
+    function toggleCompare(id, shouldCompare) {
+      if (shouldCompare) {
+        if (state.compared.includes(id)) return;
+
+        if (state.compared.length >= 3) {
+          showToast("O comparador permite no máximo três empreendimentos.");
+          renderCatalog();
+          return;
+        }
+
+        state.compared.push(id);
+      } else {
+        state.compared = state.compared.filter((item) => item !== id);
+      }
+
+      updateCompareDock();
+      renderCatalog();
+    }
+
+    function openCompare() {
+      const selected = state.compared
+        .map((id) => IMOVEIS.find((property) => property.id === id))
+        .filter(Boolean);
+
+      if (selected.length < 2) {
+        showToast("Selecione pelo menos dois empreendimentos para comparar.");
+        return;
+      }
+
+      const rows = [
+        ["Localização", (p) => `${p.bairro}, ${p.cidade}`],
+        ["Categoria", (p) => p.categorias.join(", ")],
+        ["Estágio cadastrado", (p) => p.estagio],
+        ["Área", (p) => formatArea(p)],
+        ["Dormitórios", (p) => formatBedrooms(p)],
+        ["Preço", (p) => priceText(p)],
+        ["Conferência", (p) => formatDate(p.conferidoEm)],
+        ["Diferenciais", (p) => (p.caracteristicas || []).join("; ") || "Não informado"],
+        ["Fonte", (p) => p.fonte || URL_CATALOGO_OFICIAL]
+      ];
+
+      elements.compareBody.innerHTML = `
+        <div class="notice">
+          <i class="fa-solid fa-circle-info"></i>
+          Compare apenas os dados disponíveis. Valores ausentes não foram estimados.
+          Diferenças de planta, unidade, preço e disponibilidade precisam ser confirmadas.
+        </div>
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                ${selected.map((property) => `<th>${escapeHTML(property.nome)}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map(([label, getter]) => `
+                <tr>
+                  <td>${escapeHTML(label)}</td>
+                  ${selected.map((property) => {
+                    const value = getter(property);
+                    if (label === "Fonte") {
+                      return `<td><a href="${escapeHTML(value)}" target="_blank" rel="noopener noreferrer">Abrir fonte oficial</a></td>`;
+                    }
+                    return `<td>${escapeHTML(value)}</td>`;
+                  }).join("")}
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+
+      openModal(elements.compareBackdrop);
+    }
+
+    function openContact(id) {
+      const property = IMOVEIS.find((item) => item.id === id);
+      const message = property
+        ? `Olá! Gostaria de consultar informações atuais sobre o empreendimento ${property.nome}, em ${property.bairro}.`
+        : "Olá! Gostaria de consultar informações sobre os empreendimentos da Tibério.";
+
+      if (!WHATSAPP_IMOBILIARIO) {
+        showToast("O WhatsApp imobiliário ainda não foi configurado. Abrindo o catálogo oficial.");
+        window.open(URL_CATALOGO_OFICIAL, "_blank", "noopener,noreferrer");
+        return;
+      }
+
+      const phone = WHATSAPP_IMOBILIARIO.replace(/\D/g, "");
+
+      if (!/^\d{12,13}$/.test(phone)) {
+        showToast("Configure um número de WhatsApp válido no início do JavaScript.");
+        return;
+      }
+
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function clearFilters() {
+      elements.search.value = "";
+      elements.category.value = "";
+      elements.stage.value = "";
+      elements.neighborhood.value = "";
+      elements.minArea.value = "";
+      elements.maxArea.value = "";
+      elements.bedrooms.value = "";
+      renderCatalog();
+    }
+
+    // Eventos dos filtros
+    [
+      elements.search,
+      elements.category,
+      elements.stage,
+      elements.neighborhood,
+      elements.minArea,
+      elements.maxArea,
+      elements.bedrooms
+    ].forEach((element) => {
+      element.addEventListener("input", renderCatalog);
+      element.addEventListener("change", renderCatalog);
+    });
+
+    $("#clearFilters").addEventListener("click", clearFilters);
+
+    $("#catalogGrid").addEventListener("click", (event) => {
+      const detailButton = event.target.closest("[data-details]");
+      if (detailButton) {
+        openDetails(detailButton.dataset.details);
+        return;
+      }
+
+      const compareButton = event.target.closest("[data-compare]");
+      if (compareButton) {
+        toggleCompare(compareButton.dataset.compare, compareButton.checked);
+        return;
+      }
+
+      if (event.target.closest("#emptyClear")) {
+        clearFilters();
+      }
+    });
+
+    $("#catalogGrid").addEventListener("change", (event) => {
+      const checkbox = event.target.closest("[data-compare]");
+      if (checkbox) {
+        toggleCompare(checkbox.dataset.compare, checkbox.checked);
+      }
+    });
+
+    elements.detailBody.addEventListener("click", (event) => {
+      const compareButton = event.target.closest("[data-modal-compare]");
+      if (compareButton) {
+        const id = compareButton.dataset.modalCompare;
+
+        if (!state.compared.includes(id)) {
+          if (state.compared.length >= 3) {
+            showToast("O comparador permite no máximo três empreendimentos.");
+            return;
+          }
+          state.compared.push(id);
+        }
+
+        updateCompareDock();
+        closeModal(elements.detailBackdrop);
+        renderCatalog();
+
+        if (state.compared.length >= 2) {
+          openCompare();
+        } else {
+          showToast("Imóvel selecionado. Escolha mais um para comparar.");
+        }
+        return;
+      }
+
+      const contactButton = event.target.closest("[data-contact]");
+      if (contactButton) {
+        openContact(contactButton.dataset.contact);
+      }
+    });
+
+    $("#clearCompare").addEventListener("click", () => {
+      state.compared = [];
+      updateCompareDock();
+      renderCatalog();
+    });
+
+    $("#openCompare").addEventListener("click", openCompare);
+
+    document.querySelectorAll("[data-close]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const backdrop = document.getElementById(button.dataset.close);
+        if (backdrop) closeModal(backdrop);
+      });
+    });
+
+    [elements.detailBackdrop, elements.compareBackdrop].forEach((backdrop) => {
+      backdrop.addEventListener("click", (event) => {
+        if (event.target === backdrop) closeModal(backdrop);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeModal(elements.detailBackdrop);
+        closeModal(elements.compareBackdrop);
+      }
+    });
+
+    // Rodapé
+    $("#currentYear").textContent = String(new Date().getFullYear());
+
+    // Inicialização
+    populateNeighborhoods();
+    renderStats();
+    renderCatalog();
+    updateCompareDock();
+
+    /*
+      Efeito Matrix discreto.
+      Respeita a preferência de movimento reduzido e adapta-se ao tamanho da tela.
+    */
+    (function initMatrix() {
+      const canvas = $("#matrixCanvas");
+      const context = canvas.getContext("2d");
+
+      if (!context || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        canvas.style.display = "none";
+        return;
+      }
+
+      const characters = "01N74TECアイウエオカキクケコサシスセソ";
+      const fontSize = 14;
+      let columns = 0;
+      let drops = [];
+      let animationId = null;
+      let lastFrame = 0;
+
+      function resizeCanvas() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.floor(window.innerWidth * ratio);
+        canvas.height = Math.floor(window.innerHeight * ratio);
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+        columns = Math.ceil(window.innerWidth / fontSize);
+        drops = Array.from({ length: columns }, () =>
+          Math.random() * -window.innerHeight / fontSize
+        );
+      }
+
+      function draw(timestamp) {
+        if (timestamp - lastFrame < 75) {
+          animationId = requestAnimationFrame(draw);
+          return;
+        }
+
+        lastFrame = timestamp;
+        context.fillStyle = "rgba(8, 13, 10, 0.12)";
+        context.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        context.fillStyle = "#00ff41";
+        context.font = `${fontSize}px monospace`;
+
+        for (let index = 0; index < drops.length; index++) {
+          const character = characters.charAt(
+            Math.floor(Math.random() * characters.length)
+          );
+
+          context.fillText(character, index * fontSize, drops[index] * fontSize);
+
+          if (
+            drops[index] * fontSize > window.innerHeight &&
+            Math.random() > 0.975
+          ) {
+            drops[index] = 0;
+          }
+
+          drops[index] += 0.45;
+        }
+
+        animationId = requestAnimationFrame(draw);
+      }
+
+      resizeCanvas();
+      animationId = requestAnimationFrame(draw);
+
+      window.addEventListener("resize", resizeCanvas, { passive: true });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && animationId !== null) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        } else if (!document.hidden && animationId === null) {
+          lastFrame = 0;
+          animationId = requestAnimationFrame(draw);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
