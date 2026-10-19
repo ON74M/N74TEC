@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{background:#f5f5f7;color:#333;display:flex;justify-content:center;min-height:100vh}
+.wrap{max-width:380px;width:100%;padding:32px 20px 40px}
+.top{padding:0 0 20px;border-bottom:1px solid #e5e5e7;margin-bottom:20px}
+.top h1{font-size:13px;font-weight:600;letter-spacing:2px;color:#86868b;text-transform:uppercase}
+.top p{font-size:11px;color:#a1a1a6;margin-top:4px}
+.links{display:flex;flex-direction:column;gap:8px}
+.btn{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #e5e5e7;border-radius:12px;padding:16px 16px;text-decoration:none;color:#1d1d1f;font-size:13.5px;font-weight:500;transition:.15s}
+.btn:hover{background:#fff;border-color:#bfbf;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.btn small{font-size:11px;color:#86868b;font-weight:400;display:block;margin-top:2px}
+.btn span.arrow{color:#c7c7cc;font-size:14px}
+.btn.primary{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
+.btn.primary small{color:#a1a1a6}
+.foot{margin-top:28px;text-align:center}
+.foot p{font-size:10px;color:#c7c7cc;letter-spacing:.3px}
+.dot{width:6px;height:6px;background:#34c759;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top">
+<h1>Menu</h1>
+<p><span class="dot"></span>Representante • links de trabalho</p>
+</div>
+
+<div class="links">
+<a class="btn primary" href="https://web.whatsapp.com/" target="_blank">
+<span>WhatsApp Web <small>Abrir conversas</small></span><span class="arrow">›</span>
+</a>
+
+<a class="btn" href="http://tiberio.com.br/" target="_blank">
+<span>tiberio.com.br <small>Site institucional</small></span><span class="arrow">›</span>
+</a>
+
+<a class="btn" href="https://portal.tiberio.com.br/" target="_blank">
+<span>portal.tiberio.com.br <small>Portal</small></span><span class="arrow">›</span>
+</a>
+
+<a class="btn" href="https://www.corretorassociadotiberio.com.br/" target="_blank">
+<span>corretor associado <small>Empreendimentos</small></span><span class="arrow">›</span>
+</a>
+
+<a class="btn" href="https://tiberio.hypnobox.com.br/" target="_blank">
+<span>hypnobox <small>CRM</small></span><span class="arrow">›</span>
+</a>
+
+<a class="btn" href="https://n74.com.br/pages/tiberio.html" target="_blank">
+<span>n74 - modelo <small>Referência</small></span><span class="arrow">›</span>
+</a>
+</div>
+
+<div class="foot">
+<p>uso interno</p>
+</div>
+</div>
+</body>
+</html>
